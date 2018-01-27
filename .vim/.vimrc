@@ -43,7 +43,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
 
 " For tab guidelines
 Plug 'Yggdroot/indentLine'
@@ -88,6 +88,21 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " Undo tree
 Plug 'mbbill/undotree/'
+
+" Python mode
+Plug 'python-mode/python-mode'
+
+" Powerline
+Plug 'powerline/powerline'
+
+" Tabline
+Plug 'mkitt/tabline.vim'
+
+" Jedi python
+Plug 'davidhalter/jedi'
+
+" Python style checker
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -205,7 +220,7 @@ set autochdir           " allows :e <filename> to work w/o :e %:h/filename
 " allows commenting on apache filetype when using tpope/vim-commentary
 autocmd filetype apache setlocal commentstring=#\ %s
 
-let mapleader = ',' 
+let mapleader = '\' 
 
 " in order to support 
 
@@ -267,14 +282,10 @@ noremap <Left> <Nop>
 
 inoremap kj <esc>
 nnoremap <CR> i<CR><Esc>
+" For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
 
-" For managing tabs
-nnoremap tc :tabclose<CR>
-nnoremap ti :tabnew<Space>
-nnoremap tn :tabnext<CR>
-nnoremap tp :tabprev<CR>
-nnoremap tf :tabfirst<CR>
-nnoremap tl :tablast<CR>
+nnoremap <leader>ti :tabnew 
+nnoremap <leader>tn :tabe 
 
 " For moving lines around
 
