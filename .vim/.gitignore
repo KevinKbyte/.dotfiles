@@ -1,0 +1,10 @@
+plugged/*
+autoload/*
+backup/*
+undo/*
+swap/*
+undo/*
+swap/*
+backup/*
+undotree_debug.log
+view/*

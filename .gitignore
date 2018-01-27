@@ -1,0 +1,14 @@
+i3/i3-extras/*
+.vim/plugged/*
+.vim/swap/*
+.vim/plugged/*
+.vim/autoload/*
+.vim/backup/*
+.vim/undo/*
+.vim/swap/*
+.vim/undo/*
+.vim/swap/*
+.vim/backup/*
+.vim/undotree_debug.log
+.vim/view/*
+

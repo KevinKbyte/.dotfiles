@@ -1,0 +1,22 @@
+<C-h> - Backspace
+<C-w> - Backspace by word
+<C-u> - Delete from the beginning of the line to the position before the cursor position
+<C-r>=10*10<Enter> - Insert calculation result of 10*10
+<C-i> =10*10<Enter> - Insert calculation result of 10*10
+<C-a>%10*10<Enter> - Re-enter the contents entered in the previous insert mode and insert %10*10<Enter>
+J     - Join line
+xp    - Swap characters
+
+
+----
+Managing Windows
+----
+^W<#>> - resizes the window to the left by #%
+^W<#>< - resizes the window to the right by #%
+z<#>+ - resizes the window up by #%
+z<#>- - resizes the window down by #%
+^W^T - makes the window into a tab
+^WH/J/K/L - moves the window to the left/down/up/right
+^W^R - rotates the window clockwise
+
+

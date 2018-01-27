@@ -1,0 +1,2 @@
+nnoremap  :LLPStartPreview<CR>
+
