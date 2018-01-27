@@ -122,7 +122,7 @@ alias "6=cd -6 && dirs"
 alias "7=cd -7 && dirs"
 alias "8=cd -8 && dirs"
 alias "9=cd -9 && dirs"
-
+alias "cd=dirs && cd"
 alias "vi=vim"
 alias "loc=locate"
 
