@@ -104,9 +104,16 @@ Plug 'davidhalter/jedi'
 " Python style checker
 Plug 'nvie/vim-flake8'
 
+" \g will go to definition with this plugin
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+" to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
+" (assignments), \d (definitions), K (documentation), <leader>r rename,
+" <leader>n shows all usages of a name, :Pyimport <module> opens module
+let g:jedi#completions_enabled = 0
+
 " IMPORTANT LINE, allows YCM to autocomplete
 let g:jedi#force_py_version = 3
 
