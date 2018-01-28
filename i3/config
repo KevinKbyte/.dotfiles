@@ -122,11 +122,7 @@ bindsym $mod+shift+l move right
 # locks
 bindsym $sup+l exec "~/.config/i3/scripts/i3_locking.sh"
 # exec xautolock -time 15 -locker 
-exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' &
-exec xautolock -time 7 -locker "systemctl suspend" &
-
-# # autolocks 
-exec --no-startup-id xautolock -time 4 -locker "i3lock-wrapper -l"
+exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' && xautolock -time 7 -locker "systemctl suspend" &
 
 # creates mode for shutdown, suspend, hibernate, reboot, shutdown  
 set $locker ~/.config/i3/i3lock-wrapper -l && sleep 1
@@ -175,8 +171,8 @@ bindsym $sup+a focus parent
 # focus the child container
 bindsym $sup+q focus child
 
-set $workspace1      "1 "
-set $workspace2      "2"
+set $workspace1      "1"
+set $workspace2      "2 "
 set $workspace3      "3"
 set $workspace4      "4"
 set $workspace5      "5"

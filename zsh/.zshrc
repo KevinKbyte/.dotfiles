@@ -113,16 +113,16 @@ alias "c=xclip -selection clipboard"
 alias "cp=cp -i"
 alias "v=vim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
-alias "1=cd -1 && dirs"
-alias "2=cd -2 && dirs"
-alias "3=cd -3 && dirs"
-alias "4=cd -4 && dirs"
-alias "5=cd -5 && dirs"
-alias "6=cd -6 && dirs"
-alias "7=cd -7 && dirs"
-alias "8=cd -8 && dirs"
-alias "9=cd -9 && dirs"
-alias "cd=dirs && cd"
+function cd { builtin cd "$@" && ls -a && pwd && dirs; }
+alias "1=cd -1"
+alias "2=cd -2"
+alias "3=cd -3"
+alias "4=cd -4"
+alias "5=cd -5"
+alias "6=cd -6"
+alias "7=cd -7"
+alias "8=cd -8"
+alias "9=cd -9"
 alias "vi=vim"
 alias "loc=locate"
 
@@ -137,14 +137,13 @@ export PROJECT_HOME="/home/kevin/Desktop/projects"
 source "/etc/bash_completion.d/virtualenvwrapper"
 
 function h { history | grep -i "$@"; }
-function cs { cd "$@" && ls -a && pwd && dirs; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
 function tm { mv "$@" "/home/kevin/Desktop/trash/"; }
 function emulator { cd "/home/kevin/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
 function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
-function sagi { sudo apt-get install "$@" -y; }
+function sai { sudo apt install "$@" -y; }
 function so { source "$@"; }
 function acs { apt-cache search "$@"; }
 function ssnmstart { sudo service network-manager start; }
@@ -152,6 +151,8 @@ function ssnmstop { sudo service network-manager stop;  }
 function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
+function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
+
 
 export EDITOR=vim
 #export VISUAL=vim
@@ -185,6 +186,5 @@ zle-line-init() {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
