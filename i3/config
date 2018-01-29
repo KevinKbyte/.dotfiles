@@ -236,16 +236,16 @@ mode "mode_movement" {
    bindsym l focus right
    bindsym c exec chromium-browser
    bindsym t exec i3-sensible-terminal
-   bindsym shift+1 workspace $workspace1   
-   bindsym shift+2 workspace $workspace2   
-   bindsym shift+3 workspace $workspace3   
-   bindsym shift+4 workspace $workspace4   
-   bindsym shift+5 workspace $workspace5
-   bindsym shift+6 workspace $workspace6
-   bindsym shift+7 workspace $workspace7
-   bindsym shift+8 workspace $workspace8
-   bindsym shift+9 workspace $workspace9
-   bindsym shift+0 workspace $workspace10
+   bindsym shift+1 move container to workspace $workspace1; workspace $workspace1  
+   bindsym shift+2 move container to workspace $workspace2; workspace $workspace2  
+   bindsym shift+3 move container to workspace $workspace3; workspace $workspace3  
+   bindsym shift+4 move container to workspace $workspace4; workspace $workspace4  
+   bindsym shift+5 move container to workspace $workspace5; workspace $workspace5  
+   bindsym shift+6 move container to workspace $workspace6; workspace $workspace6  
+   bindsym shift+7 move container to workspace $workspace7; workspace $workspace7  
+   bindsym shift+8 move container to workspace $workspace8; workspace $workspace8  
+   bindsym shift+9 move container to workspace $workspace9; workspace $workspace9  
+   bindsym shift+0 move container to workspace $workspace10; workspace $workspace10
    bindsym 1 workspace $workspace1   
    bindsym 2 workspace $workspace2   
    bindsym 3 workspace $workspace3   
@@ -256,6 +256,16 @@ mode "mode_movement" {
    bindsym 8 workspace $workspace8
    bindsym 9 workspace $workspace9
    bindsym 0 workspace $workspace10
+   bindsym control+1 move container to workspace $workspace1
+   bindsym control+2 move container to workspace $workspace2
+   bindsym control+3 move container to workspace $workspace3
+   bindsym control+4 move container to workspace $workspace4
+   bindsym control+5 move container to workspace $workspace5
+   bindsym control+6 move container to workspace $workspace6
+   bindsym control+7 move container to workspace $workspace7
+   bindsym control+8 move container to workspace $workspace8
+   bindsym control+9 move container to workspace $workspace9
+   bindsym control+0 move container to workspace $workspace10
        bindsym Return mode "default"
        bindsym Escape mode "default"
        bindsym m mode "mode_ws_mv_switch"
@@ -264,17 +274,29 @@ mode "mode_movement" {
 }
 bindsym $mod+a mode "mode_movement"
 
+# move focused container to workspace and move to workspace
+bindsym $sup+shift+1 move container to workspace $workspace1; workspace $workspace1 
+bindsym $sup+shift+2 move container to workspace $workspace2; workspace $workspace2
+bindsym $sup+shift+3 move container to workspace $workspace3; workspace $workspace3
+bindsym $sup+shift+4 move container to workspace $workspace4; workspace $workspace4
+bindsym $sup+shift+5 move container to workspace $workspace5; workspace $workspace5
+bindsym $sup+shift+6 move container to workspace $workspace6; workspace $workspace6
+bindsym $sup+shift+7 move container to workspace $workspace7; workspace $workspace7
+bindsym $sup+shift+8 move container to workspace $workspace8; workspace $workspace8
+bindsym $sup+shift+9 move container to workspace $workspace9; workspace $workspace9
+bindsym $sup+shift+0 move container to workspace $workspace10; workspace $workspace10
+
 # move focused container to workspace
-bindsym $sup+shift+1 move container to workspace $workspace1 
-bindsym $sup+shift+2 move container to workspace $workspace2
-bindsym $sup+shift+3 move container to workspace $workspace3
-bindsym $sup+shift+4 move container to workspace $workspace4
-bindsym $sup+shift+5 move container to workspace $workspace5
-bindsym $sup+shift+6 move container to workspace $workspace6
-bindsym $sup+shift+7 move container to workspace $workspace7
-bindsym $sup+shift+8 move container to workspace $workspace8
-bindsym $sup+shift+9 move container to workspace $workspace9
-bindsym $sup+shift+0 move container to workspace $workspace10
+bindsym $sup+control+1 move container to workspace $workspace1
+bindsym $sup+control+2 move container to workspace $workspace2
+bindsym $sup+control+3 move container to workspace $workspace3
+bindsym $sup+control+4 move container to workspace $workspace4
+bindsym $sup+control+5 move container to workspace $workspace5
+bindsym $sup+control+6 move container to workspace $workspace6
+bindsym $sup+control+7 move container to workspace $workspace7
+bindsym $sup+control+8 move container to workspace $workspace8
+bindsym $sup+control+9 move container to workspace $workspace9
+bindsym $sup+control+0 move container to workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+shift+c reload

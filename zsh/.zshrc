@@ -125,6 +125,7 @@ alias "8=cd -8"
 alias "9=cd -9"
 alias "vi=vim"
 alias "loc=locate"
+alias "saa=sudo apt autoremove"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
