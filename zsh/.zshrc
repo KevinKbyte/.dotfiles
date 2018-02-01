@@ -125,8 +125,14 @@ alias "8=cd -8"
 alias "9=cd -9"
 alias "vi=vim"
 alias "loc=locate"
-alias "saa=sudo apt autoremove"
 
+local ZSHRC="~/.dotfiles/zsh/.zshrc"
+local I3="~/.dotfiles/i3/config"
+alias "saa=sudo apt autoremove"
+alias "zshrc=vim $ZSHRC"
+alias "i3c=vim $I3"
+alias "soi3c=source $I3"
+alias "sozshrc=source $ZSHRC"
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
@@ -147,13 +153,12 @@ function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 function sai { sudo apt install "$@" -y; }
 function so { source "$@"; }
 function acs { apt-cache search "$@"; }
-function ssnmstart { sudo service network-manager start; }
-function ssnmstop { sudo service network-manager stop;  }
+function ssstonm { sudo systemctl stop network-manager; }
+function ssstanm { sudo systemctl start network-manager; }
 function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
 function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
-
 
 export EDITOR=vim
 #export VISUAL=vim

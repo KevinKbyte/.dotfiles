@@ -216,6 +216,7 @@ bindsym $mod+shift+a mode "mode_ws_mv_switch"
 
 set $mode_movement
 mode "mode_movement" {
+   bindsym shift+w exec --no-startup-id feh --randomize --bg-fill ~/.wallpaper/
    bindsym shift+q kill
    bindsym semicolon split h
    bindsym v split v
