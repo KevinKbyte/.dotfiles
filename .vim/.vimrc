@@ -335,8 +335,10 @@ map c <Plug>(easymotion-bd-f)
 " " 1 line s{char}{char} to move to {char}{char}
 map g <Plug>(easymotion-fl2)
 map G <Plug>(easymotion-Fl2)
-map f <Plug>(easymotion-f2)
-map F <Plug>(easymotion-F2)
+map f <Plug>(easymotion-overwin-f2)
+map f <Plug>(easymotion-bd-f2)
+map F <Plug>(easymotion-overwin-f)
+map F <Plug>(easymotion-bd-f)
 " " s{char}{char} to move to {char}{char}
 " nmap j <Plug>(easymotion-overwin-f2)
 

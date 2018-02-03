@@ -124,6 +124,9 @@ bindsym $sup+l exec "~/.config/i3/scripts/i3_locking.sh"
 # exec xautolock -time 15 -locker 
 exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' && xautolock -time 7 -locker "systemctl suspend" &
 
+# redshift (like f.lux)
+exec redshift -t 4000:4000
+
 # creates mode for shutdown, suspend, hibernate, reboot, shutdown  
 set $locker ~/.config/i3/i3lock-wrapper -l && sleep 1
 
@@ -235,7 +238,7 @@ mode "mode_movement" {
    bindsym j focus down
    bindsym k focus up
    bindsym l focus right
-   bindsym c exec chromium-browser
+   bindsym c exec chromium-browser 
    bindsym t exec i3-sensible-terminal
    bindsym shift+1 move container to workspace $workspace1; workspace $workspace1  
    bindsym shift+2 move container to workspace $workspace2; workspace $workspace2  
@@ -360,3 +363,6 @@ bar {
         tray_output primary
         font pango:DejaVu Sans Mono 10
 }
+
+assign [class="Chromium-browser"] $workspace2
+exec chromium-browser
