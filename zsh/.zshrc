@@ -200,3 +200,5 @@ zle -N zle-line-init
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# for tmuxinator
+source ~/.dotfiles/zsh/tmuxinator.zsh
