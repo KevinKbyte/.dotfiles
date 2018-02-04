@@ -128,18 +128,20 @@ alias "9=cd -9"
 alias "vi=vim"
 alias "loc=locate"
 
-local TMUX="~/.dotfiles/.tmux/.tmux.conf"
-local VIMRC="~/.dotfiles/.vim/.vimrc"
-local ZSHRC="~/.dotfiles/zsh/.zshrc"
-local I3="~/.dotfiles/i3/config"
-alias "trc=vim $TMUX"
+# TMUX="~/.dotfiles/.tmux/.tmux.conf"
+# VIMRC="~/.dotfiles/.vim/.vimrc"
+# ZSHRC="~/.dotfiles/zsh/.zshrc"
+# I3="~/.dotfiles/i3/config"
+alias "trc=vim ~/.dotfiles/.tmux/.tmux.conf"
 alias "saa=sudo apt autoremove"
-alias "zrc=vim $ZSHRC && source $ZSHRC"
-alias "i3c=vim $I3"
-alias "soi3c=source $I3"
-alias "sozrc=source $ZSHRC"
-alias "vrc=vim $VIMRC"
+alias "zrc=vim ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
+alias "i3c=vim "
+alias "soi3c=source ~/.dotfiles/i3/config"
+alias "sozrc=source ~/.dotfiles/zsh/.zshr"
+alias "vrc=vim ~/.dotfiles/.vim/.vimrc"
 alias "mux=tmuxinator"
+alias "tmks=tmux kill-server"
+alias "tmsf=tmux source-file ~/.tmux.conf"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -206,4 +208,9 @@ zle -N zle-line-init
 source ~/.dotfiles/zsh/tmuxinator.zsh
 
 export TMUXINATOR_CONFIG="/home/kevin/.dotfiles/tmuxinator"
-export XDG_CONFIG_HOME="/home/kevin/.dotfiles"
+# export XDG_CONFIG_HOME="/home/kevin/.dotfiles"
+
+#Set JAVA_HOME
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export JAVA_HOME
+

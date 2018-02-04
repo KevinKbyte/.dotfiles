@@ -4,8 +4,7 @@
 call plug#begin('~/.vim/plugged') 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-"Plug 'junegunn/vim-easy-align'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align "Plug 'junegunn/vim-easy-align'
 
 " Any valid git URL is allowed
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -20,8 +19,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-"Plug 'fatih/vim-go', { 'tag': '*' }
-
+"Plug 'fatih/vim-go', { 'tag': '*' } 
 " Plugin options
 "Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
@@ -106,9 +104,45 @@ Plug 'nvie/vim-flake8'
 
 " \g will go to definition with this plugin
 Plug 'davidhalter/jedi-vim'
+
+" to navigate w/ tmux + vim
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+" Tmux maintains color
+set background=dark
+set t_Co=256
+
+" Java support
+let g:JavaComplete_ShowExternalCommandsOutput = 1
+let g:JavaComplete_JavaCompiler="/usr/bin/javac"
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" path to additional jar files
+" let g:JavaComplete_LibsPath = ''
+
+" let g:JavaComplete_GradleExecutable = 'gradle' - use your own path to gradle executable file.
+
+" set directory that contains custom templates, for class creation. By default this options is null.
+let g:JavaComplete_CustomTemplateDirectory = '~/.jc_templates'
+
+" Disable automatic startup of server (0)
+let g:JaveComplete_AutoStartServer = 0
+
+" use full qualified name in completions description. By default is 0
+let g:JavaComplete_UseFQN = 1
+
+" set the base cache directory of javacomplete2. By default it is ~/.cache.
+let g:JavaComplete_BaseDir = '~/.cache' 
+
+" directory to write server logs
+let g:JavaComplete_JavaviLogfileDirectory = ''
+
+" enables server side logging
+let g:JavaComplete_JavaviDebug = 1
+
 " to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
 " (assignments), \d (definitions), K (documentation), <leader>r rename,
 " <leader>n shows all usages of a name, :Pyimport <module> opens module
@@ -287,6 +321,9 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 
+nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
+
 inoremap kj <esc>
 nnoremap <CR> i<CR><Esc>
 " For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
@@ -367,13 +404,13 @@ inoremap w <c-o>w
 inoremap $ <c-o>$
 inoremap ^ <c-o>^
 inoremap l <c-o>l
-inoremap h <c-o>h
+" inoremap h <c-o>h
 inoremap e <c-o>e
 inoremap <s-e> <c-o><s-e>
-inoremap j <c-o>j
+" inoremap j <c-o>j
 inoremap <s-j> <c-o><s-j>
 inoremap ge <c-o>g<c-o>e
-inoremap k <c-o>k
+" inoremap k <c-o>k
 inoremap i <esc>
 inoremap . <c-o>.
 inoremap b <c-o>b
@@ -384,11 +421,18 @@ inoremap o <c-o>:so %<CR>
 inoremap x <backspace>
 nnoremap s :w<CR>
 nnoremap o :so %<CR>
-nnoremap  :hid<CR>
+nnoremap  :hid<CR>
 inoremap o 
 
 nnoremap <silent><C-n> :NERDTreeToggle<CR>
-nnoremap <silent><C-S-n> :NERDTreeFind<CR>
+nnoremap <silent><C-\> :NERDTreeFind<CR>
 
 nnoremap l :ls<CR>:b
 
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent>  :TmuxNavigateLeft<cr>
+nnoremap <silent> J :TmuxNavigateDown<cr>
+nnoremap <silent> K :TmuxNavigateUp<cr>
+nnoremap <silent>  :TmuxNavigateRight<cr>
+noremap <silent>  :TmuxNavigatePrevious<cr>

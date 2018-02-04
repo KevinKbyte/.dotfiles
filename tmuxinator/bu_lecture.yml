@@ -1,6 +1,6 @@
 # ~/.tmuxinator/hw.yml
 
-name: hw
+name: bu_lecture
 root: ~/Desktop/cs/bu_notes/
 
 # Optional tmux socket
@@ -33,12 +33,12 @@ windows:
   - cs330:
       layout: main-vertical
       panes:
-        - cd cs330/hw; clear
+        - cd cs330/lecture; clear
   - cs521:
       # layout: main-vertical
       # panes:
-      - cd ec521/hw; clear
+      - cd ec521/lecture; clear
   - cs528:
       # layout: main-vertical
       # panes:
-      - cd cloud_computing; clear
+      - cd cloud_computing/wk; clear
