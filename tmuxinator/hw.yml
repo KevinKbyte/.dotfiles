@@ -31,8 +31,6 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
-
+        - cd cs330/lecture;
+        - cd cs521/lecture;
+        - cd cloud_computing/wk;
