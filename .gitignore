@@ -11,5 +11,4 @@ i3/i3-extras/*
 .vim/backup/*
 .vim/undotree_debug.log
 .vim/view/*
-.tmux/resurrect/*
-
+.tmux/resurrect/
