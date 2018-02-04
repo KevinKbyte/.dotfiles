@@ -3,3 +3,8 @@
 
 # Checks the class of a window for i3wm
 xprop
+
+
+# The -l option generates a long listing, and when used together with the -e and -f options creates a table with 15 columns:
+ps -efl
+
