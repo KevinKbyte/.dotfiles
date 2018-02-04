@@ -139,6 +139,8 @@ alias "i3c=vim $I3"
 alias "soi3c=source $I3"
 alias "sozrc=source $ZSHRC"
 alias "vrc=vim $VIMRC"
+alias "mux=tmuxinator"
+
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
@@ -202,3 +204,6 @@ zle -N zle-line-init
 
 # for tmuxinator
 source ~/.dotfiles/zsh/tmuxinator.zsh
+
+export TMUXINATOR_CONFIG="/home/kevin/.dotfiles/tmuxinator"
+export XDG_CONFIG_HOME="/home/kevin/.dotfiles"

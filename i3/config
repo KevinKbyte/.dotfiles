@@ -366,3 +366,5 @@ bar {
 
 assign [class="Chromium-browser"] $workspace2
 exec chromium-browser
+exec xcompmgr -c
+exec xbindkeys -p 

@@ -49,6 +49,7 @@
 
 "sleep 0.12 && xdotool keydown Alt_L keydown Left keyup Alt_L keyup Left"
 Alt_R
+# release + Alt_R + Alt + release
    
 
 # specify a mouse button
