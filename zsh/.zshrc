@@ -169,6 +169,8 @@ function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
 function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
+function grin { grep -irn "$1" "$2"; }
+function grinE { grep -irnE "$1" "$2"; }
 
 export EDITOR=vim
 #export VISUAL=vim

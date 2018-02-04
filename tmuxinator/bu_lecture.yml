@@ -29,7 +29,10 @@ root: ~/Desktop/cs/bu_notes/
 
 windows:
   - scratch:
-    - cd ~; clear
+      layout: even-horizontal
+      panes:
+        - cd ~; clear
+        - cd ~; clear
   - cs330:
       layout: main-vertical
       panes:

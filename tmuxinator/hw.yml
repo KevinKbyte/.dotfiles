@@ -29,16 +29,22 @@ root: ~/Desktop/cs/bu_notes/
 
 windows:
   - scratch:
-    - cd ~; clear
+      layout: even-horizontal
+      panes:
+        - cd ~; clear
+        - cd ~; clear
   - cs330:
-      layout: main-vertical
+      layout: even-horizontal
       panes:
         - cd cs330/hw; clear
+        - cd cs330/lecture; clear
   - cs521:
-      # layout: main-vertical
-      # panes:
-      - cd ec521/hw; clear
+      layout: even-horizontal
+      panes:
+        - cd ec521/hw; clear
+        - cd cs521/lecture; clear
   - cs528:
-      # layout: main-vertical
-      # panes:
-      - cd cloud_computing; clear
+      layout: even-horizontal
+      panes:
+        - cd cloud_computing; clear
+        - cd cloud_computing/hw; clear
