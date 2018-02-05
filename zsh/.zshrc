@@ -161,6 +161,7 @@ function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
 function sai { sudo apt install "$@" -y; }
+function sagrp { sudo apt-get remove --purge "$@" -y; }
 function so { source "$@"; }
 function acs { apt-cache search "$@"; }
 function ssstonm { sudo systemctl stop network-manager; }
