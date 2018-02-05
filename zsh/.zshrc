@@ -173,6 +173,7 @@ function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" &
 function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
+function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
 
 export EDITOR=vim
 #export VISUAL=vim
