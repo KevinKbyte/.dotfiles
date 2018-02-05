@@ -41,7 +41,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
 " For tab guidelines
 Plug 'Yggdroot/indentLine'
@@ -90,8 +90,8 @@ Plug 'mbbill/undotree/'
 " Python mode
 Plug 'python-mode/python-mode'
 
-" Powerline
-Plug 'powerline/powerline'
+" " Powerline
+" Plug 'powerline/powerline'
 
 " Tabline
 Plug 'mkitt/tabline.vim'
@@ -108,14 +108,55 @@ Plug 'davidhalter/jedi-vim'
 " to navigate w/ tmux + vim
 Plug 'christoomey/vim-tmux-navigator'
 
+" C/C++ development
+Plug 'JBakamovic/yavide'
+
+" C/C++ autocomplete
+Plug 'Rip-Rip/clang_complete'
+
+" Class Outline Viewer
+Plug 'majutsushi/tagbar'
+
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" Status bar
+Plug 'vim-airline/vim-airline'
+
+" Switch b/n source and header files quickly
+" Plug '/vim-scripts/a.vim'
+
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+
+" path to directory where library can be found
+let g:clang_library_path='/usr/lib/llvm-5.0/lib'
+
+" allows for backspaces to work properly
+" set backspace=indent,eol,start
+
+"============
+"<> TMUX
+"============
+
+nnoremap <silent>  :TmuxNavigateLeft<cr>
+nnoremap <silent> J :TmuxNavigateDown<cr> nnoremap <silent> K :TmuxNavigateUp<cr>
+nnoremap <silent>  :TmuxNavigateRight<cr>
+noremap <silent>  :TmuxNavigatePrevious<cr>
+
+"<>
+
 " Tmux maintains color
 set background=dark
 set t_Co=256
 
-" Java support
+let g:tmux_navigator_no_mappings = 1
+
+"============
+"<> JAVA SUPPORT
+"============
+
 let g:JavaComplete_ShowExternalCommandsOutput = 1
 let g:JavaComplete_JavaCompiler="/usr/bin/javac"
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -143,6 +184,10 @@ let g:JavaComplete_JavaviLogfileDirectory = ''
 " enables server side logging
 let g:JavaComplete_JavaviDebug = 1
 
+"============
+"<> PYTHON
+"============
+
 " to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
 " (assignments), \d (definitions), K (documentation), <leader>r rename,
 " <leader>n shows all usages of a name, :Pyimport <module> opens module
@@ -151,11 +196,15 @@ let g:jedi#completions_enabled = 0
 " IMPORTANT LINE, allows YCM to autocomplete
 let g:jedi#force_py_version = 3
 
-" au BufNewFile,BufRead *.js, *.html, *.css
-"     \ set tabstop=2
-"     \ set softtabstop=2
-"     \ set shiftwidth=2
+" YCM python interpreter
+let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
+" For Python Semantic Completion w/ youcompleteme
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
+
+"============
+"<> FOLDS
+"============
 
 " folds almost all indented lines 
 set foldmethod=indent
@@ -167,63 +216,9 @@ augroup AutoSaveFolds
   autocmd BufWinEnter ?* silent loadview
 augroup END
 
-" use f0 instead of f1 to stop viminfo from saving marks and jumps
-" Saves for up to 100 files
-set viminfo='100,f1
-
-" Undo tree activate!
-nnoremap ;u :UndotreeToggle<CR>
-
-" Disable LaTeX-Box for vimtex
-let g:polyglot_disabled = ['latex']
-
-" Ultisnips python v3
-let g:UltiSnipsUsePythonVersion = 3
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsShortcutBackInsert = '<C-b>'
-
-set cursorline
-set ic          " Defaults ignore case when search
-
-" YCM shows completion menu typing inside comments
-let g:ycm_complete_in_comments = 0
-" YCM shows completion menu typing inside strings
-let g:ycm_complete_in_strings = 1
-" YCM collect ids from strings and comments
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-" YCM seed ids with syntax
-let g:ycm_seed_identifiers_with_syntax = 1
-" YCM python interpreter
-let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
-" YCM keeps log files after shutdown (1), not kept (0)
-let g:ycm_keep_logfiles = 0
-" YCM stop completion
-let g:ycm_key_list_stop_completion = ['<C-y>']
-
-" For Python Semantic Completion w/ youcompleteme
-let g:ycm_python_binary_path = '/usr/bin/python3'
-
-" Closes vim if only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" To open NERDTree automatically when vim starts up w/o any files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" To change default arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-
-" Auto delete buffer of file you just deleted with Nerd Tree
-let NerdTreeAutoDeleteBuffer = 1
-
-" Disable Press ? for help
-let NERDTreeMinimalUI = 0
-let NERDTreeDirArrows = 0
-
-" Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
-let &runtimepath.=','.vimDir
+"============
+"<> SAVE STATES
+"============
 
 " Double trailing slashes in vim activates feature to avoid name collisions
 " /path/one/foobar.txt --> %path%one%foobar.txt
@@ -243,6 +238,129 @@ if !isdirectory($HOME."/.vim/undo")
     call mkdir($HOME."/.vim/undo", "", 0700)
 endif
 
+" au BufNewFile,BufRead *.js, *.html, *.css
+"     \ set tabstop=2
+"     \ set softtabstop=2
+"     \ set shiftwidth=2
+
+" use f0 instead of f1 to stop viminfo from saving marks and jumps
+" Saves for up to 100 files
+set viminfo='100,f1
+
+" Undo tree activate!
+nnoremap ;u :UndotreeToggle<CR>
+
+" Disable LaTeX-Box for vimtex
+let g:polyglot_disabled = ['latex']
+
+" Ultisnips python v3
+let g:UltiSnipsUsePythonVersion = 3
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = '<C-b>'
+
+set cursorline
+set ic          " Defaults ignore case when search
+
+"============
+"<> YCM MISC
+"============
+
+" YCM shows completion menu typing inside comments
+let g:ycm_complete_in_comments = 0
+" YCM shows completion menu typing inside strings
+let g:ycm_complete_in_strings = 1
+" YCM collect ids from strings and comments
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" YCM seed ids with syntax
+let g:ycm_seed_identifiers_with_syntax = 1
+" YCM keeps log files after shutdown (1), not kept (0)
+let g:ycm_keep_logfiles = 0
+" YCM stop completion
+let g:ycm_key_list_stop_completion = ['<C-y>']
+
+"============
+"<> NERDTREE
+"============
+
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
+nnoremap <silent><C-\> :NERDTreeFind<CR>
+
+"<>
+
+" Closes vim if only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" To open NERDTree automatically when vim starts up w/o any files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" To change default arrows
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" Auto delete buffer of file you just deleted with Nerd Tree
+let NerdTreeAutoDeleteBuffer = 1
+
+" Disable Press ? for help
+let NERDTreeMinimalUI = 0
+let NERDTreeDirArrows = 0
+
+"============
+"<> EASY MOTION
+"============
+
+map c <Plug>(easymotion-bd-f)
+" map ;b <Plug>(easymotion-bl)
+" map ;B <Plug>(easymotion-B)
+
+" map ;e <Plug>(easymotion-el)
+" map ;E <Plug>(easymotion-El)
+
+" map ;ge <Plug>(easymotion-gel)
+" map ;gE <Plug>(easymotion-gE)
+" map ;Ge <Plug>(easymotion-bd-ge)
+" nmap ;Ge <Plug>(easymotion-overwin-ge)
+
+" " <Leader>f{char} to move to {char}
+" map ;gf <Plug>(easymotion-bd-f)
+" nmap ;gf <Plug>(easymotion-overwin-f)
+
+" " 1 line s{char}{char} to move to {char}{char}
+map g <Plug>(easymotion-fl2)
+map G <Plug>(easymotion-Fl2)
+map f <Plug>(easymotion-overwin-f2)
+map f <Plug>(easymotion-bd-f2)
+map F <Plug>(easymotion-overwin-f)
+map F <Plug>(easymotion-bd-f)
+" " s{char}{char} to move to {char}{char}
+" nmap j <Plug>(easymotion-overwin-f2)
+
+" " Move to line
+" " map ;l <Plug>(easymotion-bd-jk)
+" " nmap ;l <Plug>(easymotion-overwin-line)
+
+" " 1 line Move to word
+" nmap ;w <Plug>(easymotion-wl)
+" nmap ;W <Plug>(easymotion-W)
+" " Move to word
+" map  ;gw <Plug>(easymotion-bd-w)
+" nmap ;gw <Plug>(easymotion-overwin-w)
+
+" map ;r <Plug>(easymotion-s)
+nmap <Leader>\ <Plug>(easymotion-next)
+nmap <Leader>] <Plug>(easymotion-prev)
+
+"<>
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+"============
+"<> MISC
+"============
+
+" SNIPPETS: " Read an empty HTML template and move cursor to title 
+nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
 
 " Adding indentation functionality
 " autocmd FileType html setlocal shiftwidth=2 tabstop=2
@@ -255,6 +373,10 @@ set cindent             " stricter rules for c programs
 set wrap linebreak nolist
 
 set autochdir           " allows :e <filename> to work w/o :e %:h/filename
+
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
 
 " the ^[ is an esc char that comes before the 'a'
 " in most default configs, ^[a may be typed by pressing first <c-v>, then <m-a>
@@ -307,9 +429,6 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " - <CR>/v/t to open in an h-split/v-split/tab 
 " - check |netrw-browse-maps| for more mappings
 
-" SNIPPETS: " Read an empty HTML template and move cursor to title 
-nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
-
 " BUILD INTEGRATION: " Steal Mr. Bradley's formatter & add it to our spec_helper " http://philipbradley.net/rspec-into-vim-with-quickfix "
 " Configure the 'make' command to run RSpec set makeprg=bundle\ exec\ rspec\ -f\ QuickfixFormatter  
 " NOW WE CAN:
@@ -317,6 +436,11 @@ nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
 " - :cc# to jump to error by number - :cn and :cp to navigate forward and back
 
 set showcmd
+
+"============
+"<> CUSTOM MAPS
+"============
+
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -349,51 +473,6 @@ nnoremap <C-Space> :nohl<CR>
 
 nnoremap <leader>ss :set spell!<CR>
 
-" EASY MOTION
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-map c <Plug>(easymotion-bd-f)
-" map ;b <Plug>(easymotion-bl)
-" map ;B <Plug>(easymotion-B)
-
-" map ;e <Plug>(easymotion-el)
-" map ;E <Plug>(easymotion-El)
-
-" map ;ge <Plug>(easymotion-gel)
-" map ;gE <Plug>(easymotion-gE)
-" map ;Ge <Plug>(easymotion-bd-ge)
-" nmap ;Ge <Plug>(easymotion-overwin-ge)
-
-" " <Leader>f{char} to move to {char}
-" map ;gf <Plug>(easymotion-bd-f)
-" nmap ;gf <Plug>(easymotion-overwin-f)
-
-" " 1 line s{char}{char} to move to {char}{char}
-map g <Plug>(easymotion-fl2)
-map G <Plug>(easymotion-Fl2)
-map f <Plug>(easymotion-overwin-f2)
-map f <Plug>(easymotion-bd-f2)
-map F <Plug>(easymotion-overwin-f)
-map F <Plug>(easymotion-bd-f)
-" " s{char}{char} to move to {char}{char}
-" nmap j <Plug>(easymotion-overwin-f2)
-
-" " Move to line
-" " map ;l <Plug>(easymotion-bd-jk)
-" " nmap ;l <Plug>(easymotion-overwin-line)
-
-" " 1 line Move to word
-" nmap ;w <Plug>(easymotion-wl)
-" nmap ;W <Plug>(easymotion-W)
-" " Move to word
-" map  ;gw <Plug>(easymotion-bd-w)
-" nmap ;gw <Plug>(easymotion-overwin-w)
-
-" map ;r <Plug>(easymotion-s)
-nmap <Leader>\ <Plug>(easymotion-next)
-nmap <Leader>] <Plug>(easymotion-prev)
-
 " Allows for moving around wrapped lines seamlessly
 " nnoremap j gj
 " nnoremap k gk
@@ -424,15 +503,5 @@ nnoremap o :so %<CR>
 nnoremap  :hid<CR>
 inoremap o 
 
-nnoremap <silent><C-n> :NERDTreeToggle<CR>
-nnoremap <silent><C-\> :NERDTreeFind<CR>
-
 nnoremap l :ls<CR>:b
 
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent>  :TmuxNavigateLeft<cr>
-nnoremap <silent> J :TmuxNavigateDown<cr>
-nnoremap <silent> K :TmuxNavigateUp<cr>
-nnoremap <silent>  :TmuxNavigateRight<cr>
-noremap <silent>  :TmuxNavigatePrevious<cr>

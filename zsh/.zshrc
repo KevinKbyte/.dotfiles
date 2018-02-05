@@ -142,6 +142,7 @@ alias "vrc=vim ~/.dotfiles/.vim/.vimrc"
 alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
+alias "dotf=cd ~/.dotfiles"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
