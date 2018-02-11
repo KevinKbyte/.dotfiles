@@ -154,10 +154,34 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# # enter fullscreen mode for the focused container
+# bindsym $mod+f fullscreen toggle 
+
 # global fullscreen: across all monitors
 bindsym $mod+shift+f        fullscreen toggle global
+
+set $mode_fullscreen
+mode "$mode_fullscreen" {
+    bindsym $mod+l fullscreen disable; focus right; fullscreen enable
+    bindsym $mod+h fullscreen disable; focus left; fullscreen enable
+    bindsym $mod+k fullscreen disable; focus up; fullscreen enable
+    bindsym $mod+j fullscreen disable; focus down; fullscreen enable
+    bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
+    # reload the configuration file
+    bindsym $mod+shift+c reload; bar mode invisible
+    # switch to workspace
+    bindsym $sup+1 fullscreen disable; bar mode hide; workspace $workspace1; mode "default"
+    bindsym $sup+2 fullscreen disable; bar mode hide; workspace $workspace2; mode "default"
+    bindsym $sup+3 fullscreen disable; bar mode hide; workspace $workspace3; mode "default"
+    bindsym $sup+4 fullscreen disable; bar mode hide; workspace $workspace4; mode "default"
+    bindsym $sup+5 fullscreen disable; bar mode hide; workspace $workspace5; mode "default"
+    bindsym $sup+6 fullscreen disable; bar mode hide; workspace $workspace6; mode "default"
+    bindsym $sup+7 fullscreen disable; bar mode hide; workspace $workspace7; mode "default"
+    bindsym $sup+8 fullscreen disable; bar mode hide; workspace $workspace8; mode "default"
+    bindsym $sup+9 fullscreen disable; bar mode hide; workspace $workspace9; mode "default"
+    bindsym $sup+0 fullscreen disable; bar mode hide; workspace $workspace10; mode "default"
+}
+bindsym $mod+f mode "$mode_fullscreen"; fullscreen enable; bar mode invisible
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -293,6 +317,7 @@ mode "mode_movement" {
        bindsym m mode "mode_ws_mv_switch"
        bindsym r mode "resize"
        bindsym shift+s mode "mode_system"
+       bindsym f mode "mode_fullscreen"
 }
 bindsym $mod+a mode "mode_movement"
 
