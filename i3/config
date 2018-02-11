@@ -156,17 +156,34 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# global fullscreen: across all monitors
+bindsym $mod+shift+f        fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
+# toggle sticky from floating
+bindsym $mod+Mod1+space sticky toggle
+
 # toggle tiling / floating
-bindsym $sup+space floating toggle
+bindsym $mod+space floating toggle; sticky disable
 
 # change focus between tiling / floating windows
-bindsym $sup+shift+space focus mode_toggle
+bindsym $mod+shift+space focus mode_toggle
+
+# move to left:
+bindsym $mod+Mod1+h  exec /home/kevin/.dotfiles/i3/scripts/i3-move-resize.py -2 -1 -1 -1
+
+#move to right:
+bindsym $mod+Mod1+l  exec /home/kevin/.dotfiles/i3/scripts/i3-move-resize.py -4 -1 -1 -1
+
+#move up:
+bindsym $mod+Mod1+k exec /home/kevin/.dotfiles/i3/scripts/i3-move-resize.py -1 -2 -1 -1
+
+#move down:
+bindsym $mod+Mod1+j  exec /home/kevin/.dotfiles/i3/scripts/i3-move-resize.py -1 -4 -1 -1
 
 # focus the parent container
 bindsym $sup+a focus parent
@@ -219,6 +236,7 @@ bindsym $mod+shift+a mode "mode_ws_mv_switch"
 
 set $mode_movement
 mode "mode_movement" {
+   bindsym d bar hidden_state toggle
    bindsym shift+w exec --no-startup-id feh --randomize --bg-fill ~/.wallpaper/
    bindsym shift+q kill
    bindsym semicolon split h
@@ -357,12 +375,20 @@ client.urgent               $rd        $rd         $tx
 # start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        mode hide
+        hidden_state hide
         position top
         # status_command i3status
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output primary
         font pango:DejaVu Sans Mono 10
 }
+
+# borderless windows
+# for_window [class=^.*] border normal 0
+new_window normal 0
+
+bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
 assign [class="Rhythmbox"] $workspace10

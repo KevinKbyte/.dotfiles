@@ -174,6 +174,12 @@ function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
+function rmspaces { mv $1 $(echo $1 | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); }
+function evince { command evince $1 &; }
+
+# TMuxinator session fn's
+function mshw { tmuxinator start hw; }
+function mslecture { tmuxinator start bu_lecture; }
 
 export EDITOR=vim
 #export VISUAL=vim

@@ -82,7 +82,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'xuhdev/vim-latex-live-preview'
 
 " Undo tree
 Plug 'mbbill/undotree/'
@@ -126,25 +126,44 @@ Plug 'vim-airline/vim-airline'
 " Switch b/n source and header files quickly
 " Plug '/vim-scripts/a.vim'
 
+" Note taking, personal wiki
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+
+"============
+"<> Multiple cursors
+"============
+
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='g<C-n>'
+let g:multi_cursor_prev_key='g<C-p>'
+let g:multi_cursor_skip_key='g<C-x>'
+let g:multi_cursor_quit_key='g<Esc>'
+nnoremap <silent> g<M-j> :MultipleCursorsFind <C-R>/<CR>
+vnoremap <silent> g<M-j> :MultipleCursorsFind <C-R>/<CR
 
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-5.0/lib'
 
 " allows for backspaces to work properly
-" set backspace=indent,eol,start
+set backspace=indent,eol,start
 
 "============
 "<> TMUX
 "============
 
-nnoremap <silent>  :TmuxNavigateLeft<cr>
-nnoremap <silent> J :TmuxNavigateDown<cr> nnoremap <silent> K :TmuxNavigateUp<cr>
-nnoremap <silent>  :TmuxNavigateRight<cr>
-noremap <silent>  :TmuxNavigatePrevious<cr>
-
+" inoremap <silent>  <C-o>:TmuxNavigateLeft<CR>
+" inoremap <silent> J <C-o>:TmuxNavigateDown<CR> 
+" inoremap <silent> K <C-o>:TmuxNavigateUp<CR>
+" inoremap <silent>  <C-o>:TmuxNavigateRight<CR>
+nnoremap <silent>  :TmuxNavigateLeft<CR>
+nnoremap <silent> J :TmuxNavigateDown<CR> 
+nnoremap <silent> K :TmuxNavigateUp<CR>
+nnoremap <silent>  :TmuxNavigateRight<CR>
+nnoremap <silent>  :TmuxNavigatePrevious<CR>
 "<>
 
 " Tmux maintains color
@@ -253,6 +272,10 @@ nnoremap ;u :UndotreeToggle<CR>
 " Disable LaTeX-Box for vimtex
 let g:polyglot_disabled = ['latex']
 
+" autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionaries/".expand('<amatch>'))
+" set completeopt=menuone,longest,preview
+" set complete+=k
+
 " Ultisnips python v3
 let g:UltiSnipsUsePythonVersion = 3
 let g:AutoPairsFlyMode = 1
@@ -282,8 +305,8 @@ let g:ycm_key_list_stop_completion = ['<C-y>']
 "<> NERDTREE
 "============
 
-nnoremap <silent><C-n> :NERDTreeToggle<CR>
-nnoremap <silent><C-\> :NERDTreeFind<CR>
+nnoremap <silent>;nt :NERDTreeToggle<CR>
+nnoremap <silent>;nf :NERDTreeFind<CR>
 
 "<>
 
@@ -309,7 +332,6 @@ let NERDTreeDirArrows = 0
 "<> EASY MOTION
 "============
 
-map c <Plug>(easymotion-bd-f)
 " map ;b <Plug>(easymotion-bl)
 " map ;B <Plug>(easymotion-B)
 
@@ -328,8 +350,10 @@ map c <Plug>(easymotion-bd-f)
 " " 1 line s{char}{char} to move to {char}{char}
 map g <Plug>(easymotion-fl2)
 map G <Plug>(easymotion-Fl2)
-map f <Plug>(easymotion-overwin-f2)
-map f <Plug>(easymotion-bd-f2)
+" map f <Plug>(easymotion-overwin-f2)
+" map f <Plug>(easymotion-bd-f2)
+map f <Plug>(easymotion-overwin-f2)
+map f <Plug>(easymotion-bd-f2)
 map F <Plug>(easymotion-overwin-f)
 map F <Plug>(easymotion-bd-f)
 " " s{char}{char} to move to {char}{char}
@@ -347,8 +371,8 @@ map F <Plug>(easymotion-bd-f)
 " nmap ;gw <Plug>(easymotion-overwin-w)
 
 " map ;r <Plug>(easymotion-s)
-nmap <Leader>\ <Plug>(easymotion-next)
-nmap <Leader>] <Plug>(easymotion-prev)
+nmap ;; <Plug>(easymotion-next)
+nmap ;' <Plug>(easymotion-prev)
 
 "<>
 
@@ -358,6 +382,19 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+
+" Updates timestamps in XML files
+" Enter :UpdateTimeStamps to update the value to the current time in each
+" instance of a tag w/ format shown below. 
+" Type :Up<Tab> 
+" Can apply to multiple buffers w/ :bufdo UpdateTimeStamps
+
+function! s:UpdateTimestamps()
+  let tstamp = strftime('%s000')
+  %s#<property name='p2.timestamp' value='\zs\d\+\ze'/>#\=tstamp#g
+  echo 'New time: ' . tstamp
+endfunction
+command! UpdateTimestamps call s:UpdateTimestamps()
 
 " SNIPPETS: " Read an empty HTML template and move cursor to title 
 nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a

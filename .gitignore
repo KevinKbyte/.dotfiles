@@ -13,3 +13,5 @@ i3/i3-extras/*
 .vim/view/*
 .tmux/resurrect/
 .tmux/plugins/*
+i3/scripts/.ropeproject
+
