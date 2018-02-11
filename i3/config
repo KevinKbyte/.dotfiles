@@ -160,6 +160,8 @@ bindsym $mod+v split v
 # global fullscreen: across all monitors
 bindsym $mod+shift+f        fullscreen toggle global
 
+bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && i3-msg fullscreen enable && i3-msg fullscreen disable
+
 set $mode_fullscreen
 mode "$mode_fullscreen" {
     bindsym $mod+l fullscreen disable; focus right; fullscreen enable
@@ -189,7 +191,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle sticky from floating
-bindsym $mod+Mod1+space sticky toggle
+bindsym $sup+space sticky toggle
 
 # toggle tiling / floating
 bindsym $mod+$sup+space floating toggle; sticky disable
@@ -368,6 +370,7 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
+        bindsym r mode "mode_large_resize"
 
         # back to normal: enter or escape
         bindsym Return mode "default"
@@ -375,8 +378,18 @@ mode "resize" {
         bindsym m mode "mode_movement"
         bindsym shift+m mode "mode_ws_mv_switch"
 }   
-
 bindsym $mod+r mode "resize"
+
+mode "mode_large_resize" {
+    bindsym h resize shrink width 400 px
+    bindsym j resize grow height 400 px
+    bindsym k resize shrink height 400 px
+    bindsym l resize grow width 400 px 
+    bindsym r mode "resize"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # color defines for zenburn styled i3
 set $bg     #2c2c2e
@@ -417,7 +430,6 @@ bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
 assign [class="Rhythmbox"] $workspace10
-exec --no-startup-id i3-msg 'workspace $workspace10; exec /usr/bin/rhythmbox' 
-exec --no-startup-id i3-msg 'workspace $workspace2; exec /usr/bin/chromium-browser'
+exec --no-startup-id i3-msg 'workspace $workspace10; exec /usr/bin/rhythmbox'; i3-msg 'workspace $workspace2; exec /usr/bin/chromium-browser' 
 exec xcompmgr -c
 exec xbindkeys -p 
