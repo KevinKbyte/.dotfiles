@@ -168,10 +168,10 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Mod1+space sticky toggle
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle; sticky disable
+bindsym $mod+$sup+space floating toggle; sticky disable
 
 # change focus between tiling / floating windows
-bindsym $mod+shift+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # move to left:
 bindsym $mod+Mod1+h  exec /home/kevin/.dotfiles/i3/scripts/i3-move-resize.py -2 -1 -1 -1
