@@ -160,6 +160,7 @@ bindsym $mod+v split v
 # global fullscreen: across all monitors
 bindsym $mod+shift+f        fullscreen toggle global
 
+# fullscreens the youtube video in a page
 bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && i3-msg fullscreen enable && i3-msg fullscreen disable
 
 set $mode_fullscreen
@@ -191,10 +192,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle sticky from floating
-bindsym $sup+space sticky toggle
+bindsym $mod+$sup+space sticky toggle
 
 # toggle tiling / floating
-bindsym $mod+$sup+space floating toggle; sticky disable
+bindsym $sup+space floating toggle; sticky disable
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
