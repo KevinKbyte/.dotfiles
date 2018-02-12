@@ -138,7 +138,7 @@ mode "$mode_system" {
                     bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
                         bindsym h exec --no-startup-id $locker && systemctl hibernate, mode "default"
                             bindsym r exec --no-startup-id systemctl reboot, mode "default"
-                                bindsym shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
+                                bindsym shift+s exec --no-startup-id  systemctl powerof -i, mode "default"
 
                                     # back to normal: enter or escape
                                     bindsym Return mode "default"
@@ -161,7 +161,8 @@ bindsym $mod+v split v
 bindsym $mod+shift+f        fullscreen toggle global
 
 # fullscreens the youtube video in a page
-bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && i3-msg fullscreen enable && i3-msg fullscreen disable
+# i3-msg focusing is so that 'fullscreen is not available' disappears
+bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-msg fullscreen enable && i3-msg fullscreen disable && i3-msg && sleep 2.5 && i3-msg focus floating && i3-msg focus tiling
 
 set $mode_fullscreen
 mode "$mode_fullscreen" {
@@ -387,6 +388,7 @@ mode "mode_large_resize" {
     bindsym k resize shrink height 400 px
     bindsym l resize grow width 400 px 
     bindsym r mode "resize"
+    bindsym c resize set 800 500
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -430,7 +432,16 @@ new_window normal 0
 bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
-assign [class="Rhythmbox"] $workspace10
-exec --no-startup-id i3-msg 'workspace $workspace10; exec /usr/bin/rhythmbox'; i3-msg 'workspace $workspace2; exec /usr/bin/chromium-browser' 
+exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace 1'
+
 exec xcompmgr -c
 exec xbindkeys -p 
+
+# for_window [class="Chromium-browser"] resize set 500 500
+
+popup_during_fullscreen leave_fullscreen
+
+# For instance: Assume you are on workspace "1: www" and switch to "2: IM" using mod+2 because somebody sent you a message. You don’t need to remember where you came from now, you can just press $mod+2 again to switch back to "1: www".
+workspace_auto_back_and_forth yes
+
+bindsym $mod+c [class="Chromium-browser"] focus
