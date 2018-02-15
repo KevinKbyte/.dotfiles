@@ -165,14 +165,17 @@ bindsym $mod+shift+f        fullscreen toggle global
 bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-msg fullscreen enable && i3-msg fullscreen disable && i3-msg && sleep 2.5 && i3-msg focus floating && i3-msg focus tiling
 
 set $mode_fullscreen
-mode "$mode_fullscreen" {
+mode "mode_fullscreen" {
+    # bar mode toggle
     bindsym $mod+l fullscreen disable; focus right; fullscreen enable
     bindsym $mod+h fullscreen disable; focus left; fullscreen enable
     bindsym $mod+k fullscreen disable; focus up; fullscreen enable
     bindsym $mod+j fullscreen disable; focus down; fullscreen enable
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
+
     # reload the configuration file
     bindsym $mod+shift+c reload; bar mode invisible
+
     # switch to workspace
     bindsym $sup+1 fullscreen disable; bar mode hide; workspace $workspace1; mode "default"
     bindsym $sup+2 fullscreen disable; bar mode hide; workspace $workspace2; mode "default"
@@ -184,8 +187,39 @@ mode "$mode_fullscreen" {
     bindsym $sup+8 fullscreen disable; bar mode hide; workspace $workspace8; mode "default"
     bindsym $sup+9 fullscreen disable; bar mode hide; workspace $workspace9; mode "default"
     bindsym $sup+0 fullscreen disable; bar mode hide; workspace $workspace10; mode "default"
+
+    # Copied from default mode
+    bindsym $mod+shift+q kill
+
+    # printscreen
+    bindsym --release Shift+Print exec --no-startup-id /home/kevin/.config/i3/scripts/screenshots.sh 0
+    bindsym --release Print exec --no-startup-id /home/kevin/.config/i3/scripts/screenshots.sh 1
+    bindsym --release Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
+
+    # increase/decrease keyboard brightness
+    bindsym XF86KbdBrightnessUp exec /home/kevin/.config/i3/scripts/kbd_backlight.sh up
+    bindsym XF86KbdBrightnessDown exec /home/kevin/.config/i3/scripts/kbd_backlight.sh down 
+
+    # Touchpad controls
+    bindsym XF86TouchpadToggle exec /home/kevin/.config/i3/scripts/toggle_touchpad.sh # toggle touchpad
+
+    # Pulse Audio controls
+    #increase sound volume
+    bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume up'"
+    #decrease sound volume
+    bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume down'"
+    # mute sound
+    bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; notify-send 'volume toggled'"
+
+    # Screen brightness controls with notification
+    # increase screen brightness with notification
+    bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
+    # decrease screen brightness with notification
+    bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+
 }
-bindsym $mod+f mode "$mode_fullscreen"; fullscreen enable; bar mode invisible
+# xdotool used to remove the obstructive status bar up top until super is pressed again
+bindsym $mod+f mode "mode_fullscreen"; fullscreen enable; exec xdotool keydown super keyup super
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -432,7 +466,7 @@ new_window normal 0
 bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
-exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace 1'
+exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 
 exec xcompmgr -c
 exec xbindkeys -p 
