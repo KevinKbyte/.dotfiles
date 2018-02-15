@@ -217,6 +217,10 @@ mode "mode_fullscreen" {
     # decrease screen brightness with notification
     bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+shift+r restart
+
+    # Switch between floating and tiled windows
 }
 # xdotool used to remove the obstructive status bar up top until super is pressed again
 bindsym $mod+f mode "mode_fullscreen"; fullscreen enable; exec xdotool keydown super keyup super
@@ -407,6 +411,7 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
         bindsym r mode "mode_large_resize"
+        bindsym c resize set 800 500; mode "default"
 
         # back to normal: enter or escape
         bindsym Return mode "default"
@@ -422,7 +427,7 @@ mode "mode_large_resize" {
     bindsym k resize shrink height 400 px
     bindsym l resize grow width 400 px 
     bindsym r mode "resize"
-    bindsym c resize set 800 500
+    bindsym c resize set 800 500; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

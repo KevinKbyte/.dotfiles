@@ -112,7 +112,7 @@ if new_y < 0: new_y = 0
 #if new_y + new_height > ws_height: new_y = ws_height - new_height
 
 if new_x != old_x or new_y != old_y:
-    backtick("i3-msg -- move position %d px %d px" % ( new_x, new_y))
+    backtick("i3-msg -- move position %d px %d px" % ( new_x, new_y - 18))
 if new_width != old_width or new_height != old_height:
     backtick("i3-msg -- resize set %d px %d px" % ( new_width, new_height))
 
