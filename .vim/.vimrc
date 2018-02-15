@@ -129,6 +129,9 @@ Plug 'vim-airline/vim-airline'
 " Note taking, personal wiki
 Plug 'vimwiki/vimwiki'
 
+" Autoformat code
+Plug 'Chiel92/vim-autoformat'
+
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
@@ -207,6 +210,8 @@ let g:JavaComplete_JavaviDebug = 1
 "<> PYTHON
 "============
 
+noremap <F3> :Autoformat<CR>
+
 " to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
 " (assignments), \d (definitions), K (documentation), <leader>r rename,
 " <leader>n shows all usages of a name, :Pyimport <module> opens module
@@ -220,6 +225,8 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
 " For Python Semantic Completion w/ youcompleteme
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
+" For vim-autoformat
+let g:formatterpath = [ '/home/kevin/.vim/plugged/vim-flake8' ]
 
 "============
 "<> FOLDS
@@ -267,7 +274,7 @@ endif
 set viminfo='100,f1
 
 " Undo tree activate!
-nnoremap ;u :UndotreeToggle<CR>
+nnoremap u :UndotreeToggle<CR>
 
 " Disable LaTeX-Box for vimtex
 let g:polyglot_disabled = ['latex']
@@ -371,8 +378,8 @@ map F <Plug>(easymotion-bd-f)
 " nmap ;gw <Plug>(easymotion-overwin-w)
 
 " map ;r <Plug>(easymotion-s)
-nmap ;; <Plug>(easymotion-next)
-nmap ;' <Plug>(easymotion-prev)
+nmap . <Plug>(easymotion-next)
+nmap , <Plug>(easymotion-prev)
 
 "<>
 
