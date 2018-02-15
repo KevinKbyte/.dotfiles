@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+days=( 'Monday' 'Tuesday' 'Wednesday' 'Thursday' 'Friday' 'Saturday' 'Sunday' );
+echo '('${days[$(date +%u)]}')'
