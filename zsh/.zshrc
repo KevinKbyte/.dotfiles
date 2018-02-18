@@ -105,9 +105,11 @@ alias vbox="virtualbox"
 
 export hw="/home/kevin/Desktop/cs/bu_notes"
 export jp="/home/kevin/Desktop/language/japanese/lj111"
+export cs="/home/kevin/Desktop/cs/cybersec"
 
 alias hw="cd /home/kevin/Desktop/cs/bu_notes"
 alias jp="cd /home/kevin/Desktop/language/japanese/lj111"
+alias cs="cd /home/kevin/Desktop/cs/cybersec"
 alias libro="libreoffice"
 
 alias "c=xclip -selection clipboard"
