@@ -102,6 +102,7 @@ alias astudio="/home/kevin/programs/android-studio/bin/studio.sh"
 # alias bandit="ssh bandit"
 alias b="ssh bandit"
 alias vbox="virtualbox"
+alias ue4="/home/kevin/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
 
 export hw="/home/kevin/Desktop/cs/bu_notes"
 export jp="/home/kevin/Desktop/language/japanese/lj111"
@@ -111,6 +112,7 @@ alias hw="cd /home/kevin/Desktop/cs/bu_notes"
 alias jp="cd /home/kevin/Desktop/language/japanese/lj111"
 alias cs="cd /home/kevin/Desktop/cs/cybersec"
 alias libro="libreoffice"
+alias hls="history | tail -20"
 
 alias "c=xclip -selection clipboard"
 # in order to not override files unintentionally 
@@ -230,3 +232,35 @@ export TMUXINATOR_CONFIG="/home/kevin/.dotfiles/tmuxinator"
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export JAVA_HOME
 
+source /home/kevin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# for zsh autosuggestions and zsh history substring search
+
+source $HOME/.oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# # Setup zsh-autosuggestions
+# source $HOME/.zsh-autosuggestions/autosuggestions.zsh
+
+# # Enable autosuggestions automatically
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
