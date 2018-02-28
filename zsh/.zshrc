@@ -150,6 +150,7 @@ alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "dotf=cd ~/.dotfiles"
+alias "chrb=chromium-browser"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -182,6 +183,11 @@ function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
 function rmspaces { mv $1 $(echo $1 | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); }
+function rmsp { ls -A | while read -r line; do
+    mv $line $(echo $line | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); 
+done;
+} 
+
 function evince { command evince $1 &; }
 
 # TMuxinator session fn's
@@ -264,3 +270,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 #     zle autosuggest-start
 # }
 # zle -N zle-line-init
+
+# increase max size of .zsh_history
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
