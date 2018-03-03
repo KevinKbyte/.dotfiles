@@ -103,6 +103,7 @@ alias astudio="/home/kevin/programs/android-studio/bin/studio.sh"
 alias b="ssh bandit"
 alias vbox="virtualbox"
 alias ue4="/home/kevin/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
+alias unitee="/home/kevin/Unity-2018.1.0b8/Editor/Unity"
 
 export hw="/home/kevin/Desktop/cs/bu_notes"
 export jp="/home/kevin/Desktop/language/japanese/lj111"
@@ -193,6 +194,7 @@ function evince { command evince $1 &; }
 # TMuxinator session fn's
 function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
+function man { vim <(command man $1); }
 
 export EDITOR=vim
 #export VISUAL=vim

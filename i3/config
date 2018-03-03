@@ -110,8 +110,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# bindsym mod1+tab workspace next
-# bindsym mod1+shift+tab workspace prev
+# bindsym Mod1+Tab workspace next
+# bindsym Mod1+Shift+Tab workspace prev
+
+bindsym $sup+Tab workspace next
+bindsym $sup+Shift+Tab workspace prev
 
 # move focused window
 bindsym $mod+shift+h move left
@@ -167,10 +170,10 @@ bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-ms
 set $mode_fullscreen
 mode "mode_fullscreen" {
     # bar mode toggle
-    bindsym $mod+l fullscreen disable; focus right; fullscreen enable
-    bindsym $mod+h fullscreen disable; focus left; fullscreen enable
-    bindsym $mod+k fullscreen disable; focus up; fullscreen enable
-    bindsym $mod+j fullscreen disable; focus down; fullscreen enable
+    bindsym $mod+l mode "default"; fullscreen toggle; focus left
+    bindsym $mod+h mode "default"; fullscreen disable; focus right
+    bindsym $mod+k mode "default"; fullscreen disable; focus up
+    bindsym $mod+j mode "default"; fullscreen disable; focus down
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
 
     # reload the configuration file
@@ -257,7 +260,7 @@ bindsym $sup+a focus parent
 # focus the child container
 bindsym $sup+q focus child
 
-set $workspace1      "1"
+set $workspace1      "1 T"
 set $workspace2      "2 "
 set $workspace3      "3"
 set $workspace4      "4"
