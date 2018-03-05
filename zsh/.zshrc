@@ -152,6 +152,7 @@ alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "dotf=cd ~/.dotfiles"
 alias "chrb=chromium-browser"
+alias "which-command=which"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -195,6 +196,7 @@ function evince { command evince $1 &; }
 function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
 function man { vim <(command man $1); }
+# function man { man $@ | vim -; }
 
 export EDITOR=vim
 #export VISUAL=vim
@@ -277,3 +279,10 @@ bindkey -M vicmd 'j' history-substring-search-down
 HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
+
+# to start tmux immediately after starting zsh
+if command -v tmux>/dev/null; then
+    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
+fi
+
+cd /home/kevin/Desktop/cs/bu_notes; clear
