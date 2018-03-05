@@ -286,3 +286,7 @@ if command -v tmux>/dev/null; then
 fi
 
 cd /home/kevin/Desktop/cs/bu_notes; clear
+
+export NODE_PATH=/usr/local/lib/node_modules:/home/kevin/.npm:/usr/lib/nodejs
+
+
