@@ -117,7 +117,7 @@ bindsym $sup+Tab workspace next
 bindsym $sup+Shift+Tab workspace prev
 
 # alt tab functionality
-bindsym Mod1+Tab exec i3-alt-tab --next
+bindsym Mod1+Tab exec i3-alt-tab --next 
 bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
 
 # move focused window
