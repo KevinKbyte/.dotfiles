@@ -153,12 +153,12 @@ alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "dotf=cd ~/.dotfiles"
 alias "chrb=chromium-browser"
 alias "which-command=which"
+alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export ANDROID_NDK="/home/kevin/programs/android-ndk-r10e"
-
 export WORKON_HOME="/home/kevin/Desktop/projects/.virtualenvs"
 export PROJECT_HOME="/home/kevin/Desktop/projects"
 
@@ -197,6 +197,10 @@ function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
 function man { vim <(command man $1); }
 # function man { man $@ | vim -; }
+
+# function quteb {
+#     workon py3 && qutebrowser && deactivate;
+# }
 
 export EDITOR=vim
 #export VISUAL=vim

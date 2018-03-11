@@ -1,3 +1,0 @@
-pane	notes	0	:~	1	:*	0	:/home/kevin	1	zsh	:
-window	notes	0	1	:*	af5d,211x60,0,0,0
-state	notes	
