@@ -162,11 +162,12 @@ set backspace=indent,eol,start
 " inoremap <silent> J <C-o>:TmuxNavigateDown<CR> 
 " inoremap <silent> K <C-o>:TmuxNavigateUp<CR>
 " inoremap <silent>  <C-o>:TmuxNavigateRight<CR>
-nnoremap <silent>  :TmuxNavigateLeft<CR>
-nnoremap <silent> J :TmuxNavigateDown<CR> 
-nnoremap <silent> K :TmuxNavigateUp<CR>
-nnoremap <silent>  :TmuxNavigateRight<CR>
-nnoremap <silent>  :TmuxNavigatePrevious<CR>
+let g:BASH_Ctrl_j = 'off'
+nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-J> :TmuxNavigateDown<CR> 
+nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<CR>
 "<>
 
 " Tmux maintains color
@@ -547,5 +548,5 @@ nnoremap o :so %<CR>
 nnoremap  :hid<CR>
 inoremap o 
 
-nnoremap l :ls<CR>:b
+nnoremap l :ls<CR>:b 
 

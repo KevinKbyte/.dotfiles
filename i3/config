@@ -65,6 +65,7 @@ bindsym control+Mod1+t exec i3-sensible-terminal
 # start a chrome window
 bindsym $sup+Return exec chromium-browser
 bindsym $sup+shift+Return exec chromium-browser --incognito
+bindsym $mod+Mod1+Return exec quteb
 
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -531,3 +532,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+bindsym Mode_switch+p exec /home/kevin/.dotfiles/i3/scripts/macro_record.sh
+bindsym Mode_switch+Shift+p exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
