@@ -534,5 +534,8 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bindsym Mode_switch+r exec /home/kevin/.dotfiles/i3/scripts/macro_record.sh
+bindsym Mode_switch+m exec /home/kevin/.dotfiles/i3/scripts/macro_record.sh
 bindsym Mode_switch+p exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
+
+# bindsym Mode_switch+Shift+Space exec notify-send "hello"
+bindsym $mod4+1 exec notify-send "hello"

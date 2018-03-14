@@ -1,18 +1,32 @@
-xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L"
-xmodmap -e "keysym Caps_Lock = Hyper_L"
-xmodmap -e "clear Lock"
-xmodmap -e "keycode 66 = Hyper_L"
-xmodmap -e "clear Mod1"
+#!/usr/bin/env bash
+
+xmodmap -e 'clear Lock'
+xmodmap -e 'keycode 66 = Hyper_L'
+xmodmap -e 'add mod3 = Hyper_R'
+xmodmap -e 'clear Mod4'
+xmodmap -e 'add Mod3 = Hyper_L'
+xmodmap -e 'add Mod4 = Super_L Hyper_R'
+
+# xmodmap -e 'keycode 62 = Escape'
+
+# xmodmap -e "remove Mod4 = Hyper_L" -e "add Mod3 = Hyper_L"
+# xmodmap -e "keysym Caps_Lock = Hyper_L"
+# ixmodmap -e "clear Lock"
+# Caps lock is Hyper_L now
+# xmodmap -e "keycode 66 = Hyper_L"
+# xmodmap -e "clear Mod1"
+# Right Alt
 xmodmap -e "keycode 108 = Mode_switch"
 xmodmap -e "keycode 44 = j J Down"
 xmodmap -e "keycode 45 = k K Up"
 xmodmap -e "keycode 43 = h H Left"
 xmodmap -e "keycode 46 = l L Right"
-xmodmap -e "keycode 65 = space NoSymbol Escape"
+xmodmap -e "keycode 65 = space NoSymbol F5 Escape"
 xmodmap -e "keycode 40 = d D BackSpace"
 xmodmap -e "keycode 13 = 4 dollar End End"
 xmodmap -e "keycode 15 = 6 asciicircum 6 Home"
 xmodmap -e "keycode 19 = 0 parenright Home parenright"
+xmodmap -e "keycode 26 = e E Escape Escape"
  
 # for having randomized desktop backgrounds 
 feh --bg-max --randomize ~/.wallpaper/* 

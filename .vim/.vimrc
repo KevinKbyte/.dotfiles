@@ -197,6 +197,7 @@ let g:JaveComplete_AutoStartServer = 0
 
 " use full qualified name in completions description. By default is 0
 let g:JavaComplete_UseFQN = 1
+set background=dark
 
 " set the base cache directory of javacomplete2. By default it is ~/.cache.
 let g:JavaComplete_BaseDir = '~/.cache' 
@@ -295,6 +296,9 @@ set ic          " Defaults ignore case when search
 "============
 "<> YCM MISC
 "============
+
+" <> PERSISTS SYSTEM CLIPBOARD ON EXIT
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " YCM shows completion menu typing inside comments
 let g:ycm_complete_in_comments = 0
