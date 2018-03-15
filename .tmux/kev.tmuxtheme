@@ -12,7 +12,7 @@
 set -g status-interval 1
 
 # Basic status bar colors
-set -g status-fg colour240
+set -g status-fg colour001
 # set -g status-fg colour130
 set -g status-bg colour233
 
