@@ -154,6 +154,8 @@ alias "dotf=cd ~/.dotfiles"
 alias "chrb=chromium-browser"
 alias "which-command=which"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
+# git log rushi
+alias glr='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -161,6 +163,8 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export ANDROID_NDK="/home/kevin/programs/android-ndk-r10e"
 export WORKON_HOME="/home/kevin/Desktop/projects/.virtualenvs"
 export PROJECT_HOME="/home/kevin/Desktop/projects"
+
+export HIL_ENDPOINT="http://127.0.0.1:5000"
 
 source "/etc/bash_completion.d/virtualenvwrapper"
 

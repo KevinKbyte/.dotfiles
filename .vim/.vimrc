@@ -487,6 +487,17 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 set showcmd
 
 "============
+"<> VIMWIKI
+"============
+
+" So markdown files will not be opened as VimWiki syntax
+let g:vimwiki_global_ext=0
+
+" Make vimwiki as markdown
+" let g:vimwiki_list = [{'path': '~/my_site/',
+"                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+"============
 "<> CUSTOM MAPS
 "============
 

@@ -12,7 +12,8 @@ i3/i3-extras/*
 .vim/undotree_debug.log
 .vim/view/*
 .tmux/resurrect/
-.tmux/plugins/*
+.tmux/plugins/
+.tmux/plugins/tmux-resurrect/
 i3/scripts/.ropeproject
 zsh_h/*
 .zsh_history
