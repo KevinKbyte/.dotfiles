@@ -163,11 +163,18 @@ set backspace=indent,eol,start
 " inoremap <silent> K <C-o>:TmuxNavigateUp<CR>
 " inoremap <silent>  <C-o>:TmuxNavigateRight<CR>
 let g:BASH_Ctrl_j = 'off'
-nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-J> :TmuxNavigateDown<CR> 
-nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
-nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
-nnoremap <silent> <C-\> :TmuxNavigatePrevious<CR>
+nnoremap <silent>  :TmuxNavigateLeft<CR>
+nnoremap <silent> J :TmuxNavigateDown<CR> 
+nnoremap <silent> K :TmuxNavigateUp<CR>
+nnoremap <silent>  :TmuxNavigateRight<CR>
+nnoremap <silent> N :TmuxNavigatePrevious<CR>
+
+" nnoremap <silent> H :TmuxNavigateLeft<CR>
+" nnoremap <silent> J :TmuxNavigateDown<CR> 
+" nnoremap <silent> K :TmuxNavigateUp<CR>
+" nnoremap <silent> L :TmuxNavigateRight<CR>
+" nnoremap <silent> N :TmuxNavigatePrevious<CR>
+
 "<>
 
 " Tmux maintains color
@@ -395,6 +402,18 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" Sets Incremental Search (Search while typing)
+set incsearch
+
+" copy the previous indentation on autoindenting
+set copyindent    
+
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+cmap w!! w !sudo tee % >/dev/null
+
 " Updates timestamps in XML files
 " Enter :UpdateTimeStamps to update the value to the current time in each
 " instance of a tag w/ format shown below. 
@@ -554,13 +573,20 @@ inoremap i <esc>
 inoremap . <c-o>.
 inoremap b <c-o>b
 inoremap <s-b> <c-o><s-b>
-inoremap s <c-o>:w<CR>
 inoremap o <c-o>:so %<CR>
+
+if has('nvim')
+    inoremap <A-s> <c-o>:w<CR>
+    nnoremap <A-s> :w<CR>
+else
+    inoremap s <c-o>:w<CR>
+    nnoremap s :w<CR>
+endif
+
 " to delete without backspace :)
 inoremap x <backspace>
-nnoremap s :w<CR>
 nnoremap o :so %<CR>
-nnoremap  :hid<CR>
+" nnoremap  :hid<CR>
 inoremap o 
 
 nnoremap l :ls<CR>:b 

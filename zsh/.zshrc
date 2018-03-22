@@ -119,6 +119,7 @@ alias "c=xclip -selection clipboard"
 # in order to not override files unintentionally 
 alias "cp=cp -i"
 alias "v=vim"
+alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
 function cd { builtin cd "$@" && ls -a && pwd && dirs; }
 alias "1=cd -1"
@@ -296,5 +297,3 @@ fi
 cd /home/kevin/Desktop/cs/bu_notes; clear
 
 export NODE_PATH=/usr/local/lib/node_modules:/home/kevin/.npm:/usr/lib/nodejs
-
-

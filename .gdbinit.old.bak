@@ -1,0 +1,17 @@
+set history save on
+set history size 99999999
+set history remove-duplicates unlimited
+set history filename ~/.gdb_history
+set history expansion on
+
+python 
+import sys
+
+sys.path.append('/home/kevin/.config/Epic/GDBPrinters/')
+
+from UE4Printers import register_ue4_printers
+register_ue4_printers(None)
+print("Registered pretty printers for UE4 classes")
+
+
+end

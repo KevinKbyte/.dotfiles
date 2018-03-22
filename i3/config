@@ -114,8 +114,9 @@ bindsym $mod+l focus right
 # bindsym Mod1+Tab workspace next
 # bindsym Mod1+Shift+Tab workspace prev
 
-bindsym $sup+Tab workspace next
-bindsym $sup+Shift+Tab workspace prev
+bindsym $mod+Tab workspace next
+bindsym $sup+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab workspace prev
 
 # alt tab functionality
 bindsym Mod1+Tab exec i3-alt-tab --next 
@@ -536,6 +537,5 @@ mode "$mode_gaps_outer" {
 
 bindsym Mode_switch+m exec /home/kevin/.dotfiles/i3/scripts/macro_record.sh
 bindsym Mode_switch+p exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
-
+bindsym Mode_switch+Shift+p exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
 # bindsym Mode_switch+Shift+Space exec notify-send "hello"
-bindsym $mod4+1 exec notify-send "hello"
