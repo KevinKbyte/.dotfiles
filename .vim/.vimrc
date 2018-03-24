@@ -402,6 +402,12 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" man page viewer
+runtime! ftplugin/man.vim
+
+" allows you to open vim help for keywords when you're in vimrc
+setlocal keywordprg=:help
+
 " Sets Incremental Search (Search while typing)
 set incsearch
 

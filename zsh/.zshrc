@@ -194,6 +194,7 @@ function rmsp { ls -A | while read -r line; do
     mv $line $(echo $line | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); 
 done;
 } 
+function mkdir { command mkdir $@ && cd $@; }
 
 function evince { command evince $1 &; }
 
@@ -211,7 +212,7 @@ export EDITOR=vim
 #export VISUAL=vim
 #export PATH="/home/kevin/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
-export PYTHONPATH="/usr/local/lib/python3.5/dist-packages"
+# export PYTHONPATH="/usr/local/lib/python3.5/dist-packages"
 
 # zsh vi mode
 
@@ -297,3 +298,10 @@ fi
 cd /home/kevin/Desktop/cs/bu_notes; clear
 
 export NODE_PATH=/usr/local/lib/node_modules:/home/kevin/.npm:/usr/lib/nodejs
+
+export NVM_DIR="/home/kevin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# to use vim as the man page viewer (useful when you are using shift+k in vim)
+# https://www.reddit.com/r/vim/comments/74sgzs/til_vim_has_a_manpage_viewer_plugin/
+export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"

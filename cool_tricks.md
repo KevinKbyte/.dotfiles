@@ -21,3 +21,7 @@ ps -efl
 # To get python support in vim
   sai vim-nox vim-nox-py2
 
+# if virtualenv wrong paths
+  for example, edit /home/kevin/Desktop/projects/.virtualenvs/py27-owtf/lib/python2.7/site-packages/_virtualenv_path_extensions.pth
+  add:
+    sys.path.append("/home/kevin/Desktop/projects/.virtualenvs/py27-owtf/lib/python2.7")

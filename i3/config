@@ -114,9 +114,9 @@ bindsym $mod+l focus right
 # bindsym Mod1+Tab workspace next
 # bindsym Mod1+Shift+Tab workspace prev
 
-bindsym $mod+Tab workspace next
-bindsym $sup+Tab workspace back_and_forth
-bindsym $mod+Shift+Tab workspace prev
+bindsym $sup+Tab workspace next
+bindsym $sup+grave workspace back_and_forth
+bindsym $sup+Shift+Tab workspace prev
 
 # alt tab functionality
 bindsym Mod1+Tab exec i3-alt-tab --next 
@@ -493,6 +493,17 @@ popup_during_fullscreen leave_fullscreen
 workspace_auto_back_and_forth yes
 
 bindsym $mod+c [class="Chromium-browser"] focus
+bindsym Mod1+grave [class="_focused_"] back_and_forth
+bindsym Mode_switch+Shift+u mark 0
+bindsym Mode_switch+Shift+i mark 1
+bindsym Mode_switch+Shift+o mark 2
+bindsym Mode_switch+Shift+p mark 3
+bindsym Mode_switch+Shift+bracketleft mark 4
+bindsym Mode_switch+u [con_mark="0"] focus
+bindsym Mode_switch+i [con_mark="1"] focus
+bindsym Mode_switch+o [con_mark="2"] focus
+bindsym Mode_switch+p [con_mark="3"] focus
+bindsym Mode_switch+bracketleft [con_mark="4"] focus
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -536,6 +547,9 @@ mode "$mode_gaps_outer" {
 }
 
 bindsym Mode_switch+m exec /home/kevin/.dotfiles/i3/scripts/macro_record.sh
-bindsym Mode_switch+p exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
-bindsym Mode_switch+Shift+p exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
+bindsym Mode_switch+Shift+m exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
+bindsym Mode_switch+Shift+comma exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
 # bindsym Mode_switch+Shift+Space exec notify-send "hello"
+
+mouse_warping none
+
