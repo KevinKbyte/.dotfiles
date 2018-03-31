@@ -212,7 +212,7 @@ export EDITOR=vim
 #export VISUAL=vim
 #export PATH="/home/kevin/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
-# export PYTHONPATH="/usr/local/lib/python3.5/dist-packages"
+export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
 
 # zsh vi mode
 
@@ -290,6 +290,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
 
+# TODO: Make a terminal mark
 # to start tmux immediately after starting zsh
 if command -v tmux>/dev/null; then
     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null

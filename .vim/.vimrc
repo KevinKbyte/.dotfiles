@@ -73,7 +73,7 @@ Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Live Browser Editing 
-Plug 'jaxbot/browserlink.vim'
+" Plug 'jaxbot/browserlink.vim'
 
 " Auto pairs
 Plug 'jiangmiao/auto-pairs'
@@ -525,6 +525,9 @@ let g:vimwiki_global_ext=0
 "============
 "<> CUSTOM MAPS
 "============
+
+nnoremap <Space>j :bnext<CR>
+nnoremap <Space>k :bprevious<CR>
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
