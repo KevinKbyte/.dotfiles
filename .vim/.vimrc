@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
 
 " Initialize plugin system
 
-" For surrounding with quotes
+" For surrounding with quotes 
 Plug 'tpope/vim-surround'
 
 " For commenting 
@@ -40,97 +40,116 @@ Plug 'tpope/vim-commentary'
 " For . support with tpope plugins
 Plug 'tpope/vim-repeat'
 
-" For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
-
-" For tab guidelines
-Plug 'Yggdroot/indentLine'
-
-" For the tables
-Plug 'dhruvasagar/vim-table-mode'
-
 " For speed
 Plug 'easymotion/vim-easymotion'
-
-" For syntax
-Plug 'vim-syntastic/syntastic'
-
-" For Python text objects Plug 'bps/vim-textobj-python'
-
-" For language support
-Plug 'sheerun/vim-polyglot'
-
-" For Java dev
-Plug 'artur-shaik/vim-javacomplete2'
-
-" For git
-Plug 'tpope/vim-fugitive'
-
-" File drawer
-Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Fuzzy Finder
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Live Browser Editing 
-" Plug 'jaxbot/browserlink.vim'
+" Typescript autocomplete
+Plug 'leafgarland/typescript-vim'
 
-" Auto pairs
-Plug 'jiangmiao/auto-pairs'
+" Unimpaired
+Plug 'tpope/vim-unimpaired'
 
-" LaTeX
-Plug 'lervag/vimtex'
+" More text objects
+Plug 'wellle/targets.vim'
 
-" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'xuhdev/vim-latex-live-preview'
+" For youcompleteme
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
-" Undo tree
-Plug 'mbbill/undotree/'
+" For syntax
+Plug 'vim-syntastic/syntastic'
 
-" Python mode
-Plug 'python-mode/python-mode'
+" For language support
+Plug 'sheerun/vim-polyglot'
 
-" " Powerline
-" Plug 'powerline/powerline'
+" For git
+Plug 'tpope/vim-fugitive'
 
-" Tabline
-Plug 'mkitt/tabline.vim'
+if has("nvim")
+else
+    " For tab guidelines
+    Plug 'Yggdroot/indentLine'
 
-" Jedi python
-Plug 'davidhalter/jedi'
+    " For the tables
+    Plug 'dhruvasagar/vim-table-mode'
 
-" Python style checker
-Plug 'nvie/vim-flake8'
 
-" \g will go to definition with this plugin
-Plug 'davidhalter/jedi-vim'
+    " For Python text objects
+    " Plug 'bps/vim-textobj-python'
 
-" to navigate w/ tmux + vim
-Plug 'christoomey/vim-tmux-navigator'
 
-" C/C++ development
-Plug 'JBakamovic/yavide'
+    " For Java dev
+    Plug 'artur-shaik/vim-javacomplete2'
 
-" C/C++ autocomplete
-Plug 'Rip-Rip/clang_complete'
 
-" Class Outline Viewer
-Plug 'majutsushi/tagbar'
+    " File drawer
+    Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
 
-" Status bar
-Plug 'vim-airline/vim-airline'
+    " Live Browser Editing 
+    " Plug 'jaxbot/browserlink.vim'
 
-" Switch b/n source and header files quickly
-" Plug '/vim-scripts/a.vim'
+    " Auto pairs
+    Plug 'jiangmiao/auto-pairs'
 
-" Note taking, personal wiki
-Plug 'vimwiki/vimwiki'
+    " LaTeX
+    Plug 'lervag/vimtex'
 
-" Autoformat code
-Plug 'Chiel92/vim-autoformat'
+    " A Vim Plugin for Lively Previewing LaTeX PDF Output
+    Plug 'xuhdev/vim-latex-live-preview'
+
+    " Undo tree
+    Plug 'mbbill/undotree/'
+
+    " Python mode
+    Plug 'python-mode/python-mode'
+
+    " " Powerline
+    " Plug 'powerline/powerline'
+
+    " Tabline
+    Plug 'mkitt/tabline.vim'
+
+    " Jedi python
+    Plug 'davidhalter/jedi'
+
+    " Python style checker
+    Plug 'nvie/vim-flake8'
+
+    " \g will go to definition with this plugin
+    Plug 'davidhalter/jedi-vim'
+
+    " to navigate w/ tmux + vim
+    Plug 'christoomey/vim-tmux-navigator'
+
+    " C/C++ development
+    Plug 'JBakamovic/yavide'
+
+    " C/C++ autocomplete
+    Plug 'Rip-Rip/clang_complete'
+
+    " Class Outline Viewer
+    Plug 'majutsushi/tagbar'
+
+    " Multiple cursors
+    Plug 'terryma/vim-multiple-cursors'
+
+    " Status bar
+    Plug 'vim-airline/vim-airline'
+
+    " Switch b/n source and header files quickly
+    " Plug '/vim-scripts/a.vim'
+
+    " Note taking, personal wiki
+    Plug 'vimwiki/vimwiki'
+
+    " Autoformat code
+    Plug 'Chiel92/vim-autoformat'
+
+endif
+    
 
 call plug#end()
 
@@ -324,28 +343,31 @@ let g:ycm_key_list_stop_completion = ['<C-y>']
 "<> NERDTREE
 "============
 
-nnoremap <silent>;nt :NERDTreeToggle<CR>
-nnoremap <silent>;nf :NERDTreeFind<CR>
+if has("nvim")
+else
+    nnoremap <silent>;nt :NERDTreeToggle<CR>
+    nnoremap <silent>;nf :NERDTreeFind<CR>
+
+    " Closes vim if only window left open is NERDTree
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    " To open NERDTree automatically when vim starts up w/o any files specified
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+    " To change default arrows
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▾'
+
+    " Auto delete buffer of file you just deleted with Nerd Tree
+    let NerdTreeAutoDeleteBuffer = 1
+
+    " Disable Press ? for help
+    let NERDTreeMinimalUI = 0
+    let NERDTreeDirArrows = 0
+endif
 
 "<>
-
-" Closes vim if only window left open is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" To open NERDTree automatically when vim starts up w/o any files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" To change default arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-
-" Auto delete buffer of file you just deleted with Nerd Tree
-let NerdTreeAutoDeleteBuffer = 1
-
-" Disable Press ? for help
-let NERDTreeMinimalUI = 0
-let NERDTreeDirArrows = 0
 
 "============
 "<> EASY MOTION
@@ -529,9 +551,6 @@ let g:vimwiki_global_ext=0
 nnoremap <Space>j :bnext<CR>
 nnoremap <Space>k :bprevious<CR>
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
 
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
@@ -584,19 +603,37 @@ inoremap b <c-o>b
 inoremap <s-b> <c-o><s-b>
 inoremap o <c-o>:so %<CR>
 
+nnoremap gfb :call search("[{[(]", "wes")<CR>
+nnoremap gbb :call search("[{[(]", "bes")<CR>
+
 if has('nvim')
     inoremap <A-s> <c-o>:w<CR>
     nnoremap <A-s> :w<CR>
+    inoremap <A-o> <c-o>:so %<CR>
+    nnoremap <A-o> :so %<CR>
+    nnoremap <A-l> :ls<CR>:b 
 else
     inoremap s <c-o>:w<CR>
     nnoremap s :w<CR>
+    nnoremap o :so %<CR>
+    nnoremap l :ls<CR>:b 
+endif
+
+if has('nvim')
+    noremap <Up> <C-w>k
+    noremap <Down> <C-w>j
+    noremap <Left> <C-w>h
+    noremap <Right> <C-w>l
+else
+    noremap <Up> <Nop>
+    noremap <Down> <Nop>
+    noremap <Left> <Nop>
+    noremap <Right> <Nop>
 endif
 
 " to delete without backspace :)
 inoremap x <backspace>
-nnoremap o :so %<CR>
 " nnoremap  :hid<CR>
 inoremap o 
 
-nnoremap l :ls<CR>:b 
 

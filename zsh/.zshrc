@@ -306,3 +306,9 @@ export NVM_DIR="/home/kevin/.nvm"
 # to use vim as the man page viewer (useful when you are using shift+k in vim)
 # https://www.reddit.com/r/vim/comments/74sgzs/til_vim_has_a_manpage_viewer_plugin/
 export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
+stty -ixon
+
+# ONI_NEOVIM_PATH=/opt/Oni/resources/app/nvim.appimage
+# export ONI_NEOVIM_PATH
