@@ -276,11 +276,11 @@ augroup END
 
 " Double trailing slashes in vim activates feature to avoid name collisions
 " /path/one/foobar.txt --> %path%one%foobar.txt
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
+set backupdir=~/.dotfiles/.vim/backup//
+set directory=~/.dotfiles/.vim/swap//
 
 if has("persistent_undo")
-    set undodir=~/.vim/undo//
+    set undodir=~/.dotfiles/.vim/undo//
     set undofile
 endif
 
