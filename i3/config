@@ -14,6 +14,9 @@ set $sup Mod4
 # Mod3 is caps lock is Hyper_L (caps lock for me)
 set $mod Mod3
 
+# to connect w/ HDMI cable
+bindsym F8 exec --no-startup-id /home/kevin/.dotfiles/i3/scripts/hdmi.sh
+
 # printscreen
 bindsym --release Shift+Print exec --no-startup-id /home/kevin/.config/i3/scripts/screenshots.sh 0
 bindsym --release Print exec --no-startup-id /home/kevin/.config/i3/scripts/screenshots.sh 1
@@ -559,5 +562,5 @@ bindsym Mode_switch+Shift+m exec /home/kevin/.dotfiles/i3/scripts/macro_play.sh
 bindsym Mode_switch+Shift+comma exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
 # bindsym Mode_switch+Shift+Space exec notify-send "hello"
 
-mouse_warping none
+mouse_warping output
 

@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
@@ -69,6 +69,9 @@ Plug 'tpope/vim-fugitive'
 
 if has("nvim")
 else
+    " Colors
+    Plug 'flazz/vim-colorschemes'
+
     " For tab guidelines
     Plug 'Yggdroot/indentLine'
 
@@ -76,9 +79,8 @@ else
     Plug 'dhruvasagar/vim-table-mode'
 
 
-    " For Python text objects
+    " " For Python text objects
     " Plug 'bps/vim-textobj-python'
-
 
     " For Java dev
     Plug 'artur-shaik/vim-javacomplete2'
@@ -155,17 +157,47 @@ call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 
+let mapleader = ' ' 
+
 "============
 "<> Multiple cursors
 "============
 
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='g<C-n>'
-let g:multi_cursor_prev_key='g<C-p>'
-let g:multi_cursor_skip_key='g<C-x>'
-let g:multi_cursor_quit_key='g<Esc>'
-nnoremap <silent> g<M-j> :MultipleCursorsFind <C-R>/<CR>
-vnoremap <silent> g<M-j> :MultipleCursorsFind <C-R>/<CR
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_next_key='<Leader>mn'
+"let g:multi_cursor_prev_key='<Leader>mp'
+"let g:multi_cursor_skip_key='<Leader>ms'
+"let g:multi_cursor_quit_key='<Leader>mq'
+
+"" Note that when multicursor mode is started, it selects current word with
+"" boundaries, i.e. it behaves like *. If you want to avoid word boundaries in
+"" Normal mode (as g* does) but still have old behaviour up your sleeve, you can
+"let g:multi_cursor_start_word_key='<Leader>mN'
+
+"" If set to 0, then pressing g:multi_cursor_quit_key in Visual mode will not
+"" quit and delete all existing cursors
+"let g:multi_cursor_exit_from_visual_mode = 1
+
+"" If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
+"" quit and delete all existing cursors. 
+"let g:multi_cursor_exit_from_insert_mode = 1
+
+"" Any key in this map (values are ignored) will cause multi-cursor Normal mode
+"" to pause for map completion just like normal vim
+"let g:multi_cursor_normal_maps = {'!':1, '@':1, '=':1, 'q':1, 'r':1, 't':1, 'T':1, 'y':1, '[':1, ']':1, '\':1, 'd':1, 'f':1, 'F':1, 'g':1, '"':1, 'z':1, 'c':1, 'm':1, '<':1, '>':1}
+
+"" Any key in this map (values are ignored) will cause multi-cursor Visual mode
+"" to pause for map completion just like normal vim. Otherwise keys mapped in
+"" visual mode will "fail to replay" when multiple cursors are active. 
+"let g:multi_cursor_visual_maps = {'space':1, 'i':1, 'a':1, 'f':1, 'F':1, 't':1, 'T':1}
+
+"" Default highlighting (see help :highlight and help :highlight-link)
+"highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
+"highlight link multiple_cursors_visual Visual"
+
+""This allows one to a) search for a keyword using * b)
+"nnoremap <silent> <Leader>mj :MultipleCursorsFind <C-R>/<CR>
+"vnoremap <silent> <Leader>mj :MultipleCursorsFind <C-R>/<CR>
 
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-5.0/lib'
@@ -185,7 +217,7 @@ let g:BASH_Ctrl_j = 'off'
 nnoremap <silent>  :TmuxNavigateLeft<CR>
 nnoremap <silent> J :TmuxNavigateDown<CR> 
 nnoremap <silent> K :TmuxNavigateUp<CR>
-nnoremap <silent>  :TmuxNavigateRight<CR>
+nnoremap <silent> L :TmuxNavigateRight<CR>
 nnoremap <silent> N :TmuxNavigatePrevious<CR>
 
 " nnoremap <silent> H :TmuxNavigateLeft<CR>
@@ -238,10 +270,26 @@ let g:JavaComplete_JavaviDebug = 1
 "<> PYTHON
 "============
 
+" Python Mode
+
+" Turns on whole plugin (1)
+let g:pymode = 1
+
+" Turns on plugin's warnings (0)
+let g:pymode_warnings = 0
+
+" Trim unused white spaces on save
+let g:pymode_trim_whitespaces = 1
+
+" Setup pymode quickfix window
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+
+
 noremap <F3> :Autoformat<CR>
 
 " to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
-" (assignments), \d (definitions), K (documentation), <leader>r rename,
+" (assignments), \d (definitions), K (documentation), <leeader>r rename,
 " <leader>n shows all usages of a name, :Pyimport <module> opens module
 let g:jedi#completions_enabled = 0
 
@@ -345,8 +393,8 @@ let g:ycm_key_list_stop_completion = ['<C-y>']
 
 if has("nvim")
 else
-    nnoremap <silent>;nt :NERDTreeToggle<CR>
-    nnoremap <silent>;nf :NERDTreeFind<CR>
+    " nnoremap <silent>;nt :NERDTreeToggle<CR>
+    " nnoremap <silent>;nf :NERDTreeFind<CR>
 
     " Closes vim if only window left open is NERDTree
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -369,51 +417,52 @@ endif
 
 "<>
 
-"============
+"u===========
 "<> EASY MOTION
 "============
 
-" map ;b <Plug>(easymotion-bl)
-" map ;B <Plug>(easymotion-B)
+" map <leader>bl <Plug>(easymotion-bl)
+" map <leader>B <Plug>(easymotion-B)
 
-" map ;e <Plug>(easymotion-el)
-" map ;E <Plug>(easymotion-El)
+" map <leader>el <Plug>(easymotion-el)
+" " map <leader>El <Plug>(easymotion-El)
 
-" map ;ge <Plug>(easymotion-gel)
-" map ;gE <Plug>(easymotion-gE)
-" map ;Ge <Plug>(easymotion-bd-ge)
-" nmap ;Ge <Plug>(easymotion-overwin-ge)
+" map <leader>gel <Plug>(easymotion-gel)
+" map <leader>gE <Plug>(easymotion-gE)
+" " map <leader>ge <Plug>(easymotion-bd-ge)
+" " nmap <leader>ge <Plug>(easymotion-overwin-ge)
 
-" " <Leader>f{char} to move to {char}
-" map ;gf <Plug>(easymotion-bd-f)
-" nmap ;gf <Plug>(easymotion-overwin-f)
+" " " <Leader>f{char} to move to {char}
+" map <leader>gf <Plug>(easymotion-bd-f)
+" nmap <leader>gf <Plug>(easymotion-overwin-f)
 
-" " 1 line s{char}{char} to move to {char}{char}
-map g <Plug>(easymotion-fl2)
-map G <Plug>(easymotion-Fl2)
-" map f <Plug>(easymotion-overwin-f2)
-" map f <Plug>(easymotion-bd-f2)
-map f <Plug>(easymotion-overwin-f2)
-map f <Plug>(easymotion-bd-f2)
-map F <Plug>(easymotion-overwin-f)
-map F <Plug>(easymotion-bd-f)
-" " s{char}{char} to move to {char}{char}
-" nmap j <Plug>(easymotion-overwin-f2)
+"  " 1 line s{char}{char} to move to {char}{char}
+map <leader>f <Plug>(easymotion-fl2)
+map <leader>F <Plug>(easymotion-Fl2)
+map <leader>f <Plug>(easymotion-overwin-f2)
+map <leader>f <Plug>(easymotion-bd-f2)
+" map <leader>ft <Plug>(easymotion-overwin-f2)
+" map <leader>ft <Plug>(easymotion-bd-f2)
+" map <leader>fo <Plug>(easymotion-overwin-f)
+" map <leader>fo <Plug>(easymotion-bd-f)
+" " " s{char}{char} to move to {char}{char}
+" " nmap j <Plcg>(easymotion-overwin-f2)
 
-" " Move to line
-" " map ;l <Plug>(easymotion-bd-jk)
-" " nmap ;l <Plug>(easymotion-overwin-line)
+" " " Move to line
+" map <leader>l <Plug>(easymotion-bd-jk)
+" nmap <leader>l <Plug>(easymotion-overwin-line)
 
-" " 1 line Move to word
-" nmap ;w <Plug>(easymotion-wl)
-" nmap ;W <Plug>(easymotion-W)
-" " Move to word
-" map  ;gw <Plug>(easymotion-bd-w)
-" nmap ;gw <Plug>(easymotion-overwin-w)
+" " " 1 line Move to word
+" nmap <leader>wl <Plug>(easymotion-wl)
+" nmap <leader>W <Plug>(easymotion-W)
+" " " Move to word
+" map  <leader>gw <Plug>(easymotion-bd-w)
+" nmap <leader>gw <Plug>(easymotion-overwin-w)
 
 " map ;r <Plug>(easymotion-s)
-nmap . <Plug>(easymotion-next)
-nmap , <Plug>(easymotion-prev)
+nmap <leader>h <Plug>(easymotion-next)
+nmap <leader>l <Plug>(easymotion-prev)
+cmap <leader>rcv :e ~/.vimrc<CR>
 
 "<>
 
@@ -430,8 +479,12 @@ runtime! ftplugin/man.vim
 " allows you to open vim help for keywords when you're in vimrc
 setlocal keywordprg=:help
 
+" SEARCH
+
 " Sets Incremental Search (Search while typing)
 set incsearch
+" Uses case if any caps are used
+set smartcase
 
 " copy the previous indentation on autoindenting
 set copyindent    
@@ -479,7 +532,6 @@ let &runtimepath.=','.vimDir
 " allows commenting on apache filetype when using tpope/vim-commentary
 autocmd filetype apache setlocal commentstring=#\ %s
 
-let mapleader = '\' 
 
 " in order to support 
 
@@ -545,11 +597,31 @@ let g:vimwiki_global_ext=0
 "                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "============
+"<> RICE
+"============
+
+if has('nvim')
+else
+colorscheme xoria256
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordcount#filetypes',
+      \ '\vhelp|markdown|vimwiki|rst|org|text|asciidoc|tex|mail')
+endif
+
+"============
 "<> CUSTOM MAPS
 "============
 
-nnoremap <Space>j :bnext<CR>
-nnoremap <Space>k :bprevious<CR>
+" easier moving code blocks
+" vnoremap < <gv " better indentation
+" vnoremap > >gv " better indentation
+
+" Shows whitespace
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" au InsertLeave * match ExtraWhitespace /\s\+$/
+
+nnoremap <Leader>j :bnext<CR>
+nnoremap <Leader>k :bprevious<CR>
 
 
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
@@ -559,8 +631,20 @@ inoremap kj <esc>
 nnoremap <CR> i<CR><Esc>
 " For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
 
-nnoremap <leader>ti :tabnew 
 nnoremap <leader>tn :tabe 
+nnoremap <Leader>wp <C-w><C-p>
+nnoremap <Leader>wc <C-w><C-c>
+nnoremap <Leader>tj :tabprev<CR>
+nnoremap <Leader>tk :tabnext<CR>
+nnoremap <Leader>t; :tablast<CR>
+nnoremap <Leader>tc :tabclose<CR>
+
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+nnoremap <silent><Leader>nt :NERDTreeToggle<CR>
+nnoremap <silent><Leader>nf :NERDTreeFind<CR>
 
 " For moving lines around
 
@@ -574,6 +658,10 @@ nnoremap <leader>tn :tabe
 " Clear Search Highlights
 
 set hlsearch
+
+" Remove $ signs at end of every line
+set nolist
+
 nnoremap <C-Space> :nohl<CR>
 
 " Toggle Settings
@@ -635,5 +723,4 @@ endif
 inoremap x <backspace>
 " nnoremap  :hid<CR>
 inoremap o 
-
 
