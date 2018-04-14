@@ -42,8 +42,425 @@ bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; notify-send 'vol
 bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
 # decrease screen brightness with notification
 bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
-bindsym $mod+a exec light -U 10
-bindsym $mod+q exec light -A 5 
+bindsym $mod+z exec light -U 10
+bindsym $mod+x exec light -A 5 
+
+set $mode_click
+mode "mode_click" {
+
+    bindsym j mode "default"; exec xdotool click 1
+    bindsym k mode "default"; exec xdotool click 3
+    bindsym space mode "default"; exec xdotool click 2
+    bindsym Escape  mode "default"; exec xdotool keydown super keyup super
+
+}
+
+set $mode_mouse_move
+mode "mode_mouse_move" {
+    bindsym grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 0
+    bindsym $mod+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 1
+    bindsym shift+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 2
+    bindsym $mod+shift+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 3
+    bindsym Mode_switch+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 0
+    bindsym Mode_switch+$mod+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 1
+    bindsym Mode_switch+shift+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 2
+    bindsym Mode_switch+$mod+shift+grave exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 3
+
+
+    bindsym 1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 0
+    bindsym $mod+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 1
+    bindsym shift+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 2
+    bindsym $mod+shift+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 3
+    bindsym Mode_switch+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 0
+    bindsym Mode_switch+$mod+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 1
+    bindsym Mode_switch+shift+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 2
+    bindsym Mode_switch+$mod+shift+1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 3
+
+
+    bindsym 2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 0
+    bindsym $mod+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 1
+    bindsym shift+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 2
+    bindsym $mod+shift+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 3
+    bindsym Mode_switch+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 0
+    bindsym Mode_switch+$mod+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 1
+    bindsym Mode_switch+shift+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 2
+    bindsym Mode_switch+$mod+shift+2 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 3
+
+
+    bindsym 3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 0
+    bindsym $mod+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 1
+    bindsym shift+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 2
+    bindsym $mod+shift+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 3
+    bindsym Mode_switch+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 0
+    bindsym Mode_switch+$mod+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 1
+    bindsym Mode_switch+shift+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 2
+    bindsym Mode_switch+$mod+shift+3 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 3
+
+
+    bindsym 4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 0
+    bindsym $mod+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 1
+    bindsym shift+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 2
+    bindsym $mod+shift+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 3
+    bindsym Mode_switch+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 0
+    bindsym Mode_switch+$mod+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 1
+    bindsym Mode_switch+shift+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 2
+    bindsym Mode_switch+$mod+shift+4 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 3
+
+
+    bindsym 5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 0
+    bindsym $mod+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 1
+    bindsym shift+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 2
+    bindsym $mod+shift+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 3
+    bindsym Mode_switch+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 0
+    bindsym Mode_switch+$mod+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 1
+    bindsym Mode_switch+shift+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 2
+    bindsym Mode_switch+$mod+shift+5 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 3
+
+
+    bindsym 6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 0
+    bindsym $mod+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 1
+    bindsym shift+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 2
+    bindsym $mod+shift+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 3
+    bindsym Mode_switch+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 0
+    bindsym Mode_switch+$mod+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 1
+    bindsym Mode_switch+shift+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 2
+    bindsym Mode_switch+$mod+shift+6 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 3
+
+
+    bindsym 7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 0
+    bindsym $mod+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 1
+    bindsym shift+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 2
+    bindsym $mod+shift+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 3
+    bindsym Mode_switch+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 0
+    bindsym Mode_switch+$mod+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 1
+    bindsym Mode_switch+shift+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 2
+    bindsym Mode_switch+$mod+shift+7 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 3
+
+
+    bindsym 8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 0
+    bindsym $mod+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 1
+    bindsym shift+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 2
+    bindsym $mod+shift+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 3
+    bindsym Mode_switch+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 0
+    bindsym Mode_switch+$mod+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 1
+    bindsym Mode_switch+shift+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 2
+    bindsym Mode_switch+$mod+shift+8 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 3
+
+
+    bindsym 9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 0
+    bindsym $mod+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 1
+    bindsym shift+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 2
+    bindsym $mod+shift+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 3
+    bindsym Mode_switch+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 0
+    bindsym Mode_switch+$mod+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 1
+    bindsym Mode_switch+shift+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 2
+    bindsym Mode_switch+$mod+shift+9 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 3
+
+
+    bindsym q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 4
+    bindsym $mod+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 5
+    bindsym shift+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 6
+    bindsym $mod+shift+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 7
+    bindsym Mode_switch+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 4
+    bindsym Mode_switch+$mod+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 5
+    bindsym Mode_switch+shift+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 6
+    bindsym Mode_switch+$mod+shift+q exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 7
+
+
+    bindsym w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 4
+    bindsym $mod+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 5
+    bindsym shift+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 6
+    bindsym $mod+shift+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 7
+    bindsym Mode_switch+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 4
+    bindsym Mode_switch+$mod+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 5
+    bindsym Mode_switch+shift+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 6
+    bindsym Mode_switch+$mod+shift+w exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 7
+
+
+    bindsym e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 4
+    bindsym $mod+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 5
+    bindsym shift+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 6
+    bindsym $mod+shift+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 7
+    bindsym Mode_switch+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 4
+    bindsym Mode_switch+$mod+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 5
+    bindsym Mode_switch+shift+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 6
+    bindsym Mode_switch+$mod+shift+e exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 7
+
+
+    bindsym r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 4
+    bindsym $mod+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 5
+    bindsym shift+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 6
+    bindsym $mod+shift+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 7
+    bindsym Mode_switch+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 4
+    bindsym Mode_switch+$mod+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 5
+    bindsym Mode_switch+shift+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 6
+    bindsym Mode_switch+$mod+shift+r exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 7
+
+
+    bindsym t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 4
+    bindsym $mod+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 5
+    bindsym shift+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 6
+    bindsym $mod+shift+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 7
+    bindsym Mode_switch+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 4
+    bindsym Mode_switch+$mod+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 5
+    bindsym Mode_switch+shift+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 6
+    bindsym Mode_switch+$mod+shift+t exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 7
+
+
+    bindsym y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 4
+    bindsym $mod+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 5
+    bindsym shift+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 6
+    bindsym $mod+shift+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 7
+    bindsym Mode_switch+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 4
+    bindsym Mode_switch+$mod+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 5
+    bindsym Mode_switch+shift+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 6
+    bindsym Mode_switch+$mod+shift+y exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 7
+
+
+    bindsym u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 4
+    bindsym $mod+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 5
+    bindsym shift+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 6
+    bindsym $mod+shift+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 7
+    bindsym Mode_switch+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 4
+    bindsym Mode_switch+$mod+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 5
+    bindsym Mode_switch+shift+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 6
+    bindsym Mode_switch+$mod+shift+u exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 7
+
+
+    bindsym i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 4
+    bindsym $mod+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 5
+    bindsym shift+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 6
+    bindsym $mod+shift+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 7
+    bindsym Mode_switch+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 4
+    bindsym Mode_switch+$mod+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 5
+    bindsym Mode_switch+shift+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 6
+    bindsym Mode_switch+$mod+shift+i exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 7
+
+
+    bindsym o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 4
+    bindsym $mod+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 5
+    bindsym shift+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 6
+    bindsym $mod+shift+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 7
+    bindsym Mode_switch+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 4
+    bindsym Mode_switch+$mod+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 5
+    bindsym Mode_switch+shift+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 6
+    bindsym Mode_switch+$mod+shift+o exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 7
+
+
+    bindsym p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 4
+    bindsym $mod+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 5
+    bindsym shift+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 6
+    bindsym $mod+shift+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 7
+    bindsym Mode_switch+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 4
+    bindsym Mode_switch+$mod+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 5
+    bindsym Mode_switch+shift+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 6
+    bindsym Mode_switch+$mod+shift+p exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 7
+
+
+    bindsym a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 8
+    bindsym $mod+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 9
+    bindsym shift+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 10
+    bindsym $mod+shift+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 11
+    bindsym Mode_switch+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 8
+    bindsym Mode_switch+$mod+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 9
+    bindsym Mode_switch+shift+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 10
+    bindsym Mode_switch+$mod+shift+a exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 11
+
+
+    bindsym s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 8
+    bindsym $mod+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 9
+    bindsym shift+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 10
+    bindsym $mod+shift+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 11
+    bindsym Mode_switch+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 8
+    bindsym Mode_switch+$mod+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 9
+    bindsym Mode_switch+shift+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 10
+    bindsym Mode_switch+$mod+shift+s exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 11
+
+
+    bindsym d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 8
+    bindsym $mod+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 9
+    bindsym shift+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 10
+    bindsym $mod+shift+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 11
+    bindsym Mode_switch+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 8
+    bindsym Mode_switch+$mod+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 9
+    bindsym Mode_switch+shift+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 10
+    bindsym Mode_switch+$mod+shift+d exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 11
+
+
+    bindsym f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 8
+    bindsym $mod+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 9
+    bindsym shift+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 10
+    bindsym $mod+shift+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 11
+    bindsym Mode_switch+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 8
+    bindsym Mode_switch+$mod+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 9
+    bindsym Mode_switch+shift+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 10
+    bindsym Mode_switch+$mod+shift+f exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 11
+
+
+    bindsym g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 8
+    bindsym $mod+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 9
+    bindsym shift+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 10
+    bindsym $mod+shift+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 11
+    bindsym Mode_switch+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 8
+    bindsym Mode_switch+$mod+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 9
+    bindsym Mode_switch+shift+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 10
+    bindsym Mode_switch+$mod+shift+g exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 11
+
+
+    bindsym h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 8
+    bindsym $mod+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 9
+    bindsym shift+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 10
+    bindsym $mod+shift+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 11
+    bindsym Mode_switch+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 8
+    bindsym Mode_switch+$mod+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 9
+    bindsym Mode_switch+shift+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 10
+    bindsym Mode_switch+$mod+shift+h exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 11
+
+
+    bindsym j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 8
+    bindsym $mod+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 9
+    bindsym shift+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 10
+    bindsym $mod+shift+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 11
+    bindsym Mode_switch+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 8
+    bindsym Mode_switch+$mod+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 9
+    bindsym Mode_switch+shift+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 10
+    bindsym Mode_switch+$mod+shift+j exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 11
+
+
+    bindsym k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 8
+    bindsym $mod+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 9
+    bindsym shift+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 10
+    bindsym $mod+shift+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 11
+    bindsym Mode_switch+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 8
+    bindsym Mode_switch+$mod+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 9
+    bindsym Mode_switch+shift+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 10
+    bindsym Mode_switch+$mod+shift+k exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 11
+
+
+    bindsym l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 8
+    bindsym $mod+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 9
+    bindsym shift+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 10
+    bindsym $mod+shift+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 11
+    bindsym Mode_switch+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 8
+    bindsym Mode_switch+$mod+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 9
+    bindsym Mode_switch+shift+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 10
+    bindsym Mode_switch+$mod+shift+l exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 11
+
+
+    bindsym semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 8
+    bindsym $mod+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 9
+    bindsym shift+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 10
+    bindsym $mod+shift+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 11
+    bindsym Mode_switch+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 8
+    bindsym Mode_switch+$mod+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 9
+    bindsym Mode_switch+shift+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 10
+    bindsym Mode_switch+$mod+shift+semicolon exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 11
+
+
+    bindsym z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 12
+    bindsym $mod+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 13
+    bindsym shift+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 14
+    bindsym $mod+shift+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 15
+    bindsym Mode_switch+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 12
+    bindsym Mode_switch+$mod+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 13
+    bindsym Mode_switch+shift+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 14
+    bindsym Mode_switch+$mod+shift+z exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 1 15
+
+
+    bindsym x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 12
+    bindsym $mod+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 13
+    bindsym shift+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 14
+    bindsym $mod+shift+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 15
+    bindsym Mode_switch+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 12
+    bindsym Mode_switch+$mod+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 13
+    bindsym Mode_switch+shift+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 14
+    bindsym Mode_switch+$mod+shift+x exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 3 15
+
+
+    bindsym c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 12
+    bindsym $mod+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 13
+    bindsym shift+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 14
+    bindsym $mod+shift+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 4 15
+    bindsym Mode_switch+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 12
+    bindsym Mode_switch+$mod+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 13
+    bindsym Mode_switch+shift+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 14
+    bindsym Mode_switch+$mod+shift+c exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 5 15
+
+
+    bindsym v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 12
+    bindsym $mod+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 13
+    bindsym shift+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 14
+    bindsym $mod+shift+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 6 15
+    bindsym Mode_switch+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 12
+    bindsym Mode_switch+$mod+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 13
+    bindsym Mode_switch+shift+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 14
+    bindsym Mode_switch+$mod+shift+v exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 7 15
+
+
+    bindsym b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 12
+    bindsym $mod+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 13
+    bindsym shift+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 14
+    bindsym $mod+shift+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 8 15
+    bindsym Mode_switch+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 12
+    bindsym Mode_switch+$mod+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 13
+    bindsym Mode_switch+shift+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 14
+    bindsym Mode_switch+$mod+shift+b exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 9 15
+
+
+    bindsym n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 12
+    bindsym $mod+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 13
+    bindsym shift+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 14
+    bindsym $mod+shift+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 10 15
+    bindsym Mode_switch+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 12
+    bindsym Mode_switch+$mod+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 13
+    bindsym Mode_switch+shift+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 14
+    bindsym Mode_switch+$mod+shift+n exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 11 15
+
+
+    bindsym m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 12
+    bindsym $mod+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 13
+    bindsym shift+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 14
+    bindsym $mod+shift+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 12 15
+    bindsym Mode_switch+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 12
+    bindsym Mode_switch+$mod+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 13
+    bindsym Mode_switch+shift+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 14
+    bindsym Mode_switch+$mod+shift+m exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 13 15
+
+
+    bindsym comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 12
+    bindsym $mod+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 13
+    bindsym shift+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 14
+    bindsym $mod+shift+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 14 15
+    bindsym Mode_switch+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 12
+    bindsym Mode_switch+$mod+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 13
+    bindsym Mode_switch+shift+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 14
+    bindsym Mode_switch+$mod+shift+comma exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 15 15
+
+
+    bindsym period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 12
+    bindsym $mod+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 13
+    bindsym shift+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 14
+    bindsym $mod+shift+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 16 15
+    bindsym Mode_switch+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 12
+    bindsym Mode_switch+$mod+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 13
+    bindsym Mode_switch+shift+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 14
+    bindsym Mode_switch+$mod+shift+period exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 17 15
+
+    bindsym slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 12
+    bindsym $mod+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 13
+    bindsym shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 14
+    bindsym $mod+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 18 15
+    bindsym Mode_switch+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 12
+    bindsym Mode_switch+$mod+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 13
+    bindsym Mode_switch+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 14
+    bindsym Mode_switch+$mod+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 15
+
+
+    bindsym space mode "mode_click"
+    bindsym Return mode "default"; exec xdotool keydown super keyup super
+}
+
+bindsym $mod+a mode "mode_mouse_move"
 
 
 # Font for window titles. Will also be used by the bar unless a different font
