@@ -157,6 +157,10 @@ alias "which-command=which"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 # git log rushi
 alias glr='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
+alias "grm=git rm" 
+alias "tcpcopy=/usr/local/tcpcopy/sbin/tcpcopy"
+alias "oc=/home/kevin/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
+
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -306,6 +310,8 @@ export NVM_DIR="/home/kevin/.nvm"
 # to use vim as the man page viewer (useful when you are using shift+k in vim)
 # https://www.reddit.com/r/vim/comments/74sgzs/til_vim_has_a_manpage_viewer_plugin/
 export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+# export MANPAGER="/usr/bin/env bash -c \"col -b | \
+        # vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon

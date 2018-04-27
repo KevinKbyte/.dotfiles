@@ -56,7 +56,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
 " For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
 
 " For syntax
 Plug 'vim-syntastic/syntastic'
@@ -201,6 +201,9 @@ let mapleader = ' '
 
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-5.0/lib'
+
+autocmd FileType cpp set keywordprg=cppman
+let g:ycm_semantic_triggers = { 'c': [ 're!\w{2}' ] }
 
 " allows for backspaces to work properly
 set backspace=indent,eol,start
@@ -476,6 +479,7 @@ let g:EasyMotion_smartcase = 1
 " man page viewer
 runtime! ftplugin/man.vim
 
+
 " allows you to open vim help for keywords when you're in vimrc
 setlocal keywordprg=:help
 
@@ -723,4 +727,6 @@ endif
 inoremap x <backspace>
 " nnoremap  :hid<CR>
 inoremap o 
+
+nmap K <leader>K
 
