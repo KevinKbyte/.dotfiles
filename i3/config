@@ -50,21 +50,33 @@ set $mode_click
 mode "mode_click" {
     # left clicks
     bindsym j mode "default"; exec xdotool click 1
+    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
     # right clicks
-    bindsym k mode "default"; exec xdotool click 3
+    bindsym k mode "default"; exec xdotool click 2
+    bindsym $sup+Shift+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    # middle mouse
+    bindsym l mode "default"; exec xdotool click 3
+
     bindsym $mod+j exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
     bindsym $mod+k exec xdotool mouseup 1
     bindsym Mod1+j exec xdotool click 4
     bindsym Mod1+k exec xdotool click 5
+    # Left click and exit
+    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool keydown super keyup super && xdotool mouseup 1
     
-    bindsym Mod1+space mode "default"; exec xdotool click 2
-    bindsym Return mode "default"; exec xdotool click 2
-    bindsym space  mode "default"; exec xdotool keydown super keyup super
+    # prev mode
+    bindsym Shift+space mode "mode_small_mouse_move"
 
+    # next mode
+    bindsym space mode "default"; exec xdotool keydown super keyup super
+
+    # exit mode
+    bindsym Mod1+space  mode "default"; exec xdotool keydown super keyup super
+    bindsym Return mode "default"; exec xdotool keydown super keyup super
 }
 
 bindsym $sup+j exec xdotool click 1
-bindsym $sup+k exec xdotool click 3
+bindsym $sup+Shift+j exec xdotool click 3
 
 set $mode_small_mouse_move
 mode "mode_small_mouse_move" {
@@ -82,10 +94,27 @@ mode "mode_small_mouse_move" {
     bindsym $mod+j exec xdotool mousemove_relative --sync 0 60
     bindsym $mod+k exec xdotool mousemove_relative --sync 0 -60
     bindsym $mod+l exec xdotool mousemove_relative --sync 60 0 
+    
+    bindsym $mod+Mod1+h exec xdotool mousemove_relative --sync -- -100 0
+    bindsym $mod+Mod1+j exec xdotool mousemove_relative --sync 0 100
+    bindsym $mod+Mod1+k exec xdotool mousemove_relative --sync 0 -100
+    bindsym $mod+Mod1+l exec xdotool mousemove_relative --sync 100 0 
 
-    bindsym Mod1+space mode "mode_click"
-    bindsym Return mode "mode_click"
-    bindsym space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    # prev mode
+    bindsym Shift+space mode "mode_mouse_move"
+
+    # next mode
+    bindsym space mode "mode_click"
+
+    # exit mode
+    bindsym Mod1+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym Return mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+
+    # Left click and exit
+    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    # Right click and exit
+    bindsym $sup+Shift+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
 }
 
 set $mode_mouse_move
@@ -450,10 +479,25 @@ mode "mode_mouse_move" {
     bindsym Mod1+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 14 && i3-msg mode "mode_small_mouse_move"
     bindsym Mod1+$mod+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 15 && i3-msg mode "mode_small_mouse_move"
 
-    bindsym Return mode "mode_click"
+    # prev mode
+    bindsym Shift+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+
+    # next mode
+    bindsym space mode "mode_small_mouse_move"
+
+    # next next mode
     bindsym apostrophe mode "mode_click"
-    bindsym space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
-    bindsym Mod1+space mode "mode_small_mouse_move"
+
+    # exit mode
+    bindsym Mod1+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym Return mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+
+    # Left click and exit
+    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+
+    # Right click and exit
+    bindsym $sup+Shift+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
 }
 
 bindsym $mod+a mode "mode_mouse_move"
