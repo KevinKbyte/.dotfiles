@@ -56,9 +56,9 @@ k = j + Y_KEY_COMBOS
 mode_default = " mode \"default\";"
 mode_default = ""
 
-rm_i3bar = "; exec xdotool keydown super keyup super"
-rm_i3bar = ""
-change_to_mode_small_mouse_move = " && i3-msg mode \"mode_small_mouse_move\""
+rm_i3bar = "xdotool keydown super keyup super"
+# rm_i3bar = ""
+change_to_mode_small_mouse_move = "i3-msg mode \"mode_small_mouse_move\""
 # change_to_mode_small_mouse_move = ""
 
 X_KEY_COMBO_KEYS = ["Mod1"]
@@ -71,40 +71,40 @@ for y in range(0, Y_CHUNK_SIZE, Y_KEY_COMBOS):
         # bindsym $mod+3 mode "default"; exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 1; exec xdotool keydown super keyup super
         # bindsym $mod+shift+3 mode "default"; exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 2; exec xdotool keydown super keyup super
 
-        print("bindsym " + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + "$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+1) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + "shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+2) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + "$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+3) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+1) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+2) + rm_i3bar + change_to_mode_small_mouse_move)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+3) + rm_i3bar + change_to_mode_small_mouse_move)
+        print("bindsym " + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + "$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+1) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + "shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+2) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + "$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+3) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+1) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+2) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+3) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
         i+=1
         print()
     i = 0
     num_alpha_x += 1
 
-rm_i3bar = "; exec xdotool keydown super keyup super"
-mouse_up = "xdotool mouseup 1"
-mode_default = " mode \"default\";"
+# rm_i3bar = "xdotool keydown super keyup super"
+# mouse_up = "xdotool mouseup 1"
+# mode_default = " mode \"default\";"
 
-mode_click1 = "Return"
-mode_click2 = "apostrophe"
-left_click = "j"
-right_click = "k"
-middle_click = "space"
-click_default_mode = "Escape"
-cursor_default_mode = "Mod1+space"
-mouse_move_mode = "$mod+a"
-small_mouse_move_mode = "space"
+# mode_click1 = "Return"
+# mode_click2 = "apostrophe"
+# left_click = "j"
+# right_click = "k"
+# middle_click = "space"
+# click_default_mode = "Escape"
+# cursor_default_mode = "Mod1+space"
+# mouse_move_mode = "$mod+a"
+# small_mouse_move_mode = "space"
 
-print("bindsym " + mode_click1 + " mode \"mode_click\"\n")
-print("bindsym " + mode_click2 + " mode \"mode_click\"\n")
-print("bindsym " + cursor_default_mode + " mode \"default\"" + rm_i3bar + " && " + mouse_up)
-print("bindsym " + small_mouse_move_mode + " mode \"mode_small_mouse_move\"")
-print("\n}\n")
-print("bindsym " + mouse_move_mode + " mode \"mode_mouse_move\"")
-print("\n")
+# print("bindsym " + mode_click1 + " mode \"mode_click\"\n")
+# print("bindsym " + mode_click2 + " mode \"mode_click\"\n")
+# print("bindsym " + cursor_default_mode + " mode \"default\"; exec " + rm_i3bar + " && " + mouse_up)
+# print("bindsym " + small_mouse_move_mode + " mode \"mode_small_mouse_move\"")
+# print("\n}\n")
+# print("bindsym " + mouse_move_mode + " mode \"mode_mouse_move\"")
+# print("\n")
 
 # print("set $mode_click")
 # print("mode \"mode_click\" {\n")
@@ -115,5 +115,5 @@ print("\n")
 # # Middle mouse
 # print("    bindsym " + middle_click + mode_default + " exec xdotool click 2")
 # # Default Mode
-# print("    bindsym " + click_default_mode + " mode \"default\"" + rm_i3bar)
+# print("    bindsym " + click_default_mode + " mode \"default\"; exec " + rm_i3bar)
 # print("\n}")
