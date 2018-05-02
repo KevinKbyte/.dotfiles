@@ -161,6 +161,10 @@ alias "grm=git rm"
 alias "tcpcopy=/usr/local/tcpcopy/sbin/tcpcopy"
 alias "oc=/home/kevin/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
 
+# Compress then Encrypt
+alias "encr=/home/kevin/.dotfiles/zsh/encrypt.sh"
+# Decrypt then Decompress
+alias "decr=/home/kevin/.dotfiles/zsh/decrypt.sh"
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"

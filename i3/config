@@ -107,20 +107,32 @@ mode "mode_small_mouse_move" {
 
     # # prev mode
     # bindsym Shift+space mode "mode_mouse_move"; exec xdotool keydown super keyup super && xdotool mouseup 1
-    bindsym space mode "mode_mouse_move"; exec xdotool mouseup 1
+    bindsym apostrophe mode "mode_mouse_move"
 
     # next mode
     # bindsym space mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
+    # bindsym Mod1+j exec xdotool click 4
+    # bindsym Mod1+k exec xdotool click 5
+
     # exit mode
-    bindsym Mod1+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
-    bindsym Return mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $mod+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
     # Left click and exit
-    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1
     # Right click and exit
-    bindsym $sup+Shift+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1
+
+    # Middle Mouse and exit
+    bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1
+
+    # Hold down
+    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
+
+    # Release
+    bindsym Mod1+Shift+space exec xdotool mouseup 1
 
     # All combos except for h, j, k, and l
     bindsym 1 exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 0 0 && i3-msg mode "mode_small_mouse_move" && xdotool keydown super keyup super
@@ -1206,32 +1218,33 @@ mode "mode_mouse_move" {
     bindsym Mod1+$mod+shift+slash exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 19 15 && i3-msg mode "mode_small_mouse_move" && xdotool keydown super keyup super
 
     # prev mode
-    # bindsym Shift+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    # bindsym Shift+space mode "default"; exec xdotool mouseup 1
 
     # next mode
-    bindsym space mode "mode_small_mouse_move"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym apostrophe mode "mode_small_mouse_move"; exec xdotool keydown super keyup super
 
     # # next next mode
     # bindsym apostrophe mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
     # exit mode
-    bindsym Mod1+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $mod+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
     # Left click and exit
-    bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1
 
     # Right click and exit
-    bindsym $sup+Shift+j mode "default"; exec xdotool click 3 && xdotool mouseup 1
+    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1
 
     # Middle Click and exit
     bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1
 
     # Hold down
-    bindsym $mod+k exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
+    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
 
     # Release
-    bindsym $mod+shift+k exec xdotool mouseup 1
+    bindsym Mod1+Shift+space exec xdotool mouseup 1
 }
 
 bindsym $mod+a mode "mode_mouse_move"
@@ -1373,6 +1386,8 @@ bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-ms
 
 set $mode_fullscreen
 mode "mode_fullscreen" {
+    bindsym $mod+a mode "mode_mouse_move"
+
     # bar mode toggle
     bindsym $mod+l mode "default"; fullscreen toggle; focus left
     bindsym $mod+h mode "default"; fullscreen disable; focus right
