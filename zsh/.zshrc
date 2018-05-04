@@ -165,6 +165,11 @@ alias "oc=/home/kevin/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-se
 alias "encr=/home/kevin/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
 alias "decr=/home/kevin/.dotfiles/zsh/decrypt.sh"
+alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive && sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
+# rsync -cr <Source> <Destination>
+    # Example: rsync -cr Desktop ~/mnt/gdrive
+    # -c syncs if checksums differ
+    # -P is progress, shows progress bar while copying files
 
 export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -215,6 +220,7 @@ function man { vim <(command man $1); }
 # function quteb {
 #     workon py3 && qutebrowser && deactivate;
 # }
+#
 
 export EDITOR=vim
 #export VISUAL=vim
