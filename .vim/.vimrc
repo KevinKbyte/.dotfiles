@@ -476,6 +476,9 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" Macro doesn't play and make it slow
+set lazyredraw
+
 " man page viewer
 runtime! ftplugin/man.vim
 

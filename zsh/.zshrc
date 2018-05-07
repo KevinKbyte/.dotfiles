@@ -166,6 +166,10 @@ alias "encr=/home/kevin/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
 alias "decr=/home/kevin/.dotfiles/zsh/decrypt.sh"
 alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive && sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
+
+alias "p=ps aux | rg -i "
+alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i "
+
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
@@ -220,7 +224,6 @@ function man { vim <(command man $1); }
 # function quteb {
 #     workon py3 && qutebrowser && deactivate;
 # }
-#
 
 export EDITOR=vim
 #export VISUAL=vim
