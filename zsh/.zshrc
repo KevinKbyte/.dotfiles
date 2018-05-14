@@ -225,6 +225,10 @@ function man { vim <(command man $1); }
 #     workon py3 && qutebrowser && deactivate;
 # }
 
+# rename extension 
+# rnext <files to change> <current file extension> <new file extension>
+function rnext { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done; }
+
 export EDITOR=vim
 #export VISUAL=vim
 #export PATH="/home/kevin/node/node-v8.9.0-linux-x64/bin:$PATH"

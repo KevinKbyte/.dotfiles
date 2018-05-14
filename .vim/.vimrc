@@ -9,7 +9,15 @@ call plug#begin('~/.vim/plugged')
 " Any valid git URL is allowed
 "Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Multiple Plug commands can be written in a single line using | separators Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" IMPORTANT: Make Ultisnips work with YouCompleteMe using SuperTab plugin
+" https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme/32385352
+
+" Multiple Plug commands can be written in a single line using | separators 
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+
+" For youcompleteme
+Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
 
 " On-demand loading
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -25,6 +33,7 @@ call plug#begin('~/.vim/plugged')
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
@@ -55,8 +64,6 @@ Plug 'tpope/vim-unimpaired'
 " More text objects
 Plug 'wellle/targets.vim'
 
-" For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
 
 " For syntax
 Plug 'vim-syntastic/syntastic'
@@ -366,6 +373,21 @@ let g:polyglot_disabled = ['latex']
 let g:UltiSnipsUsePythonVersion = 3
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<C-b>'
+
+" IMPORTANT: Make Ultisnips work with YouCompleteMe using SuperTab plugin
+" https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme/32385352
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"...
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsEditSplit= "context"
 
 set cursorline
 set ic          " Defaults ignore case when search

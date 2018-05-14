@@ -31,4 +31,5 @@ xmodmap -e "keycode 26 = e E Escape Escape"
 # for having randomized desktop backgrounds 
 # feh --bg-max --randomize ~/.wallpaper/* 
 
-feh --bg-max ~/.wallpaper/cat.jpg
+# feh --bg-max ~/.wallpaper/cat.jpg
+feh --bg-max ~/.wallpaper/motivation-g2.png
