@@ -386,7 +386,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "...
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips', $HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 let g:UltiSnipsEditSplit= "context"
 
 set cursorline
@@ -411,6 +411,8 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_keep_logfiles = 0
 " YCM stop completion
 let g:ycm_key_list_stop_completion = ['<C-y>']
+
+" let g:ycm_key_invoke_completion = '<C-n>'
 
 "============
 "<> NERDTREE
