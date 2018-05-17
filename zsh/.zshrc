@@ -108,6 +108,8 @@ alias unitee="/home/kevin/Unity-2018.1.0b8/Editor/Unity"
 export hw="/home/kevin/Desktop/cs/bu_notes"
 export jp="/home/kevin/Desktop/language/japanese/lj111"
 export cs="/home/kevin/Desktop/cs/cybersec"
+# ftplugin aka file type plugin 
+export fp="/home/kevin/.dotfiles/.vim/after/ftplugin/"
 
 alias hw="cd /home/kevin/Desktop/cs/bu_notes"
 alias jp="cd /home/kevin/Desktop/language/japanese/lj111"
