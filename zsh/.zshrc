@@ -110,10 +110,14 @@ export jp="/home/kevin/Desktop/language/japanese/lj111"
 export cs="/home/kevin/Desktop/cs/cybersec"
 # ftplugin aka file type plugin 
 export fp="/home/kevin/.dotfiles/.vim/after/ftplugin/"
+export dl="/home/kevin/Downloads"
 
 alias hw="cd /home/kevin/Desktop/cs/bu_notes"
 alias jp="cd /home/kevin/Desktop/language/japanese/lj111"
 alias cs="cd /home/kevin/Desktop/cs/cybersec"
+alias fp="/home/kevin/.dotfiles/.vim/after/ftplugin/"
+alias dl="/home/kevin/Downloads"
+
 alias libro="libreoffice"
 alias hls="history | tail -20"
 
@@ -169,8 +173,9 @@ alias "encr=/home/kevin/.dotfiles/zsh/encrypt.sh"
 alias "decr=/home/kevin/.dotfiles/zsh/decrypt.sh"
 alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
 
-alias "p=ps aux | rg -i "
-alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i "
+alias "p=ps aux | rg -i"
+alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"
+alias "t=tmux list-keys | rg -i"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -204,7 +209,7 @@ function ssstanm { sudo systemctl start network-manager; }
 function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
-function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
+# function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
@@ -227,9 +232,17 @@ function man { vim <(command man $1); }
 #     workon py3 && qutebrowser && deactivate;
 # }
 
-# rename extension 
+# rename file extension (rename file extension)
 # rnext <files to change> <current file extension> <new file extension>
-function rnext { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done; }
+function rnfx { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done; }
+
+# https://github.com/tmux-plugins/tmux-yank/issues/48
+# function _copy-to-clipboard {
+#     print -rn -- $BUFFER | pbcopy
+#     [ -n "$TMUX" ] && tmux display-message 'Line copied to clipboard!'
+# }
+# zle -N _copy-to-clipboard
+# bindkey -M viins "\`y" _copy-to-clipboard
 
 export EDITOR=vim
 #export VISUAL=vim
