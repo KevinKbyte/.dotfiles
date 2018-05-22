@@ -52,7 +52,7 @@ nnoremap <leader>r :PymodeRopeRedo<CR>
 " " Regenerate project cache
 nnoremap <leader>pc :PymodeRopeRegenerate<CR>
 " Rename current module
-nnoremap <leader>rnm :PymodeRopeRenameModule<CR>
+nnoremap <leader>rm :PymodeRopeRenameModule<CR>
 " Undo changes from last refactoring
 nnoremap <leader>u :PymodeRopeUndo<CR>
 
@@ -71,4 +71,15 @@ let g:pymode_rope_goto_definition_bind = '<leader>gd'
 " Rename method/fn/class/var under cursor
 let g:pymode_rope_rename_bind = '<leader>rb'
 
+" Imports with Vimpy
+nnoremap <leader>ip :VimpyCheckLine<CR>
+
+" On exit, sorts imports
+" autocmd VimLeave *.py :Isort<CR>
+" https://stackoverflow.com/questions/36322321/how-do-i-check-if-ive-been-run-in-read-only-mode-r-in-vimrc?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+autocmd BufReadPost *.py
+    \  if &noreadonly
+    \|  nnoremap ZZ :Isort<CR>ZZ
+    \| endif
 

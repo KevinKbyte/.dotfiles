@@ -115,6 +115,12 @@ else
     " Python mode
     Plug 'python-mode/python-mode'
 
+    " Python Autoimports
+    Plug 'KevinKByte/vimpy'
+
+    " Python import sorting
+    Plug 'fisadev/vim-isort'
+
     " " Powerline
     " Plug 'powerline/powerline'
 
@@ -292,9 +298,15 @@ let g:pymode_warnings = 0
 let g:pymode_trim_whitespaces = 1
 
 " Setup pymode quickfix window
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
+let g:pymode_rope = 0
+" let g:pymode_quickfix_minheight = 3
+" let g:pymode_quickfix_maxheight = 6
+" let g:pymode_rope_autoimport=1
+" let g:pymode_rope_autoimport_import_after_complete = 1
+" let g:pymode_rope_autoimport_modules = ['os', 'numpy', 'subprocess']
 
+" let g:pymode_rope_rename_bind = '<C-c>rr'
+" let g:pymode_rope_autoimport_bind = '<C-c>ra'
 
 noremap <F3> :Autoformat<CR>
 
@@ -307,7 +319,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#force_py_version = 3
 
 " YCM python interpreter
-let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
+" let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " For Python Semantic Completion w/ youcompleteme
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
