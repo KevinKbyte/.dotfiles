@@ -512,6 +512,9 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" Write as sudo for readonly files
+cmap w!! w !sudo sh -c "cat > '%'"
+
 " Macro doesn't play and make it slow
 set lazyredraw
 
