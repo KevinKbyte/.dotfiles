@@ -14,7 +14,7 @@ set encoding=utf-8
 " " folds almost all indented lines and allows manual
 " set foldmethod=indent
 
-inoremap . .<c-o>a
+" inoremap . .<c-o>a
 
 let mapleader = ' ' 
 " PYMODE

@@ -100,7 +100,7 @@ alias sqlite="/home/kevin/Desktop/cs/bu_notes/cs105/sqlite-tools-linux-x86-32001
 alias pycharm="/home/kevin/Desktop/codes/pycharm-community-2017.1/bin/pycharm.sh"
 alias astudio="/home/kevin/programs/android-studio/bin/studio.sh" 
 # alias bandit="ssh bandit"
-alias b="ssh bandit"
+# alias b="ssh bandit"
 alias vbox="virtualbox"
 alias ue4="/home/kevin/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
 alias unitee="/home/kevin/Unity-2018.1.0b8/Editor/Unity"
@@ -127,7 +127,10 @@ alias "cp=cp -i"
 alias "v=vim"
 alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
-function cd { builtin cd "$@" && ls -a && pwd && dirs; }
+# alias d="dirs -v | head -10"
+alias d="dirs | head -10"
+
+function cd { builtin cd "$@" && ls -a; }
 alias "1=cd -1"
 alias "2=cd -2"
 alias "3=cd -3"
@@ -163,6 +166,11 @@ alias "which-command=which"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 # git log rushi
 alias glr='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
+alias gdtr='git diff-tree --no-commit-id --name-only -r'
+alias gdt='git diff-tool'
+
+# to see changed files
+alias "glon=git log --oneline --decorate --name-status"
 alias "grm=git rm" 
 alias "tcpcopy=/usr/local/tcpcopy/sbin/tcpcopy"
 alias "oc=/home/kevin/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
@@ -176,6 +184,22 @@ alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other 
 alias "p=ps aux | rg -i"
 alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"
 alias "t=tmux list-keys | rg -i"
+alias "b=bindkey | rg -i"
+
+alias "cx=chmod +x"
+alias "scx=sudo chmod +x"
+
+# Expand aliases
+expand-aliases() {
+  unset 'functions[_expand-aliases]'
+  functions[_expand-aliases]=$BUFFER
+  (($+functions[_expand-aliases])) &&
+    BUFFER=${functions[_expand-aliases]#$'\t'} &&
+    CURSOR=$#BUFFER
+}
+
+zle -N expand-aliases
+bindkey "a" expand-aliases
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -244,11 +268,16 @@ function rnfx { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done
 # zle -N _copy-to-clipboard
 # bindkey -M viins "\`y" _copy-to-clipboard
 
+# mass tar subdirs in current dir
+# https://stackoverflow.com/questions/15936003/for-each-dir-create-a-tar-file
+function tard { find . -maxdepth 1 -mindepth 1 -type d -exec tar cvf {}.tar {}  \; }
+
 export EDITOR=vim
 #export VISUAL=vim
 #export PATH="/home/kevin/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
-export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
+
+# export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
 
 # zsh vi mode
 
