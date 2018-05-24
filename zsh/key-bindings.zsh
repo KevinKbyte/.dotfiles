@@ -19,9 +19,10 @@ bindkey -e                                            # Use emacs key bindings
 
 bindkey '\ew' kill-region                             # [Esc-w] - Kill from the cursor to the mark
 # bindkey -s '\el' 'ls\n'                               # [Esc-l] - run command: ls
-bindkey -s '\el' 'ls -a\n'                               # [Esc-l] - run command: ls -a
-bindkey -s '>' 'cd ..\n'
-bindkey -s 'D' 'dirs | head -10\n'
+#  is to allow use of thes commands even when in middle of command
+bindkey -s '\el' 'ls -a\n'                               # [Esc-l] - run command: ls -a
+bindkey -s '>' 'cd ..\n'
+bindkey -s 'D' 'dirs | head -10\n'
 
 bindkey '^r' history-incremental-search-backward      # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
 if [[ "${terminfo[kpp]}" != "" ]]; then
