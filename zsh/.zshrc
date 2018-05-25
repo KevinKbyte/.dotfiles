@@ -201,6 +201,9 @@ expand-aliases() {
 zle -N expand-aliases
 bindkey "a" expand-aliases
 
+alias "pk=pkill"
+alias "spk=sudo pkill"
+
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
@@ -271,6 +274,8 @@ function rnfx { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done
 # mass tar subdirs in current dir
 # https://stackoverflow.com/questions/15936003/for-each-dir-create-a-tar-file
 function tard { find . -maxdepth 1 -mindepth 1 -type d -exec tar cvf {}.tar {}  \; }
+
+function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) } 
 
 export EDITOR=vim
 #export VISUAL=vim
