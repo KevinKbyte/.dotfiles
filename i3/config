@@ -1268,14 +1268,22 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym control+Mod1+t exec i3-sensible-terminal
+# UBUNTU
+# bindsym control+Mod1+t exec i3-sensible-terminal
+bindsym control+Mod1+t exec gnome-terminal
 
 # start a chrome window
-bindsym $sup+Return exec chromium-browser
-bindsym $sup+shift+Return exec chromium-browser --incognito
+# UBUNTU
+# bindsym $sup+Return exec chromium-browser
+# bindsym $sup+shift+Return exec chromium-browser --incognito
+
+bindsym $sup+Return exec chromium
+bindsym $sup+shift+Return exec chromium --incognito
 bindsym $mod+Mod1+Return exec quteb
 
-bindsym $mod+Return exec i3-sensible-terminal
+# UBUNTU
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -1544,8 +1552,13 @@ mode "mode_movement" {
    bindsym j focus down
    bindsym k focus up
    bindsym l focus right
-   bindsym c exec chromium-browser 
-   bindsym t exec i3-sensible-terminal
+   # UBUNTU
+   # bindsym c exec chromium-browser 
+   bindsym c exec chromium
+   # UBUNTU
+   # bindsym t exec i3-sensible-terminal
+   bindsym t exec gnome-terminal
+   
    bindsym shift+1 move container to workspace $workspace1; workspace $workspace1  
    bindsym shift+2 move container to workspace $workspace2; workspace $workspace2  
    bindsym shift+3 move container to workspace $workspace3; workspace $workspace3  
@@ -1683,7 +1696,7 @@ bar {
         # status_command i3status
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output primary
-        font pango:DejaVu Sans Mono 10
+        font pango:DejaVu Sans Mono 13
 }
 
 # borderless windows
@@ -1693,7 +1706,7 @@ new_window normal 0
 bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
-exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
+# exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 
 exec xcompmgr -c
 exec xbindkeys -p 
@@ -1705,6 +1718,8 @@ popup_during_fullscreen leave_fullscreen
 # For instance: Assume you are on workspace "1: www" and switch to "2: IM" using mod+2 because somebody sent you a message. You don’t need to remember where you came from now, you can just press $mod+2 again to switch back to "1: www".
 workspace_auto_back_and_forth yes
 
+# UBUNTU
+# bindsym $mod+c [class="Chromium-browser"] focus
 bindsym $mod+c [class="Chromium-browser"] focus
 # bindsym Mod1+grave [class="_focused_"] back_and_forth
 bindsym Mode_switch+Shift+u mark 0

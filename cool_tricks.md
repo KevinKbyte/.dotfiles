@@ -34,3 +34,10 @@ While cppman is an excellent suggestion, if you have the C and C++ manpages (man
 
 # Listing all installed packages to be reinstalled in a different computer
   - https://askubuntu.com/questions/17823/how-to-list-all-installed-packages
+
+# View logs on most recent boot
+journalctl -b
+# Follow the log as it's being written
+journalctl -f
+# Follows the log messages of a specific unit
+journalctl -fu <program>
