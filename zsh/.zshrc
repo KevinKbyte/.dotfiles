@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # makes sure paths are unique
 typeset -U path
 export PATH="$PATH:/home/kev/.gem/ruby/2.5.0/bin"
+export PATH="$PATH:/home/kev/local/bin"
 
 # for node
 export NODE_PATH="$NODE_PATH:/home/kev/node-latest-install/out/lib/node_modules"
@@ -171,7 +172,9 @@ alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "dotf=cd ~/.dotfiles"
-alias "chrb=chromium-browser"
+# UBUNTU
+# alias "chrb=chromium-browser"
+alias "chr=chromium"
 alias "which-command=which"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 # git log rushi

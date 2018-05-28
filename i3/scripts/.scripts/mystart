@@ -32,4 +32,4 @@ xmodmap -e "keycode 26 = e E Escape Escape"
 # feh --bg-max --randomize ~/.wallpaper/* 
 
 # feh --bg-max ~/.wallpaper/cat.jpg
-feh --bg-max ~/.wallpaper/motivation-g2.png
+# feh --bg-max ~/.wallpaper/motivation-g2.png

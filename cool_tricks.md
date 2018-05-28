@@ -41,3 +41,7 @@ journalctl -b
 journalctl -f
 # Follows the log messages of a specific unit
 journalctl -fu <program>
+
+# Install imagemagick for screenshots using import command
+
+
