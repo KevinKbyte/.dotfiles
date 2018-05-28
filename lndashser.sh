@@ -9,7 +9,8 @@ cd ~
 # ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 # ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 # ln -s ~/.dotfiles/.xbindkeysrc .
-# ln -s 
+# cd ~/.oh-my-zsh/lib/
+# ln -s ~/.dotfiles/zsh/key-bindings.zsh .
 # ln -s 
 # ln -s 
 cd /usr/bin/

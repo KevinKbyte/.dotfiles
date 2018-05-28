@@ -90,7 +90,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # bc https://github.com/junegunn/fzf/issues/846
-[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# if load boath bashrc and zsh, will have weird behavior
+# [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# makes sure paths are unique
+typeset -U path
+export PATH="$PATH:/home/kev/.gem/ruby/2.5.0/bin"
+
+# for node
+export NODE_PATH="$NODE_PATH:/home/kev/node-latest-install/out/lib/node_modules"
 
 # to allow tapping on touchpad as a click``
 synclient TapButton1=1 TapButton2=3 TapButton3=2
