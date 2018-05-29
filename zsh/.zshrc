@@ -225,6 +225,11 @@ alias "pQe=pacman -Qe" # lists all explicitly installed packages
 alias "pQent=pacman -Qent" # lists all explicitly installed native packages to sync that are not direct or optional dependencies
 alias "pQm=pacman -Qm" # lists all foreign packages
 alias "pSyyy=sudo pacman -Syyy" # makes pacman aware of changes made to /etc/pacman.d/mirrorlist
+alias "spotify=/var/lib/snapd/snap/bin/spotify" 
+alias "discord=/var/lib/snapd/snap/bin/discord"
+alias "visudo=export VISUAL=vim; sudo visudo"
+
+alias "sudb=sudo updatedb"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -240,7 +245,7 @@ export PROJECT_HOME="/home/kev/Desktop/projects"
 
 export HIL_ENDPOINT="http://127.0.0.1:5000"
 
-source "/etc/bash_completion.d/virtualenvwrapper"
+source "/home/kev/.oh-my-zsh/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh"
 
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }

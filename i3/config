@@ -36,14 +36,20 @@ bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 
 # mute sound
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; notify-send 'volume toggled'"
 
-# Screen brightness controls with notification
-# increase screen brightness with notification
-bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
-# decrease screen brightness with notification
-bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
-bindsym $mod+z exec light -U 10
-bindsym $mod+x exec light -A 5 
+# UBUNTU
+# # Screen brightness controls with notification
+# # increase screen brightness with notification
+# bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
+# # decrease screen brightness with notification
+# bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+# bindsym $mod+z exec light -U 10
+# bindsym $mod+x exec light -A 5 
 
+bindsym XF86MonBrightnessUp exec "/usr/bin/brightness_changer up; notify-send 'brightness up'"
+# decrease screen brightness with notification
+bindsym XF86MonBrightnessDown exec "/usr/bin/brightness_changer down; notify-send 'brightness down'"
+bindsym $mod+z exec /usr/bin/brightness_changer up
+bindsym $mod+x exec /usr/bin/brightness_changer down
 bindsym $mod+shift+a mode "mode_small_mouse_move"
 
 # set $mode_click
@@ -1708,9 +1714,13 @@ bindsym $mod+g bar hidden_state toggle
 # assign [class="Chromium-browser"] $workspace2
 # exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 
-exec compton --config ~/.config/compton.conf
+# UBUNTU
+# exec xcompmgr -c
+exec compton --config /home/kev/.config/compton/compton.conf
 exec xbindkeys -p 
 exec /etc/profile.d/mystart
+exec nice -n 15 xwinwrap -ni -nf -ov -sp -st -fs -b -s -o 1.000000 -- mplayer /home/kev/Pictures/cat.mp4 -quiet -noconsolecontrols -loop 0 -nosound -wid WID
+
 
 # for_window [class="Chromium-browser"] resize set 500 500
 

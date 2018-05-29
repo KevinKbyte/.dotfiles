@@ -33,12 +33,8 @@ windows:
       panes:
         - clear
         - clear
-        - clear
-        - clear
   - work:
       layout: main-vertical
       panes:
-        - clear
-        - clear
         - clear
         - clear
