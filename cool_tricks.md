@@ -65,3 +65,9 @@ journalctl -fu <program>
 
 # Edit the visudo file with visudo command to change the sudo privileges of files or groups
   visudo
+
+# Fixing "Failed to commit transaction (invalid or corrupted package)" error
+  https://wiki.archlinux.org/index.php/Pacman#.22Failed_to_commit_transaction_.28invalid_or_corrupted_package.29.22_error
+  Look for .part files (partially downloaded packages) in /var/cache/pacman/pkg and remove them (often caused by usage of a custom XferCommand in pacman.conf).
+  Run:
+  find /var/cache/pacman/pkg/ -iname "*.part" -exec rm {} \;
