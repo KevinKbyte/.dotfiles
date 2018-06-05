@@ -192,7 +192,7 @@ alias "oc=/home/kev/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-serv
 alias "encr=/home/kev/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
 alias "decr=/home/kev/.dotfiles/zsh/decrypt.sh"
-alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
+alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive --config=$HOME/.config/rclone/rclone.conf"
 
 alias "p=ps aux | rg -i"
 alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"

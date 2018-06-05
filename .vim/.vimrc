@@ -382,7 +382,7 @@ let g:polyglot_disabled = ['latex']
 " set complete+=k
 
 " Ultisnips python v3
-let g:UltiSnipsUsePythonVersion = 3
+" let g:UltiSnipsUsePythonVersion = 3
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<C-b>'
 
