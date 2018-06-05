@@ -2,15 +2,20 @@
 
 install() {
     if hash pacman 2>/dev/null; then
-        sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel
+        sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
-        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel
+        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm xdotool htop rofi wireshark blender python-pip
     fi
 }
 
 lns() {
     cd ~
     DOTFILES=~/.dotfiles
+    TMP=test_files
+    if [ ~ -d ~/$TMP ]; then
+        mkdir ~/$TMP
+    fi
+
 	if [ -d "$DOTFILES" ]; then
 	    cd ~
 	    ln -s ~/.dotfiles/zsh/.zshrc .
@@ -19,11 +24,6 @@ lns() {
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/.xbindkeysrc .
-	    cd ~/.oh-my-zsh/lib/
-	    ln -s ~/.dotfiles/zsh/key-bindings.zsh .
-	    cd ~/.oh-my-zsh/themes
-	    ln -s ~/.dotfiles/zsh/kev.zsh-theme .
-	    cd ~
 	    mkdir ~/.dotfiles/.vim/backup
 	    mkdir ~/.dotfiles/.vim/swap
 	    mkdir ~/.dotfiles/.vim/undo
@@ -38,7 +38,28 @@ lns() {
             curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         fi
-	fi
+
+        if hash rg 2>/dev/null; then
+            cd ~/test_files
+
+            cd ~
+        fi
+    fi
+
+    while true; do
+        read -p "Do you want to install virtualenvs?" yn
+        case $yn in
+            [Yy]* ) 
+                    sudo pip install virtualenv virtualenv-wrapper
+                    if type mkvirtualenv 2>/dev/null; then
+                    mkvirtualenv -p /usr/bin/python3 py3
+                    mkvirtualenv -p /usr/bin/python2 py2
+                    fi
+                    break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
 
 	# ln -s 
 	# ln -s 
@@ -49,7 +70,7 @@ lns() {
 while true; do
     read -p "Do you want to install starting programs?" yn
     case $yn in
-        [Yy]* ) lns; break;;
+        [Yy]* ) install; break;;
         [Nn]* ) lns; exit;;
         * ) echo "Please answer yes or no.";;
     esac

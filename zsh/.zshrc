@@ -9,7 +9,7 @@ export ZSH=/home/$USER/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="zui"
-ZSH_THEME="kev"
+# ZSH_THEME="kev"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 # export VIRTUAL_ENV_DISABLE_PROMPT=0
 
@@ -34,7 +34,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -56,9 +56,15 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+git
+git-extras
+)
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
+source ~/.dotfiles/zsh/key-bindings.zsh
+source ~/.dotfiles/zsh/kev.zsh-theme
 
 # User configuration
 
@@ -326,7 +332,7 @@ source /home/$USER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # for zsh autosuggestions and zsh history substring search
 
-source $HOME/.oh-my-zsh/plugins/history-substring-search/history-substring-search.zsh
+source /home/kev/.oh-my-zsh/plugins/history-substring-search/history-substring-search.plugin.zsh
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
