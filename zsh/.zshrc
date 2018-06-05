@@ -2,7 +2,7 @@
 # PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/kev/.oh-my-zsh
+export ZSH=/home/kevin/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -89,49 +89,34 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# bc https://github.com/junegunn/fzf/issues/846
-# if load boath bashrc and zsh, will have weird behavior
-# [ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# makes sure paths are unique
-typeset -U path
-export PATH="$PATH:/home/kev/.gem/ruby/2.5.0/bin"
-export PATH="$PATH:/home/kev/local/bin"
-
-# for node
-export NODE_PATH="$NODE_PATH:/home/kev/node-latest-install/out/lib/node_modules"
-
-# to allow tapping on touchpad as a click``
-synclient TapButton1=1 TapButton2=3 TapButton3=2
-
 # alias cdl = 'cd -args && ls'
-alias intellij="/home/kev/Downloads/idea-ic-171.4249.39/bin/idea.sh"
+alias intellij="/home/kevin/Downloads/idea-ic-171.4249.39/bin/idea.sh"
 alias matlab="/usr/local/matlab/r2017a/bin/matlab"
 alias code="/usr/share/code/code"
-alias apython="/home/kev/anaconda3/bin/python"
-alias jupyter="/home/kev/anaconda3/bin/jupyter"
-alias subl="/home/kev/Desktop/programs/sublime_text_3/sublime_text"
-alias sqlite="/home/kev/Desktop/cs/bu_notes/cs105/sqlite-tools-linux-x86-3200100/sqlite3"
-alias pycharm="/home/kev/Desktop/codes/pycharm-community-2017.1/bin/pycharm.sh"
-alias astudio="/home/kev/programs/android-studio/bin/studio.sh" 
+alias apython="/home/kevin/anaconda3/bin/python"
+alias jupyter="/home/kevin/anaconda3/bin/jupyter"
+alias subl="/home/kevin/Desktop/programs/sublime_text_3/sublime_text"
+alias sqlite="/home/kevin/Desktop/cs/bu_notes/cs105/sqlite-tools-linux-x86-3200100/sqlite3"
+alias pycharm="/home/kevin/Desktop/codes/pycharm-community-2017.1/bin/pycharm.sh"
+alias astudio="/home/kevin/programs/android-studio/bin/studio.sh" 
 # alias bandit="ssh bandit"
 # alias b="ssh bandit"
 alias vbox="virtualbox"
-alias ue4="/home/kev/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
-alias unitee="/home/kev/Unity-2018.1.0b8/Editor/Unity"
+alias ue4="/home/kevin/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
+alias unitee="/home/kevin/Unity-2018.1.0b8/Editor/Unity"
 
-export hw="/home/kev/Desktop/cs/bu_notes"
-export jp="/home/kev/Desktop/language/japanese/lj111"
-export cs="/home/kev/Desktop/cs/cybersec"
+export hw="/home/kevin/Desktop/cs/bu_notes"
+export jp="/home/kevin/Desktop/language/japanese/lj111"
+export cs="/home/kevin/Desktop/cs/cybersec"
 # ftplugin aka file type plugin 
-export fp="/home/kev/.dotfiles/.vim/after/ftplugin/"
-export dl="/home/kev/Downloads"
+export fp="/home/kevin/.dotfiles/.vim/after/ftplugin/"
+export dl="/home/kevin/Downloads"
 
-alias hw="cd /home/kev/Desktop/cs/bu_notes"
-alias jp="cd /home/kev/Desktop/language/japanese/lj111"
-alias cs="cd /home/kev/Desktop/cs/cybersec"
-alias fp="/home/kev/.dotfiles/.vim/after/ftplugin/"
-alias dl="/home/kev/Downloads"
+alias hw="cd /home/kevin/Desktop/cs/bu_notes"
+alias jp="cd /home/kevin/Desktop/language/japanese/lj111"
+alias cs="cd /home/kevin/Desktop/cs/cybersec"
+alias fp="/home/kevin/.dotfiles/.vim/after/ftplugin/"
+alias dl="/home/kevin/Downloads"
 
 alias libro="libreoffice"
 alias hls="history | tail -20"
@@ -157,12 +142,16 @@ alias "8=cd -8"
 alias "9=cd -9"
 alias "vi=vim"
 alias "loc=locate"
+alias "saug=sudo apt upgrade -y"
+alias "saud=sudo apt update -y"
+alias "sadug=sudo apt update -y && sudo apt dist-upgrade -y"
 
 # TMUX="~/.dotfiles/.tmux/.tmux.conf"
 # VIMRC="~/.dotfiles/.vim/.vimrc"
 # ZSHRC="~/.dotfiles/zsh/.zshrc"
 # I3="~/.dotfiles/i3/config"
 alias "trc=vim ~/.dotfiles/.tmux/.tmux.conf"
+alias "saa=sudo apt autoremove -y"
 alias "zrc=vim ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
 alias "i3c=vim ~/.dotfiles/i3/config"
 alias "soi3c=source ~/.dotfiles/i3/config"
@@ -172,9 +161,7 @@ alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "dotf=cd ~/.dotfiles"
-# UBUNTU
-# alias "chrb=chromium-browser"
-alias "chr=chromium"
+alias "chrb=chromium-browser"
 alias "which-command=which"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 # git log rushi
@@ -186,13 +173,13 @@ alias gdt='git diff-tool'
 alias "glon=git log --oneline --decorate --name-status"
 alias "grm=git rm" 
 alias "tcpcopy=/usr/local/tcpcopy/sbin/tcpcopy"
-alias "oc=/home/kev/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
+alias "oc=/home/kevin/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
 
 # Compress then Encrypt
-alias "encr=/home/kev/.dotfiles/zsh/encrypt.sh"
+alias "encr=/home/kevin/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
-alias "decr=/home/kev/.dotfiles/zsh/decrypt.sh"
-alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive --config=$HOME/.config/rclone/rclone.conf"
+alias "decr=/home/kevin/.dotfiles/zsh/decrypt.sh"
+alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
 
 alias "p=ps aux | rg -i"
 alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"
@@ -217,49 +204,39 @@ bindkey "a" expand-aliases
 alias "pk=pkill"
 alias "spk=sudo pkill"
 
-# ARCH LINUX
-alias "pS=sudo pacman -S --noconfirm"
-alias "pSy=sudo pacman -Sy --noconfirm"
-alias "pSs=pacman -Ss" # search
-alias "pQe=pacman -Qe" # lists all explicitly installed packages
-alias "pQent=pacman -Qent" # lists all explicitly installed native packages to sync that are not direct or optional dependencies
-alias "pQm=pacman -Qm" # lists all foreign packages
-alias "pSyyy=sudo pacman -Syyy" # makes pacman aware of changes made to /etc/pacman.d/mirrorlist
-alias "spotify=/var/lib/snapd/snap/bin/spotify" 
-alias "discord=/var/lib/snapd/snap/bin/discord"
-alias "visudo=export VISUAL=vim; sudo visudo"
-
-alias "sudb=sudo updatedb"
-
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
     # -P is progress, shows progress bar while copying files
 
-export ANDROID_HOME="/home/kev/programs/sdk"
+export ANDROID_HOME="/home/kevin/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export ANDROID_NDK="/home/kev/programs/android-ndk-r10e"
-export WORKON_HOME="/home/kev/Desktop/projects/.virtualenvs"
-export PROJECT_HOME="/home/kev/Desktop/projects"
+export ANDROID_NDK="/home/kevin/programs/android-ndk-r10e"
+export WORKON_HOME="/home/kevin/Desktop/projects/.virtualenvs"
+export PROJECT_HOME="/home/kevin/Desktop/projects"
 
 export HIL_ENDPOINT="http://127.0.0.1:5000"
 
-source "/home/kev/.oh-my-zsh/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh"
+source "/etc/bash_completion.d/virtualenvwrapper"
 
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
-function tm { mv "$@" "/home/kev/Desktop/trash/"; }
-function emulator { cd "/home/kev/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
+function tm { mv "$@" "/home/kevin/Desktop/trash/"; }
+function emulator { cd "/home/kevin/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
 function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
+function sai { sudo apt install "$@" -y; }
+function sagrp { sudo apt-get remove --purge "$@" -y; }
 function so { source "$@"; }
+function acs { apt-cache search "$@"; }
 function ssstonm { sudo systemctl stop network-manager; }
 function ssstanm { sudo systemctl start network-manager; }
+function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
-# function t { tcpdump -r /home/kev/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
+# function t { tcpdump -r /home/kevin/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
@@ -302,7 +279,7 @@ function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) }
 
 export EDITOR=vim
 #export VISUAL=vim
-#export PATH="/home/kev/node/node-v8.9.0-linux-x64/bin:$PATH"
+#export PATH="/home/kevin/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
 
 # export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
@@ -338,14 +315,14 @@ zle -N zle-line-init
 # for tmuxinator
 source ~/.dotfiles/zsh/tmuxinator.zsh
 
-export TMUXINATOR_CONFIG="/home/kev/.dotfiles/tmuxinator"
-# export XDG_CONFIG_HOME="/home/kev/.dotfiles"
+export TMUXINATOR_CONFIG="/home/kevin/.dotfiles/tmuxinator"
+# export XDG_CONFIG_HOME="/home/kevin/.dotfiles"
 
 #Set JAVA_HOME
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export JAVA_HOME
 
-source /home/kev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/kevin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # for zsh autosuggestions and zsh history substring search
 
@@ -389,11 +366,11 @@ if command -v tmux>/dev/null; then
     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 fi
 
-cd /home/kev/Desktop/cs/bu_notes; clear
+cd /home/kevin/Desktop/cs/bu_notes; clear
 
-export NODE_PATH=/usr/local/lib/node_modules:/home/kev/.npm:/usr/lib/nodejs
+export NODE_PATH=/usr/local/lib/node_modules:/home/kevin/.npm:/usr/lib/nodejs
 
-export NVM_DIR="/home/kev/.nvm"
+export NVM_DIR="/home/kevin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # to use vim as the man page viewer (useful when you are using shift+k in vim)
@@ -401,16 +378,6 @@ export NVM_DIR="/home/kev/.nvm"
 export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 # export MANPAGER="/usr/bin/env bash -c \"col -b | \
         # vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
-# UBUNTU
-# function acs { apt-cache search "$@"; }
-# function sai { sudo apt install "$@" -y; }
-# function sagrp { sudo apt-get remove --purge "$@" -y; }
-# function dpkgl { dpkg -l | grep "$@"; }
-# alias "saug=sudo apt upgrade -y"
-# alias "saud=sudo apt update -y"
-# alias "sadug=sudo apt update -y && sudo apt dist-upgrade -y"
-# alias "saa=sudo apt autoremove -y"
 
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
