@@ -2,7 +2,7 @@
 # PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/$USER/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -62,7 +62,6 @@ git-extras
 )
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
 source ~/.dotfiles/zsh/key-bindings.zsh
 source ~/.dotfiles/zsh/kev.zsh-theme
 
@@ -96,33 +95,33 @@ source ~/.dotfiles/zsh/kev.zsh-theme
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias cdl = 'cd -args && ls'
-alias intellij="/home/$USER/Downloads/idea-ic-171.4249.39/bin/idea.sh"
+alias intellij="$HOME/Downloads/idea-ic-171.4249.39/bin/idea.sh"
 alias matlab="/usr/local/matlab/r2017a/bin/matlab"
 alias code="/usr/share/code/code"
-alias apython="/home/$USER/anaconda3/bin/python"
-alias jupyter="/home/$USER/anaconda3/bin/jupyter"
-alias subl="/home/$USER/Desktop/programs/sublime_text_3/sublime_text"
-alias sqlite="/home/$USER/Desktop/cs/bu_notes/cs105/sqlite-tools-linux-x86-3200100/sqlite3"
-alias pycharm="/home/$USER/Desktop/codes/pycharm-community-2017.1/bin/pycharm.sh"
-alias astudio="/home/$USER/programs/android-studio/bin/studio.sh" 
+alias apython="$HOME/anaconda3/bin/python"
+alias jupyter="$HOME/anaconda3/bin/jupyter"
+alias subl="$HOME/Desktop/programs/sublime_text_3/sublime_text"
+alias sqlite="$HOME/Desktop/cs/bu_notes/cs105/sqlite-tools-linux-x86-3200100/sqlite3"
+alias pycharm="$HOME/Desktop/codes/pycharm-community-2017.1/bin/pycharm.sh"
+alias astudio="$HOME/programs/android-studio/bin/studio.sh" 
 # alias bandit="ssh bandit"
 # alias b="ssh bandit"
 alias vbox="virtualbox"
-alias ue4="/home/$USER/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
-alias unitee="/home/$USER/Unity-2018.1.0b8/Editor/Unity"
+alias ue4="$HOME/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
+alias unitee="$HOME/Unity-2018.1.0b8/Editor/Unity"
 
-export hw="/home/$USER/Desktop/cs/bu_notes"
-export jp="/home/$USER/Desktop/language/japanese/lj111"
-export cs="/home/$USER/Desktop/cs/cybersec"
+export hw="$HOME/Desktop/cs/bu_notes"
+export jp="$HOME/Desktop/language/japanese/lj111"
+export cs="$HOME/Desktop/cs/cybersec"
 # ftplugin aka file type plugin 
-export fp="/home/$USER/.dotfiles/.vim/after/ftplugin/"
-export dl="/home/$USER/Downloads"
+export fp="$HOME/.dotfiles/.vim/after/ftplugin/"
+export dl="$HOME/Downloads"
 
-alias hw="cd /home/$USER/Desktop/cs/bu_notes"
-alias jp="cd /home/$USER/Desktop/language/japanese/lj111"
-alias cs="cd /home/$USER/Desktop/cs/cybersec"
-alias fp="/home/$USER/.dotfiles/.vim/after/ftplugin/"
-alias dl="/home/$USER/Downloads"
+alias hw="cd $HOME/Desktop/cs/bu_notes"
+alias jp="cd $HOME/Desktop/language/japanese/lj111"
+alias cs="cd $HOME/Desktop/cs/cybersec"
+alias fp="$HOME/.dotfiles/.vim/after/ftplugin/"
+alias dl="$HOME/Downloads"
 
 alias libro="libreoffice"
 alias hls="history | tail -20"
@@ -179,12 +178,12 @@ alias gdt='git diff-tool'
 alias "glon=git log --oneline --decorate --name-status"
 alias "grm=git rm" 
 alias "tcpcopy=/usr/local/tcpcopy/sbin/tcpcopy"
-alias "oc=/home/$USER/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
+alias "oc=$HOME/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v3.9.0-191fece-linux-64bit/oc"
 
 # Compress then Encrypt
-alias "encr=/home/$USER/.dotfiles/zsh/encrypt.sh"
+alias "encr=$HOME/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
-alias "decr=/home/$USER/.dotfiles/zsh/decrypt.sh"
+alias "decr=$HOME/.dotfiles/zsh/decrypt.sh"
 alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
 
 alias "p=ps aux | rg -i"
@@ -210,27 +209,33 @@ bindkey "a" expand-aliases
 alias "pk=pkill"
 alias "spk=sudo pkill"
 alias "chx=chmod +x"
+alias "python=python3"
+alias "pip=pip3"
+alias "sudb=sudo updatedb"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
     # -P is progress, shows progress bar while copying files
 
-export ANDROID_HOME="/home/$USER/programs/sdk"
+export ANDROID_HOME="$HOME/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export ANDROID_NDK="/home/$USER/programs/android-ndk-r10e"
-export WORKON_HOME="/home/$USER/Desktop/projects/.virtualenvs"
-export PROJECT_HOME="/home/$USER/Desktop/projects"
+export ANDROID_NDK="$HOME/programs/android-ndk-r10e"
+export PROJECT_HOME="$HOME/Desktop/projects"
+
+# export workon home first for virtualenvwrapper
+export WORKON_HOME="$HOME/Desktop/projects/.virtualenvs"
+source $ZSH/plugins/virtualenvwrapper/virtualenvwrapper.plugin.zsh
 
 export HIL_ENDPOINT="http://127.0.0.1:5000"
 
-source "/etc/bash_completion.d/virtualenvwrapper"
+# source "/etc/bash_completion.d/virtualenvwrapper"
 
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
-function tm { mv "$@" "/home/$USER/Desktop/trash/"; }
-function emulator { cd "/home/$USER/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
+function tm { mv "$@" "$HOME/Desktop/trash/"; }
+function emulator { cd "$HOME/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
 function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
@@ -243,7 +248,7 @@ function ssstanm { sudo systemctl start network-manager; }
 function dpkgl { dpkg -l | grep "$@"; }
 function note { touch $(date | sed 's/ /-/g' | sed 's/:/-/g' | tr '[:upper:]' '[:lower:]').txt; }
 function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" && ps2pdf $(echo "$1" | awk -F '\.' '{print $1}').ps $(echo "$1" | awk -F '\.' '{print $1}').pdf && rm $(echo "$1" | awk -F '\.' '{print $1}').ps; }
-# function t { tcpdump -r /home/$USER/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
+# function t { tcpdump -r $HOME/Desktop/cs/bu_notes/ec521/hw/traffic.dump "$@" }
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
@@ -286,7 +291,7 @@ function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) }
 
 export EDITOR=vim
 #export VISUAL=vim
-#export PATH="/home/$USER/node/node-v8.9.0-linux-x64/bin:$PATH"
+#export PATH="$HOME/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
 
 # export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
@@ -322,18 +327,19 @@ zle -N zle-line-init
 # for tmuxinator
 source ~/.dotfiles/zsh/tmuxinator.zsh
 
-export TMUXINATOR_CONFIG="/home/$USER/.dotfiles/tmuxinator"
-# export XDG_CONFIG_HOME="/home/$USER/.dotfiles"
+export TMUXINATOR_CONFIG="$HOME/.dotfiles/tmuxinator"
+# export XDG_CONFIG_HOME="$HOME/.dotfiles"
 
 #Set JAVA_HOME
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export JAVA_HOME
-
-source /home/$USER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_PLUGIN_FOLDER="$HOME/.github"
 
 # for zsh autosuggestions and zsh history substring search
 
 source /home/kev/.oh-my-zsh/plugins/history-substring-search/history-substring-search.plugin.zsh
+source $ZSH_PLUGIN_FOLDER/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $ZSH_PLUGIN_FOLDER/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
@@ -373,11 +379,11 @@ if command -v tmux>/dev/null; then
     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 fi
 
-cd /home/$USER/Desktop/cs/bu_notes; clear
+cd $HOME/Desktop/cs/bu_notes; clear
 
-export NODE_PATH=/usr/local/lib/node_modules:/home/$USER/.npm:/usr/lib/nodejs
+export NODE_PATH=/usr/local/lib/node_modules:$HOME/.npm:/usr/lib/nodejs
 
-export NVM_DIR="/home/$USER/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # to use vim as the man page viewer (useful when you are using shift+k in vim)

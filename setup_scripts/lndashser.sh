@@ -4,7 +4,7 @@ install() {
     if hash pacman 2>/dev/null; then
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
-        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm i3-blocks xdotool htop rofi wireshark blender python-pip curl tmux 
+        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm i3-blocks xdotool htop rofi wireshark blender python-pip curl tmux pip
 
         # vim dependencies
         sudo apt install libncurses5-dev libgnome2-dev libgnomeui-dev \
@@ -14,6 +14,10 @@ install() {
 
         # light dependencies
         sudo apt install help2man
+
+        # virtualenv
+        sudo apt install virtualenvwrapper
+        pip install virtualenv virtualenvwrapper
     fi
 }
 

@@ -2,3 +2,6 @@ libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbono
 help2man
 ruby
 ruby-dev
+python-pip
+python3-pip
+virtualenvwrapper
