@@ -29,12 +29,17 @@ root: ~/
 
 windows:
   - scratch:
-      layout: main-vertical
+      # https://stackoverflow.com/questions/9812000/specify-pane-percentage-in-tmuxinator-project?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+      layout: b147,208x73,0,0[208x62,0,0,208x10,0,63{104x10,0,63,103x10,105,63}]
       panes:
+        - clear
+        - clear
         - clear
         - clear
   - work:
-      layout: main-vertical
+      layout: b147,208x73,0,0[208x62,0,0,208x10,0,63{104x10,0,63,103x10,105,63}]
       panes:
+        - clear
+        - clear
         - clear
         - clear

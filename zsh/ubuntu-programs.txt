@@ -5,3 +5,11 @@ ruby-dev
 python-pip
 python3-pip
 virtualenvwrapper
+tmux
+tmuxinator
+i3-wm i3-wm-dbg rofi i3
+xserver-xorg-input-synaptics
+dconf-tools
+*libinput*
+i3blocks
+--fix-broken

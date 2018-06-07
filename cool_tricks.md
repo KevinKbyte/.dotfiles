@@ -71,3 +71,14 @@ journalctl -fu <program>
   Look for .part files (partially downloaded packages) in /var/cache/pacman/pkg and remove them (often caused by usage of a custom XferCommand in pacman.conf).
   Run:
   find /var/cache/pacman/pkg/ -iname "*.part" -exec rm {} \;
+
+# How to enable tap to click on touchpad for libinput
+  libinput list-devices
+  # find the device id for the touchpad
+  xinput set-prop 14
+  # find the option ids for the touchpad
+  xinput --watch-props 14
+  # set the libinput Tapping Enabled (279) from 0 to 1
+  xinput set-prop 14 279 1
+  # look at the output and rejoice!
+  xinput --watch-props 14

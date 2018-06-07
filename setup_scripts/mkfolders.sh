@@ -2,7 +2,12 @@ cd ~/
 mkdir .github; cd .github
 
 mkdir misc; cd misc
+# install ripgrep
+mkdir ripgrep; cd ripgrep
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+sudo dpkg -i ripgrep_0.8.1_amd64.deb
 # Install rclone
+cd ..
 curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 unzip rclone-current-linux-amd64.zip
 cd rclone-*-linux-amd64

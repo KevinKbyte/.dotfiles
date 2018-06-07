@@ -21,6 +21,12 @@
 # bindkey -s '\el' 'ls\n'                               # [Esc-l] - run command: ls
 #  is to allow use of thes commands even when in middle of command
 
+# alt+r 
+bindkey -s 'r' ' | rg -i '
+
+# ctrl+space to complete
+bindkey '^ ' autosuggest-execute
+
 # alt+l
 bindkey -s '\el' 'ls -a\n'                               # [Esc-l] - run command: ls -a
 

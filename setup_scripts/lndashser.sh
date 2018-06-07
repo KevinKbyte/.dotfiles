@@ -4,7 +4,10 @@ install() {
     if hash pacman 2>/dev/null; then
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
-        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm i3-blocks xdotool htop rofi wireshark blender python-pip curl tmux pip
+        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel xdotool htop wireshark blender python-pip curl tmux tmuxinator pip
+
+        # i3-wm 
+        sudo apt-get install i3-wm i3blocks rofi i3-wm-dbg
 
         # vim dependencies
         sudo apt install libncurses5-dev libgnome2-dev libgnomeui-dev \
@@ -18,6 +21,13 @@ install() {
         # virtualenv
         sudo apt install virtualenvwrapper
         pip install virtualenv virtualenvwrapper
+
+        # discord
+        cd ~/Downloads
+        rm discord*.deb
+        wget https://discordapp.com/api/download?platform=linux&format=deb -O discord.deb
+        sudo dpkg -i discord*.deb
+        sudo 
     fi
 }
 
@@ -31,6 +41,8 @@ lns() {
 
 	if [ -d "$DOTFILES" ]; then
 	    cd ~
+        cd /etc/profile.d
+        sudo ln -s ~/.dotfiles/i3/scripts/.scripts/mystart .
 	    ln -s ~/.dotfiles/zsh/.zshrc .
 	    ln -s ~/.dotfiles/.tmux/.tmux.conf . 
 	    ln -s ~/.dotfiles/i3/ ./.config/

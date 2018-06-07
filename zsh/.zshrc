@@ -208,10 +208,12 @@ bindkey "a" expand-aliases
 
 alias "pk=pkill"
 alias "spk=sudo pkill"
+alias "sctl=sudo systemctl"
 alias "chx=chmod +x"
 alias "python=python3"
 alias "pip=pip3"
 alias "sudb=sudo updatedb"
+alias "s=sudo"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
