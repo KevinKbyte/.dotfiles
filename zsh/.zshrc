@@ -34,7 +34,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -209,6 +209,7 @@ bindkey "a" expand-aliases
 
 alias "pk=pkill"
 alias "spk=sudo pkill"
+alias "chx=chmod +x"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -233,7 +234,7 @@ function emulator { cd "/home/$USER/programs/sdk/emulator" && ./emulator @Nexus_
 function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
-function sai { sudo apt install "$@" -y; }
+function sai { sudo apt install "$@" -y && echo "$@" >> ~/.dotfiles/zsh/ubuntu-programs.txt; }
 function sagrp { sudo apt-get remove --purge "$@" -y; }
 function so { source "$@"; }
 function acs { apt-cache search "$@"; }

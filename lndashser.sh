@@ -4,7 +4,16 @@ install() {
     if hash pacman 2>/dev/null; then
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
-        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm xdotool htop rofi wireshark blender python-pip
+        sudo apt-get install rclone rsync git zsh chromium-browser xclip xsel i3-wm i3-blocks xdotool htop rofi wireshark blender python-pip curl tmux 
+
+        # vim dependencies
+        sudo apt install libncurses5-dev libgnome2-dev libgnomeui-dev \
+        libgtk2.0-dev libtk1.0-dev libbonoboui2-dev \
+        libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+        python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev git
+
+        # light dependencies
+        sudo apt install help2man
     fi
 }
 
@@ -31,13 +40,10 @@ lns() {
 	    ln -s ~/.dotfiles/.vim/.vimrc .
 	    # Gets vim plug working
 	    ln -s ~/.dotfiles/.vim .
-        if [ ! -d ~/.oh-my-zsh ]; then
-            sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        fi
-        if [ ! -f ~/.vim/autoload/plug.vim ]; then
-            curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        fi
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        
 
         if hash rg 2>/dev/null; then
             cd ~/test_files
@@ -70,7 +76,7 @@ lns() {
 while true; do
     read -p "Do you want to install starting programs?" yn
     case $yn in
-        [Yy]* ) install; break;;
+        [Yy]* ) install; lns; break;;
         [Nn]* ) lns; exit;;
         * ) echo "Please answer yes or no.";;
     esac
