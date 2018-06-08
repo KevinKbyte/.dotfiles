@@ -27,7 +27,27 @@ install() {
         rm discord*.deb
         wget https://discordapp.com/api/download?platform=linux&format=deb -O discord.deb
         sudo dpkg -i discord*.deb
-        sudo 
+
+        # komorebi
+        # libgtop2-dev, libgtk-3-dev, gtk+-3.0 libgtop-2.0 glib-2.0>=2.38 gee-0.8 libwnck-3.0 clutter-gtk-1.0 clutter-1.0 clutter-gst-3.0 cmake valac
+
+        # ranger
+        sudo apt-get install ranger
+
+        # clamav
+        sudo apt-get install "clamav*"
+
+        # xwinwrap
+        # example: nice -n 15 xwinwrap -ni -nf -ov -sp -st -fs -b -s -o 1.000000 -- mplayer /home/kev/Pictures/cat.mp4 -quiet -noconsolecontrols -loop 0 -nosound -wid WID
+        cd ~/.github/i3/
+        sudo apt-get install xorg-dev build-essential libx11-dev x11proto-xext-dev libxrender-dev libxext-dev mplayer
+        git clone https://github.com/ujjwal96/xwinwrap.git
+        cd xwinwrap
+        make
+        sudo make install
+        make clean
+
+        cd ~
     fi
 }
 

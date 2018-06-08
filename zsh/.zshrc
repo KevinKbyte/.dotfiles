@@ -214,6 +214,7 @@ alias "python=python3"
 alias "pip=pip3"
 alias "sudb=sudo updatedb"
 alias "s=sudo"
+alias "rgr=ranger"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive

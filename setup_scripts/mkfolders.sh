@@ -1,4 +1,5 @@
 cd ~/
+mkdir ~/Pictures/screenshots
 mkdir .github; cd .github
 
 mkdir misc; cd misc
