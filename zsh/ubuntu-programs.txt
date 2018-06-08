@@ -29,3 +29,11 @@ cmake valac
 ranger
 clamav*
 mplayer
+docker
+docker
+steam
+docker-*
+libx11-dev
+libxtst-dev
+libsm-dev
+vim-gtk

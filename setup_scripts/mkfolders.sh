@@ -1,4 +1,8 @@
+#!/usr/bin/env sh
+
 cd ~/
+TEST_FILES=~/test_files
+mkdir $TEST_FILES
 mkdir ~/Pictures/screenshots
 mkdir .github; cd .github
 
@@ -23,41 +27,43 @@ sudo mandb
 
 # Install vim
 cd ~/.github
-git clone https://github.com/vim/vim
-cd vim
-./configure \
-    --enable-multibyte \
-    --enable-perlinterp=dynamic \
-    --enable-rubyinterp=dynamic \
-    --with-ruby-command=/usr/bin/ruby \
-    --enable-pythoninterp=dynamic \
-    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
-    --enable-python3interp \
-    --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
-    --enable-luainterp \
-    --with-luajit \
-    --enable-cscope \
-    --enable-gui=auto \
-    --with-features=huge \
-    --with-x \
-    --enable-fontset \
-    --enable-largefile \
-    --disable-netbeans \
-    --with-compiledby="kev" \
-    --enable-fail-if-missing
+# vim-gtk has clipboard support
+sudo apt-get install vim-gtk
+# git clone https://github.com/vim/vim
+# cd vim
+# ./configure \
+#     --enable-multibyte \
+#     --enable-perlinterp=dynamic \
+#     --enable-rubyinterp=dynamic \
+#     --with-ruby-command=/usr/bin/ruby \
+#     --enable-pythoninterp=dynamic \
+#     --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+#     --enable-python3interp \
+#     --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
+#     --enable-luainterp \
+#     --with-luajit \
+#     --enable-cscope \
+#     --enable-gui=auto \
+#     --with-features=huge \
+#     --with-x \
+#     --enable-fontset \
+#     --enable-largefile \
+#     --disable-netbeans \
+#     --with-compiledby="kev" \
+#     --enable-fail-if-missing
 
-# make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
-# to easily uninstall vim by:
-# dpkg -r vim
-sudo apt install checkinstall
-sudo checkinstall
-# to complete installation of vim
-sudo make install
-# to set vim as default editor
-sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
-sudo update-alternatives --set editor /usr/local/bin/vim
-sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-sudo update-alternatives --set vi /usr/local/bin/vim
+# # make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
+# # to easily uninstall vim by:
+# # dpkg -r vim
+# sudo apt install checkinstall
+# sudo checkinstall
+# # to complete installation of vim
+# sudo make install
+# # to set vim as default editor
+# sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+# sudo update-alternatives --set editor /usr/local/bin/vim
+# sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+# sudo update-alternatives --set vi /usr/local/bin/vim
 
 cd ~/.github
 mkdir zsh; cd zsh
@@ -75,3 +81,28 @@ git clone https://github.com/vivien/i3blocks-contrib
 cd rclone
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+cd TEST_FILES
+
+# Docker
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+while true; do
+    read -p "Do you have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88?" yn
+    case $yn in
+        [Yy]* ) 
+            sudo add-apt-repository \
+               "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+               $(lsb_release -cs) \
+               stable"
+            sudo apt-get update
+            sudo apt-get install docker-ce
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done

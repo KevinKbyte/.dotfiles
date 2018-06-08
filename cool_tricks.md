@@ -73,6 +73,7 @@ journalctl -fu <program>
   find /var/cache/pacman/pkg/ -iname "*.part" -exec rm {} \;
 
 # How to enable tap to click on touchpad for libinput
+  https://wiki.archlinux.org/index.php/Libinput
   libinput list-devices
   # find the device id for the touchpad
   xinput set-prop 14
@@ -82,3 +83,16 @@ journalctl -fu <program>
   xinput set-prop 14 279 1
   # look at the output and rejoice!
   xinput --watch-props 14
+
+# How to make zsh default shell
+  https://github.com/robbyrussell/oh-my-zsh/issues/5401
+  Put into .bashrc or .bash_profile (.bash_profile didn't work for me)
+  if [[ $- == *i*  ]]]; then
+    export SHELL=zsh
+    exec zsh -l
+  fi
+
+# How to prepend text to a file
+  https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+  sed -i.old '1s;^;to be prepended;' inFile
+  -i modifier is used to write update in place and take backup if any extension given. 1s;^;replacement-string; substitutes the beginning of the first line by the given replacement string using ; as a command delimiter
