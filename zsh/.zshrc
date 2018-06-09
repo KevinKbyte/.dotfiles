@@ -106,7 +106,7 @@ alias astudio="$HOME/programs/android-studio/bin/studio.sh"
 # alias bandit="ssh bandit"
 # alias b="ssh bandit"
 alias vbox="virtualbox"
-alias ue4="$HOME/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
+# alias ue4="$HOME/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
 alias unitee="$HOME/Unity-2018.1.0b8/Editor/Unity"
 
 export hw="$HOME/Desktop/cs/bu_notes"
