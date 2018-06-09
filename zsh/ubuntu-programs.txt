@@ -46,3 +46,5 @@ rofi
 pkg-config
 --fix-broken
 rofi
+ibus-anthy
+xbindkeys

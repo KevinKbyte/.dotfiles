@@ -48,8 +48,8 @@
 #  c:41 + m:0x4
 
 # "xdotool keydown Alt keydown Left && xdotool keyup Alt keyup Left"
-"xdotool keydown Alt keydown Tab && xdotool keyup Alt keyup Tab"
-    release + F13 + release
+"xdotool keydown Control keydown Alt keydown Super keydown a && sleep 0.5 && xdotool keyup Control keyup Alt keyup Super keyup a"
+Control_R
 
 # "xdotool mousedown 1"
 #     F13

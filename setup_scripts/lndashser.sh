@@ -5,6 +5,9 @@ install() {
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
         sudo apt-get install rsync git zsh chromium-browser xclip xsel xdotool htop wireshark blender python-pip curl tmux tmuxinator python3-pip docker steam
+        
+        # japanese keyboard
+        sudo apt-get install ibus-anthy
 
         # i3-wm 
         sudo apt-get install i3-wm i3blocks rofi i3-wm-dbg

@@ -13,6 +13,9 @@ ps -efl
 # Japanese, Chinese and Korean input
   #### jp
     sai ibus-anthy 
+    change the "next input method" to F13 or whatever, then 
+    xmodmap -e "keycode 105 = F13 NoSymbol F13"
+    To allow for switching of keyboard to Japanese with Control_R
   #### chi
     sai ibus-cangjie
   #### kr
@@ -93,7 +96,7 @@ journalctl -fu <program>
   fi
 
 # How to prepend text to a file
-  https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+# https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
   sed -i.old '1s;^;to be prepended;' inFile
   -i modifier is used to write update in place and take backup if any extension given. 1s;^;replacement-string; substitutes the beginning of the first line by the given replacement string using ; as a command delimiter
 
