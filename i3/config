@@ -1283,7 +1283,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run -nb black -sb tomato -l 10
 # bindsym $mod+d exec rofi -show run -lines 7 -eh 2 -bg "black" -fg "#B00000" -font "System San Francisco Display 15" -hlfg "#999999"
-bindsym $mod+d exec rofi -show run -lines 7 -eh 2 -theme $HOME/.github/i3/rofi-themes/Arc-Dark.rasi
+bindsym $mod+d exec rofi -show run -lines 7 -eh 2 -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi
 
 
 bindsym $mod+shift+d exec rofi -show
