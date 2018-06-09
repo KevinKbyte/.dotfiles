@@ -96,3 +96,7 @@ journalctl -fu <program>
   https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
   sed -i.old '1s;^;to be prepended;' inFile
   -i modifier is used to write update in place and take backup if any extension given. 1s;^;replacement-string; substitutes the beginning of the first line by the given replacement string using ; as a command delimiter
+
+# Issue in Unreal Engine
+/home/kev/.github/misc/UnrealEngine/Engine/Source/ThirdParty/FBX/2018.1.1/lib/gcc4/x86_64-unknown-linux-gnu/release//libfbxsdk.a(fbxutils.o): In function `fbxsdk::FbxPathUtils::GenerateFileName(char const*, char const*)':
+(.text+0x4b8): warning: the use of `tempnam' is dangerous, better use `mkstemp'

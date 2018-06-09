@@ -1330,7 +1330,7 @@ bindsym $sup+grave workspace back_and_forth
 bindsym $sup+Shift+Tab workspace prev
 
 # alt tab functionality
-bindsym Mod1+Tab exec i3-alt-tab --next 
+bindsym Mod1+Tab exec i3-alt-tab --next
 bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
 
 # move focused window
@@ -1693,10 +1693,6 @@ new_window normal 0
 bindsym $mod+g bar hidden_state toggle
 
 # assign [class="Chromium-browser"] $workspace2
-exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
-
-exec xcompmgr -c
-exec xbindkeys -p 
 
 # for_window [class="Chromium-browser"] resize set 500 500
 
@@ -1768,4 +1764,10 @@ bindsym Mode_switch+Shift+comma exec ps -efl | grep 'xmacroplay' | awk '{print $
 # bindsym Mode_switch+Shift+Space exec notify-send "hello"
 
 mouse_warping output
+
+# STARTUP PROGRAMS
 exec --no-startup-id nm-applet
+exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
+exec xcompmgr -c
+exec xbindkeys -p 
+exec discord

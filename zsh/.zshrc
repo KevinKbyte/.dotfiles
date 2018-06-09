@@ -94,7 +94,6 @@ source ~/.dotfiles/zsh/kev.zsh-theme
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# alias cdl = 'cd -args && ls'
 alias intellij="$HOME/Downloads/idea-ic-171.4249.39/bin/idea.sh"
 alias matlab="/usr/local/matlab/r2017a/bin/matlab"
 alias code="/usr/share/code/code"

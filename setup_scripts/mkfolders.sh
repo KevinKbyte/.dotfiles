@@ -7,8 +7,16 @@ mkdir ~/Pictures/screenshots
 mkdir .github; cd .github
 
 mkdir misc; cd misc
+# Unreal Engine
+# https://wiki.unrealengine.com/Building_On_Linux
+git clone git@github.com:EpicGames/UnrealEngine.git
+cd UnrealEngine
+./Setup.sh && ./GenerateProjectFiles.sh && make
+# now can test it with ./Engine/Binaries/Linux/UE4Editor
+sudo cp ./Engine/Binaries/Linux/UE4Editor /usr/bin/
+
 # install ripgrep
-mkdir ripgrep; cd ripgrep
+cd .. && mkdir ripgrep && cd ripgrep
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
 sudo dpkg -i ripgrep_0.8.1_amd64.deb
 # Install rclone
@@ -78,11 +86,22 @@ git clone https://github.com/haikarainen/light
 cd light; make && sudo make install; cd ..
 git clone https://github.com/vivien/i3blocks-contrib
 #git clone 
-cd rclone
+
+# i3-alt-tab
+cd $HOME/.github/i3
+git clone https://github.com/moqmar/i3-alt-tab 
+cd i3-alt-tab
+npm install eyespect i3
+chmod +x index.js
+cd /usr/bin
+sudo ln -s $HOME/.github/i3/index.js i3-alt-tab
+
+cd $HOME/.github/
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 cd TEST_FILES
+
 
 # Docker
 sudo apt-get install \
