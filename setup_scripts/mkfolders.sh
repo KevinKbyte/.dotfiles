@@ -2,16 +2,16 @@
 
 cd ~/
 TEST_FILES=~/test_files
-GITHUB=$HOME/.github
-I3=$HOME/.github/i3
-MISC=$HOME/.github/misc
-ZSH=$HOME/.github/zsh
+GITHUB=$HOME/.github && mkdir $GITHUB
+I3=$HOME/.github/i3 && mkdir $I3
+MISC=$HOME/.github/misc && mkdir $MISC
+ZSH=$HOME/.github/zsh && mkdir $ZSH
 
 mkdir $TEST_FILES
 mkdir ~/Pictures/screenshots
-mkdir .github; cd .github
+cd $GITHUB
 
-mkdir misc; cd misc
+cd $MISC
 # Unreal Engine
 # https://wiki.unrealengine.com/Building_On_Linux
 git clone git@github.com:EpicGames/UnrealEngine.git

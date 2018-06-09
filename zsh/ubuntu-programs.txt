@@ -39,3 +39,10 @@ libsm-dev
 vim-gtk
 gconf-service
 lib32gcc1
+bison
+flex
+xcb*
+rofi
+pkg-config
+--fix-broken
+rofi
