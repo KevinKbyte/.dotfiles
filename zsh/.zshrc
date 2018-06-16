@@ -96,7 +96,7 @@ source ~/.dotfiles/zsh/kev.zsh-theme
 
 alias intellij="$HOME/Downloads/idea-ic-171.4249.39/bin/idea.sh"
 alias matlab="/usr/local/matlab/r2017a/bin/matlab"
-alias code="/usr/share/code/code"
+# alias code="/usr/share/code/code"
 alias apython="$HOME/anaconda3/bin/python"
 alias jupyter="$HOME/anaconda3/bin/jupyter"
 alias subl="$HOME/Desktop/programs/sublime_text_3/sublime_text"

@@ -101,5 +101,14 @@ journalctl -fu <program>
   -i modifier is used to write update in place and take backup if any extension given. 1s;^;replacement-string; substitutes the beginning of the first line by the given replacement string using ; as a command delimiter
 
 # Issue in Unreal Engine
-/home/kev/.github/misc/UnrealEngine/Engine/Source/ThirdParty/FBX/2018.1.1/lib/gcc4/x86_64-unknown-linux-gnu/release//libfbxsdk.a(fbxutils.o): In function `fbxsdk::FbxPathUtils::GenerateFileName(char const*, char const*)':
-(.text+0x4b8): warning: the use of `tempnam' is dangerous, better use `mkstemp'
+> /home/kev/.github/misc/UnrealEngine/Engine/Source/ThirdParty/FBX/2018.1.1/lib/gcc4/x86_64-unknown-linux-gnu/release//libfbxsdk.a(fbxutils.o): In function `fbxsdk::FbxPathUtils::GenerateFileName(char const*, char const*)':
+> (.text+0x4b8): warning: the use of `tempnam' is dangerous, better use `mkstemp'
+
+# Unreal Engine
+To regenerate project files (ex: bc update engine version)
+<PATH to regenerateproject.sh in your UE4 engine files> <PATH to thing.uproject>
+make <Project name>Editor
+
+Whenever you need to recompile, you can hot recompile w/in UE4
+To get error messages:
+make <Project name>Editor

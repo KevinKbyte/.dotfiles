@@ -48,3 +48,14 @@ pkg-config
 rofi
 ibus-anthy
 xbindkeys
+lldb-6.0
+liblldb-6.0*
+lldb
+neomutt
+youtube-dl
+libvdpau1
+libvdpau*
+vdpau-driver-all
+vdpauinfo libvdpau-va-gl1
+vlc
+virtualbox

@@ -4,7 +4,7 @@ install() {
     if hash pacman 2>/dev/null; then
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
     elif hash apt-get 2>/dev/null; then
-        sudo apt-get install rsync git zsh chromium-browser xclip xsel xdotool htop wireshark blender python-pip curl tmux tmuxinator python3-pip docker steam
+        sudo apt-get install rsync git zsh chromium-browser xclip xsel xdotool htop wireshark blender python-pip curl tmux tmuxinator python3-pip docker steam vlc virtualbox
         
         # japanese keyboard
         sudo apt-get install ibus-anthy
