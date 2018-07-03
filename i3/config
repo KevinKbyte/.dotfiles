@@ -26,6 +26,7 @@ bindsym XF86KbdBrightnessUp exec /home/$USER/.config/i3/scripts/kbd_backlight.sh
 bindsym XF86KbdBrightnessDown exec /home/$USER/.config/i3/scripts/kbd_backlight.sh down 
 
 # Touchpad controls
+# bindsym XF86TouchpadToggle exec /home/$USER/.config/i3/scripts/toggle_touchpad.sh # toggle touchpad
 bindsym XF86TouchpadToggle exec /home/$USER/.config/i3/scripts/toggle_touchpad.sh # toggle touchpad
 
 # Pulse Audio controls
@@ -59,8 +60,8 @@ bindsym $mod+shift+a mode "mode_small_mouse_move"
 
 #     bindsym $mod+j exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
 #     bindsym $mod+k exec xdotool mouseup 1
-#     bindsym Mod1+j exec xdotool click 4
-#     bindsym Mod1+k exec xdotool click 5
+bindsym Mod1+j --release exec xdotool click 4 click 4 click 4 
+bindsym Mod1+k --release exec xdotool click 5 click 5 click 5
 #     # Left click and exit
 #     bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
     
@@ -112,8 +113,8 @@ mode "mode_small_mouse_move" {
     # next mode
     # bindsym space mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
-    # bindsym Mod1+j exec xdotool click 4
-    # bindsym Mod1+k exec xdotool click 5
+    bindsym Mod1+j exec xdotool click 4
+    bindsym Mod1+k exec xdotool click 5
 
     # exit mode
     bindsym $mod+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
@@ -1285,8 +1286,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec rofi -show run -lines 7 -eh 2 -bg "black" -fg "#B00000" -font "System San Francisco Display 15" -hlfg "#999999"
 bindsym $mod+d exec rofi -show run -lines 7 -eh 2 -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi
 
-
-bindsym $mod+shift+d exec rofi -show
+bindsym $mod+shift+d exec rofi -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi -show 
 # bindsym $mod+Mod1+d exec rofi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -1771,5 +1771,6 @@ mouse_warping output
 exec --no-startup-id nm-applet
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 exec xcompmgr -c
-exec xbindkeys -p 
+# exec xbindkeys -p 
 exec discord
+exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh

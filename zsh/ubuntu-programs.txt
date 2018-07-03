@@ -59,3 +59,11 @@ vdpau-driver-all
 vdpauinfo libvdpau-va-gl1
 vlc
 virtualbox
+xautolock
+virtualbox-guest-additions-iso
+virtualbox-dkms
+xmacro
+gnupg2
+openshot-qt openshot
+imagemagick
+emacs

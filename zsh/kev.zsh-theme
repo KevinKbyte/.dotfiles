@@ -71,7 +71,7 @@ BOLT="$BRACKETS"
 CMDS="%{$FG[255]%}"
 
 TIME_C=" %${BRACKETS}[%${TIME}%*%${BRACKETS}] "
-AT_C="${AT}🐱 %${RESET}"
+AT_C="${AT}🔥%${RESET}"
 NAME_C="%${BRACKETS}┌[%${NAME}%n%${RESET}"
 GIT_C="%${GIT}%{${git_info}%}"
 COMP_C="${COMP}%m%${BRACKETS}]${RESET}"

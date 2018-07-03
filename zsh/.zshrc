@@ -207,6 +207,13 @@ expand-aliases() {
 zle -N expand-aliases
 bindkey "a" expand-aliases
 
+# Japanese Keyboard
+alias "jpk=ibus-daemon -drx && xmodmap -e \"keycode 105 = F13 NoSymbol F13\""
+# Terminates Japanese Keyboard
+alias "jpkt=sudo pkill ibus-daemon && xmodmap -e \"keycode 105 = Control_R NoSymbol Control_R\""
+
+alias "k=kill"
+alias "sk=sudo kill"
 alias "pk=pkill"
 alias "spk=sudo pkill"
 alias "sctl=sudo systemctl"
@@ -216,6 +223,7 @@ alias "pip=pip3"
 alias "sudb=sudo updatedb"
 alias "s=sudo"
 alias "rgr=ranger"
+
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -268,7 +276,7 @@ function evince { command evince $1 &; }
 # TMuxinator session fn's
 function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
-function man { vim <(command man $1); }
+function man { vim <(command man $@); }
 # function man { man $@ | vim -; }
 
 # function quteb {

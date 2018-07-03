@@ -512,6 +512,12 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+" Tab movement
+nnoremap <leader>mt :tabm 
+nnoremap <leader>t> :tabm +<CR>
+nnoremap <leader>t< :tabm -<CR>
+
+nnoremap <leader>sft :set filetype=
 
 " Write as sudo for readonly files
 cmap w!! w !sudo sh -c "cat > '%'"

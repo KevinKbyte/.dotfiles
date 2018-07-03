@@ -27,9 +27,11 @@ xmodmap -e "keycode 13 = 4 dollar End End"
 xmodmap -e "keycode 15 = 6 asciicircum 6 Home"
 xmodmap -e "keycode 19 = 0 parenright Home parenright"
 xmodmap -e "keycode 26 = e E Escape Escape"
+xmodmap -e "keycode 57 = n N Next Prior"
+xmodmap -e "keycode 33 = p P Prior Next"
 
-# Change Control_R to F13
-xmodmap -e "keycode 105 = F13 NoSymbol F13"
+# Change Control_R to F13 for Japanese keyboard
+# xmodmap -e "keycode 105 = F13 NoSymbol F13"
  
 # for having randomized desktop backgrounds 
 # feh --bg-max --randomize ~/.wallpaper/* 
