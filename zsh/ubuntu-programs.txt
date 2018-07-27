@@ -67,3 +67,13 @@ gnupg2
 openshot-qt openshot
 imagemagick
 emacs
+unrar
+libreoffice-java-common
+samba-common samba
+libsmbclient smbclient python-smbc
+python-crypto
+xattr
+acl
+perl
+samba-client
+python3-smbc
