@@ -77,3 +77,6 @@ acl
 perl
 samba-client
 python3-smbc
+stopwatch
+qutebrowser
+tox

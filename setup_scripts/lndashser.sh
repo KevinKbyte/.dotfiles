@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+TMP=test_files
+if [ ~ -d ~/$TMP ]; then
+    mkdir ~/$TMP
+fi
+
 install() {
     if hash pacman 2>/dev/null; then
         sudo pacman -S rclone rsync git zsh netctl netstat chromium gvim neovim wget curl xclip xsel pip
@@ -50,6 +55,13 @@ install() {
         sudo make install
         make clean
 
+        # Install qutebrowser
+        sudo apt-get install tox
+        cd $TMP
+        git clone https://github.com/qutebrowser/qutebrowser.git
+        cd qutebrowser
+        tox -e mkvenv-pypi
+
         cd ~
     fi
 }
@@ -57,10 +69,6 @@ install() {
 lns() {
     cd ~
     DOTFILES=~/.dotfiles
-    TMP=test_files
-    if [ ~ -d ~/$TMP ]; then
-        mkdir ~/$TMP
-    fi
 
 	if [ -d "$DOTFILES" ]; then
 	    cd ~

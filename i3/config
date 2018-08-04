@@ -60,8 +60,8 @@ bindsym $mod+shift+a mode "mode_small_mouse_move"
 
 #     bindsym $mod+j exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
 #     bindsym $mod+k exec xdotool mouseup 1
-bindsym Mod1+j --release exec xdotool click 4 click 4 click 4 
-bindsym Mod1+k --release exec xdotool click 5 click 5 click 5
+bindsym Mod1+j --release exec xdotool click 5 click 5 click 5
+bindsym Mod1+k --release exec xdotool click 4 click 4 click 4
 #     # Left click and exit
 #     bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
     
