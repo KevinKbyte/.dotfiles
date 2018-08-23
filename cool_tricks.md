@@ -112,3 +112,9 @@ make <Project name>Editor
 Whenever you need to recompile, you can hot recompile w/in UE4
 To get error messages:
 make <Project name>Editor
+
+# Custom Chrome Search Engines
+https://superuser.com/questions/272511/where-do-chrome-chromium-store-search-keywords
+Located in sqlite file $HOME/.config/chrome/Default/Web\ Data
+Check out the contents with:
+  SELECT * from keyword

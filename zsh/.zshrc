@@ -244,6 +244,7 @@ export HIL_ENDPOINT="http://127.0.0.1:5000"
 
 # source "/etc/bash_completion.d/virtualenvwrapper"
 
+function wh { while true ; do "$@" && sleep 2; done; }
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
 function tm { mv "$@" "$HOME/Desktop/trash/"; }

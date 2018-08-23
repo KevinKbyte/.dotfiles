@@ -62,6 +62,9 @@ install() {
         cd qutebrowser
         tox -e mkvenv-pypi
 
+        # jq for i3 move resize script to work
+        sudo apt-get install sqlite3 jq
+
         cd ~
     fi
 }

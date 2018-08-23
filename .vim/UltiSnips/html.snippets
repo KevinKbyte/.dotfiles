@@ -8,8 +8,35 @@ snippet todo "This is a TODO reminder" b
 <!-- TODO: `echo $USER`- ${1:desc} [`!v strftime("%c")`] -->
 endsnippet 
 
-# snippet boi "boilerplate" b
-# <html>
-
-# </html>
-# endsnippet
+# http://htmlshell.com/
+snippet boi "boilerplate" b
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>${1}</title>
+  <meta name="author" content="Kevin">
+  <meta name="description" content="dnameescription here">
+  <meta name="keywords" content="keywords,here">
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <style type="text/css">
+   
+  </style>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-XXXXXXXX-Y']);
+   _gaq.push(['_trackPageview']);
+   (function()
+   {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+  </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
+endsnippet

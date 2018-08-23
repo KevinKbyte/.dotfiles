@@ -80,3 +80,9 @@ python3-smbc
 stopwatch
 qutebrowser
 tox
+gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
+fswatch
+sqlite3
+jq
+qutebrowser
+audacity

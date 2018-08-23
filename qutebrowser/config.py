@@ -554,6 +554,8 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 ## required to exactly match the requested domain. Local domains are
 ## always exempt from hostblocking.
 ## Type: List of String
+
+# c.content.host_blocking.whitelist = ['host1.com', 'host2.com']
 # c.content.host_blocking.whitelist = ['piwik.org']
 
 ## Enable hyperlink auditing (`<a ping>`).

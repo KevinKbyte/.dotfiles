@@ -502,7 +502,7 @@ map <leader>f <Plug>(easymotion-bd-f2)
 " map ;r <Plug>(easymotion-s)
 nmap <leader>h <Plug>(easymotion-next)
 nmap <leader>l <Plug>(easymotion-prev)
-cmap <leader>rcv :e ~/.vimrc<CR>
+nmap <leader>rcv :e ~/.vimrc<CR>
 
 "<>
 
