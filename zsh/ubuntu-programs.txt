@@ -86,3 +86,5 @@ sqlite3
 jq
 qutebrowser
 audacity
+playonlinux
+wine-stable*

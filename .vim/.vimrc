@@ -814,3 +814,33 @@ inoremap x <backspace>
 inoremap o 
 
 nmap K <leader>K
+
+" Text to speech 
+" Took some knowledge from
+" https://github.com/vim-scripts/Speech/blob/master/plugin/speech.vim
+
+let g:SpeechLang = 'en-us'
+
+function! TextToSpeech ()
+  let string = expand("<cWORD>")
+  " echo 'Reading'
+  echo string
+  " let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
+  let string = substitute (string, '[', ' osb ', 'g')
+  let string = substitute (string, ']', ' csb ', 'g')
+  let string = substitute (string, "'", ' squote ', 'g')
+  let string = substitute (string, '"', ' dquote ', 'g')
+  let string = substitute (string, '&', ' ampsand ', 'g')
+  let l:api = '"http://translate.google.com/' . 
+                                 \ 'translate_tts?ie=UTF-8&tl=' . g:SpeechLang .
+                                 \ '&client=tw-ob&' .
+                                 \ '&q=' . string . '"'
+  " let x = system ('mplayer ' .
+  "                 \ api .
+  "                 \ ' > /dev/null 2>&1')
+  echo l:api
+  let l:cmd = '!mplayer ' . l:api . ' > /dev/null 2>&1'
+  execute l:cmd
+endfunction
+
+nnoremap <Leader>s :call TextToSpeech()<CR>
