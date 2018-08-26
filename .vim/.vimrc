@@ -819,28 +819,76 @@ nmap K <leader>K
 " Took some knowledge from
 " https://github.com/vim-scripts/Speech/blob/master/plugin/speech.vim
 
+" allows <C-a> to also increment letters
+set nrformats+=alpha
+
 let g:SpeechLang = 'en-us'
 
-function! TextToSpeech ()
-  let string = expand("<cWORD>")
-  " echo 'Reading'
-  echo string
-  " let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
-  let string = substitute (string, '[', ' osb ', 'g')
-  let string = substitute (string, ']', ' csb ', 'g')
-  let string = substitute (string, "'", ' squote ', 'g')
-  let string = substitute (string, '"', ' dquote ', 'g')
-  let string = substitute (string, '&', ' ampsand ', 'g')
-  let l:api = '"http://translate.google.com/' . 
-                                 \ 'translate_tts?ie=UTF-8&tl=' . g:SpeechLang .
-                                 \ '&client=tw-ob&' .
-                                 \ '&q=' . string . '"'
-  " let x = system ('mplayer ' .
-  "                 \ api .
-  "                 \ ' > /dev/null 2>&1')
-  echo l:api
-  let l:cmd = '!mplayer ' . l:api . ' > /dev/null 2>&1'
-  execute l:cmd
+function! TexttoSpeech (string)
+    echo a:string
+    let string = a:string
+    let string = substitute (string, '[', ' osb ', 'g')
+    let string = substitute (string, ']', ' csb ', 'g')
+    let string = substitute (string, '{', ' ocb ', 'g')
+    let string = substitute (string, '}', ' ccb ', 'g')
+    let string = substitute (string, '(', ' opar ', 'g')
+    let string = substitute (string, ')', ' seepar ', 'g')
+    let string = substitute (string, "'", ' squote ', 'g')
+    let string = substitute (string, '"', ' dquote ', 'g')
+    let string = substitute (string, '&', ' ampsand ', 'g')
+    let string = substitute (string, '\.', ' period ', 'g')
+    let string = substitute (string, ',', ' comma ', 'g')
+    let string = substitute (string, ':', ' colon ', 'g')
+    let string = substitute (string, ';', ' semicolon ', 'g')
+    let string = substitute (string, '<', ' less thans ', 'g')
+    let string = substitute (string, '>', ' greater thans ', 'g')
+    let string = substitute (string, '/', ' forslash ', 'g')
+    let string = substitute (string, '\', ' backslash ', 'g')
+    let string = substitute (string, '\^', ' caret ', 'g')
+    let string = substitute (string, '?', ' q mark ', 'g')
+    let string = substitute (string, '\!', ' x mark ', 'g')
+    let string = substitute (string, '\#', ' hash ', 'g')
+    let string = substitute (string, '\$', ' dollar ', 'g')
+    let string = substitute (string, '%', ' percent ', 'g')
+    let string = substitute (string, '\*', ' asterick ', 'g')
+    let string = substitute (string, '\-', ' minus ', 'g')
+    let string = substitute (string, '+', ' plus ', 'g')
+    let string = substitute (string, '=', ' equals ', 'g')
+    let string = substitute (string, '@', ' at ', 'g')
+    let string = substitute (string, '\`', ' backtick ', 'g')
+    let string = substitute (string, '\~', ' tilde ', 'g')
+    let string = substitute (string, '_', ' underscore ', 'g')
+
+    " allows distinguishing of capital letters in audio
+    let l:alph = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+        \ 'V', 'W', 'X', 'Y', 'Z']
+    for s:item in l:alph
+        let string = substitute (string, '\C' . s:item, ' cap ' . s:item, 'g')
+    endfor
+
+    " let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
+    let l:api = '"http://translate.google.com/' . 
+                                   \ 'translate_tts?ie=UTF-8&tl=' . g:SpeechLang .
+                                   \ '&client=tw-ob' .
+                                   \ '&q=' . string . '"'
+    " let x = system ('mplayer ' .
+    "                 \ api .
+    "                 \ ' > /dev/null 2>&1')
+    " let l:cmd = '!mplayer ' . l:api . ' > /dev/null 2>&1'
+    let l:cmd = '!mplayer ' . l:api 
+    " echo l:cmd
+    execute l:cmd
 endfunction
 
-nnoremap <Leader>s :call TextToSpeech()<CR>
+function! LineTextToSpeech ()
+    let string = getline(".")
+    call TexttoSpeech(string)
+endfunction
+
+function! WordTextToSpeech ()
+    " let string = expand("<cWORD>")
+    call TexttoSpeech(expand("<cWORD>"))
+endfunction
+
+nnoremap <Leader>s :call WordTextToSpeech()<CR>
+nnoremap <Leader>l :call LineTextToSpeech()<CR>
