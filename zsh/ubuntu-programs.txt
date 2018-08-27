@@ -88,3 +88,4 @@ qutebrowser
 audacity
 playonlinux
 wine-stable*
+espeak

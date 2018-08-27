@@ -845,8 +845,8 @@ function! TexttoSpeech (string)
     let string = substitute (string, '/', ' forslash ', 'g')
     let string = substitute (string, '\', ' backslash ', 'g')
     let string = substitute (string, '\^', ' caret ', 'g')
-    let string = substitute (string, '?', ' q mark ', 'g')
-    let string = substitute (string, '\!', ' x mark ', 'g')
+    let string = substitute (string, '?', ' question ', 'g')
+    let string = substitute (string, '\!', ' exclam ', 'g')
     let string = substitute (string, '\#', ' hash ', 'g')
     let string = substitute (string, '\$', ' dollar ', 'g')
     let string = substitute (string, '%', ' percent ', 'g')
@@ -866,22 +866,25 @@ function! TexttoSpeech (string)
         let string = substitute (string, '\C' . s:item, ' cap ' . s:item, 'g')
     endfor
 
-    " let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
-    let l:api = '"http://translate.google.com/' . 
-                                   \ 'translate_tts?ie=UTF-8&tl=' . g:SpeechLang .
-                                   \ '&client=tw-ob' .
-                                   \ '&q=' . string . '"'
-    " let x = system ('mplayer ' .
-    "                 \ api .
-    "                 \ ' > /dev/null 2>&1')
-    " let l:cmd = '!mplayer ' . l:api . ' > /dev/null 2>&1'
-    let l:cmd = '!mplayer ' . l:api 
+    let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
+
+    let l:cmd = '!espeak -v en "' . string . '"'
+    " let l:api = '"http://translate.google.com/' . 
+    "                                \ 'translate_tts?ie=UTF-8&tl=' . g:SpeechLang .
+    "                                \ '&client=tw-ob' .
+    "                                \ '&q=' . string . '"'
+    " " let x = system ('mplayer ' .
+    " "                 \ api .
+    " "                 \ ' > /dev/null 2>&1')
+    " " let l:cmd = '!mplayer ' . l:api . ' > /dev/null 2>&1'
+    " let l:cmd = '!mplayer ' . l:api 
     " echo l:cmd
     execute l:cmd
 endfunction
 
 function! LineTextToSpeech ()
     let string = getline(".")
+    
     call TexttoSpeech(string)
 endfunction
 
