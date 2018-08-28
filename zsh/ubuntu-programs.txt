@@ -89,3 +89,6 @@ audacity
 playonlinux
 wine-stable*
 espeak
+pdfgrep
+pdfgrep
+anki
