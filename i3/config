@@ -45,7 +45,27 @@ bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 bindsym $mod+z exec light -U 10
 bindsym $mod+x exec light -A 5 
 
-bindsym $mod+shift+a mode "mode_small_mouse_move"
+# Common clicks
+bindsym $mod+shift+a mode "mode_common_clicks"
+
+mode "mode_common_clicks" {
+
+    # Opens previous page in new tab
+    bindsym b mode "default"; exec eval $(xdotool getmouselocation --shell) && xdotool mousemove 18 63 && xdotool click 2 && sleep 0.075 && xdotool mousemove $X $Y
+
+    # Toggles plugin
+    bindsym s mode "default" exec sleep 0.5 && xdotool key Control_L+l && xdotool key s && xdotool key Alt_R+Return && xdotool key Control_L+l && xdotool key s+Return && eval $(xdotool getmouselocation --shell) && sleep 0.4 && xdotool mousemove 1264 278 && xdotool click 1 && sleep 0.09 && xdotool mousemove $X $Y && xdotool key Control_L+w
+
+    # moves up/down the page by left mousing the scroll bar
+    bindsym j mode "mode_mouse_move"; exec xdotool mousemove 1919 1054 && xdotool mousedown 1
+    bindsym k mode "mode_mouse_move"; exec xdotool mousemove 1919 106 && xdotool mousedown 1
+
+    # bindsym s mode "default"; exec 
+
+    bindsym $sup+space mode "default"
+}
+
+# bindsym $mod+shift+a mode "mode_small_mouse_move"
 
 # set $mode_click
 # mode "mode_click" {
