@@ -14,3 +14,4 @@ function! GetCountsForCurrLine ()
 endfunction
 
 nnoremap <leader>wc :call GetCountsForCurrLine()<CR>
+nnoremap <C-i> <C-i>

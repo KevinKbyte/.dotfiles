@@ -92,3 +92,5 @@ espeak
 pdfgrep
 pdfgrep
 anki
+expect
+stterm

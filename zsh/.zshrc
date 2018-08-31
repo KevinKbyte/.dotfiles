@@ -63,7 +63,8 @@ git-extras
 
 source $ZSH/oh-my-zsh.sh
 source ~/.dotfiles/zsh/key-bindings.zsh
-source ~/.dotfiles/zsh/kev.zsh-theme
+# source ~/.dotfiles/zsh/kev.zsh-theme
+source ~/.dotfiles/zsh/kev-easy-cmd-yank.zsh-theme
 
 # User configuration
 

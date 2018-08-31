@@ -50,19 +50,47 @@ bindsym $mod+shift+a mode "mode_common_clicks"
 
 mode "mode_common_clicks" {
 
+set $autoplayX 1826
+set $autoplayY 182
+set $autoplaySleepOGPosition 0.075
+
+set $backPageX 18
+set $backPageY 63
+set $backSleepOGPosition 0.075
+
+set $pluginX 1264
+set $pluginY 278
+set $pluginSleepWaitForKeyUp 0.05
+set $pluginSleepLoadSettingsPage 0.4
+set $pluginSleepOGPosition 0.09
+
+set $downX 1919
+set $downY 1054
+
+set $upX 1919
+set $upY 106
+
+set $timeX 1050
+set $timeY 100
+
+    # Click Youtube Autoplay
+    bindsym a mode "default"; exec eval $(xdotool getmouselocation --shell) && xdotool mousemove $autoplayX $autoplayY && xdotool click 1 && sleep $autoplaySleepOGPosition && xdotool mousemove $X $Y
+    
     # Opens previous page in new tab
-    bindsym b mode "default"; exec eval $(xdotool getmouselocation --shell) && xdotool mousemove 18 63 && xdotool click 2 && sleep 0.075 && xdotool mousemove $X $Y
+    bindsym b mode "default"; exec eval $(xdotool getmouselocation --shell) && xdotool mousemove $backPageX $backPageY && xdotool click 2 && sleep $backSleepOGPosition && xdotool mousemove $X $Y
 
     # Toggles plugin
-    bindsym s mode "default" exec sleep 0.5 && xdotool key Control_L+l && xdotool key s && xdotool key Alt_R+Return && xdotool key Control_L+l && xdotool key s+Return && eval $(xdotool getmouselocation --shell) && sleep 0.4 && xdotool mousemove 1264 278 && xdotool click 1 && sleep 0.09 && xdotool mousemove $X $Y && xdotool key Control_L+w
+    bindsym s mode "default" exec sleep $pluginSleepWaitForKeyUp && xdotool key Control_L+l && xdotool key s && xdotool key Alt_R+Return && xdotool key Control_L+l && xdotool key s+Return && eval $(xdotool getmouselocation --shell) && sleep $pluginSleepLoadSettingsPage && xdotool mousemove $pluginX $pluginY && xdotool click 1 && sleep $pluginSleepOGPosition && xdotool mousemove $X $Y && xdotool key Control_L+w
 
     # moves up/down the page by left mousing the scroll bar
-    bindsym j mode "mode_mouse_move"; exec xdotool mousemove 1919 1054 && xdotool mousedown 1
-    bindsym k mode "mode_mouse_move"; exec xdotool mousemove 1919 106 && xdotool mousedown 1
+    bindsym j mode "mode_mouse_move"; exec xdotool mousemove $downX $downY && xdotool mousedown 1
+    bindsym k mode "mode_mouse_move"; exec xdotool mousemove $upX $upY && xdotool mousedown 1
 
+    bindsym t mode "default"; exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '$HOME/.dotfiles/i3/scripts/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
     # bindsym s mode "default"; exec 
 
     bindsym $sup+space mode "default"
+    bindsym space mode "mode_mouse_move"
 }
 
 # bindsym $mod+shift+a mode "mode_small_mouse_move"
@@ -1289,10 +1317,10 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym control+Mod1+t exec i3-sensible-terminal
+bindsym control+Mod1+t exec i3-sensible-terminal && i3-msg '[title="Terminal"] mark terminal'
 
 # start a chrome window
-bindsym $sup+Return exec chromium-browser
+bindsym $sup+Return exec chromium-browser &; exec sleep 1 && i3-msg '[class="Chromium-browser"] mark chromium'
 bindsym $sup+shift+Return exec chromium-browser --incognito
 bindsym $mod+Mod1+Return exec quteb
 
@@ -1348,6 +1376,7 @@ bindsym $mod+l focus right
 # bindsym Mod1+Shift+Tab workspace prev
 
 bindsym $sup+Tab workspace back_and_forth
+bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 bindsym $sup+grave workspace next
 bindsym $sup+Shift+grave workspace prev
 
@@ -1736,8 +1765,9 @@ bindsym Mode_switch+o [con_mark="2"] focus
 bindsym Mode_switch+p [con_mark="3"] focus
 bindsym Mode_switch+bracketleft [con_mark="4"] focus
 
-bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
+# bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
 bindsym Mode_switch+t [con_mark="terminal"] focus
+bindsym Mode_switch+c [con_mark="chromium"] focus
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner

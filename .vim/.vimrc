@@ -529,7 +529,7 @@ if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
   nnoremap <leader>ct :let @+=expand("%:t")<CR>
 
   " directory name (/something/src)
-  nnoremap <leader>ch :let @+=expand("%:p:h")<CR>
+  nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
 endif
 
 " " copy current file name (relative/absolute) to system clipboard (Linux version)
@@ -895,3 +895,4 @@ endfunction
 
 nnoremap <Leader>s :call WordTextToSpeech()<CR>
 nnoremap <Leader>l :call LineTextToSpeech()<CR>
+
