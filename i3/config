@@ -30,12 +30,14 @@ bindsym XF86KbdBrightnessDown exec /home/$USER/.config/i3/scripts/kbd_backlight.
 bindsym XF86TouchpadToggle exec /home/$USER/.config/i3/scripts/toggle_touchpad.sh # toggle touchpad
 
 # Pulse Audio controls
+# Taken from https://www.youtube.com/watch?v=gKumet6b-WY (~4:04)
+# RTMIN+10 means that it kills command with signal 10, which is the volume
 #increase sound volume
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume up'"
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+; notify-send 'volume up' && pkill -RTMIN+10 i3blocks"
 #decrease sound volume
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume down'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-; notify-send 'volume down' && pkill -RTMIN+10 i3blocks"
 # mute sound
-bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; notify-send 'volume toggled'"
+bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle; notify-send 'volume toggled' && pkill -RTMIN+10 i3blocks"
 
 # Screen brightness controls with notification
 # increase screen brightness with notification
@@ -82,12 +84,15 @@ set $timeY 100
     # Toggles plugin
     bindsym s mode "default" exec sleep $pluginSleepWaitForKeyUp && xdotool key Control_L+l && xdotool key s && xdotool key Alt_R+Return && xdotool key Control_L+l && xdotool key s+Return && eval $(xdotool getmouselocation --shell) && sleep $pluginSleepLoadSettingsPage && xdotool mousemove $pluginX $pluginY && xdotool click 1 && sleep $pluginSleepOGPosition && xdotool mousemove $X $Y && xdotool key Control_L+w
 
-    # moves up/down the page by left mousing the scroll bar
+    # Moves up/down the page by left mousing the scroll bar
     bindsym j mode "mode_mouse_move"; exec xdotool mousemove $downX $downY && xdotool mousedown 1
     bindsym k mode "mode_mouse_move"; exec xdotool mousemove $upX $upY && xdotool mousedown 1
 
+    # Shows Time and Battery
     bindsym t mode "default"; exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '$HOME/.dotfiles/i3/scripts/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
-    # bindsym s mode "default"; exec 
+
+    # Shows Weather
+    bindsym w mode "default"; exec gnome-terminal -- /bin/bash -c '$HOME/.dotfiles/i3/scripts/i3weatherterminal.sh' 
 
     bindsym $sup+space mode "default"
     bindsym space mode "mode_mouse_move"

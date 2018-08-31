@@ -827,34 +827,34 @@ let g:SpeechLang = 'en-us'
 function! TexttoSpeech (string)
     echo a:string
     let string = a:string
-    let string = substitute (string, '[', ' osb ', 'g')
-    let string = substitute (string, ']', ' csb ', 'g')
-    let string = substitute (string, '{', ' ocb ', 'g')
-    let string = substitute (string, '}', ' ccb ', 'g')
-    let string = substitute (string, '(', ' opar ', 'g')
-    let string = substitute (string, ')', ' seepar ', 'g')
-    let string = substitute (string, "'", ' squote ', 'g')
-    let string = substitute (string, '"', ' dquote ', 'g')
-    let string = substitute (string, '&', ' ampsand ', 'g')
+    let string = substitute (string, '[', ' open square bracket ', 'g')
+    let string = substitute (string, ']', ' closed square bracket ', 'g')
+    let string = substitute (string, '{', ' open curly bracket ', 'g')
+    let string = substitute (string, '}', ' closed curly bracket ', 'g')
+    let string = substitute (string, '(', ' open parentheses ', 'g')
+    let string = substitute (string, ')', ' closed parentheses ', 'g')
+    let string = substitute (string, "'", ' single quote ', 'g')
+    let string = substitute (string, '"', ' double quote ', 'g')
+    let string = substitute (string, '&', ' ampersand ', 'g')
     let string = substitute (string, '\.', ' period ', 'g')
     let string = substitute (string, ',', ' comma ', 'g')
     let string = substitute (string, ':', ' colon ', 'g')
     let string = substitute (string, ';', ' semicolon ', 'g')
-    let string = substitute (string, '<', ' less thans ', 'g')
-    let string = substitute (string, '>', ' greater thans ', 'g')
-    let string = substitute (string, '/', ' forslash ', 'g')
+    let string = substitute (string, '<', ' less than ', 'g')
+    let string = substitute (string, '>', ' greater than ', 'g')
+    let string = substitute (string, '/', ' forward slash ', 'g')
     let string = substitute (string, '\', ' backslash ', 'g')
     let string = substitute (string, '\^', ' caret ', 'g')
-    let string = substitute (string, '?', ' question ', 'g')
-    let string = substitute (string, '\!', ' exclam ', 'g')
-    let string = substitute (string, '\#', ' hash ', 'g')
-    let string = substitute (string, '\$', ' dollar ', 'g')
-    let string = substitute (string, '%', ' percent ', 'g')
+    let string = substitute (string, '?', ' question mark ', 'g')
+    let string = substitute (string, '\!', ' exclamation point ', 'g')
+    let string = substitute (string, '\#', ' hashtag ', 'g')
+    let string = substitute (string, '\$', ' dollar sign ', 'g')
+    let string = substitute (string, '%', ' percentage sign ', 'g')
     let string = substitute (string, '\*', ' asterick ', 'g')
-    let string = substitute (string, '\-', ' minus ', 'g')
-    let string = substitute (string, '+', ' plus ', 'g')
-    let string = substitute (string, '=', ' equals ', 'g')
-    let string = substitute (string, '@', ' at ', 'g')
+    let string = substitute (string, '\-', ' minus sign ', 'g')
+    let string = substitute (string, '+', ' plus sign ', 'g')
+    let string = substitute (string, '=', ' equals sign ', 'g')
+    let string = substitute (string, '@', ' at symbol ', 'g')
     let string = substitute (string, '\`', ' backtick ', 'g')
     let string = substitute (string, '\~', ' tilde ', 'g')
     let string = substitute (string, '_', ' underscore ', 'g')
@@ -863,7 +863,7 @@ function! TexttoSpeech (string)
     let l:alph = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
         \ 'V', 'W', 'X', 'Y', 'Z']
     for s:item in l:alph
-        let string = substitute (string, '\C' . s:item, ' cap ' . s:item, 'g')
+        let string = substitute (string, '\C' . s:item, ' capital ' . s:item, 'g')
     endfor
 
     let string = substitute (string, '[^A-Za-z0-9,. ]', '', 'g')
@@ -893,6 +893,20 @@ function! WordTextToSpeech ()
     call TexttoSpeech(expand("<cWORD>"))
 endfunction
 
+" https://stackoverflow.com/questions/17838700/vimscript-get-visual-mode-selection-text-in-mapping
+" https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
+fun! s:get_visual_selection()
+       let l=getline("'<")
+       let [line1,col1] = getpos("'<")[1:2]
+       let [line2,col2] = getpos("'>")[1:2]
+       return l[col1 - 1: col2 - 1]
+ endfun
+
+function! SelectedTTS ()
+    call TexttoSpeech(s:get_visual_selection())
+endfunction
+
+vnoremap <Leader>s :call SelectedTTS()<CR>
 nnoremap <Leader>s :call WordTextToSpeech()<CR>
 nnoremap <Leader>l :call LineTextToSpeech()<CR>
 

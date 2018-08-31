@@ -1,7 +1,8 @@
 #!/bin/bash
 BATTINFO=$(cat /sys/class/power_supply/BAT0/energy_now)
+BATTSTATUS=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | rg -i state | awk '{print $2}')
 
-if [[ $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | rg -i state | awk '{print $2}') != "charging" ]]; then
+if [[ $BATTSTATUS != "charging" ]]; then
     # sleep 30 minutes if charging already
     # sleep 1800
     if [[ $BATTINFO -lt 8004000 ]]; then

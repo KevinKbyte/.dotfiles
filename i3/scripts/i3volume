@@ -1,0 +1,6 @@
+#!/bin/bash
+# Modified script from https://github.com/lukesmithxyz/voidrice/.scripts/i3volume ~
+
+printpastatus() { [[ $(/usr/share/i3blocks/volume 5 pulse) = "MUTE" ]] && echo -n 🔇 && exit
+echo 🔊 $(/usr/share/i3blocks/volume 5 pulse) ;}
+printpastatus
