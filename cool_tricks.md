@@ -118,3 +118,11 @@ https://superuser.com/questions/272511/where-do-chrome-chromium-store-search-key
 Located in sqlite file $HOME/.config/chrome/Default/Web\ Data
 Check out the contents with:
   SELECT * from keyword
+
+# C-R in non-normal modes
+https://medium.com/usevim/vim-101-ctrl-r-c9b9b6812f4c
+1. Pastes from register
+2. <C-R>= to enter in an expression to be evaluated
+
+# Search Files [IMPORTANT]
+http://vim.wikia.com/wiki/Find_in_files_within_Vim

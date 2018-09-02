@@ -513,6 +513,11 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" Make calcurse notes markdown compatible
+" https://www.youtube.com/watch?v=hvc-pHjbhdE
+autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
+autocmd BufRead, BufNewFile ~/.calcurse/notes/* set filetype=markdown
+
 " source:
 " https://stackoverflow.com/questions/916875/yank-file-name-path-of-current-buffer-in-vim
 " copy current file name (relative/absolute) to unnamed register (@"") [not

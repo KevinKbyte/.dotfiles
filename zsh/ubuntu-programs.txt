@@ -12,7 +12,6 @@ xserver-xorg-input-synaptics
 dconf-tools
 *libinput*
 i3blocks
---fix-broken
 compton
 libgtop2-dev
 libgtk-3-dev
@@ -29,7 +28,6 @@ cmake valac
 ranger
 clamav*
 mplayer
-docker
 docker
 steam
 docker-*
@@ -94,3 +92,9 @@ pdfgrep
 anki
 expect
 stterm
+neomutt
+mps-youtube
+usbmount
+scim
+gnome-shell-pomodoro*
+calcurse

@@ -65,6 +65,8 @@ install() {
         # jq for i3 move resize script to work
         sudo apt-get install sqlite3 jq
 
+        sudo apt-get install calcurse
+
         cd ~
     fi
 }
@@ -83,6 +85,7 @@ lns() {
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/.xbindkeysrc .
+
 	    mkdir ~/.dotfiles/.vim/backup
 	    mkdir ~/.dotfiles/.vim/swap
 	    mkdir ~/.dotfiles/.vim/undo
@@ -94,12 +97,16 @@ lns() {
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         
+        cd ~/.calcurse
+        ln -s ~/.dotfiles/.calcurse/keys ~/.dotfiles/.calcurse/conf .
 
-        if hash rg 2>/dev/null; then
-            cd ~/test_files
+        cd ~/.dotfiles
 
-            cd ~
-        fi
+        # if hash rg 2>/dev/null; then
+        #     cd ~/test_files
+            
+        #     cd ~
+        # fi
     fi
 
     while true; do

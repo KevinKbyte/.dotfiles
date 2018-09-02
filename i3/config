@@ -51,20 +51,19 @@ bindsym $mod+x exec light -A 5
 bindsym $mod+shift+a mode "mode_common_clicks"
 
 mode "mode_common_clicks" {
-
 set $autoplayX 1826
 set $autoplayY 182
 set $autoplaySleepOGPosition 0.075
 
 set $backPageX 18
 set $backPageY 63
-set $backSleepOGPosition 0.075
+set $backSleepOGPosition 0.1
 
 set $pluginX 1264
 set $pluginY 278
-set $pluginSleepWaitForKeyUp 0.05
+set $pluginSleepWaitForKeyUp 0.2
 set $pluginSleepLoadSettingsPage 0.4
-set $pluginSleepOGPosition 0.09
+set $pluginSleepOGPosition 0.4
 
 set $downX 1919
 set $downY 1054
