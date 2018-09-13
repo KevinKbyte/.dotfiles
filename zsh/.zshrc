@@ -110,9 +110,9 @@ alias vbox="virtualbox"
 # alias ue4="$HOME/Desktop/cs/UnrealEngine/Engine/Binaries/Linux/UE4Editor"
 alias unitee="$HOME/Unity-2018.1.0b8/Editor/Unity"
 
-export hw="$HOME/Desktop/cs/bu_notes"
-export jp="$HOME/Desktop/language/japanese/lj111"
-export cs="$HOME/Desktop/cs/cybersec"
+export hw="$HOME/Desktop/bu_notes/cs"
+export jp="$HOME/Desktop/bu_notes/lj112"
+export cs="$HOME/Desktop/bu_notes/cs/ec521"
 # ftplugin aka file type plugin 
 export fp="$HOME/.dotfiles/.vim/after/ftplugin/"
 export dl="$HOME/Downloads"
@@ -186,7 +186,10 @@ alias "oc=$HOME/Desktop/cs/bu_notes/cloud_computing/oc/openshift-origin-server-v
 alias "encr=$HOME/.dotfiles/zsh/encrypt.sh"
 # Decrypt then Decompress
 alias "decr=$HOME/.dotfiles/zsh/decrypt.sh"
-alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
+alias "rclmnte=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
+alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn: ~/mnt/gdrive"
+
+alias "slack-term" -config /home/kev/snap/slack-term/current/slack-term.json
 
 alias "p=ps aux | rg -i"
 alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"
@@ -208,10 +211,10 @@ expand-aliases() {
 zle -N expand-aliases
 bindkey "a" expand-aliases
 
-# Japanese Keyboard
-alias "jpk=ibus-daemon -drx && xmodmap -e \"keycode 105 = F13 NoSymbol F13\""
-# Terminates Japanese Keyboard
-alias "jpkt=sudo pkill ibus-daemon && xmodmap -e \"keycode 105 = Control_R NoSymbol Control_R\""
+# Japanese Daemon (Keyboard)
+alias "jpd=ibus-daemon -drx && xmodmap -e \"keycode 105 = F13 NoSymbol F13\""
+# Terminates Japanese Daemon (Keyboard)
+alias "jpdt=sudo pkill ibus-daemon && xmodmap -e \"keycode 105 = Control_R NoSymbol Control_R\""
 
 alias "k=kill"
 alias "sk=sudo kill"
@@ -224,6 +227,9 @@ alias "pip=pip3"
 alias "sudb=sudo updatedb"
 alias "s=sudo"
 alias "rgr=ranger"
+alias "calc=calcurse"
+alias "bd=ssh bandit"
+alias "doc2pdf=soffice --headless --convert-to pdf"
 
 
 # rsync -cr <Source> <Destination>
@@ -307,6 +313,8 @@ export EDITOR=vim
 #export VISUAL=vim
 #export PATH="$HOME/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
+
+# set -o vi
 
 # export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
 

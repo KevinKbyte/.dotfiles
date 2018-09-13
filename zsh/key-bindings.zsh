@@ -22,7 +22,7 @@
 #  is to allow use of thes commands even when in middle of command
 
 # alt+r
-bindkey -s 'r' 'ranger\nclear\n'
+bindkey -s 'r' 'ranger\nclear\n'
 
 # alt+g 
 bindkey -s 'g' ' | rg -i '

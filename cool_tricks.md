@@ -126,3 +126,19 @@ https://medium.com/usevim/vim-101-ctrl-r-c9b9b6812f4c
 
 # Search Files [IMPORTANT]
 http://vim.wikia.com/wiki/Find_in_files_within_Vim
+
+# Swap and move windows in Tmux
+https://superuser.com/questions/343572/how-do-i-reorder-tmux-windows
+bind-key T swap-window -t 0
+swap-window -s 3 -t 1
+to let window number 3 and window number 1 swap their positions.
+To swap the current window with the top window, do:
+swap-window -t 0
+In the unlikely case of having no window at index 0, do:
+move-window -t 0
+
+# SSH w/o password
+Copy ~/.ssh/id_rsa.pub to the target machine's ~/.ssh/authorized_keys
+
+# PDF to Latex
+abiword --to=tex filename.pdf

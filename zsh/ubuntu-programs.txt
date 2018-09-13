@@ -98,3 +98,21 @@ usbmount
 scim
 gnome-shell-pomodoro*
 calcurse
+dialog
+offlineimap
+msmtp
+pwgen
+stopwatch
+python3-pafy
+mps-youtube
+python*-pyperclip
+slack
+libreoffice-java-common
+mpd
+lm-sensors hddtemp
+newsboat
+pandoc
+nmap
+sharutils
+abiword
+gnome-shell-pomodoro

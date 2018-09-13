@@ -8,6 +8,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+set $term --no-startup-id gnome-terminal -- /bin/bash -c
+
 # Mod4 is super key
 set $sup Mod4
 # Mod3 is caps lock is Hyper_L (caps lock for me)
@@ -46,6 +48,8 @@ bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 bindsym $mod+z exec light -U 10
 bindsym $mod+x exec light -A 5 
+
+bindsym Mode_switch+r exec $term ranger 
 
 # Common clicks
 bindsym $mod+shift+a mode "mode_common_clicks"
@@ -91,7 +95,7 @@ set $timeY 100
     bindsym t mode "default"; exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '$HOME/.dotfiles/i3/scripts/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
 
     # Shows Weather
-    bindsym w mode "default"; exec gnome-terminal -- /bin/bash -c '$HOME/.dotfiles/i3/scripts/i3weatherterminal.sh' 
+    bindsym w mode "default"; exec $term '$HOME/.dotfiles/i3/scripts/i3weatherterminal.sh' 
 
     bindsym $sup+space mode "default"
     bindsym space mode "mode_mouse_move"

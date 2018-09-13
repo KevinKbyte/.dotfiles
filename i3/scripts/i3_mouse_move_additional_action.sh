@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Activate small mouse move after large mouse movement
+# active=false
 active=true
 
 if [[ $active = true ]]; then

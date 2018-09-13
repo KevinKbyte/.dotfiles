@@ -21,8 +21,6 @@
 # A description of what each ACTION keyword is used for is available
 # from calcurse online configuration menu.
 
-# Modified file from https://github.com/LukeSmithxyz/voidrice.git 
-
 generic-cancel  ESC 
 generic-select  SPC 
 generic-credits  @ 

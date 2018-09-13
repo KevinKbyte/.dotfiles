@@ -1,3 +1,5 @@
+let g:tex_conceal = ""
+
 nnoremap S :LLPStartPreview<CR>
 
 filetype plugin indent on
