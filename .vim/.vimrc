@@ -255,6 +255,8 @@ let g:tmux_navigator_no_mappings = 1
 "<> JAVA SUPPORT
 "============
 
+" To allow syntastic with Java
+let g:syntastic_java_checkers = []
 let g:JavaComplete_ShowExternalCommandsOutput = 1
 let g:JavaComplete_JavaCompiler="/usr/bin/javac"
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -389,7 +391,7 @@ let g:AutoPairsShortcutBackInsert = '<C-b>'
 
 " IMPORTANT: Make Ultisnips work with YouCompleteMe using SuperTab plugin
 " https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme/32385352
-
+set pumheight=10
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -424,6 +426,8 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_keep_logfiles = 0
 " YCM stop completion
 let g:ycm_key_list_stop_completion = ['<C-y>']
+" Extra Conf Path Config
+let g:ycm_global_ycm_extra_conf = '/home/kev/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " let g:ycm_key_invoke_completion = '<C-n>'
 
@@ -562,6 +566,9 @@ nnoremap <leader>sft :set filetype=
 
 " Write as sudo for readonly files
 cmap w!! w !sudo sh -c "cat > '%'"
+
+set wildmenu
+set wildmode=longest,list,full
 
 " Macro doesn't play and make it slow
 set lazyredraw

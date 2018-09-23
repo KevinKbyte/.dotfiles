@@ -67,6 +67,10 @@ install() {
 
         sudo apt-get install calcurse
 
+        # to make directories for mpd and ncmpcpp
+        touch ~/.config/mpd/log ~/.config/mpd/pid ~/.config/mpd/sticker.sql ~/.config/mpd/state
+        mkdir -p ~/.config/mpd/playlists ~/.config/ncmpcpp/lyrics/
+
         cd ~
     fi
 }

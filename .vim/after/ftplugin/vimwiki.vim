@@ -1,6 +1,8 @@
 " Insert date and time
-inoremap ;insd <C-o>:pu=strftime('%b-%d-%Y')<CR>
-nnoremap ;insd :pu=strftime('%b-%d-%Y')<CR>
+inoremap ;insd <C-r>=strftime('%b-%d-%Y')<CR>
+inoremap ;st Start Time: <C-r>=strftime('%b-%d-%Y-%T')<CR>
+inoremap ;ed End Time: <C-r>=strftime('%b-%d-%Y-%T')<CR>
+" nnoremap ;insd :pu=strftime('%b-%d-%Y')<CR>
 inoremap <TAB> <C-t>
 inoremap <S-TAB> <C-d>
 nmap <space><space>j <C-E>:sleep 500m<CR>j<space><space>j
@@ -12,6 +14,6 @@ function! GetCountsForCurrLine ()
     let l:cmd = '!echo "' . string . '" | wc'
     execute l:cmd
 endfunction
-
+"
 nnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 nnoremap <C-i> <C-i>

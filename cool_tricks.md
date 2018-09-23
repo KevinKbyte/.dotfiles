@@ -142,3 +142,6 @@ Copy ~/.ssh/id_rsa.pub to the target machine's ~/.ssh/authorized_keys
 
 # PDF to Latex
 abiword --to=tex filename.pdf
+
+# MPD Verbosity
+ mpd --no-daemon --stdout --verbose

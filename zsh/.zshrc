@@ -11,6 +11,9 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="zui"
 # ZSH_THEME="kev"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# so that commands prepended with spaces are not recorded in .zsh_history
+export HISTCONTROL=ignoreboth
 # export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 
@@ -113,6 +116,7 @@ alias unitee="$HOME/Unity-2018.1.0b8/Editor/Unity"
 export hw="$HOME/Desktop/bu_notes/cs"
 export jp="$HOME/Desktop/bu_notes/lj112"
 export cs="$HOME/Desktop/bu_notes/cs/ec521"
+export tf="$HOME/test_files"
 # ftplugin aka file type plugin 
 export fp="$HOME/.dotfiles/.vim/after/ftplugin/"
 export dl="$HOME/Downloads"
@@ -124,6 +128,7 @@ alias cs="cd $cs"
 alias fp="cd $fp"
 alias dl="cd $dl"
 alias dot="cd $dot"
+alias tf="cd $tf"
 
 alias libro="libreoffice"
 alias hls="history | tail -20"
@@ -230,12 +235,15 @@ alias "rgr=ranger"
 alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
+alias "zh=vim ~/.zsh_history"
 
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
     # -P is progress, shows progress bar while copying files
+
+export MPD_HOST=$HOME/.config/mpd/socket
 
 export ANDROID_HOME="$HOME/programs/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools"
@@ -308,6 +316,8 @@ function rnfx { for file in $1; do mv "$file" "$(basename "$file" .$2).$3"; done
 function tard { find . -maxdepth 1 -mindepth 1 -type d -exec tar cvf {}.tar {}  \; }
 
 function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) } 
+
+function bak { cp $1 .$(echo $1 | awk -F "." '{print $1}')_bak.$(echo $1 | awk -F "." '{print $2}') }
 
 export EDITOR=vim
 #export VISUAL=vim
@@ -401,7 +411,8 @@ if command -v tmux>/dev/null; then
     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 fi
 
-cd $HOME/Desktop/cs/bu_notes; clear
+# cd $HOME/Desktop/bu_notes/cs
+clear
 
 export NODE_PATH=/usr/local/lib/node_modules:$HOME/.npm:/usr/lib/nodejs
 

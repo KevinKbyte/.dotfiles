@@ -22,7 +22,7 @@
 #  is to allow use of thes commands even when in middle of command
 
 # alt+r
-bindkey -s 'r' 'ranger\nclear\n'
+bindkey -s 'r' ' ranger\n clear\n'
 
 # alt+g 
 bindkey -s 'g' ' | rg -i '
@@ -31,24 +31,24 @@ bindkey -s 'g' ' | rg -i '
 bindkey '^ ' autosuggest-execute
 
 # alt+l
-bindkey -s '\el' 'ls -a\n'                               # [Esc-l] - run command: ls -a
+bindkey -s '\el' ' ls -a\n'                               # [Esc-l] - run command: ls -a
 
 # alt+shift+l
-bindkey -s '' 'clear && ls -a\n'
+bindkey -s '' ' clear\n ls -a\n'
 
 # alt+shift+.
-bindkey -s '>' 'cd ..\n'
+bindkey -s '>' ' clear\n cd ..\n'
 
-bindkey -s '<' 'cd -\n'
+bindkey -s '<' ' clear\n cd -\n'
 
 # alt+;
-bindkey -s ';' 'ls -al\n'
+bindkey -s ';' ' ls -al\n'
 
 # alt+shift+;
-bindkey -s ':' 'clear && ls -al\n'
+bindkey -s ':' ' clear\n ls -al\n'
 
 # alt+shift+d
-bindkey -s 'D' 'dirs | head -10\n'
+bindkey -s 'D' ' dirs | head -10\n'
 
 # alt+<space>
 bindkey -s ' ' 'cd '

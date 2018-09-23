@@ -116,3 +116,8 @@ nmap
 sharutils
 abiword
 gnome-shell-pomodoro
+openjdk-8-jdk
+gnome-shell-timer
+ncmpcpp
+mpc
+net-tools

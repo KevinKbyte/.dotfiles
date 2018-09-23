@@ -59,8 +59,8 @@ set $autoplayX 1826
 set $autoplayY 182
 set $autoplaySleepOGPosition 0.075
 
-set $backPageX 18
-set $backPageY 63
+set $backPageX 17
+set $backPageY 61
 set $backSleepOGPosition 0.1
 
 set $pluginX 1264
@@ -69,8 +69,8 @@ set $pluginSleepWaitForKeyUp 0.2
 set $pluginSleepLoadSettingsPage 0.4
 set $pluginSleepOGPosition 0.4
 
-set $downX 1919
-set $downY 1054
+set $downX 1911
+set $downY 1057
 
 set $upX 1919
 set $upY 106
@@ -1422,6 +1422,7 @@ mode "$mode_system" {
                                     # back to normal: enter or escape
                                     bindsym Return mode "default"
                                     bindsym Escape mode "default"
+                                    bindsym $sup+space mode "default"
                                     bindsym m mode "mode_movement"
 }
 
@@ -1720,6 +1721,7 @@ set $fg     #9f9f9f
 set $hi     #efef8f
 set $ac     #a0afa0
 set $tx     #040404
+set $tx     #040404
 set $ia     #8f8f8f
 set $be     #8faf9f
 set $yw     #ccdc90
@@ -1732,6 +1734,8 @@ client.focused              $drd       $fg         $tx
 client.unfocused            $bg        $bg         $ia
 client.focused_inactive     $bg        $bg         $ac
 client.urgent               $rd        $rd         $tx
+
+for_window [class=".*"] border pixel 2
 
 # start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -1818,9 +1822,12 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bindsym Mode_switch+m exec /home/$USER/.dotfiles/i3/scripts/macro_record.sh
-bindsym Mode_switch+Shift+m exec /home/$USER/.dotfiles/i3/scripts/macro_play.sh
-bindsym Mode_switch+Shift+comma exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
+bindsym Mode_switch+m exec $term 'ncmpcpp'
+
+# Recording and Playing macros
+# bindsym Mode_switch+m exec /home/$USER/.dotfiles/i3/scripts/macro_record.sh
+# bindsym Mode_switch+Shift+m exec /home/$USER/.dotfiles/i3/scripts/macro_play.sh
+# bindsym Mode_switch+Shift+comma exec ps -efl | grep 'xmacroplay' | awk '{print $4}' | xargs kill
 # bindsym Mode_switch+Shift+Space exec notify-send "hello"
 
 mouse_warping output
@@ -1832,3 +1839,5 @@ exec xcompmgr -c
 # exec xbindkeys -p 
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
+# for music
+exec  mpd --no-daemon --stdout 
