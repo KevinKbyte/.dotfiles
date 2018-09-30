@@ -215,8 +215,8 @@
 #def_key "space"
 #  toggle_visualization_type
 #
-#def_key "delete"
-#  delete_playlist_items
+def_key "-"
+  delete_playlist_items
 #
 #def_key "delete"
 #  delete_browser_items
@@ -485,8 +485,8 @@
 #def_key "A"
 #  add
 #
-#def_key "S"
-#  save_playlist
+def_key "S"
+  save_playlist
 #
 #def_key "o"
 #  jump_to_playing_song

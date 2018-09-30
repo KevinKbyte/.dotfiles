@@ -25,7 +25,7 @@ lyrics_directory = ~/.config/ncmpcpp/lyrics
 ##### connection settings #####
 #
 # mpd_host = $HOME/.config/mpd/socket
-mpd_host = "$HOME/.config/mpd/socket"
+mpd_host = "/home/kev/.config/mpd/socket"
 #
 mpd_port = "6600"
 #

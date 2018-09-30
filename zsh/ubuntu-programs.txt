@@ -121,3 +121,4 @@ gnome-shell-timer
 ncmpcpp
 mpc
 net-tools
+unoconv

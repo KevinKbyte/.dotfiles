@@ -144,4 +144,8 @@ Copy ~/.ssh/id_rsa.pub to the target machine's ~/.ssh/authorized_keys
 abiword --to=tex filename.pdf
 
 # MPD Verbosity
- mpd --no-daemon --stdout --verbose
+mpd --no-daemon --stdout --verbose
+
+# React App
+sudo npm install -g npm@latest
+npm install => installs all packages defined in package.json

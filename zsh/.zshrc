@@ -236,6 +236,7 @@ alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
+alias "kxal=kill $(p autolock | awk '{print $2}' | tail -2)"
 
 
 # rsync -cr <Source> <Destination>

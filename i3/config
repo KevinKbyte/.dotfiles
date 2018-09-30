@@ -1822,7 +1822,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bindsym Mode_switch+m exec $term 'ncmpcpp'
+bindsym Mode_switch+m exec $term 'ncmpcpp' && i3-msg floating toggle
 
 # Recording and Playing macros
 # bindsym Mode_switch+m exec /home/$USER/.dotfiles/i3/scripts/macro_record.sh
@@ -1839,5 +1839,3 @@ exec xcompmgr -c
 # exec xbindkeys -p 
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
-# for music
-exec  mpd --no-daemon --stdout 
