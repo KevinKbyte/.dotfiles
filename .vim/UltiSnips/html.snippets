@@ -36,7 +36,29 @@ snippet boi "boilerplate" b
   </script>
   </head>
   <body>
-  
+ ${2} 
   </body>
 </html>
+endsnippet
+
+snippet sc "adds cdn script with integrity hash" b
+<script src="${1}" `!p
+# https://tenzer.dk/generating-subresource-integrity-checksums/
+import base64
+import hashlib
+import requests as rq
+
+input = t[1]
+if (input[-3:] == '.js'):
+	js = rq.get(input)
+	input = js.text
+	if isinstance(input, str):
+		# This is so we can handle strings as input in Python 3
+		input = input.encode()
+	snip.rv = input
+
+	hash = hashlib.sha256(input).digest()
+	hash_base64 = base64.b64encode(hash).decode()
+	snip.rv = "integrity=\"" + 'sha256-{}'.format(hash_base64) + "\""
+`${2}></script>${3}
 endsnippet

@@ -3,8 +3,8 @@ inoremap ;insd <C-r>=strftime('%b-%d-%Y')<CR>
 inoremap ;st Start Time: <C-r>=strftime('%b-%d-%Y-%T')<CR>
 inoremap ;ed End Time: <C-r>=strftime('%b-%d-%Y-%T')<CR>
 " nnoremap ;insd :pu=strftime('%b-%d-%Y')<CR>
-inoremap <TAB> <C-t>
-inoremap <S-TAB> <C-d>
+" inoremap <TAB> <C-t>
+" inoremap <S-TAB> <C-d>
 nmap <space><space>j <C-E>:sleep 500m<CR>j<space><space>j
 nmap <space><space>k <C-E>:sleep 1m<CR>j<space><space>k
 
@@ -16,4 +16,5 @@ function! GetCountsForCurrLine ()
 endfunction
 "
 nnoremap <leader>wc :call GetCountsForCurrLine()<CR>
+vnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 nnoremap <C-i> <C-i>

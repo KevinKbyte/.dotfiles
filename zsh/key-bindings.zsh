@@ -34,18 +34,18 @@ bindkey '^ ' autosuggest-execute
 bindkey -s '\el' ' ls -a\n'                               # [Esc-l] - run command: ls -a
 
 # alt+shift+l
-bindkey -s '' ' clear\n ls -a\n'
+bindkey -s '' ' clear\n ls -a\n'
 
 # alt+shift+.
-bindkey -s '>' ' clear\n cd ..\n'
+bindkey -s '>' ' clear\n cd ..\n'
 
-bindkey -s '<' ' clear\n cd -\n'
+bindkey -s '<' ' clear\n cd -\n'
 
 # alt+;
 bindkey -s ';' ' ls -al\n'
 
 # alt+shift+;
-bindkey -s ':' ' clear\n ls -al\n'
+bindkey -s ':' ' clear\n ls -al\n'
 
 # alt+shift+d
 bindkey -s 'D' ' dirs | head -10\n'

@@ -89,6 +89,7 @@ lns() {
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/tmuxinator/ .tmuxinator
 	    ln -s ~/.dotfiles/.xbindkeysrc .
+        ln -s ~/.dotfiles/ranger/bookmarks . -f
 
 	    mkdir ~/.dotfiles/.vim/backup
 	    mkdir ~/.dotfiles/.vim/swap

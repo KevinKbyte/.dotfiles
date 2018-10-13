@@ -236,8 +236,7 @@ alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
-alias "kxal=kill $(p autolock | awk '{print $2}' | tail -2)"
-
+alias "pkal=kill $(p autolock | awk '{print $2}' | tail -2)"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -319,6 +318,8 @@ function tard { find . -maxdepth 1 -mindepth 1 -type d -exec tar cvf {}.tar {}  
 function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) } 
 
 function bak { cp $1 .$(echo $1 | awk -F "." '{print $1}')_bak.$(echo $1 | awk -F "." '{print $2}') }
+
+function m { mv "$@" .; }
 
 export EDITOR=vim
 #export VISUAL=vim

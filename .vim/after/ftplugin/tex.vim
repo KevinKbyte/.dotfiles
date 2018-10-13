@@ -11,13 +11,16 @@ setlocal iskeyword+=-
 inoremap $ $$<Esc>i
 inoremap $ <nop>
 
+" inoremap <C-a> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":"\n"<CR>
+" inoremap <C-a> <C-R>=g:ulti_expand_or_jump_res<CR>
+
 " https://github.com/lervag/vimtex/issues/931
 " Autocomplete Latex with vimtex
 
-" if !exists('g:ycm_semantic_triggers')
-"         let g:ycm_semantic_triggers = {}
-"     endif
-" au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
+if !exists('g:ycm_semantic_triggers')
+        let g:ycm_semantic_triggers = {}
+    endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
 " let g:ycm_semantic_triggers.tex=['re!\\[A-Za-z]+',
 "   \ 're!\\(usepackage|RequirePackage)(\s*\[[^]]*\])?\s*\{[^}]*',

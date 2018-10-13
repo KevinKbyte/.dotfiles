@@ -122,3 +122,5 @@ ncmpcpp
 mpc
 net-tools
 unoconv
+enscript
+gimp
