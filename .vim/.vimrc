@@ -33,10 +33,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
 " Plugin options
 "Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
 
@@ -55,7 +51,9 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 
 " Fuzzy Finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Typescript autocomplete
 Plug 'leafgarland/typescript-vim'
@@ -518,6 +516,18 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+" FZF Mappings
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " Make calcurse notes markdown compatible
 " https://www.youtube.com/watch?v=hvc-pHjbhdE
 autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
@@ -611,7 +621,7 @@ endfunction
 command! UpdateTimestamps call s:UpdateTimestamps()
 
 " SNIPPETS: " Read an empty HTML template and move cursor to title 
-nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
+" nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
 
 " Adding indentation functionality
 " autocmd FileType html setlocal shiftwidth=2 tabstop=2
@@ -722,8 +732,8 @@ endif
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " au InsertLeave * match ExtraWhitespace /\s\+$/
 
-nnoremap <Leader>j :bnext<CR>
-nnoremap <Leader>k :bprevious<CR>
+nnoremap <Leader>j :bprevious<CR>
+nnoremap <Leader>k :bnext<CR>
 
 
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
@@ -764,7 +774,7 @@ set hlsearch
 " Remove $ signs at end of every line
 set nolist
 
-nnoremap <C-Space> :nohl<CR>
+nnoremap <leader>nh :nohl<CR>
 
 " Toggle Settings
 
@@ -922,4 +932,3 @@ endfunction
 vnoremap <Leader>s :call SelectedTTS()<CR>
 nnoremap <Leader>s :call WordTextToSpeech()<CR>
 nnoremap <Leader>l :call LineTextToSpeech()<CR>
-
