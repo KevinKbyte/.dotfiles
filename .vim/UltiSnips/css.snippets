@@ -1,0 +1,45 @@
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/css.snippets
+snippet texta "text-align: left:center:right (txt)"
+text-align: ${1:left/right/center/justify}`!p
+inp = t[1]
+if inp == 'l':
+	snip.rv = 'eft'
+elif inp == 'r':
+	snip.rv = 'ight'
+elif inp == 'c':
+	snip.rv = 'enter'
+elif inp == 'j':
+	snip.rv = 'ustify'`;$0
+endsnippet
+
+snippet textd "text-decoration: none:underline:overline:line-through:blink (text)"
+text-decoration: ${1:none/underline/overline/line-through/blink}`!p
+inp = t[1]
+if inp == 'n':
+	snip.rv = 'one'
+elif inp == 'u':
+	snip.rv = 'nderline'
+elif inp == 'o':
+	snip.rv = 'verline'
+elif inp == 'l':
+	snip.rv = 'ine-through'
+elif inp == 'b':
+	snip.rv = 'link'
+`;$0
+endsnippet
+
+snippet texti "text-indent: length (text)"
+text-indent: ${1:10}px;$0
+endsnippet
+
+snippet textt "text-transform: capitalize:upper:lower (text)"
+text-transform: ${1:capitalize/uppercase/lowercase}`!p
+inp = t[1]
+if inp == 'c':
+	snip.rv = 'apitalize'
+elif inp == 'u':
+	snip.rv = 'ppercase'
+elif inp == 'l':
+	snip.rv = 'owercase'
+`;$0
+endsnippet

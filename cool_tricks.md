@@ -149,3 +149,28 @@ mpd --no-daemon --stdout --verbose
 # React App
 sudo npm install -g npm@latest
 npm install => installs all packages defined in package.json
+
+# Prepending to file
+https://stackoverflow.com/questions/10587615/unix-command-to-prepend-text-to-a-file
+  Examples:
+    printf '%s\n%s\n' "to be prepended" "$(cat text.txt)" >text.txt
+    for i in $(ls ~/.dotfiles/.vim/UltiSnips); do printf '%s\n%s\n' "# ~/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/${i}" "$(cat $i)" > $i; done
+
+# Vim open file under cursor in different ways (new tab, vertical split, etc)
+https://vi.stackexchange.com/questions/3364/open-filename-under-cursor-like-gf-but-in-a-new-tab-or-split
+  gf - Edit existing file under cursor in same window
+  C-Wf - Edit existing file under cursor in split window
+  C-WC-F - Edit existing file under cursor in split window
+  C-Wgf - Edit existing file under cursor in new tabpage
+  There is no standard mapping to edit existing file under cursor in a vertical split, but you can achieve it by first splitting the window vertically and then editing the file under cursor in the current window.
+
+  C-Wv+gf - Edit existing file under cursor in vertically split window
+  As you can see above, there are two default mappings for editing file under cursor in a horizontal split. You can therefore remap one of them to the keystring above, extending the group of maps to also cover the vertical split case. You can bind anything, of course, but this seems to complete the symmetry nicely: nnoremap <C-W><C-F> <C-W>vgf. Now you have
+
+  gf - Edit existing file under cursor in same window
+  C-Wf - Edit existing file under cursor in split window
+  C-WC-F - Edit existing file under cursor in vertically split window
+  C-Wgf - Edit existing file under cursor in new tabpage
+
+# Parsing JSON using multiple approaches (diff languages/tools)
+https://stackoverflow.com/questions/1955505/parsing-json-with-unix-tools

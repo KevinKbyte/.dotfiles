@@ -1,3 +1,4 @@
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/html.snippets
 snippet t "A simple HTML tag" b
 <${1:div}>
 	$2
@@ -19,7 +20,7 @@ snippet boi "boilerplate" b
   <meta name="description" content="dnameescription here">
   <meta name="keywords" content="keywords,here">
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <link rel="stylesheet" href="style.css" type="text/css">
   <style type="text/css">
    
   </style>
@@ -49,7 +50,7 @@ import hashlib
 import requests as rq
 
 input = t[1]
-if (input[-3:] == '.js'):
+if (input[:4] == 'http' and input[-3:] == '.js'):
 	js = rq.get(input)
 	input = js.text
 	if isinstance(input, str):
@@ -59,6 +60,8 @@ if (input[-3:] == '.js'):
 
 	hash = hashlib.sha256(input).digest()
 	hash_base64 = base64.b64encode(hash).decode()
-	snip.rv = "integrity=\"" + 'sha256-{}'.format(hash_base64) + "\""
+	snip.rv = "integrity=\"" + 'sha256-{}'.format(hash_base64) + "\" crossorigin=\"anonymous\""
+	# https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes
+	# crossorigin: By default (that is, when the attribute is not specified), CORS is not used at all. The "anonymous" keyword means that there will be no exchange of user credentials via cookies, client-side SSL certificates or HTTP authentication
 `${2}></script>${3}
 endsnippet
