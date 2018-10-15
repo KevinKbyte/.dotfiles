@@ -546,7 +546,7 @@ if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
   nnoremap <leader>cF :let @+=expand("%:p")<CR>
 
   " filename (foo.txt)
-  nnoremap <leader>ct :let @+=expand("%:t")<CR>
+  nnoremap <leader>cn :let @+=expand("%:t")<CR>
 
   " directory name (/something/src)
   nnoremap <leader>cd :let @+=expand("%:p:h")<CR>
@@ -566,12 +566,6 @@ endif
 "   " directory name (/something/src)
 "   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 " endif
-
-
-" Tab movement
-nnoremap <leader>mt :tabm 
-nnoremap <leader>t> :tabm +<CR>
-nnoremap <leader>t< :tabm -<CR>
 
 nnoremap <leader>sft :set filetype=
 
@@ -743,17 +737,32 @@ inoremap kj <esc>
 nnoremap <CR> i<CR><Esc>
 " For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
 
+augroup bufclosetrack
+  au!
+  autocmd WinLeave * let g:lastWinName = @%
+augroup END
+function! LastWindow()
+  exe "split " . g:lastWinName
+endfunction
+
 nnoremap <leader>tn :tabe 
 nnoremap <Leader>wp <C-w><C-p>
-nnoremap <Leader>wc <C-w><C-c>
-nnoremap <Leader>tj :tabprev<CR>
-nnoremap <Leader>tk :tabnext<CR>
-nnoremap <Leader>t; :tablast<CR>
+nnoremap <Leader>tj :tabfirst<CR>
+nnoremap <Leader>tk :tablast<CR>
 nnoremap <Leader>tc :tabclose<CR>
 
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+" Tab movement
+nnoremap <leader>mt :tabm 
+nnoremap <leader>t> :tabm +<CR>
+nnoremap <leader>t< :tabm -<CR>
+
+" Map for vertical split gf
+" https://vi.stackexchange.com/questions/3364/open-filename-under-cursor-like-gf-but-in-a-new-tab-or-split
+nnoremap <C-W><C-F> <C-W><C-V><C-W><C-P>gf
 
 nnoremap <silent><Leader>nt :NERDTreeToggle<CR>
 nnoremap <silent><Leader>nf :NERDTreeFind<CR>

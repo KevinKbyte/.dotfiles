@@ -1,2 +1,15 @@
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/sh.snippets
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/sh.snippets
 
+snippet #!
+`!p snip.rv = '#!/bin/' + getShell() + "\n\n" `
+endsnippet
+
+# snippet !env "#!/usr/bin/env (!env)"
+# `!p snip.rv = '#!/usr/bin/env ' + getShell() + "\n\n" `
+# https://stackoverflow.com/questions/9666102/bash-double-bracket-issue 
+# On Ubuntu systems, /bin/sh is dash, not bash, and dash does not support the double bracket keyword
+
+snippet !env "#!/usr/bin/env (!env)"
+`!p snip.rv = '#!/usr/bin/env ' + 'bash' + "\n\n" `
+endsnippet

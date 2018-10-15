@@ -1,2 +1,25 @@
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/cpp.snippets
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/cpp.snippets
 
+snippet i "include" b
+#include <${1}>
+$0
+endsnippet
+
+snippet int "integer" b
+int ${1:variable} = ${2:0};
+$0
+endsnippet
+
+snippet str "string" b
+string ${1:variable} = "${2:}";
+$0
+endsnippet
+
+snippet main "main() (main)" b
+int main(${1:int argc, char *argv[]})
+{
+	${VISUAL}$0
+	return 0;
+}
+endsnippet

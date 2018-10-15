@@ -1,2 +1,20 @@
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/tex.snippets
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/tex.snippets
 
+snippet bv "begin verbatim" b
+\begin{verbatim}
+${0:${VISUAL}}
+\end{verbatim}
+endsnippet
+
+snippet i "indent" b
+\\\\\\indent${0:${VISUAL}}
+endsnippet
+
+snippet 2l "two new lines" b
+\\\\~\\\\ 
+endsnippet
+
+snippet nc "new command" b
+\newcommand{\\${1:command}}{${2:output}}
+endsnippet
