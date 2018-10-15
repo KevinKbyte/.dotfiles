@@ -426,7 +426,10 @@ let g:ycm_keep_logfiles = 0
 " YCM stop completion
 let g:ycm_key_list_stop_completion = ['<C-y>']
 " Extra Conf Path Config
-let g:ycm_global_ycm_extra_conf = '/home/kev/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '/home/kev/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+"" load ycm conf by default
+let g:ycm_confirm_extra_conf=0
 
 " let g:ycm_key_invoke_completion = '<C-n>'
 
