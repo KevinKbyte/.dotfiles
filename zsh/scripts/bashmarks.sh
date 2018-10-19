@@ -75,7 +75,7 @@ function pb {
 }
 
 # delete bookmark
-function d {
+function db {
     check_help $1
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
@@ -91,14 +91,14 @@ function check_help {
         echo 's <bookmark_name> - Saves the current directory as "bookmark_name"'
         echo 'g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
         echo 'pb <bookmark_name> - Prints the directory associated with "bookmark_name"'
-        echo 'd <bookmark_name> - Deletes the bookmark'
-        echo 'l                 - Lists all available bookmarks'
+        echo 'db <bookmark_name> - Deletes the bookmark'
+        echo 'lb                 - Lists all available bookmarks'
         kill -SIGINT $$
     fi
 }
 
 # list bookmarks with dirnam
-function l {
+function lb {
     check_help $1
     source $SDIRS
         

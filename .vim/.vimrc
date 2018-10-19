@@ -485,8 +485,9 @@ endif
 "  " 1 line s{char}{char} to move to {char}{char}
 map <leader>f <Plug>(easymotion-fl2)
 map <leader>F <Plug>(easymotion-Fl2)
-map <leader>f <Plug>(easymotion-overwin-f2)
-map <leader>f <Plug>(easymotion-bd-f2)
+nnoremap <leader>f f
+map f <Plug>(easymotion-overwin-f2)
+map f <Plug>(easymotion-bd-f2)
 " map <leader>ft <Plug>(easymotion-overwin-f2)
 " map <leader>ft <Plug>(easymotion-bd-f2)
 " map <leader>fo <Plug>(easymotion-overwin-f)
