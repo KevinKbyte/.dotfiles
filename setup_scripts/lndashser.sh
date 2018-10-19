@@ -110,7 +110,7 @@ lns() {
         ln -s ~/.dotfiles/.inputrc .
 
         # for bashmarks
-        ln -s ~/.dotfiles/zsh/scripts/.sdirs .
+        ln -s ~/.dotfiles/zsh/scripts/bashmarks/.sdirs .
 
         cd ~/.dotfiles
 
