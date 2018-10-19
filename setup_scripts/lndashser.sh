@@ -105,6 +105,13 @@ lns() {
         cd ~/.calcurse
         ln -s ~/.dotfiles/.calcurse/keys ~/.dotfiles/.calcurse/conf .
 
+        cd ~
+        # inputrc so gdb can work wonders, ctrl P/N to reverse history search
+        ln -s ~/.dotfiles/.inputrc .
+
+        # for bashmarks
+        ln -s ~/.dotfiles/zsh/scripts/.sdirs .
+
         cd ~/.dotfiles
 
         # if hash rg 2>/dev/null; then

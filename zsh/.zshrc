@@ -141,7 +141,7 @@ alias "v=vim"
 alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
 # alias d="dirs -v | head -10"
-alias d="dirs | head -10"
+alias dr="dirs | head -10"
 
 function cd { builtin cd "$@" && ls -a; }
 alias "1=cd -1"
@@ -231,7 +231,7 @@ alias "chx=chmod +x"
 alias "python=python3"
 alias "pip=pip3"
 alias "sudb=sudo updatedb"
-alias "s=sudo"
+alias "sd=sudo"
 alias "rgr=ranger"
 alias "calc=calcurse"
 alias "bd=ssh bandit"
@@ -436,4 +436,4 @@ stty -ixon
 
 # To get the bashmarks working
 # https://alysivji.github.io/category/quick-hits.html
-unalias g && source ~/.dotfiles/zsh/scripts/bashmarks.sh
+unalias g && unalias d && source ~/.dotfiles/zsh/scripts/bashmarks.sh

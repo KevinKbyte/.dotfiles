@@ -43,7 +43,7 @@ RED="0;31m"
 GREEN="0;33m"
 
 # save current directory to bookmarks
-function sb {
+function s {
     check_help $1
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
@@ -75,7 +75,7 @@ function pb {
 }
 
 # delete bookmark
-function db {
+function d {
     check_help $1
     _bookmark_name_valid "$@"
     if [ -z "$exit_message" ]; then
@@ -88,17 +88,17 @@ function db {
 function check_help {
     if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ] ; then
         echo ''
-        echo 'sb <bookmark_name> - Saves the current directory as "bookmark_name"'
+        echo 's <bookmark_name> - Saves the current directory as "bookmark_name"'
         echo 'g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
         echo 'pb <bookmark_name> - Prints the directory associated with "bookmark_name"'
-        echo 'db <bookmark_name> - Deletes the bookmark'
-        echo 'lb                 - Lists all available bookmarks'
+        echo 'd <bookmark_name> - Deletes the bookmark'
+        echo 'l                 - Lists all available bookmarks'
         kill -SIGINT $$
     fi
 }
 
 # list bookmarks with dirnam
-function lb {
+function l {
     check_help $1
     source $SDIRS
         
