@@ -134,6 +134,7 @@ alias libro="libreoffice"
 alias hls="history | tail -20"
 
 alias "c=xclip -selection clipboard"
+alias "pc=pwd|xclip -selection clipboard"
 # in order to not override files unintentionally 
 alias "cp=cp -i"
 alias "v=vim"
@@ -377,13 +378,13 @@ source $ZSH_PLUGIN_FOLDER/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.pl
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey "^[[B" history-substring-search-down
 
 # bind UP and DOWN arrow keys (compatibility fallback
 # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '$terminfo[kcuu1]' history-substring-search-up
+bindkey '$terminfo[kcud1]' history-substring-search-down
 
 # bind P and N for EMACS mode
 bindkey -M emacs '^P' history-substring-search-up
@@ -432,3 +433,7 @@ stty -ixon
 
 # ONI_NEOVIM_PATH=/opt/Oni/resources/app/nvim.appimage
 # export ONI_NEOVIM_PATH
+
+# To get the bashmarks working
+# https://alysivji.github.io/category/quick-hits.html
+unalias g && source ~/.dotfiles/zsh/scripts/bashmarks.sh

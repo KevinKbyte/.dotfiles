@@ -1,0 +1,7 @@
+export DIR_cs="$HOME/Desktop/bu_notes/cs/ec521/ta_hw"
+export DIR_hw="$HOME/Desktop/bu_notes/cs"
+export DIR_j="$HOME/Desktop/bu_notes/lj112"
+export DIR_fp="$HOME/.dotfiles/.vim/after/ftplugin"
+export DIR_t="$HOME/test_files"
+export DIR_d="$HOME/.dotfiles"
+export DIR_dl="$HOME/Downloads"

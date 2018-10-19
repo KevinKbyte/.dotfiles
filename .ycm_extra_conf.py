@@ -80,7 +80,9 @@ flags = [
 '/usr/local/include',
 '-isystem',
 ]
-# Added the files using "echo | clang-cpp-5.0 -v -E -x c++ -"
+# Used http://phding.com/setup-youcompleteme-for-c-plus-plus-programming/
+# Added the paths to all files outputted by "echo | clang-cpp-5.0 -v -E -x c++ -"
+# https://github.com/Valloric/YouCompleteMe/issues/2384
 
 def FlagsForFile(filename):
     return {'flags': flags}

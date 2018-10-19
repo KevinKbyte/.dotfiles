@@ -128,3 +128,8 @@ clang
 libclang-6.0-dev libclang-common-6.0-dev libclang1-6.0
 libclang1-6.0-dbg
 bear
+ktimer
+rtv
+rtv
+libpython-dbg
+python-dbg

@@ -21,11 +21,14 @@
 # bindkey -s '\el' 'ls\n'                               # [Esc-l] - run command: ls
 #  is to allow use of thes commands even when in middle of command
 
-# alt+r
-bindkey -s 'r' ' ranger\n clear\n'
+# alt+e for file explorer, explore files
+bindkey -s 'e' ' ranger\n clear\n'
 
-# alt+g 
-bindkey -s 'g' ' | rg -i '
+# alt+r 
+bindkey -s 'r' ' | rg -i '
+
+# alt+g to call g, aliased to go to bookmark
+bindkey -s 'g' ' g '
 
 # ctrl+space to complete
 bindkey '^ ' autosuggest-execute
