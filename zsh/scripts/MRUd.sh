@@ -16,31 +16,42 @@ inp=$1
 if [[ $inp == $HOME ]]; then
     inp="~"
 fi
-myvar=$(builtin dirs -v | head -10 | grep -i "$inp")
-first=$(echo $myvar | awk '{print $1}')
-first=${first:0:1}
+
+if [[ $2 == "i" ]]; then
+    # if second input is -i, then case insensitive
+    MRUd=$(builtin dirs -v | head -10 | grep -i "$inp")
+    # else case sensitive
+else
+    MRUd=$(builtin dirs -v | head -10 | grep "$inp")
+fi
+
+firstD=$(echo $MRUd | awk '{print $1}')
+firstD=${firstD:0:1}
 
 NL="
 
 "
 
-case $myvar in
+case $MRUd in
     *"$NL"*) 
-      x=$(echo $myvar | grep -c '$')
+      x=$(echo $MRUd | grep -c '$')
       if [[ $x == 2 ]]; then
           #statements
 # 1. if ( first line's first char == 0 ) && contains 1 \n: cd -first character of $(dirs -v | head -10 | greo $1 | tail -1 | awk '{print $1}')
-        second=$(echo $myvar | tail -1 | awk '{print $1}')
-        second=${second:0:1}
-        cd -$second
+        secondD=$(echo $MRUd | tail -1 | awk '{print $1}')
+        secondD=${secondD:0:1}
+        clear
+        cd -$secondD
       else
+         echo "first"
          dirs | sed 's/ /\n/g' 
       fi
       ;;
     *) 
-       if [[ $first -ne "" && $first -ne 0 ]]; then
-            cd -$first
+       if [[ $firstD -ne "" && $firstD -ne 0 ]]; then
+            cd -$firstD
        else
+          clear
           dirs | sed 's/ /\n/g'
        fi 
       ;;

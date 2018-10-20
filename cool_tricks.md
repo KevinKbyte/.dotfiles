@@ -215,3 +215,14 @@ gcc -g -o test test.c
   -u filename - Check if file set-user-id bit is set
   -w filename - Check if file is writable
   -x filename - Check if file is executable
+
+# Magic Space
+https://unix.stackexchange.com/questions/47349/what-does-zshs-magic-space-command-do
+  1. Allows expansion of history in bash with !<number in history>/startingletters
+
+# Formatting Comments in Vim
+https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-indentation
+  1. s:/*,m:**,ex:*/
+    - This allows easy closing of the comment (x flag) and the middle behavior that you described. You didn't mention the language you're using, but let's assume it is C and Objective-C in which you need this. I like to keep my configuration stuff in my .vimrc; so instead of creating or modifying the language files, I'd add this auto-command:
+  2.  autocmd FileType c,objc setlocal comments=s:/*,m:**,ex:*/
+     - Use the 'comments' option. Please check :h format-comments to read more about this, and configure your options accordingly. Here is a suggestion of flags to use:

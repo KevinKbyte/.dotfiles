@@ -15,8 +15,16 @@ set $sup Mod4
 # Mod3 is caps lock is Hyper_L (caps lock for me)
 set $mod Mod3
 
+set $screenSize 1024x768
+
 # to connect w/ HDMI cable
 bindsym F8 exec --no-startup-id /home/$USER/.dotfiles/i3/scripts/hdmi.sh
+# 1920 x 1080,
+# https://i3wm.org/docs/userguide.html (i3 and the rest of your software world)
+# Case 2: You can see more than your audience
+bindsym Shift+F8 exec xrandr --output VGA1 --mode $screenSize --right-of LVDS1
+# Case 1: everybody gets the same output
+bindsym $mod+F8 exec xrandr --output VGA1 --mode $screenSize --same-as LVDS1
 
 # printscreen
 bindsym --release Shift+Print exec --no-startup-id /home/$USER/.config/i3/scripts/screenshots.sh 0
@@ -1328,7 +1336,7 @@ floating_modifier $mod
 bindsym control+Mod1+t exec i3-sensible-terminal && i3-msg '[title="Terminal"] mark terminal'
 
 # start a chrome window
-bindsym $sup+Return exec chromium-browser &; exec sleep 1 && i3-msg '[class="Chromium-browser"] mark chromium'
+bindsym $sup+Return exec chromium-browser &; exec sleep 2 && i3-msg '[class="Chromium-browser"] mark chromium'
 bindsym $sup+shift+Return exec chromium-browser --incognito
 bindsym $mod+Mod1+Return exec quteb
 
@@ -1839,3 +1847,5 @@ exec xcompmgr -c
 # exec xbindkeys -p 
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
+bindsym $sup+h [floating] move scratchpad
+bindsym $sup+Shift+h scratchpad show

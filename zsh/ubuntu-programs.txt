@@ -133,3 +133,6 @@ rtv
 rtv
 libpython-dbg
 python-dbg
+cargo
+dh-cargo
+gcc

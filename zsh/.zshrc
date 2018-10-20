@@ -65,7 +65,6 @@ git-extras
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.dotfiles/zsh/key-bindings.zsh
 # source ~/.dotfiles/zsh/kev.zsh-theme
 source ~/.dotfiles/zsh/kev-easy-cmd-yank.zsh-theme
 
@@ -121,13 +120,16 @@ export tf="$HOME/test_files"
 export fp="$HOME/.dotfiles/.vim/after/ftplugin/"
 export dl="$HOME/Downloads"
 export dot="$HOME/.dotfiles"
+export zrc="$HOME/.zshrc"
+export i3c="$HOME/.config/i3/config"
+export vrc="$HOME/.vimrc"
+export trc="$HOME/.dotfiles/.tmux/.tmux.conf"
 
 alias hw="cd $hw"
 alias jp="cd $jp"
 alias cs="cd $cs"
 alias fp="cd $fp"
 alias dl="cd $dl"
-alias dot="cd $dot"
 alias tf="cd $tf"
 
 alias libro="libreoffice"
@@ -167,7 +169,7 @@ alias "saa=sudo apt autoremove -y"
 alias "zrc=vim ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
 alias "i3c=vim ~/.dotfiles/i3/config"
 alias "soi3c=source ~/.dotfiles/i3/config"
-alias "sozrc=source ~/.dotfiles/zsh/.zshr"
+alias "szrc=source ~/.dotfiles/zsh/.zshrc"
 alias "vrc=vim ~/.dotfiles/.vim/.vimrc"
 alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
@@ -230,7 +232,7 @@ alias "chx=chmod +x"
 alias "python=python3"
 alias "pip=pip3"
 alias "sudb=sudo updatedb"
-alias "sd=sudo"
+alias "s=sudo"
 alias "rgr=ranger"
 alias "calc=calcurse"
 alias "bd=ssh bandit"
@@ -280,12 +282,13 @@ function txt2pdf { enscript -p $(echo "$1" | awk -F '\.' '{print $1}').ps "$1" &
 function grin { grep -irn "$1" "$2"; }
 function grinE { grep -irnE "$1" "$2"; }
 function gcsmp { git commit -s -m "$1" && git push origin $(git_current_branch); }
-function rmspaces { mv $1 $(echo $1 | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); }
+function rmspaces { for file in "$@"; do mv $file $(echo $file | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); done; }
 function rmsp { ls -A | while read -r line; do
     mv $line $(echo $line | sed 's/\ /-/g' | tr '[:upper:]' '[:lower:]'); 
 done;
 } 
-function mkdir { command mkdir $@ && cd $@; }
+# function mkdir { command mkdir $@ && cd $@; }
+function mkd { command mkdir $@ && cd $@; }
 
 function evince { command evince $1 &; }
 
@@ -321,6 +324,34 @@ function bak { cp $1 .$(echo $1 | awk -F "." '{print $1}')_bak.$(echo $1 | awk -
 
 function m { mv "$@" .; }
 
+function mkt { #mktouch
+    # https://stackoverflow.com/questions/9452935/unix-create-path-of-folders-and-file
+    if [ $# -lt 1 ]; then
+        echo "Missing argument";
+        return 1;
+    fi
+
+    for f in "$@"; do
+        mkdir -p -- "$(dirname -- "$f")"
+        touch -- "$f"
+    done
+}
+
+# hex2decimal
+# https://stackoverflow.com/questions/13280131/hexadecimal-to-decimal-in-shell-script
+# https://unix.stackexchange.com/questions/51983/how-to-uppercase-the-command-line-argument
+function h2d {
+    if [ $# -lt 1 ]; then
+        echo "Missing argument";
+        return 1;
+    fi
+
+    for hex in "$@"; do
+        hex=$(echo $hex | awk '{print toupper($0)}')
+        echo "ibase=16; $hex" | bc
+    done
+}
+
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below
 unalias d; source ~/.dotfiles/zsh/scripts/MRUd.sh
 
@@ -329,15 +360,14 @@ export EDITOR=vim
 #export PATH="$HOME/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
 
-# set -o vi
-
 # export PYTHONPATH="${PYTHONPATH}:$hw/cloud_computing/hil_project/Auditing-for-HW-as-a-Service-cloud/audit_rest/audit_rest/"
 
 # zsh vi mode
+set -o vi
+source ~/.dotfiles/zsh/key-bindings.zsh
 
 export KEYTIMEOUT=10
-bindkey -M viins 'kj' vi-cmd-mode  # @todo - THIS DOES NOT WORK?
-bindkey -M viins '^k' kill-line
+bindkey -M viins 'kj' vi-cmd-mode  
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word

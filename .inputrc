@@ -1,6 +1,9 @@
 # https://coderwall.com/p/oqtj8w/the-single-most-useful-thing-in-bash
 "\C-p":history-search-backward
 "\C-n":history-search-forward
+$if Bash
+    Space: magic-space
+$endif
 
 set colored-stats On
 set completion-ignore-case On

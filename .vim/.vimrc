@@ -659,6 +659,15 @@ syntax enable
 filetype plugin on 
 filetype plugin indent on
 
+" enable vim reverse history search in the command line
+" https://stackoverflow.com/questions/741913/how-do-you-search-through-vims-command-history
+set history=3000
+
+" for C-p/C-n search completion in vim command line
+" https://stackoverflow.com/questions/14244513/reverse-search-completion-of-vims-command-history-without-using-direction-keys
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " File naigation
 set path+=**
 " Display all matching files when we tab complete 

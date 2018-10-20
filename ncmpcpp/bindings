@@ -227,8 +227,8 @@ def_key "-"
 #def_key "right"
 #  next_column
 #
-#def_key "right"
-#  slave_screen
+# def_key "right"
+#   slave_screen
 #
 #def_key "right"
 #  volume_up
