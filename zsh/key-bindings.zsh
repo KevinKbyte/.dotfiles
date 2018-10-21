@@ -69,12 +69,14 @@ bindkey -s ' ' 'cd '
 bindkey -M viins -s ' ' 'cd '
 
 # https://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell
-# vi-append-x-selection () { RBUFFER=$(xclip -o -selection clipboard </dev/null)$RBUFFER; }
-# zle -N vi-append-x-selection
-# bindkey -a 'p' vi-append-x-selection
-# vi-yank-x-selection () { print -rn -- $CUTBUFFER | xclip -selection clipboard; }
-# zle -N vi-yank-x-selection
-# bindkey -a 'y' vi-yank-x-selection
+vi-append-x-selection () { RBUFFER=$(xclip -o -selection clipboard </dev/null)$RBUFFER; }
+zle -N vi-append-x-selection
+bindkey -a 'p' vi-append-x-selection
+vi-yank-x-selection () { print -rn -- $CUTBUFFER | xclip -selection clipboard; }
+zle -N vi-yank-x-selection
+bindkey -a 'y' vi-yank-x-selection
+
+bindkey -a ' ' edit-command-line
 
 # Default bindkeys enabled for vi mode
 bindkey -M viins "^@" autosuggest-execute

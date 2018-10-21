@@ -71,6 +71,8 @@ let g:pymode_rope_goto_definition_bind = '<leader>gd'
 " Rename method/fn/class/var under cursor
 let g:pymode_rope_rename_bind = '<leader>rb'
 
+let g:pymode_rope_completion_bind = '<C-Space>'
+
 " Imports with Vimpy
 nnoremap <leader>ip :VimpyCheckLine<CR>
 
@@ -83,3 +85,13 @@ autocmd BufReadPost *.py
     \|  nnoremap ZZ :Isort<CR>ZZ
     \| endif
 
+" https://realpython.com/vim-and-python-a-match-made-in-heaven/
+"python with virtualenv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF

@@ -21,6 +21,7 @@ Plug 'ervandew/supertab'
 " For youcompleteme
 Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
 
+
 " On-demand loading
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -88,7 +89,6 @@ else
 
     " " For Python text objects
     " Plug 'bps/vim-textobj-python'
-
     " For Java dev
     Plug 'artur-shaik/vim-javacomplete2'
 
@@ -315,7 +315,7 @@ noremap <F3> :Autoformat<CR>
 " to disable jedi-vim autocomplete for YCM, but allows jedi-vim's \g
 " (assignments), \d (definitions), K (documentation), <leeader>r rename,
 " <leader>n shows all usages of a name, :Pyimport <module> opens module
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 1
 
 " IMPORTANT LINE, allows YCM to autocomplete
 let g:jedi#force_py_version = 3
@@ -409,6 +409,10 @@ set ic          " Defaults ignore case when search
 "============
 "<> YCM MISC
 "============
+autocmd filetype python let g:loaded_youcompleteme = 1
+
+" defines a shortcut for goto definition
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " <> PERSISTS SYSTEM CLIPBOARD ON EXIT
 autocmd VimLeave * call system("xsel -ib", getreg('+'))

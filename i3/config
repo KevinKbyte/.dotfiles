@@ -1788,6 +1788,7 @@ bindsym Mode_switch+bracketleft [con_mark="4"] focus
 # bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
 bindsym Mode_switch+t [con_mark="terminal"] focus
 bindsym Mode_switch+c [con_mark="chromium"] focus
+bindsym Mode_switch+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner

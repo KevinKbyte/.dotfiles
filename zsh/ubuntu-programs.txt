@@ -136,3 +136,4 @@ python-dbg
 cargo
 dh-cargo
 gcc
+zsh
