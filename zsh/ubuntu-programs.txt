@@ -137,3 +137,8 @@ cargo
 dh-cargo
 gcc
 zsh
+nasm
+gif2png
+gromit-mpx
+python3-tk
+python-tk

@@ -226,3 +226,7 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
     - This allows easy closing of the comment (x flag) and the middle behavior that you described. You didn't mention the language you're using, but let's assume it is C and Objective-C in which you need this. I like to keep my configuration stuff in my .vimrc; so instead of creating or modifying the language files, I'd add this auto-command:
   2.  autocmd FileType c,objc setlocal comments=s:/*,m:**,ex:*/
      - Use the 'comments' option. Please check :h format-comments to read more about this, and configure your options accordingly. Here is a suggestion of flags to use:
+
+# Polymorphism
+  https://www.youtube.com/watch?v=N4mEzFDjqtA
+  1. polymorphism - refer to objects as superclass and the functions work

@@ -182,16 +182,16 @@ mode "mode_small_mouse_move" {
     bindsym Mod1+k exec xdotool click 5
 
     # exit mode
-    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
-    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit
-    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1 && gromit-mpx -v
     # Right click and exit
-    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1
+    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1 && gromit-mpx -v
 
     # Middle Mouse and exit
-    bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1
+    bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
     bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
@@ -1293,17 +1293,17 @@ mode "mode_mouse_move" {
     # bindsym Menu mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
 
     # exit mode
-    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
-    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1
+    bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit
-    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1
+    bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1 && gromit-mpx -v
 
     # Right click and exit
-    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1
+    bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1 && gromit-mpx -v
 
     # Middle Click and exit
-    bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1
+    bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
     bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
@@ -1312,7 +1312,7 @@ mode "mode_mouse_move" {
     bindsym Mod1+Shift+space exec xdotool mouseup 1
 }
 
-bindsym $mod+a mode "mode_mouse_move"
+bindsym $mod+a mode "mode_mouse_move"; exec gromit-mpx -v
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -1843,6 +1843,7 @@ mouse_warping output
 
 # STARTUP PROGRAMS
 exec --no-startup-id nm-applet
+exec --no-startup-id gromit-mpx
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 exec xcompmgr -c
 # exec xbindkeys -p 

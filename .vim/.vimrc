@@ -409,7 +409,7 @@ set ic          " Defaults ignore case when search
 "============
 "<> YCM MISC
 "============
-autocmd filetype python let g:loaded_youcompleteme = 1
+" autocmd filetype python let g:loaded_youcompleteme = 1
 
 " defines a shortcut for goto definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
