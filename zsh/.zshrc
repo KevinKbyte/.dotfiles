@@ -239,6 +239,7 @@ alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
 alias "pkal=kill $(p autolock | awk '{print $2}' | tail -2)"
+alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
