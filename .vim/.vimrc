@@ -334,7 +334,9 @@ let g:formatterpath = [ '/home/kevin/.vim/plugged/vim-flake8' ]
 
 " folds almost all indented lines 
 set foldmethod=indent
-nnoremap \m :set foldmethod=manual<CR>
+nnoremap <leader>fmm :set foldmethod=manual<CR>
+nnoremap <leader>fmi :set foldmethod=indent<CR>
+nnoremap <leader>fms :set foldmethod=syntax<CR>
 
 augroup AutoSaveFolds
   autocmd!
@@ -420,7 +422,7 @@ autocmd VimLeave * call system("xsel -ib", getreg('+'))
 " YCM shows completion menu typing inside comments
 let g:ycm_complete_in_comments = 0
 " YCM shows completion menu typing inside strings
-let g:ycm_complete_in_strings = 1
+let g:ycm_complete_in_strings = 0
 " YCM collect ids from strings and comments
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " YCM seed ids with syntax
@@ -489,9 +491,8 @@ endif
 "  " 1 line s{char}{char} to move to {char}{char}
 map <leader>f <Plug>(easymotion-fl2)
 map <leader>F <Plug>(easymotion-Fl2)
-nnoremap <leader>f f
-map f <Plug>(easymotion-overwin-f2)
-map f <Plug>(easymotion-bd-f2)
+map <leader>f <Plug>(easymotion-overwin-f2)
+map <leader>f <Plug>(easymotion-bd-f2)
 " map <leader>ft <Plug>(easymotion-overwin-f2)
 " map <leader>ft <Plug>(easymotion-bd-f2)
 " map <leader>fo <Plug>(easymotion-overwin-f)
@@ -523,6 +524,11 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+
+" netrw 
+" https://vi.stackexchange.com/questions/6837/explore-shows-the-directory
+let g:netrw_list_hide = '^\./$'
+let g:netrw_hide = 1
 
 " FZF Mappings
 " Mapping selecting mappings
@@ -714,6 +720,7 @@ set showcmd
 
 " So markdown files will not be opened as VimWiki syntax
 let g:vimwiki_global_ext=0
+" let g:vimwiki_folding='list'
 
 " Make vimwiki as markdown
 " let g:vimwiki_list = [{'path': '~/my_site/',

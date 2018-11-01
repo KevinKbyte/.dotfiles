@@ -9,6 +9,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $term --no-startup-id gnome-terminal -- /bin/bash -c
+set $xterm --no-startup-id xterm -fa monaco -fs 13
 
 # Mod4 is super key
 set $sup Mod4
@@ -57,7 +58,7 @@ bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 bindsym $mod+z exec light -U 10
 bindsym $mod+x exec light -A 5 
 
-bindsym Mode_switch+r exec $term ranger 
+bindsym Mode_switch+r exec $xterm ranger 
 
 # Common clicks
 bindsym $mod+shift+a mode "mode_common_clicks"
@@ -1407,7 +1408,7 @@ bindsym $mod+shift+k move up
 bindsym $mod+shift+l move right
 
 # locks
-bindsym $sup+l exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh
+bindsym $sup+l exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
 # exec xautolock -time 15 -locker 
 exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' && xautolock -time 7 -locker "systemctl suspend" &
 
@@ -1843,6 +1844,7 @@ mouse_warping output
 
 # STARTUP PROGRAMS
 exec --no-startup-id nm-applet
+exec --no-startup-id mpd
 exec --no-startup-id gromit-mpx
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 exec xcompmgr -c

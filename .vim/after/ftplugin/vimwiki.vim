@@ -18,3 +18,5 @@ endfunction
 nnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 vnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 nnoremap <C-i> <C-i>
+
+" set foldmethod=indent

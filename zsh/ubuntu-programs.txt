@@ -143,3 +143,6 @@ gromit-mpx
 python3-tk
 python-tk
 okular
+w3m-img
+libcaca0
+caca-utils

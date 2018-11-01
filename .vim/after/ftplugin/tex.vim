@@ -1,5 +1,9 @@
 let g:tex_conceal = ""
 
+inoremap g$ <Esc>f$F$ci$
+nmap <leader>im f$ci$
+nmap <leader>iM F$ci$
+
 nnoremap S :LLPStartPreview<CR>
 
 filetype plugin indent on
