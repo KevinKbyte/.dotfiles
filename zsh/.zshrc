@@ -353,6 +353,24 @@ function h2d {
     done
 }
 
+# https://superuser.com/questions/611538/is-there-a-way-to-display-a-countdown-or-stopwatch-timer-in-a-terminal
+# function countdown(){
+function timer(){
+   date1=$((`date +%s` + $1)); 
+   while [ "$date1" -ge `date +%s` ]; do 
+     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 0.1
+   done
+}
+# function stopwatch(){
+function stopw(){
+  date1=`date +%s`; 
+   while true; do 
+    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+    sleep 0.1
+   done
+}
+
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below
 unalias d; source ~/.dotfiles/zsh/scripts/MRUd.sh
 
@@ -469,4 +487,5 @@ stty -ixon
 
 # To get the bashmarks working
 # https://alysivji.github.io/category/quick-hits.html
+
 unalias g && source ~/.dotfiles/zsh/scripts/bashmarks/bashmarks.sh

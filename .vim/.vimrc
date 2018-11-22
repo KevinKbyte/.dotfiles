@@ -524,6 +524,9 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-j> i<CR><Esc>
 
 " netrw 
 " https://vi.stackexchange.com/questions/6837/explore-shows-the-directory

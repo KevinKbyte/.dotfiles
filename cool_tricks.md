@@ -230,3 +230,41 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 # Polymorphism
   https://www.youtube.com/watch?v=N4mEzFDjqtA
   1. polymorphism - refer to objects as superclass and the functions work
+
+# Free a port
+  fuser <port>/tcp -k
+
+# Netrw explorer (https://vi.stackexchange.com/questions/6837/explore-shows-the-directory)
+  let g:netrw_list_hide = '^\./$'
+  let g:netrw_hide = 1
+
+  Once the variable is set, from netrw, hitting *a* will switch between different views:
+
+  showing everything
+  hiding items described by g:netrw_list_hide
+  only showing items in g:netrw_list_hide
+
+# Minted Latex (https://tex.stackexchange.com/questions/40083/how-to-install-minted-in-ubuntu)
+  sudo apt-get install texlive-latex-extra 
+  sudo apt-get install python-pygments
+
+# Almost like Markdown in Google Docs (https://hackmd.io/) - thanks duy
+
+# LD_PRELOAD
+  https://superuser.com/questions/226033/how-to-freeze-the-clock-for-a-specific-task
+  https://crypto.stackexchange.com/questions/52000/how-can-c-rand-be-exploited-if-a-secure-seed-is-used
+  https://www.usna.edu/Users/cs/aviv/classes/si485h/s17/hw/02/hw.html
+
+  https://stackoverflow.com/questions/10448254/how-to-use-gdb-with-ld-preload
+    - gdb
+
+  https://stackoverflow.com/questions/29273277/when-will-ld-preload-be-ignored
+    - LD_DEBUG
+  https://unix.stackexchange.com/questions/58846/viewing-linux-library-executable-version-info
+    - readelf -a -W <elffile>
+
+# Toggle allow mouse movement while typing:
+  https://ubuntuforums.org/showthread.php?t=2379851
+   - gsettings list-recursively org.gnome.desktop.peripherals.touchpad
+   - gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+

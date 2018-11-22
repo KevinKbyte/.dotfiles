@@ -146,3 +146,18 @@ okular
 w3m-img
 libcaca0
 caca-utils
+execstack
+netcat-traditional
+docker-ce
+emacs
+texlive-latex-extra
+python-pygments
+openssl
+python3-pyqt5
+python3-pyqt5*
+libssl1.1
+libssl1.0.0
+openssl1.0
+openssl1.0
+gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
+python-pygments

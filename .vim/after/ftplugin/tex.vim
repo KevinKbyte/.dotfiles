@@ -1,5 +1,9 @@
 let g:tex_conceal = ""
 
+"https://tex.stackexchange.com/questions/81958/using-vim-latex-live-preview-with-minted-package
+let g:Tex_DefaultTargetFormat='pdf'
+let g:vimtex_compiler_enabled = 0
+
 inoremap g$ <Esc>f$F$ci$
 nmap <leader>im f$ci$
 nmap <leader>iM F$ci$

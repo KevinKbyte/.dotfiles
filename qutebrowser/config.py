@@ -19,7 +19,7 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
-# c.auto_save.session = False
+c.auto_save.session = True
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
@@ -33,7 +33,7 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 ## Valid values:
 ##   - webengine: Use QtWebEngine (based on Chromium).
 ##   - webkit: Use QtWebKit (based on WebKit, similar to Safari).
-# c.backend = 'webengine'
+c.backend = 'webengine'
 
 ## This setting can be used to map keys to other keys. When the key used
 ## as dictionary-key is pressed, the binding for the key used as
@@ -555,7 +555,7 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 ## always exempt from hostblocking.
 ## Type: List of String
 
-# c.content.host_blocking.whitelist = ['host1.com', 'host2.com']
+# c.content.host_blocking.whitelist = ['twitch.tv']
 # c.content.host_blocking.whitelist = ['piwik.org']
 
 ## Enable hyperlink auditing (`<a ping>`).
@@ -1118,7 +1118,7 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 ##   - tr-TR: Turkish (Turkey)
 ##   - uk-UA: Ukrainian (Ukraine)
 ##   - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = []
+c.spellcheck.languages = ['en-US']
 
 ## Hide the statusbar unless a message is shown.
 ## Type: Bool
@@ -1133,7 +1133,7 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 ## Valid values:
 ##   - top
 ##   - bottom
-# c.statusbar.position = 'bottom'
+c.statusbar.position = 'top'
 
 ## List of widgets displayed in the statusbar.
 ## Type: List of String
@@ -1339,7 +1339,11 @@ c.aliases = {'wq': 'quit --save', 'q': 'quit', 'w': 'session-save'}
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 c.url.searchengines["g"] = "https://www.google.com/search?q={}"
 c.url.searchengines["wa"] = "https://wiki.archlinux.org/?search={}"
-c.url.searchengines["yt"] = "https://www.youtube.com/results?search_query={}"
+c.url.searchengines["w"] = "https://en.wikipedia.org/wiki/{}"
+c.url.searchengines["r"] = "https://www.reddit.com/search?q={}"
+c.url.searchengines["y"] = "https://www.youtube.com/results?search_query={}"
+c.url.searchengines["yv"] = "https://www.youtube.com/user/{}/videos"
+c.url.searchengines["gh"] = "https://github.com/search?q={}&ref=opensearch"
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
@@ -1417,7 +1421,9 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('<Ctrl-Shift-N>', 'open -p')
 # config.bind('<Ctrl-Shift-T>', 'undo')
 # config.bind('<Ctrl-Shift-W>', 'close')
-# config.bind('<Ctrl-T>', 'open -t')
+config.bind('<Ctrl-T>', 'open -t;; set-cmd-text -s :open')
+config.bind('<End>', 'scroll-to-perc')
+config.bind('<Home>', 'scroll-to-perc 0')
 # config.bind('<Ctrl-Tab>', 'tab-focus last')
 # config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'enter-mode passthrough')
@@ -1440,11 +1446,17 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('D', 'tab-close -o')
 # config.bind('F', 'hint all tab')
 # config.bind('G', 'scroll-to-perc')
-# config.bind('H', 'back')
-# config.bind('J', 'tab-next')
-# config.bind('K', 'tab-prev')
-# config.bind('L', 'forward')
-# config.bind('M', 'bookmark-add')
+config.bind('h', 'back')
+# config.bind('H', 'hint links spawn mpv {hint-url} --ontop --border')
+config.bind('H', 'spawn mpv {url:pretty} --ontop --border')
+config.bind('<Up>', 'scroll up')
+config.bind('<Down>', 'scroll down')
+config.bind('k', 'tab-next')
+config.bind('j', 'tab-prev')
+config.bind('l', 'forward')
+config.bind('L', 'spawn chromium-browser --app={url:pretty}')
+config.bind('M', 'bookmark-add')
+config.bind('J', 'set-cmd-text -s :bookmark-load')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'set-cmd-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -1540,6 +1552,10 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('}}', 'navigate next -t')
 
 ## Bindings for caret mode
+config.bind('<Ctrl-D>', 'move-to-next-line;; move-to-next-line;; move-to-next-line;; move-to-next-line;; move-to-next-line', mode='caret')
+config.bind('<Ctrl-U>', 'move-to-prev-line;; move-to-prev-line;; move-to-prev-line;; move-to-prev-line;; move-to-prev-line', mode='caret')
+config.bind('M', 'move-to-prev-line;;move-to-prev-line;;move-to-prev-line;;move-to-prev-line;;move-to-prev-line;;move-to-prev-line;;move-to-prev-line;;move-to-prev-line;; move-to-prev-line;; move-to-prev-line;; move-to-prev-line;; move-to-prev-line', mode='caret')
+config.bind('m', 'move-to-next-line;;move-to-next-line;;move-to-next-line;;move-to-next-line;;move-to-next-line;;move-to-next-line;;move-to-next-line;;move-to-next-line;; move-to-next-line;; move-to-next-line;; move-to-next-line;; move-to-next-line', mode='caret')
 # config.bind('$', 'move-to-end-of-line', mode='caret')
 # config.bind('0', 'move-to-start-of-line', mode='caret')
 # config.bind('<Ctrl-Space>', 'drop-selection', mode='caret')
@@ -1607,6 +1623,7 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('<Return>', 'follow-hint', mode='hint')
 
 ## Bindings for insert mode
+config.bind('<Alt-B>', 'move-to-prev-word', mode='insert')
 # config.bind('<Ctrl-E>', 'open-editor', mode='insert')
 # config.bind('<Escape>', 'leave-mode', mode='insert')
 # config.bind('<Shift-Ins>', 'insert-text {primary}', mode='insert')
@@ -1628,7 +1645,8 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('<Ctrl-F>', 'rl-forward-char', mode='prompt')
 # config.bind('<Ctrl-H>', 'rl-backward-delete-char', mode='prompt')
 # config.bind('<Ctrl-K>', 'rl-kill-line', mode='prompt')
-# config.bind('<Ctrl-U>', 'rl-unix-line-discard', mode='prompt')
+# config.bind('<
+Ctrl-U>', 'rl-unix-line-discard', mode='prompt')
 # config.bind('<Ctrl-W>', 'rl-unix-word-rubout', mode='prompt')
 # config.bind('<Ctrl-X>', 'prompt-open-download', mode='prompt')
 # config.bind('<Ctrl-Y>', 'rl-yank', mode='prompt')
