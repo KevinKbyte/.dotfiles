@@ -1334,10 +1334,10 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym control+Mod1+t exec i3-sensible-terminal && i3-msg '[title="Terminal"] mark terminal'
+bindsym control+Mod1+t exec i3-sensible-terminal && i3-msg '[title="Terminal"]'
 
 # start a chrome window
-bindsym $sup+Return exec chromium-browser &; exec sleep 2 && i3-msg '[class="Chromium-browser"] mark chromium'
+bindsym $sup+Return exec chromium-browser
 bindsym $sup+shift+Return exec chromium-browser --incognito
 bindsym $mod+Mod1+Return exec quteb
 
@@ -1775,20 +1775,17 @@ workspace_auto_back_and_forth yes
 
 bindsym $mod+c [class="Chromium-browser"] focus
 # bindsym Mod1+grave [class="_focused_"] back_and_forth
-bindsym Mode_switch+Shift+u mark 0
-bindsym Mode_switch+Shift+i mark 1
-bindsym Mode_switch+Shift+o mark 2
-bindsym Mode_switch+Shift+p mark 3
-bindsym Mode_switch+Shift+bracketleft mark 4
-bindsym Mode_switch+u [con_mark="0"] focus
-bindsym Mode_switch+i [con_mark="1"] focus
-bindsym Mode_switch+o [con_mark="2"] focus
-bindsym Mode_switch+p [con_mark="3"] focus
-bindsym Mode_switch+bracketleft [con_mark="4"] focus
+bindsym Mode_switch+u exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'u'
+bindsym Mode_switch+i exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'i'
+bindsym Mode_switch+o exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'o'
+bindsym Mode_switch+p exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'p'
+bindsym Mode_switch+bracketleft exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh '['
 
 # bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
-bindsym Mode_switch+t [con_mark="terminal"] focus
-bindsym Mode_switch+c [con_mark="chromium"] focus
+bindsym Mode_switch+t exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Gnome-terminal
+bindsym Mode_switch+q exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh qutebrowser
+bindsym Mode_switch+c exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Chromium-browser
+bindsym Mode_switch+Shift+c exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh chrom_p
 bindsym Mode_switch+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
@@ -1849,6 +1846,7 @@ exec --no-startup-id gromit-mpx
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
 exec xcompmgr -c
 # exec xbindkeys -p 
+exec $HOME/.dotfiles/i3/scripts/automark.sh
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
 bindsym $sup+h [floating] move scratchpad

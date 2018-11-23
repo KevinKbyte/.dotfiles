@@ -10,10 +10,11 @@ i3 = i3ipc.Connection()
 # Dynamically change border for active window
 def on_window_focus(i3):
     focused = i3.get_tree().find_focused()
-    if focused.marks[0] == 'chromium':
-        i3.command('[con_mark="terminal"] focus')
-    elif focused.window_class == 'Gnome-terminal':
-        i3.command('[con_mark="chromium"] focus')
+    if focused.marks[0] == 'Chromium-browser':
+        i3.command('[con_mark="Gnome-terminal"] focus')
+    elif focused.marks[0] == 'Gnome-terminal':
+        i3.command('[con_mark="Chromium-browser"] focus')
+    exit(0)
 
 # Subscribe to events
 # i3.on("window::focus", on_window_focus)

@@ -264,7 +264,9 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
     - readelf -a -W <elffile>
 
 # Toggle allow mouse movement while typing:
-  https://ubuntuforums.org/showthread.php?t=2379851
-   - gsettings list-recursively org.gnome.desktop.peripherals.touchpad
-   - gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+  xinput --list-props 14
+  toggle disable while typing enable property: xinput --set-prop <m> <n> 0 (https://askubuntu.com/questions/42764/mouse-locks-when-keys-are-pressed)
 
+# Python dir to check attributes
+  https://stackoverflow.com/questions/192109/is-there-a-built-in-function-to-print-all-the-current-properties-and-values-of-a
+  dir(obj)
