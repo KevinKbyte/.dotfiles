@@ -1778,8 +1778,6 @@ bindsym $mod+c [class="Chromium-browser"] focus
 bindsym Mode_switch+u exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'u'
 bindsym Mode_switch+i exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'i'
 bindsym Mode_switch+o exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'o'
-bindsym Mode_switch+p exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'p'
-bindsym Mode_switch+bracketleft exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh '['
 
 # bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
 bindsym Mode_switch+t exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Gnome-terminal
