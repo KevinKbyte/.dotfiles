@@ -1391,18 +1391,21 @@ bindsym $mod+l focus right
 
 bindsym $sup+Tab workspace back_and_forth
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-bindsym $sup+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 0
-bindsym $sup+Shift+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 1
-bindsym Mod1+grave workspace next
+bindsym $sup+grave workspace next
+bindsym $sup+Shift+grave move left
+bindsym Mod1+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 0
 bindsym Mod1+Shift+grave workspace prev
-bindsym Control+grave move left
+bindsym Control+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 1
 bindsym Control+Shift+grave move right
 bindsym Mode_switch+grave exec $HOME/.dotfiles/i3/scripts/move_to_next_workspace.sh next
 bindsym Mode_switch+Shift+grave exec $HOME/.dotfiles/i3/scripts/move_to_next_workspace.sh prev
 
 # alt tab functionality
-bindsym Mod1+Tab exec i3-alt-tab --next
-bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
+# bindsym Mod1+Tab exec i3-alt-tab --next
+# bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
+
+bindsym Mod1+Tab exec $HOME/.dotfiles/i3/scripts/alt_tab.sh next
+bindsym Mod1+Shift+Tab exec $HOME/.dotfiles/i3/scripts/alt_tab.sh prev
 
 # move focused window
 bindsym $mod+shift+h move left

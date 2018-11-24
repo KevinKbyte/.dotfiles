@@ -271,7 +271,7 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
   https://stackoverflow.com/questions/192109/is-there-a-built-in-function-to-print-all-the-current-properties-and-values-of-a
   dir(obj)
 
-# TODO: i3wm move container to container with a certain mark
+# i3wm move container to container with a certain mark
  https://i3wm.org/docs/userguide.html#_moving_containers_windows_to_marks
   6.11. Moving containers/windows to marks
   To move a container to another container with a specific mark (see [vim_like_marks]), you can use the following command.
@@ -285,4 +285,6 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 
   for_window [instance="tabme"] move window to mark target
 
-
+# Python Regex
+  Current workspace number
+  currentNumber = int(re.search(r'^([0-9]+)', focused).group(0))
