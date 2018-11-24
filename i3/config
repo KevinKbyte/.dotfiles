@@ -1389,13 +1389,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# bindsym Mod1+Tab workspace next
-# bindsym Mod1+Shift+Tab workspace prev
-
 bindsym $sup+Tab workspace back_and_forth
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-bindsym $sup+grave workspace next
-bindsym $sup+Shift+grave workspace prev
+bindsym $sup+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 0
+bindsym $sup+Shift+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 1
+bindsym Mod1+grave workspace next
+bindsym Mod1+Shift+grave workspace prev
 
 # alt tab functionality
 bindsym Mod1+Tab exec i3-alt-tab --next
@@ -1781,6 +1780,7 @@ bindsym $mod+c [class="Chromium-browser"] focus
 bindsym Mode_switch+u exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'u'
 bindsym Mode_switch+i exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'i'
 bindsym Mode_switch+o exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'o'
+bindsym Mode_switch+b [con_id="__focused__"] unmark 
 
 bindsym Mode_switch+Shift+u exec move window to mark '^u$'
 bindsym Mode_switch+Shift+i exec move window to mark '^i$'
@@ -1788,7 +1788,7 @@ bindsym Mode_switch+Shift+o exec move window to mark '^o$'
 
 bindsym Mode_switch+Shift+t exec move window to mark '^Gnome-terminal$'
 bindsym Mode_switch+Shift+q exec move window to mark '^qutebrowser$'
-bindsym Mode_switch+Shift+c exec move window to mark '^Chromium-browser$'
+bindsym Mode_switch+Shift+c exec move container to mark '^Chromium-browser$'
 bindsym Mode_switch+Shift+x exec move window to mark '^chrom-p$'
 bindsym Mode_switch+Shift+v exec move window to mark '^Evince$'
 
