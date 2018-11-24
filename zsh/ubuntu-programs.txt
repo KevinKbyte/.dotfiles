@@ -163,3 +163,13 @@ gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gst
 python-pygments
 unity-tweak-tool
 notify-osd
+libdbus-c++-1-0v5
+qt5-qmake*
+qt4-qmake*
+ubuntu-sdk-qmake-extras
+qt4-default
+libdbus-c++*
+libdbus-c++*
+libdbus-c++*
+libqt5widgets5
+libqt5core5a

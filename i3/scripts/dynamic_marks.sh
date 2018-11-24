@@ -11,9 +11,10 @@ mark = sys.argv[1]
 def focus(i3, mark):
     tree = i3.get_tree()
 
-    # If has no mark or empty workspace, then don't do anything
     try:
-        focused_mark = tree.find_focused().marks[0]
+        # If has no mark or empty workspace, then don't do anything
+        if tree.find_focused().window:
+            focused_mark = tree.find_focused().marks[0]
     except IndexError: # When there are no marks
         # If error (e.g. if in an empty workspace, or no marks), then set mark
         i3.command('mark ' + mark)

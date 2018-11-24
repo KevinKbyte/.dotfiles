@@ -2,10 +2,8 @@
 # https://i3ipc-python.readthedocs.io/en/latest/
 import i3ipc
 
-site = 'https://myproblemprovider.io/handcrafted/problems_for_me'
-
 title = {'c':'New Tab - Chromium'}
-possible_marks = {'Chromium-browser','Gnome-terminal','qutebrowser'}
+possible_marks = {'Chromium-browser','Gnome-terminal','qutebrowser', 'Evince'}
 
 def mark_when_new_browser_window(self, event):
 # marks the first container that is opened with their class_name, if it is listed in possible_marks
