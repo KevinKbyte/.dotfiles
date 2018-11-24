@@ -1395,6 +1395,10 @@ bindsym $sup+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_cla
 bindsym $sup+Shift+grave exec python3 $HOME/.dotfiles/i3/scripts/switch_windows_by_class.py 1
 bindsym Mod1+grave workspace next
 bindsym Mod1+Shift+grave workspace prev
+bindsym Control+grave move left
+bindsym Control+Shift+grave move right
+bindsym Mode_switch+grave exec $HOME/.dotfiles/i3/scripts/move_to_next_workspace.sh next
+bindsym Mode_switch+Shift+grave exec $HOME/.dotfiles/i3/scripts/move_to_next_workspace.sh prev
 
 # alt tab functionality
 bindsym Mod1+Tab exec i3-alt-tab --next
@@ -1864,5 +1868,10 @@ exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
 bindsym $sup+h [floating] move scratchpad
 bindsym $sup+Shift+h scratchpad show
+
+# Workspace Default
+# Send containers back to default workspaces
+bindsym Mode_switch+w exec $HOME/.dotfiles/i3/scripts/default_workspace.sh Chromium-browser
+bindsym Mode_switch+Shift+w exec $HOME/.dotfiles/i3/scripts/default_workspace.sh Gnome-terminal
 
 bindsym Mode_switch+f exec textsuggest
