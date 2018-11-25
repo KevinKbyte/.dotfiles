@@ -1414,7 +1414,7 @@ bindsym $mod+shift+k move up
 bindsym $mod+shift+l move right
 
 # locks
-bindsym $sup+l exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
+bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
 # exec xautolock -time 15 -locker 
 exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' && xautolock -time 7 -locker "systemctl suspend" &
 
