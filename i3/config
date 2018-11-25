@@ -1779,8 +1779,6 @@ popup_during_fullscreen leave_fullscreen
 # For instance: Assume you are on workspace "1: www" and switch to "2: IM" using mod+2 because somebody sent you a message. You don’t need to remember where you came from now, you can just press $mod+2 again to switch back to "1: www".
 workspace_auto_back_and_forth yes
 
-bindsym $mod+c [class="Chromium-browser"] focus
-
 # MARK JUMPING
 
 # bindsym Mod1+grave [class="_focused_"] back_and_forth
@@ -1805,8 +1803,9 @@ bindsym Mode_switch+q exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh
 bindsym Mode_switch+c exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Chromium-browser
 bindsym Mode_switch+x exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh chrom_p
 bindsym Mode_switch+v exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Evince
-bindsym Mode_switch+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 0
-bindsym Mode_switch+Shift+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 1
+
+bindsym Mode_switch+Shift+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 0
+bindsym Mode_switch+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 1
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -1878,3 +1877,5 @@ bindsym Mode_switch+w exec $HOME/.dotfiles/i3/scripts/default_workspace.sh Chrom
 bindsym Mode_switch+Shift+w exec $HOME/.dotfiles/i3/scripts/default_workspace.sh Gnome-terminal
 
 bindsym Mode_switch+f exec textsuggest
+
+bindsym $mod+c exec $HOME/.dotfiles/i3/scripts/kill_memory_hog.sh

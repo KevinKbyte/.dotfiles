@@ -11,9 +11,12 @@ def move_to_next_workspace(i3):
     tree = i3.get_tree()
 
     for container, workspace in workspaces.items():
-        if workspace != tree.find_marked(container)[0].workspace().name:
-            i3.command('[con_mark="' + container + '"] focus')
-            i3.command('move container to workspace ' + workspace)
+        try:
+            if workspace != tree.find_marked(container)[0].workspace().name:
+                i3.command('[con_mark="' + container + '"] focus')
+                i3.command('move container to workspace ' + workspace)
+        except IndexError: # if no container is found with mark
+            pass
 
     # Focus this at the end
     if len(argv) > 1:
