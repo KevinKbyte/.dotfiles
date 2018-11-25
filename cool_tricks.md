@@ -288,3 +288,14 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 # Python Regex
   Current workspace number
   currentNumber = int(re.search(r'^([0-9]+)', focused).group(0))
+
+# Python Timeit - Tests runtime
+  https://docs.python.org/2/library/timeit.html
+  Examples:
+    >>> import timeit
+    >>> timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)
+    0.8187260627746582
+    >>> timeit.timeit('"-".join([str(n) for n in range(100)])', number=10000)
+    0.7288308143615723
+    >>> timeit.timeit('"-".join(map(str, range(100)))', number=10000)
+    0.5858950614929199
