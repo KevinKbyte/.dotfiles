@@ -10,6 +10,13 @@ endsnippet
 # https://stackoverflow.com/questions/9666102/bash-double-bracket-issue 
 # On Ubuntu systems, /bin/sh is dash, not bash, and dash does not support the double bracket keyword
 
-snippet !env "#!/usr/bin/env (!env)"
+snippet benv "#!/usr/bin/env (!env)"
 `!p snip.rv = '#!/usr/bin/env ' + 'bash' + "\n\n" `
+endsnippet
+
+# https://bugs.launchpad.net/ultisnips/+bug/724240
+# Use python to execute vim commands because it does not get eval'd, unlike in !v (vimscript)
+snippet penv "#!/usr/bin/env (!env)"
+`!p snip.rv = '#!/usr/bin/env ' + 'python3' + "\n\n"
+vim.command("set filetype=python")`
 endsnippet

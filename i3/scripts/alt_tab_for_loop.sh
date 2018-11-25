@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 
-import time
 import i3ipc
 from sys import argv
 from time import sleep
-import itertools
 
 i3 = i3ipc.Connection()
-
-start_time = time.time()
 
 def alt_tab(i3):
     tree = i3.get_tree()
     root = tree.root()
 
-    # https://stackoverflow.com/questions/716477/join-list-of-lists-in-python
-    leaves = list(itertools.chain.from_iterable([[ descendent for descendent in workspace.descendents() if descendent.name ] for workspace in tree.workspaces()]))
+    leaves = []
 
-    # For some reason there is a None container if containers in scratchpad, so ignore it
-    [leaves.remove(container) for container in root.scratchpad() if container.name]
+    for workspace in tree.workspaces():
+        for descendent in workspace.descendents():
+            if descendent.name:
+                leaves += [descendent]
+
+    for container in root.scratchpad():
+        # For some reason there is a None container if containers in scratchpad, so ignore it
+        if container.name:
+            leaves.remove(container)
 
     focused = tree.find_focused()
 
@@ -42,12 +44,13 @@ def alt_tab(i3):
 
     if argv[1] == 'next':
         i_x = (leaves.index(focused) + 1) % len(leaves)
+        for i in leaves:
+            print(i.name)
+        print(i_x)
     else:
         i_x = (leaves.index(focused) - 1) % len(leaves)
 
     leaves[i_x].command('focus')
 
 alt_tab(i3)
-
-print("--- %s seconds ---" % (time.time() - start_time))
 exit(0)

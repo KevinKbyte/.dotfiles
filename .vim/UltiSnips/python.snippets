@@ -6,6 +6,10 @@ Indent is: `!v indent(".")`.
 endsnippet
 
 snippet p
-print($1)
-$0
+print($1)$0
+endsnippet
+
+snippet d "def"
+def ${1:function}($2):
+	${3:pass}$0
 endsnippet

@@ -1780,29 +1780,42 @@ popup_during_fullscreen leave_fullscreen
 workspace_auto_back_and_forth yes
 
 # MARK JUMPING
+set $mark1 u
+set $mark2 i
+set $mark3 o
+set $mark4 t
+set $mark5 q
+set $mark6 c
+set $mark7 x
+set $mark8 v
+set $mark_name4 Gnome-terminal
+set $mark_name5 qutebrowser
+set $mark_name6 Chromium-browser
+set $mark_name7 chrom_p
+set $mark_name8 Evince
 
 # bindsym Mod1+grave [class="_focused_"] back_and_forth
-bindsym Mode_switch+u exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'u'
-bindsym Mode_switch+i exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'i'
-bindsym Mode_switch+o exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh 'o'
+bindsym Mode_switch+$mark1 exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh $mark1
+bindsym Mode_switch+$mark2 exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh $mark2
+bindsym Mode_switch+$mark3 exec $HOME/.dotfiles/i3/scripts/dynamic_marks.sh $mark3
 bindsym Mode_switch+b [con_id="__focused__"] unmark 
 
-bindsym Mode_switch+Shift+u exec move window to mark '^u$'
-bindsym Mode_switch+Shift+i exec move window to mark '^i$'
-bindsym Mode_switch+Shift+o exec move window to mark '^o$'
+bindsym Mode_switch+Shift+$mark1 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark1
+bindsym Mode_switch+Shift+$mark2 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark2
+bindsym Mode_switch+Shift+$mark3 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark3
 
-bindsym Mode_switch+Shift+t exec move window to mark '^Gnome-terminal$'
-bindsym Mode_switch+Shift+q exec move window to mark '^qutebrowser$'
-bindsym Mode_switch+Shift+c exec move container to mark '^Chromium-browser$'
-bindsym Mode_switch+Shift+x exec move window to mark '^chrom-p$'
-bindsym Mode_switch+Shift+v exec move window to mark '^Evince$'
+bindsym Mode_switch+Shift+$mark4 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark_name4
+bindsym Mode_switch+Shift+$mark5 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark_name5
+bindsym Mode_switch+Shift+$mark6 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark_name6
+bindsym Mode_switch+Shift+$mark7 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark_name7
+bindsym Mode_switch+Shift+$mark8 exec $HOME/.dotfiles/i3/scripts/move_to_mark_and_focus.sh $mark_name8
 
 # bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
-bindsym Mode_switch+t exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Gnome-terminal
-bindsym Mode_switch+q exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh qutebrowser
-bindsym Mode_switch+c exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Chromium-browser
-bindsym Mode_switch+x exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh chrom_p
-bindsym Mode_switch+v exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh Evince
+bindsym Mode_switch+$mark4 exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh $mark_name4
+bindsym Mode_switch+$mark5 exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh $mark_name5
+bindsym Mode_switch+$mark6 exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh $mark_name6
+bindsym Mode_switch+$mark7 exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh $mark_name7
+bindsym Mode_switch+$mark8 exec $HOME/.dotfiles/i3/scripts/jumpmarks_or_scratchpad.sh $mark_name8
 
 bindsym Mode_switch+Shift+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 0
 bindsym Mode_switch+s exec $HOME/.dotfiles/i3/scripts/switch_between_chromium_terminal.sh 1
