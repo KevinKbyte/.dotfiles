@@ -299,3 +299,6 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
     0.7288308143615723
     >>> timeit.timeit('"-".join(map(str, range(100)))', number=10000)
     0.5858950614929199
+
+# Automatic Normalization of Played Audio
+  https://askubuntu.com/questions/95716/automatically-adjust-the-volume-based-on-content

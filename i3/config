@@ -98,8 +98,8 @@ set $timeY 100
     bindsym s mode "default" exec sleep $pluginSleepWaitForKeyUp && xdotool key Control_L+l && xdotool key s && xdotool key Alt_R+Return && xdotool key Control_L+l && xdotool key s+Return && eval $(xdotool getmouselocation --shell) && sleep $pluginSleepLoadSettingsPage && xdotool mousemove $pluginX $pluginY && xdotool click 1 && sleep $pluginSleepOGPosition && xdotool mousemove $X $Y && xdotool key Control_L+w
 
     # Moves up/down the page by left mousing the scroll bar
-    bindsym j mode "mode_mouse_move"; exec xdotool mousemove $downX $downY && xdotool mousedown 1
-    bindsym k mode "mode_mouse_move"; exec xdotool mousemove $upX $upY && xdotool mousedown 1
+    bindsym j mode "mode_mouse_move"; exec xdotool mousemove $downX $downY && xdotool mousedown 1 && gromit-mpx -v
+    bindsym k mode "mode_mouse_move"; exec xdotool mousemove $upX $upY && xdotool mousedown 1 && gromit-mpx -v
 
     # Shows Time and Battery
     bindsym t mode "default"; exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '$SCRIPTS/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
@@ -196,7 +196,7 @@ mode "mode_small_mouse_move" {
     bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
-    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
+    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 1 1
 
     # Release
     bindsym Mod1+Shift+space exec xdotool mouseup 1
@@ -905,7 +905,7 @@ mode "mode_mouse_move" {
     bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
-    bindsym Mod1+space exec xdotool click 1 && xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
+    bindsym Mod1+space exec xdotool click 1 && xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 1 1
 
     # Release
     bindsym Mod1+Shift+space exec xdotool mouseup 1
@@ -991,8 +991,8 @@ bindsym $sup+Tab workspace back_and_forth
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 bindsym $sup+grave workspace next
 bindsym $sup+Shift+grave workspace prev
-bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
-bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
+bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
+bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
 bindsym Mode_switch+grave exec $SCRIPTS/move_to_next_workspace.sh next
 bindsym Mode_switch+Shift+grave exec $SCRIPTS/move_to_next_workspace.sh prev
 
@@ -1060,8 +1060,8 @@ mode "mode_fullscreen" {
     bindsym $mod+a mode "mode_mouse_move"
 
     # bar mode toggle
-    bindsym $mod+l mode "default"; fullscreen toggle; focus left
-    bindsym $mod+h mode "default"; fullscreen disable; focus right
+    bindsym $mod+l mode "default"; fullscreen toggle; focus right
+    bindsym $mod+h mode "default"; fullscreen disable; focus left
     bindsym $mod+k mode "default"; fullscreen disable; focus up
     bindsym $mod+j mode "default"; fullscreen disable; focus down
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide

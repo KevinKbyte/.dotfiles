@@ -50,9 +50,11 @@ def jumper(x, y):
     :returns: TODO
 
     """
-    offset = 20
-    jump_x = str(x * X_INCREMENTS + offset)
-    jump_y = str(y * Y_INCREMENTS + offset)
+    X_OFFSET = X_INCREMENTS//2
+    Y_OFFSET = Y_INCREMENTS//2
+
+    jump_x = str(x * X_INCREMENTS + X_OFFSET)
+    jump_y = str(y * Y_INCREMENTS + Y_OFFSET)
     return jump_x + " " + jump_y
 
 NUMBERS = [[ str(x) for x in range(1, 10) ]] # x = 0 --> 9; y = 0 --> 2
