@@ -9,7 +9,13 @@ i3 = i3ipc.Connection()
 def alt_tab(i3):
     tree = i3.get_tree()
     root = tree.root()
-    leaves = root.leaves()
+
+    leaves = []
+
+    for workspace in tree.workspaces():
+        for descendent in workspace.descendents():
+            if descendent.name:
+                leaves += [descendent]
 
     for container in root.scratchpad():
         # For some reason there is a None container if containers in scratchpad, so ignore it
@@ -32,13 +38,15 @@ def alt_tab(i3):
             current_workspace = i3.get_tree().find_focused().workspace()
 
             last_container = current_workspace.descendents()[-1]
-            print(first_container.name)
             last_container.command('focus')
 
         return
 
     if argv[1] == 'next':
         i_x = (leaves.index(focused) + 1) % len(leaves)
+        for i in leaves:
+            print(i.name)
+        print(i_x)
     else:
         i_x = (leaves.index(focused) - 1) % len(leaves)
 
