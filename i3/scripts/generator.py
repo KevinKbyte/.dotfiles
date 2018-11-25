@@ -40,7 +40,8 @@ else:
     X_INCREMENTS = int(round(X / X_CHUNK_SIZE))
     Y_INCREMENTS = int(round(Y / Y_CHUNK_SIZE))
 
-JUMPER = "/home/kevin/.config/i3/scripts/mouse_jumper.py"
+JUMPER = "$SCRIPTS/mouse_jumper.py"
+ADDITONAL_ACTION="$SCRIPTS/i3_mouse_move_additional_action.sh"
 
 NUMBERS = [[ str(x) for x in range(1, 10) ]] # x = 0 --> 9; y = 0 --> 2
 NUMBERS[0] += ['0']
@@ -71,14 +72,14 @@ for y in range(0, Y_CHUNK_SIZE, Y_KEY_COMBOS):
         # bindsym $mod+3 mode "default"; exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 1; exec xdotool keydown super keyup super
         # bindsym $mod+shift+3 mode "default"; exec python /home/kevin/.config/i3/scripts/mouse_jumper.py 2 2; exec xdotool keydown super keyup super
 
-        print("bindsym " + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + "$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+1) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + "shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+2) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + "$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+3) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+1) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+2) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
-        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+3) + " && " + change_to_mode_small_mouse_move + " && " + rm_i3bar)
+        print("bindsym " + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + "$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+1) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + "$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+2) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + "shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x) + " " + str(y+3) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+1) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+$mod+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+2) + " && " + ADDITONAL_ACTION)
+        print("bindsym " + X_KEY_COMBO_KEYS[0] + "+shift+" + NUM_ALPHA[num_alpha_x][i] + mode_default + " exec python " + JUMPER + " " + str(x+1) + " " + str(y+3) + " && " + ADDITONAL_ACTION)
         i+=1
         print()
     i = 0

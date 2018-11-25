@@ -4,8 +4,6 @@
 # active=false
 active=false
 
-visibility=$(cat /tmp/gromit-mpx-visibility)
-
 toggleVisibility="ctrl+F9"
 
 if [[ $active = true ]]; then
