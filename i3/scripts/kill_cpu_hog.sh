@@ -18,6 +18,6 @@ if [[ $ps_cpu_usage > $ps_benchmark ]]; then
     kill $(echo $ps_most_cpu_intensive_process | awk '{print $2}')
     echo ps $ps_most_cpu_intensive_process > $TMP_LOG
 elif [[ $top_cpu_usage > $top_benchmark ]]; then
-    kill $($top_most_cpu_intensive_process | awk '{print $1}')
+    kill $(echo $top_most_cpu_intensive_process | awk '{print $1}')
     echo top $top_most_cpu_intensive_process > $TMP_LOG
 fi

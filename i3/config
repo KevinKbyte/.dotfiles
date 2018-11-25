@@ -1878,4 +1878,4 @@ bindsym Mode_switch+Shift+w exec $HOME/.dotfiles/i3/scripts/default_workspace.sh
 
 bindsym Mode_switch+f exec textsuggest
 
-bindsym $mod+c exec $HOME/.dotfiles/i3/scripts/kill_memory_hog.sh
+bindsym $mod+c exec $HOME/.dotfiles/i3/scripts/kill_cpu_hog.sh
