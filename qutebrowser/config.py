@@ -1446,6 +1446,11 @@ config.bind('<Home>', 'scroll-to-perc 0')
 # config.bind('D', 'tab-close -o')
 # config.bind('F', 'hint all tab')
 # config.bind('G', 'scroll-to-perc')
+
+# https://www.reddit.com/r/qutebrowser/comments/8g91of/is_it_possible_to_bind_a_key_to_a_series_of/
+# :bind ,s fake-key "<Ctrl-c>" ;; open -t -- {primary}
+config.bind(',s', 'fake-key "<Ctrl-c>" ;; open -t -- {primary}')
+
 config.bind('h', 'back')
 # config.bind('H', 'hint links spawn mpv {hint-url} --ontop --border')
 config.bind('H', 'spawn mpv {url:pretty} --ontop --border')
@@ -1457,6 +1462,7 @@ config.bind('l', 'forward')
 config.bind('L', 'spawn chromium-browser --app={url:pretty}')
 config.bind('M', 'bookmark-add')
 config.bind('J', 'set-cmd-text -s :bookmark-load')
+config.bind('so', 'config-source')
 # config.bind('N', 'search-prev')
 # config.bind('O', 'set-cmd-text -s :open -t')
 # config.bind('PP', 'open -t -- {primary}')
@@ -1623,7 +1629,13 @@ config.bind('m', 'move-to-next-line;;move-to-next-line;;move-to-next-line;;move-
 # config.bind('<Return>', 'follow-hint', mode='hint')
 
 ## Bindings for insert mode
-config.bind('<Alt-B>', 'move-to-prev-word', mode='insert')
+config.bind('<Alt-B>', 'fake-key "<Ctrl-Left>"', mode='insert')
+config.bind('<Alt-F>', 'fake-key "<Ctrl-Right>"', mode='insert')
+config.bind('<Ctrl-W>', 'fake-key "<Ctrl-Backspace>"', mode='insert')
+config.bind('<Ctrl-K>', 'fake-key "<Shift-End>" ;; fake-key "<Backspace>"', mode='insert')
+config.bind('<Ctrl-U>', 'fake-key "<Home>" ;; fake-key "<Shift-End>" ;; fake-key "<Backspace>"', mode='insert')
+config.bind('<Alt-U>', 'fake-key "<Ctrl-Z>"', mode='insert')
+config.bind('<ALt-R>', 'fake-key "<Ctrl-Shift-Z>"', mode='insert')
 # config.bind('<Ctrl-E>', 'open-editor', mode='insert')
 # config.bind('<Escape>', 'leave-mode', mode='insert')
 # config.bind('<Shift-Ins>', 'insert-text {primary}', mode='insert')

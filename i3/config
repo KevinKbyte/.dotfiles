@@ -62,7 +62,8 @@ bindsym $mod+x exec light -A 5
 bindsym Mode_switch+r exec $xterm ranger 
 
 # Common clicks
-bindsym $mod+shift+a mode "mode_common_clicks"
+# bindsym $mod+Shift+a mode "mode_common_clicks"
+bindsym Mode_switch+Shift+f mode "mode_common_clicks"
 
 mode "mode_common_clicks" {
 set $autoplayX 1826
@@ -176,19 +177,17 @@ mode "mode_small_mouse_move" {
     # bindsym Shift+space mode "mode_mouse_move"; exec xdotool keydown super keyup super && xdotool mouseup 1
     bindsym apostrophe mode "mode_mouse_move"
     bindsym $mod+space mode "mode_mouse_move"
-
-    # next mode
-    # bindsym space mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
-
-    bindsym Mod1+j exec xdotool click 4
-    bindsym Mod1+k exec xdotool click 5
+    bindsym Mode_switch+f mode "mode_mouse_move"
 
     # exit mode
     bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindcode Mode_switch+65 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit
     bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1 && gromit-mpx -v
+
     # Right click and exit
     bindsym Shift+space mode "default"; exec xdotool click 3 && xdotool mouseup 1 && gromit-mpx -v
 
@@ -196,7 +195,7 @@ mode "mode_small_mouse_move" {
     bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
-    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 1 1
+    bindsym Mod1+space exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 0.1 0.1
 
     # Release
     bindsym Mod1+Shift+space exec xdotool mouseup 1
@@ -887,6 +886,7 @@ mode "mode_mouse_move" {
     # next mode
     bindsym apostrophe mode "mode_small_mouse_move"; exec xdotool keydown super keyup super
     bindsym $mod+space mode "mode_small_mouse_move"; exec xdotool keydown super keyup super
+    bindsym Mode_switch+f mode "mode_small_mouse_move"; exec xdotool keydown super keyup super
 
     # # next next mode
     # bindsym Menu mode "mode_click"; exec xdotool keydown super keyup super && xdotool mouseup 1
@@ -894,6 +894,8 @@ mode "mode_mouse_move" {
     # exit mode
     bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    bindcode Mode_switch+65 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit
     bindsym space mode "default"; exec xdotool click 1 && xdotool mouseup 1 && gromit-mpx -v
@@ -905,13 +907,15 @@ mode "mode_mouse_move" {
     bindsym Return mode "default"; exec xdotool click 2 && xdotool mouseup 1 && gromit-mpx -v
 
     # Hold down
-    bindsym Mod1+space exec xdotool click 1 && xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 1 1
+    bindsym Mod1+space exec xdotool click 1 && xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 0.1 0.1
 
     # Release
     bindsym Mod1+Shift+space exec xdotool mouseup 1
 }
 
-bindsym $mod+a mode "mode_mouse_move"; exec gromit-mpx -v
+# bindsym $mod+a mode "mode_mouse_move"; exec gromit-mpx -v
+# Go to points
+bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -987,12 +991,22 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+
 bindsym $sup+Tab workspace back_and_forth
+# [A] Alternate between the two most recently used containers/windows
+bindsym Mode_switch+a workspace back_and_forth
+
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+bindsym Mode_switch+shift+a move container to workspace back_and_forth; workspace back_and_forth
 bindsym $sup+grave workspace next
 bindsym $sup+Shift+grave workspace prev
+
 bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
 bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
+# [S]witch focus between windows by class
+bindsym Mode_switch+s exec python3 $SCRIPTS/switch_windows_by_class.py 0
+bindsym Mode_switch+Shift+s exec python3 $SCRIPTS/switch_windows_by_class.py 1
+
 bindsym Mode_switch+grave exec $SCRIPTS/move_to_next_workspace.sh next
 bindsym Mode_switch+Shift+grave exec $SCRIPTS/move_to_next_workspace.sh prev
 
@@ -1057,7 +1071,8 @@ bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-ms
 
 set $mode_fullscreen
 mode "mode_fullscreen" {
-    bindsym $mod+a mode "mode_mouse_move"
+    # bindsym $mod+a mode "mode_mouse_move"
+    bindsym Mode_switch+f mode "mode_mouse_move"
 
     # bar mode toggle
     bindsym $mod+l mode "default"; fullscreen toggle; focus right
@@ -1380,9 +1395,9 @@ set $mark1 u
 set $mark2 i
 set $mark3 o
 set $mark4 t
-set $mark5 q
-set $mark6 c
-set $mark7 x
+set $mark5 b
+set $mark6 g
+set $mark7 c
 set $mark8 v
 set $mark_name4 Gnome-terminal
 set $mark_name5 qutebrowser
@@ -1394,7 +1409,7 @@ set $mark_name8 Evince
 bindsym Mode_switch+$mark1 exec $SCRIPTS/dynamic_marks.sh $mark1
 bindsym Mode_switch+$mark2 exec $SCRIPTS/dynamic_marks.sh $mark2
 bindsym Mode_switch+$mark3 exec $SCRIPTS/dynamic_marks.sh $mark3
-bindsym Mode_switch+b [con_id="__focused__"] unmark 
+bindsym Mode_switch+x [con_id="__focused__"] unmark 
 
 bindsym Mode_switch+Shift+$mark1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark1
 bindsym Mode_switch+Shift+$mark2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark2
@@ -1413,8 +1428,12 @@ bindsym Mode_switch+$mark6 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name6
 bindsym Mode_switch+$mark7 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name7
 bindsym Mode_switch+$mark8 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name8
 
-bindsym Mode_switch+Shift+s exec $SCRIPTS/switch_between_chromium_terminal.sh 0
-bindsym Mode_switch+s exec $SCRIPTS/switch_between_chromium_terminal.sh 1
+# [D]o often (switches between two most often used windows: chromium and terminal)
+bindsym Mode_switch+Shift+d exec $SCRIPTS/switch_between_chromium_terminal.sh 0
+bindsym Mode_switch+d exec $SCRIPTS/switch_between_chromium_terminal.sh 1
+
+# Delete by word
+bindsym Mode_switch+bracketright exec sleep 0.2 && xdotool key Control_L+BackSpace && xdotool key Mode_switch
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -1485,6 +1504,6 @@ bindsym $sup+Shift+h scratchpad show
 bindsym Mode_switch+w exec $SCRIPTS/default_workspace.sh Chromium-browser
 bindsym Mode_switch+Shift+w exec $SCRIPTS/default_workspace.sh Gnome-terminal
 
-bindsym Mode_switch+f exec textsuggest
+bindsym Mode_switch+g exec textsuggest
 
 bindsym $mod+c exec $SCRIPTS/kill_cpu_hog.sh

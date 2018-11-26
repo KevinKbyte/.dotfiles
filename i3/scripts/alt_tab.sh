@@ -18,7 +18,7 @@ def alt_tab(i3):
     leaves = list(itertools.chain.from_iterable([[ descendent for descendent in workspace.descendents() if descendent.name ] for workspace in tree.workspaces()]))
 
     # For some reason there is a None container if containers in scratchpad, so ignore it
-    [leaves.remove(container) for container in root.scratchpad() if container.name]
+    [leaves.remove(container) for container in root.scratchpad() if container.name in leaves]
 
     focused = tree.find_focused()
 

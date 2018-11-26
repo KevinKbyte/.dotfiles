@@ -302,3 +302,7 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 
 # Automatic Normalization of Played Audio
   https://askubuntu.com/questions/95716/automatically-adjust-the-volume-based-on-content
+
+# Vim: Move through changelist
+  https://stackoverflow.com/questions/1722681/how-to-go-back-to-lines-edited-before-the-last-one-in-vim
+  - g; and g,
