@@ -174,3 +174,4 @@ libdbus-c++*
 libqt5widgets5
 libqt5core5a
 pulseaudio-equalizer
+irssi

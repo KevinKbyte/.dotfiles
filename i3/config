@@ -180,6 +180,8 @@ mode "mode_small_mouse_move" {
     bindsym Mode_switch+f mode "mode_mouse_move"
 
     # exit mode
+    # Mode_switch e
+    bindcode Mode_switch+26 mode "default"
     bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
@@ -895,6 +897,8 @@ mode "mode_mouse_move" {
     bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
+    # Mode_switch + e
+    bindcode Mode_switch+26 mode "default"
     bindcode Mode_switch+65 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit
@@ -990,32 +994,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-
-bindsym $sup+Tab workspace back_and_forth
-# [A] Alternate between the two most recently used containers/windows
-bindsym Mode_switch+a workspace back_and_forth
-
-bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-bindsym Mode_switch+shift+a move container to workspace back_and_forth; workspace back_and_forth
-bindsym $sup+grave workspace next
-bindsym $sup+Shift+grave workspace prev
-
-bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
-bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
-# [S]witch focus between windows by class
-bindsym Mode_switch+s exec python3 $SCRIPTS/switch_windows_by_class.py 0
-bindsym Mode_switch+Shift+s exec python3 $SCRIPTS/switch_windows_by_class.py 1
-
-bindsym Mode_switch+grave exec $SCRIPTS/move_to_next_workspace.sh next
-bindsym Mode_switch+Shift+grave exec $SCRIPTS/move_to_next_workspace.sh prev
-
-# alt tab functionality
-# bindsym Mod1+Tab exec i3-alt-tab --next
-# bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
-
-bindsym Mod1+Tab exec $SCRIPTS/alt_tab.sh next
-bindsym Mod1+Shift+Tab exec $SCRIPTS/alt_tab.sh prev
 
 # move focused window
 bindsym $mod+shift+h move left
@@ -1390,50 +1368,168 @@ popup_during_fullscreen leave_fullscreen
 # For instance: Assume you are on workspace "1: www" and switch to "2: IM" using mod+2 because somebody sent you a message. You don’t need to remember where you came from now, you can just press $mod+2 again to switch back to "1: www".
 workspace_auto_back_and_forth yes
 
-# MARK JUMPING
+# MARK JUMPING SETUP #1 (Less intuitive)
+# set $mark1 u
+# set $mark2 i
+# set $mark3 o
+# # 41 is f
+# set $mark_term 41
+# # 44 is j
+# set $mark_browser1 40
+# set $mark_browser2 45
+# set $mark_browser3 44
+# set $mark_pdf_viewer v
+
+# set $mark_term_name Gnome-terminal
+# set $mark_browser_name1 Chromium-browser
+# set $mark_browser_name2 chrom_p
+# set $mark_browser_name3 qutebrowser
+# set $mark_pdf_viewer_name Evince
+
+# # bindsym Mod1+grave [class="_focused_"] back_and_forth
+# bindsym Mode_switch+$mark1 exec $SCRIPTS/dynamic_marks.sh $mark1
+# bindsym Mode_switch+$mark2 exec $SCRIPTS/dynamic_marks.sh $mark2
+# bindsym Mode_switch+$mark3 exec $SCRIPTS/dynamic_marks.sh $mark3
+# bindsym Mode_switch+x [con_id="__focused__"] unmark 
+
+# bindsym Mode_switch+Shift+$mark1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark1
+# bindsym Mode_switch+Shift+$mark2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark2
+# bindsym Mode_switch+Shift+$mark3 exec $SCRIPTS/move_to_mark_and_focus.sh $mark3
+
+# bindcode Mod1+Mode_switch+Shift+$mark_term exec $SCRIPTS/move_to_mark_and_focus.sh $mark_term_name
+# bindcode Mod1+Mode_switch+Shift+$mark_browser1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name1
+# bindcode Mod1+Mode_switch+Shift+$mark_browser2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name2
+# bindcode Mod1+Mode_switch+Shift+$mark_browser3 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name3
+# bindsym Mode_switch+Shift+$mark_pdf_viewer exec $SCRIPTS/move_to_mark_and_focus.sh $mark_pdf_viewer_name
+
+# # bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
+# bindcode Mod1+Mode_switch+$mark_term exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_term_name
+# bindcode Mod1+Mode_switch+$mark_browser1 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name1
+# bindcode Mod1+Mode_switch+$mark_browser2 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name2
+# bindcode Mod1+Mode_switch+$mark_browser3 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name3
+# bindsym Mode_switch+$mark_pdf_viewer exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_pdf_viewer_name
+
+# MARK JUMPING SETUP #2 (More intuitive)
 set $mark1 u
 set $mark2 i
 set $mark3 o
-set $mark4 t
-set $mark5 b
-set $mark6 g
-set $mark7 c
-set $mark8 v
-set $mark_name4 Gnome-terminal
-set $mark_name5 qutebrowser
-set $mark_name6 Chromium-browser
-set $mark_name7 chrom_p
-set $mark_name8 Evince
+set $mark_term t
+
+# d for default browser
+set $mark_browser1 d
+set $mark_browser2 Mod1+d
+# c for cutebrowser
+set $mark_browser3 c
+set $mark_pdf_viewer v
+
+set $mark_term_name Gnome-terminal
+set $mark_browser_name1 Chromium-browser
+set $mark_browser_name2 chrom_p
+set $mark_browser_name3 qutebrowser
+set $mark_pdf_viewer_name Evince
 
 # bindsym Mod1+grave [class="_focused_"] back_and_forth
 bindsym Mode_switch+$mark1 exec $SCRIPTS/dynamic_marks.sh $mark1
 bindsym Mode_switch+$mark2 exec $SCRIPTS/dynamic_marks.sh $mark2
 bindsym Mode_switch+$mark3 exec $SCRIPTS/dynamic_marks.sh $mark3
-bindsym Mode_switch+x [con_id="__focused__"] unmark 
+# 53 is x
+bindcode Mode_switch+Mod1+53 [con_id="__focused__"] unmark 
 
 bindsym Mode_switch+Shift+$mark1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark1
 bindsym Mode_switch+Shift+$mark2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark2
 bindsym Mode_switch+Shift+$mark3 exec $SCRIPTS/move_to_mark_and_focus.sh $mark3
 
-bindsym Mode_switch+Shift+$mark4 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_name4
-bindsym Mode_switch+Shift+$mark5 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_name5
-bindsym Mode_switch+Shift+$mark6 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_name6
-bindsym Mode_switch+Shift+$mark7 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_name7
-bindsym Mode_switch+Shift+$mark8 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_name8
+bindsym Mode_switch+Shift+$mark_term exec $SCRIPTS/move_to_mark_and_focus.sh $mark_term_name
+bindsym Mode_switch+Shift+$mark_browser3 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name3
+bindsym Mode_switch+Shift+$mark_browser1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name1
+bindsym Mode_switch+Shift+$mark_browser2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name2
+bindsym Mode_switch+Shift+$mark_pdf_viewer exec $SCRIPTS/move_to_mark_and_focus.sh $mark_pdf_viewer_name
 
-# bindsym Mode_switch+Shift+t exec i3-msg '[title="Terminal"] mark terminal'
-bindsym Mode_switch+$mark4 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name4
-bindsym Mode_switch+$mark5 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name5
-bindsym Mode_switch+$mark6 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name6
-bindsym Mode_switch+$mark7 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name7
-bindsym Mode_switch+$mark8 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_name8
+bindsym Mode_switch+$mark_term exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_term_name
+bindsym Mode_switch+$mark_browser3 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name3
+bindsym Mode_switch+$mark_browser1 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name1
+bindsym Mode_switch+$mark_browser2 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name2
+bindsym Mode_switch+$mark_pdf_viewer exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_pdf_viewer_name
+
+# bindsym Mod1+Mode_switch+f mode "window_switch"
+
+# mode "window_switch" {
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+#     bindcode Mode_switch+26 mode "default"
+#     # Mode_switch+Space
+#     bindcode Mode_switch+65 mode "default"
+#     bindsym space mode "default"
+
+# # bindsym Mod1+grave [class="_focused_"] back_and_forth
+#     bindsym $mark1 exec $SCRIPTS/dynamic_marks.sh $mark1
+#     bindsym $mark2 exec $SCRIPTS/dynamic_marks.sh $mark2
+#     bindsym $mark3 exec $SCRIPTS/dynamic_marks.sh $mark3
+#     bindsym x [con_id="__focused__"] unmark 
+
+#     bindsym Shift+$mark1 exec $SCRIPTS/move_to_mark_and_focus.sh $mark1
+#     bindsym Shift+$mark2 exec $SCRIPTS/move_to_mark_and_focus.sh $mark2
+#     bindsym Shift+$mark3 exec $SCRIPTS/move_to_mark_and_focus.sh $mark3
+
+#     bindsym Shift+d exec $SCRIPTS/move_to_mark_and_focus.sh $mark_term_name
+#     bindsym Shift+f exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name1
+#     bindsym Shift+j exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name2
+#     bindsym Shift+k exec $SCRIPTS/move_to_mark_and_focus.sh $mark_browser_name3
+#     bindsym Shift+l exec $SCRIPTS/move_to_mark_and_focus.sh $mark_pdf_viewer_name
+
+#     bindsym d exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_term_name
+#     bindsym f exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name1
+#     bindsym j exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name2
+#     bindsym k exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_browser_name3
+#     bindsym l exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark_pdf_viewer_name
+
+#     bindsym s workspace back_and_forth
+#     bindsym Mode_switch+s exec python3 $SCRIPTS/switch_windows_by_class.py 0
+#     bindsym Mode_switch+Shift+s exec python3 $SCRIPTS/switch_windows_by_class.py 1
+
+#     bindsym grave exec $SCRIPTS/move_to_next_workspace.sh next
+#     bindsym Shift+grave exec $SCRIPTS/move_to_next_workspace.sh prev
+#     bindsym Shift+s move container to workspace back_and_forth; workspace back_and_forth
+#     bindsym a exec $SCRIPTS/alt_tab.sh next
+#     bindsym Shift+a exec $SCRIPTS/alt_tab.sh prev
+
+
+# # [D]o often (switches between two most often used windows: chromium and terminal)
+#     bindsym Mode_switch+Shift+d exec $SCRIPTS/switch_between_chromium_terminal.sh 1
+#     bindsym Mode_switch+d exec $SCRIPTS/switch_between_chromium_terminal.sh 0
+# }
+
+bindsym $sup+Tab workspace back_and_forth
+# [A] Alternate between the two most recently used containers/windows
+bindsym Mode_switch+s workspace back_and_forth
+
+bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+bindsym Mode_switch+Shift+s move container to workspace back_and_forth; workspace back_and_forth
+bindsym $sup+grave workspace next
+bindsym $sup+Shift+grave workspace prev
+
+bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
+bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
+# [S]witch focus between windows by class
+bindsym Mod1+Mode_switch+s exec python3 $SCRIPTS/switch_windows_by_class.py 0
+bindsym Mod1+Mode_switch+Shift+s exec python3 $SCRIPTS/switch_windows_by_class.py 1
+
+bindsym Mode_switch+grave exec $SCRIPTS/move_to_next_workspace.sh next
+bindsym Mode_switch+Shift+grave exec $SCRIPTS/move_to_next_workspace.sh prev
+
+# alt tab functionality
+# bindsym Mod1+Tab exec i3-alt-tab --next
+# bindsym Mod1+Shift+Tab exec i3-alt-tab --prev
+
+bindsym Mod1+Tab exec $SCRIPTS/alt_tab.sh next
+bindsym Mod1+Shift+Tab exec $SCRIPTS/alt_tab.sh prev
+bindsym Mode_switch+a exec $SCRIPTS/alt_tab.sh next
+bindsym Mode_switch+Shift+a exec $SCRIPTS/alt_tab.sh prev
+
 
 # [D]o often (switches between two most often used windows: chromium and terminal)
-bindsym Mode_switch+Shift+d exec $SCRIPTS/switch_between_chromium_terminal.sh 0
-bindsym Mode_switch+d exec $SCRIPTS/switch_between_chromium_terminal.sh 1
-
-# Delete by word
-bindsym Mode_switch+bracketright exec sleep 0.2 && xdotool key Control_L+BackSpace && xdotool key Mode_switch
+bindsym Mode_switch+Shift+g exec $SCRIPTS/switch_between_chromium_terminal.sh 1
+bindsym Mode_switch+g exec $SCRIPTS/switch_between_chromium_terminal.sh 0
 
 # ONLY WORKS WHEN I3-GAPS IS INSTALLED
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -1504,6 +1600,6 @@ bindsym $sup+Shift+h scratchpad show
 bindsym Mode_switch+w exec $SCRIPTS/default_workspace.sh Chromium-browser
 bindsym Mode_switch+Shift+w exec $SCRIPTS/default_workspace.sh Gnome-terminal
 
-bindsym Mode_switch+g exec textsuggest
+# bindsym Mode_switch+g exec textsuggest
 
 bindsym $mod+c exec $SCRIPTS/kill_cpu_hog.sh

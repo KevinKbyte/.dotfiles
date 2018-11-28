@@ -5,7 +5,7 @@ from sys import argv
 
 i3 = i3ipc.Connection()
 
-workspaces = {"^Chromium-browser$": "2 ", "^Gnome-terminal$": "1 T"}
+workspaces = {"^Chromium-browser$": "2 ", "^Gnome-terminal$": "1 T", "^chrom_p$": "3", "^qutebrowser$": "4", "^Evince$": "10"}
 
 def move_to_next_workspace(i3):
     tree = i3.get_tree()

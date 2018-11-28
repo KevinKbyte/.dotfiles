@@ -17,7 +17,13 @@ def move_and_focus(i3):
     focused = tree.find_focused()
 
     # Only works for containers with one mark each
-    marks = [descendents.marks[0] for descendents in focused.workspace().descendents()]
+    # marks = [descendents.marks[0] for descendents in focused.workspace().descendents()]
+    marks = []
+    for descendents in focused.workspace().descendents():
+        try:
+            marks += [descendents.marks[0]]
+        except IndexError:
+            continue
 
     # If already there, there, moves container to original space
     if argv[1] in marks:
