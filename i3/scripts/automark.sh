@@ -12,7 +12,7 @@ def mark_when_new_browser_window(self, event):
     if con.name == title['c']:
         if not i3.get_tree().find_marked("chrom_p"):
             con.command('mark {}'.format("chrom_p"))
-        return
+            return
     # If none is yet marked with the current window's class, and the class is
     # one of the possible marks, mark it
     if not i3.get_tree().find_marked(str(con.window_class)):
@@ -21,7 +21,7 @@ def mark_when_new_browser_window(self, event):
             return
 
     for mark in extra_marks:
-        if not i3.get_tree().find_marked(str(mark)):
+        if not i3.get_tree().find_marked('^' + mark + '$'):
             con.command('mark {}'.format(mark))
             return
 
