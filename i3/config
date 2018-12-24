@@ -1432,9 +1432,9 @@ set $mark_pdf_viewer_name Evince
 # bindsym Mode_switch+$mark1 exec $SCRIPTS/dynamic_marks.sh $mark1
 # bindsym Mode_switch+$mark2 exec $SCRIPTS/dynamic_marks.sh $mark2
 # bindsym Mode_switch+$mark3 exec $SCRIPTS/dynamic_marks.sh $mark3
-bindsym Mode_switch+$mark1 exec $SCRIPTS/move_to_mark_and_focus $mark1
-bindsym Mode_switch+$mark2 exec $SCRIPTS/move_to_mark_and_focus $mark2
-bindsym Mode_switch+$mark3 exec $SCRIPTS/move_to_mark_and_focus $mark3
+bindsym Mode_switch+$mark1 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark1
+bindsym Mode_switch+$mark2 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark2
+bindsym Mode_switch+$mark3 exec $SCRIPTS/jumpmarks_or_scratchpad.sh $mark3
 # 53 is x
 bindcode Mode_switch+Mod1+53 [con_id="__focused__"] unmark 
 

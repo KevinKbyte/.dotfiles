@@ -93,5 +93,9 @@ import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
+  if sys.version_info[0] < 3: # python2
+    execfile(activate_this, dict(__file__=activate_this))
+  else:
+    # exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
 EOF

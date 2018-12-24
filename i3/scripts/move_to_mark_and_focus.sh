@@ -27,11 +27,11 @@ def move_and_focus(i3):
 
     # If already there, there, moves container to original space
     if argv[1] in marks:
-        i3.command('move container to workspace back_and_forth; workspace back_and_forth')
-    else:
-        i3.command('move container to mark ' + argv[1])
+        i3.command('move container to mark ' + '^' + str(argv[1]) + '$')
         focused.command('focus')
         i3.command('layout toggle split')
+    else:
+        i3.command('move container to workspace back_and_forth; workspace back_and_forth')
 
 move_and_focus(i3)
 exit(0)

@@ -177,3 +177,9 @@ pulseaudio-equalizer
 irssi
 powertop
 tlp
+texlive-latex-extra
+texlive*
+audacity
+pavucontrol
+cowsay
+fortune

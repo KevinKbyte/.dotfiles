@@ -238,7 +238,7 @@ alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
-alias "pkal=kill $(p autolock | awk '{print $2}' | tail -2)"
+alias "pkal=kill $(p xautolock | awk '{print $2}' | tail -2)"
 alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 
 # rsync -cr <Source> <Destination>
@@ -362,6 +362,17 @@ function timer(){
      sleep 0.1
    done
 }
+
+# Vocab timer
+# https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line
+function voc(){
+    for (( i = 1; i < $1; i++ )); do
+        echo "$i"
+        timer $2
+        echo
+    done
+}
+
 # function stopwatch(){
 function stopw(){
   date1=`date +%s`; 

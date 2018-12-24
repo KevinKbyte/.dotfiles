@@ -75,6 +75,9 @@ Plug 'sheerun/vim-polyglot'
 " For git
 Plug 'tpope/vim-fugitive'
 
+" For Asynchronous
+Plug 'skywind3000/asyncrun.vim'
+
 if has("nvim")
 else
     " Colors
@@ -524,6 +527,56 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+
+" http://vim.wikia.com/wiki/Search_for_visually_selected_text
+" Search for selected text.
+" http://vim.wikia.com/wiki/VimTip171
+let s:save_cpo = &cpo | set cpo&vim
+if !exists('g:VeryLiteral')
+  let g:VeryLiteral = 0
+endif
+function! s:VSetSearch(cmd)
+  let old_reg = getreg('"')
+  let old_regtype = getregtype('"')
+  normal! gvy
+  if @@ =~? '^[0-9a-z,_]*$' || @@ =~? '^[0-9a-z ,_]*$' && g:VeryLiteral
+    let @/ = @@
+  else
+    let pat = escape(@@, a:cmd.'\')
+    if g:VeryLiteral
+      let pat = substitute(pat, '\n', '\\n', 'g')
+    else
+      let pat = substitute(pat, '^\_s\+', '\\s\\+', '')
+      let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+      let pat = substitute(pat, '\_s\+', '\\_s\\+', 'g')
+    endif
+    let @/ = '\V'.pat
+  endif
+  normal! gV
+  call setreg('"', old_reg, old_regtype)
+endfunction
+vnoremap <silent> * :<C-U>call <SID>VSetSearch('/')<CR>/<C-R>/<CR>
+vnoremap <silent> # :<C-U>call <SID>VSetSearch('?')<CR>?<C-R>/<CR>
+vmap <kMultiply> *
+nmap <silent> <Plug>VLToggle :let g:VeryLiteral = !g:VeryLiteral
+  \\| echo "VeryLiteral " . (g:VeryLiteral ? "On" : "Off")<CR>
+if !hasmapto("<Plug>VLToggle")
+  nmap <unique> <Leader>vl <Plug>VLToggle
+endif
+let &cpo = s:save_cpo | unlet s:save_cpo
+
+" FOR REFACTORING
+" https://vi.stackexchange.com/questions/13689/how-to-find-and-replace-in-vim-without-having-to-type-the-original-word
+" changes all occurrences of word
+nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/
+" changes all occurrences of word
+" https://www.reddit.com/r/vim/comments/19sm9v/replace_all_instances_of_currently_highlighted/
+" http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection
+nnoremap <Leader>C :%s///gc<Left><Left><Left>
+vmap <Leader>C #:%s///gc<Left><Left><Left>
+
+vnoremap / <Esc>/\%V
+
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-j> i<CR><Esc>

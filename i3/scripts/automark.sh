@@ -4,7 +4,7 @@ import i3ipc
 
 title = {'c':'New Tab - Chromium'}
 possible_marks = {'Chromium-browser','Gnome-terminal','qutebrowser', 'Evince'}
-extra_marks = {'u', 'i', 'o'}
+extra_marks = [ 'u', 'i', 'o' ]
 
 def mark_when_new_browser_window(self, event):
 # marks the first container that is opened with their class_name, if it is listed in possible_marks
@@ -20,9 +20,9 @@ def mark_when_new_browser_window(self, event):
             con.command('mark {}'.format(con.window_class))
             return
 
-    for mark in extra_marks:
-        if not i3.get_tree().find_marked('^' + mark + '$'):
-            con.command('mark {}'.format(mark))
+    for curr_mark in extra_marks:
+        if not i3.get_tree().find_marked('^' + curr_mark + '$'):
+            con.command('mark {}'.format(curr_mark))
             return
 
 

@@ -8,6 +8,13 @@ inoremap g$ <Esc>f$F$ci$
 nmap <leader>im f$ci$
 nmap <leader>iM F$ci$
 
+" https://stackoverflow.com/questions/5010162/if-existscommand-fails-on-startup-using-pathogen
+" Since this is sourced before the plugins, we can't check with if exists()
+"arbitrary code execution if --shell-escape enabled by default
+
+nnoremap a :AsyncRun pdflatex --shell-escape %<CR>:w<CR>
+inoremap a <C-o>:AsyncRun pdflatex --shell-escape %<CR><C-o>:w<CR>
+
 nnoremap S :LLPStartPreview<CR>
 
 filetype plugin indent on

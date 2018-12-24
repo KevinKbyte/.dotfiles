@@ -265,6 +265,7 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 
 # Toggle allow mouse movement while typing:
   xinput --list-props 14
+  xinput set-prop 14 289 0
   toggle disable while typing enable property: xinput --set-prop <m> <n> 0 (https://askubuntu.com/questions/42764/mouse-locks-when-keys-are-pressed)
 
 # Python dir to check attributes
@@ -306,3 +307,6 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 # Vim: Move through changelist
   https://stackoverflow.com/questions/1722681/how-to-go-back-to-lines-edited-before-the-last-one-in-vim
   - g; and g,
+
+# Record Loopback audio
+ pavucontrol

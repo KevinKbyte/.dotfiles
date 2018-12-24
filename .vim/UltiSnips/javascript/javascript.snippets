@@ -1,2 +1,34 @@
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/javascript/javascript.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript-jasmine.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript-jquery.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript-react.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript-requirejs.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.es6.snippets
+# /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.node.snippets
+# /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/javascript.snippets
 
+snippet re "require" b
+const ${1:express} = require('$1');$0 
+endsnippet
+
+snippet modx "module.exports" 
+module.exports = function(app) {
+	${2}
+};$0
+endsnippet
+
+snippet apl "app.listen" 
+app.listen(${1:3000}, function(){
+	${2:console.log("App has started on port " + $1;}
+});$0
+endsnippet
+
+snippet apg "app.get for routes" 
+app.get('/${1:}', function ${2}(req, res){
+	${3}
+});$0
+endsnippet
+
+snippet cl "console log" 
+console.log(${1:});$0
+endsnippet
