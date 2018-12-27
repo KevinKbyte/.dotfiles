@@ -310,3 +310,32 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 
 # Record Loopback audio
  pavucontrol
+
+# Remove user from group
+ s gpasswd -d $USER cgusers
+
+# Cgroups for controlling resources
+  https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-cpu
+  - Modify /sys/fs/cgroup/cpu/limited/cpu.cfs_quota_us
+    - *cpu.cfs.quota_us*
+    - specifies a period of time in microseconds (µs, represented here as "us") for how regularly a cgroup's access to CPU resources should be reallocated. If tasks in a cgroup should be able to access a single CPU for 0.2 seconds out of every 1 second, set cpu.cfs_quota_us to 200000 and cpu.cfs_period_us to 1000000. The upper limit of the cpu.cfs_quota_us parameter is 1 second and the lower limit is 1000 microseconds.
+    - https://unix.stackexchange.com/questions/134414/how-to-limit-the-total-resources-memory-of-a-process-and-its-children
+      - sudo cgcreate -t $USER:$USER -a $USER:$USER -g memory:myGroup
+          - allows specified user to call, for example: *cgexec -g memory:myGroup vim*, w/o root privileges
+      - echo 500000000 > /sys/fs/cgroup/memory/myGroup/memory.limit_in_bytes
+    - https://stackoverflow.com/questions/45555186/limit-cpu-time-of-process-group
+       - cgcreate -g cpu:/fixedlimit
+       - # allow fix 25% cpu usage (1 cpu)
+       - cgset -r cpu.cfs_quota_us=25000,cpu.cfs_period_us=100000 fixedlimit
+       - cgexec -g cpu:fixedlimit /my/hungry/program
+           - to set _Timeout_:
+            - It turned out, the goal is to limit runtime to certain seconds while measuring it. After setting the desired cgroup limits (in order to get a fair sandbox) you can achieve this goal by running:
+              - ((time -p timeout 20 cgexec -g cpu:fixedlimit /program/to/test ) 2>&1) | grep user
+
+# Load average
+  https://www.tecmint.com/understand-linux-load-averages-and-monitor-performance/
+  - High load averages imply that a system is overloaded; many processes are waiting for CPU time. 
+  - Load averages from *uptime* command is:
+     1. over last minute
+     2. over last 5 minutes
+     3. over last 15 minutes

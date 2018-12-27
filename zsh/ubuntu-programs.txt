@@ -183,3 +183,5 @@ audacity
 pavucontrol
 cowsay
 fortune
+build-essential
+cgroup-tools
