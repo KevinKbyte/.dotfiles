@@ -19,7 +19,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 
 " For youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python install.py --all'}
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
 
 " On-demand loading
@@ -75,8 +75,14 @@ Plug 'sheerun/vim-polyglot'
 " For git
 Plug 'tpope/vim-fugitive'
 
+" For Markdown
+Plug 'plasticboy/vim-markdown'
+
 " For Asynchronous
 Plug 'skywind3000/asyncrun.vim'
+
+" For i3 syntax color
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 if has("nvim")
 else
@@ -408,7 +414,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips', $HOME.'/.vim/plugged/vim-snippets/UltiSnips']
 let g:UltiSnipsEditSplit= "context"
 
-set cursorline
+set cursorline cursorcolumn
 set ic          " Defaults ignore case when search
 
 "============
@@ -528,6 +534,8 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+nnoremap <leader>vrc :tabe ~/.vimrc<CR>:set filetype=vim<CR>
+
 " http://vim.wikia.com/wiki/Search_for_visually_selected_text
 " Search for selected text.
 " http://vim.wikia.com/wiki/VimTip171
@@ -568,7 +576,7 @@ let &cpo = s:save_cpo | unlet s:save_cpo
 " FOR REFACTORING
 " https://vi.stackexchange.com/questions/13689/how-to-find-and-replace-in-vim-without-having-to-type-the-original-word
 " changes all occurrences of word
-nnoremap <Leader>rw :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>rw :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " changes all occurrences of word
 " https://www.reddit.com/r/vim/comments/19sm9v/replace_all_instances_of_currently_highlighted/
 " http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection
@@ -779,9 +787,8 @@ let g:vimwiki_global_ext=0
 " let g:vimwiki_folding='list'
 
 " Make vimwiki as markdown
-" let g:vimwiki_list = [{'path': '~/my_site/',
-"                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                     \ 'syntax': 'markdown', 'ext': '.md'}]
 "============
 "<> RICE
 "============
@@ -789,6 +796,8 @@ let g:vimwiki_global_ext=0
 if has('nvim')
 else
 colorscheme xoria256
+" highlight Normal guibg=black guifg=white
+" set background=dark
 let g:airline#extensions#wordcount#enabled = 1
 let g:airline#extensions#wordcount#filetypes = get(g:, 'airline#extensions#wordcount#filetypes',
       \ '\vhelp|markdown|vimwiki|rst|org|text|asciidoc|tex|mail')

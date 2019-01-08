@@ -185,3 +185,15 @@ cowsay
 fortune
 build-essential
 cgroup-tools
+tree
+python-tk
+python-tk-dbg
+tk-dev python3-tk
+python-tk
+python3-tk
+pqiv
+pqiv
+glib-2.0
+python3-gi
+libappindicator3-dev
+libpcl-dev

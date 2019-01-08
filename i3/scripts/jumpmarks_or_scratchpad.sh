@@ -18,6 +18,7 @@ def focus(i3, mark):
         if focused.marks[0] == mark:
             i3.command('[con_mark="^' + mark + '$"] move scratchpad')
             i3.command('[con_mark="^' + mark + '$"] floating toggle')
+            return
     except Exception:
         pass
 

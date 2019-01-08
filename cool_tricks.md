@@ -339,3 +339,38 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
      1. over last minute
      2. over last 5 minutes
      3. over last 15 minutes
+
+# Install Nvidia Drivers on Ubuntu Bionic Beaver (https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux)
+  1. ubuntu-drivers devices
+  2. sudo ubuntu-drivers autoinstall
+    - or sudo apt install nvidia-<insert-recommended-driver-by-ubuntu-drivers>
+  - Then reboot
+
+# Bare double dash (--) in Bash builtin cmds
+https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-known-as-bare-double-dash
+  - terminates options, after which only positional params are accepted
+  - Example: grep -- -v file
+      - -v in this case is not an option
+
+# Delete Commits from Github
+  https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github?fbclid=IwAR0UORmwsdp89DAIgu5N2W7O1Mh9ezfPe2ADz4A7i4PG1w2Yi7nyva73ySw
+  - Undo 1 commit: git push -f origin HEAD^:master
+  - Undo to a certain commit: git push -f origin <commit-hash>:master
+     - use git log to find the commit hash
+  # Delete unpushed commits
+    https://stackoverflow.com/questions/3197413/how-do-i-delete-unpushed-git-commits
+    - git reset --soft HEAD~<number-of-commits-to-go-back>
+        - undo commits already committed, without undoing work you have done
+    - git reset --hard HEAD~<number-of-commits-to-go-back>
+        - undo commits already committed, and undoing all the work you have done up before pushing
+
+# Gitignore file from all directories
+  https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
+  - put into .gitignore:**/<file>
+
+# Set up multiple mice/keyboard
+  https://www.linux.org/threads/cool-tricks-with-xinput-device.10345/
+  - xinput
+      - to check the device id
+  - xinput create-master <new_master_name>
+  - xinput reattach <slave id, which is id of new I/O mouse device> <master id of new master you just created>

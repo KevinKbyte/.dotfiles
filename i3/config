@@ -66,28 +66,28 @@ bindsym Mode_switch+r exec $xterm ranger
 bindsym Mode_switch+Shift+f mode "mode_common_clicks"
 
 mode "mode_common_clicks" {
-set $autoplayX 1826
-set $autoplayY 182
-set $autoplaySleepOGPosition 0.075
+    set $autoplayX 1826
+    set $autoplayY 182
+    set $autoplaySleepOGPosition 0.075
 
-set $backPageX 17
-set $backPageY 61
-set $backSleepOGPosition 0.1
+    set $backPageX 17
+    set $backPageY 61
+    set $backSleepOGPosition 0.1
 
-set $pluginX 1264
-set $pluginY 278
-set $pluginSleepWaitForKeyUp 0.2
-set $pluginSleepLoadSettingsPage 0.4
-set $pluginSleepOGPosition 0.4
+    set $pluginX 1264
+    set $pluginY 278
+    set $pluginSleepWaitForKeyUp 0.2
+    set $pluginSleepLoadSettingsPage 0.4
+    set $pluginSleepOGPosition 0.4
 
-set $downX 1911
-set $downY 1057
+    set $downX 1911
+    set $downY 1057
 
-set $upX 1919
-set $upY 106
+    set $upX 1919
+    set $upY 106
 
-set $timeX 1050
-set $timeY 100
+    set $timeX 1050
+    set $timeY 100
 
     # Click Youtube Autoplay
     bindsym a mode "default"; exec eval $(xdotool getmouselocation --shell) && xdotool mousemove $autoplayX $autoplayY && xdotool click 1 && sleep $autoplaySleepOGPosition && xdotool mousemove $X $Y
@@ -1348,8 +1348,8 @@ bar {
         hidden_state hide
         position top
         # status_command i3status
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
         tray_output primary
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
         font pango:DejaVu Sans Mono 10
 }
 
@@ -1586,7 +1586,7 @@ bindsym Mode_switch+m exec $term 'ncmpcpp' && i3-msg floating toggle
 mouse_warping output
 
 # STARTUP PROGRAMS
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id mpd
 exec --no-startup-id gromit-mpx
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
@@ -1606,3 +1606,7 @@ bindsym Mode_switch+Shift+w exec $SCRIPTS/default_workspace.sh Gnome-terminal
 # bindsym Mode_switch+g exec textsuggest
 
 bindsym $mod+c exec $SCRIPTS/kill_cpu_hog.sh
+
+for_window [class="Pqiv"] floating enable
+for_window [class="Pqiv"] resize set 1920 1080
+for_window [class="Pqiv"] move position center

@@ -3,7 +3,7 @@
 import i3ipc
 
 title = {'c':'New Tab - Chromium'}
-possible_marks = {'Chromium-browser','Gnome-terminal','qutebrowser', 'Evince'}
+possible_marks = {'Chromium-browser','Gnome-terminal','qutebrowser', 'Evince', 'Pqiv'}
 extra_marks = [ 'u', 'i', 'o' ]
 
 def mark_when_new_browser_window(self, event):

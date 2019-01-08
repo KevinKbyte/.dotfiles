@@ -19,4 +19,19 @@ nnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 vnoremap <leader>wc :call GetCountsForCurrLine()<CR>
 nnoremap <C-i> <C-i>
 
+nnoremap <leader>rs :AsyncRun rsync -Pcr ~/vimwiki ~/mnt/gdrive/linux<CR>
+nnoremap <leader>ps :AsyncRun pwgen 15 1 --symbols \| xclip -selection clipboard<CR>
+nnoremap <leader>pn :AsyncRun pwgen 15 1 \| xclip -selection clipboard<CR>
 " set foldmethod=indent
+
+noremap gl* :VimwikiChangeSymbolTo *<CR>
+noremap gL* :VimwikiChangeSymbolInListTo *<CR>
+vnoremap gl* :VimwikiChangeSymbolTo *<CR>
+vnoremap gL* :VimwikiChangeSymbolInListTo *<CR>
+
+" noremap gla :VimwikiChangeSymbolTo a)<CR>
+" noremap glA :VimwikiChangeSymbolInListTo a)<CR>
+" vnoremap gla :VimwikiChangeSymbolTo a)<CR>
+" vnoremap glA :VimwikiChangeSymbolInListTo a)<CR>
+
+" vnoremap gl1 :s/^\s*\zs/\=(line('.') - line("'<")+1).'. '<CR>

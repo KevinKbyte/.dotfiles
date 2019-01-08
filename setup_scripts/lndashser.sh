@@ -112,6 +112,9 @@ lns() {
         # for bashmarks
         ln -s ~/.dotfiles/zsh/scripts/bashmarks/.sdirs .
 
+        cd /usr/local/bin
+        ln -s ~/Desktop/projects/baku_vn/renpy-7.1.3-sdk/renpy.sh .
+
         cd ~/.dotfiles
 
         # if hash rg 2>/dev/null; then

@@ -80,8 +80,6 @@ X_KEY_COMBO_KEYS = ["Mod1"]
 
 num_alpha_x = 0 # iterates through the lists of NUM_ALPHA
 
-from os import system
-
 system("gromit-mpx --toggle")
 for y in range(0, Y_CHUNK_SIZE, Y_KEY_COMBOS):
     for x in range(0, X_CHUNK_SIZE, X_KEY_COMBOS):

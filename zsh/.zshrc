@@ -124,6 +124,7 @@ export zrc="$HOME/.zshrc"
 export i3c="$HOME/.config/i3/config"
 export vrc="$HOME/.vimrc"
 export trc="$HOME/.dotfiles/.tmux/.tmux.conf"
+export scr="$HOME/.dotfiles/i3/scripts/"
 
 alias hw="cd $hw"
 alias jp="cd $jp"
@@ -240,6 +241,8 @@ alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
 alias "pkal=kill $(p xautolock | awk '{print $2}' | tail -2)"
 alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
+alias "pips=pip search"
+alias "pipi=pip install"
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -373,6 +376,12 @@ function voc(){
     done
 }
 
+function chext(){
+    for f in *.$1; do 
+        mv -- "$f" "${f%.$1}.$2"
+    done
+}
+
 # function stopwatch(){
 function stopw(){
   date1=`date +%s`; 
@@ -380,6 +389,10 @@ function stopw(){
     echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
     sleep 0.1
    done
+}
+
+function grp(){
+    grep -irn "$@" .
 }
 
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below

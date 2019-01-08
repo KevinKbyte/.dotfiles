@@ -1,6 +1,7 @@
 from os import system
 from sys import argv
 
+system("$scr/jumpmarks_or_scratchpad.sh \"^Pqiv$\"")
 screen_size_filename = "/tmp/mouse-jump"
 try:
     S_SIZE_FILE = open(screen_size_filename, "r")
@@ -10,6 +11,7 @@ except FileNotFoundError:
 
 # screen size
 S_SIZE = str(S_SIZE_FILE.readline())
+S_SIZE_FILE.close()
 
 X, Y = S_SIZE.split("x")
 X, Y = int(X), int(Y)
@@ -30,5 +32,4 @@ Y_LOCATION = str(int(argv[2]) * Y_INCREMENTS + Y_OFFSET)
 # print X_LOCATION, Y_LOCATION
 
 system("xdotool mousemove " + X_LOCATION + " " + Y_LOCATION)
-
-S_SIZE_FILE.close()
+system("$scr/jumpmarks_or_scratchpad.sh \"^Pqiv$\"")

@@ -6,8 +6,9 @@
 # /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.es6.snippets
 # /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.node.snippets
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/javascript.snippets
+priority 50
 
-snippet re "require" b
+snippet rq "require" b
 const ${1:express} = require('$1');$0 
 endsnippet
 
@@ -31,4 +32,10 @@ endsnippet
 
 snippet cl "console log" 
 console.log(${1:});$0
+endsnippet
+
+snippet fn "function"
+function(${2:}) {
+	${0:${VISUAL}}
+}
 endsnippet

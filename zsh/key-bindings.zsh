@@ -90,7 +90,7 @@ bindkey -M viins "^H" backward-delete-char
 # Do not do "bindkey -M viins "^I" fzf-completion", or else tab will crash terminal
 # https://github.com/junegunn/fzf/wiki/Configuring-fuzzy-completion
 # setopt vi resets tab binding so unless have dedicated key, fuzzy completion unavailable
-bindkey '^I' "^I" expand-or-complete
+# bindkey '^I' "^I" expand-or-complete
 bindkey -M viins "^J" accept-line
 bindkey -M viins "^K" kill-line
 bindkey -M viins "^L" clear-screen
