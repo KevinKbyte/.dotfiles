@@ -11,6 +11,7 @@
 set $SCRIPTS $HOME/.dotfiles/i3/scripts
 set $term --no-startup-id gnome-terminal -- /bin/bash -c
 set $xterm --no-startup-id xterm -fa monaco -fs 13
+# set $cursor_hints $HOME/test_files/
 
 # Mod4 is super key
 set $sup Mod4
@@ -109,7 +110,7 @@ mode "mode_common_clicks" {
     bindsym w mode "default"; exec $term '$SCRIPTS/i3weatherterminal.sh' 
 
     bindsym $sup+space mode "default"
-    bindsym space mode "mode_mouse_move"
+    bindsym space mode "mode_mouse_move"; exec gromit-mpx -v
 }
 
 # bindsym $mod+shift+a mode "mode_small_mouse_move"
@@ -882,6 +883,369 @@ mode "mode_mouse_move" {
     bindsym Mod1+$mod+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 19 14 && $SCRIPTS/i3_mouse_move_additional_action.sh
     bindsym Mod1+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 19 15 && $SCRIPTS/i3_mouse_move_additional_action.sh
 
+    # And Click
+
+    bindsym $sup+1 exec python3 $SCRIPTS/mouse_jumper.py 0 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+1 exec python3 $SCRIPTS/mouse_jumper.py 0 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+1 exec python3 $SCRIPTS/mouse_jumper.py 0 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+1 exec python3 $SCRIPTS/mouse_jumper.py 0 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+1 exec python3 $SCRIPTS/mouse_jumper.py 1 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+1 exec python3 $SCRIPTS/mouse_jumper.py 1 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+1 exec python3 $SCRIPTS/mouse_jumper.py 1 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+1 exec python3 $SCRIPTS/mouse_jumper.py 1 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+2 exec python3 $SCRIPTS/mouse_jumper.py 2 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+2 exec python3 $SCRIPTS/mouse_jumper.py 2 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+2 exec python3 $SCRIPTS/mouse_jumper.py 2 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+2 exec python3 $SCRIPTS/mouse_jumper.py 2 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+2 exec python3 $SCRIPTS/mouse_jumper.py 3 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+2 exec python3 $SCRIPTS/mouse_jumper.py 3 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+2 exec python3 $SCRIPTS/mouse_jumper.py 3 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+2 exec python3 $SCRIPTS/mouse_jumper.py 3 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+3 exec python3 $SCRIPTS/mouse_jumper.py 4 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+3 exec python3 $SCRIPTS/mouse_jumper.py 4 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+3 exec python3 $SCRIPTS/mouse_jumper.py 4 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+3 exec python3 $SCRIPTS/mouse_jumper.py 4 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+3 exec python3 $SCRIPTS/mouse_jumper.py 5 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+3 exec python3 $SCRIPTS/mouse_jumper.py 5 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+3 exec python3 $SCRIPTS/mouse_jumper.py 5 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+3 exec python3 $SCRIPTS/mouse_jumper.py 5 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+4 exec python3 $SCRIPTS/mouse_jumper.py 6 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+4 exec python3 $SCRIPTS/mouse_jumper.py 6 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+4 exec python3 $SCRIPTS/mouse_jumper.py 6 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+4 exec python3 $SCRIPTS/mouse_jumper.py 6 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+4 exec python3 $SCRIPTS/mouse_jumper.py 7 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+4 exec python3 $SCRIPTS/mouse_jumper.py 7 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+4 exec python3 $SCRIPTS/mouse_jumper.py 7 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+4 exec python3 $SCRIPTS/mouse_jumper.py 7 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+5 exec python3 $SCRIPTS/mouse_jumper.py 8 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+5 exec python3 $SCRIPTS/mouse_jumper.py 8 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+5 exec python3 $SCRIPTS/mouse_jumper.py 8 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+5 exec python3 $SCRIPTS/mouse_jumper.py 8 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+5 exec python3 $SCRIPTS/mouse_jumper.py 9 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+5 exec python3 $SCRIPTS/mouse_jumper.py 9 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+5 exec python3 $SCRIPTS/mouse_jumper.py 9 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+5 exec python3 $SCRIPTS/mouse_jumper.py 9 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+6 exec python3 $SCRIPTS/mouse_jumper.py 10 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+6 exec python3 $SCRIPTS/mouse_jumper.py 10 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+6 exec python3 $SCRIPTS/mouse_jumper.py 10 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+6 exec python3 $SCRIPTS/mouse_jumper.py 10 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+6 exec python3 $SCRIPTS/mouse_jumper.py 11 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+6 exec python3 $SCRIPTS/mouse_jumper.py 11 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+6 exec python3 $SCRIPTS/mouse_jumper.py 11 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+6 exec python3 $SCRIPTS/mouse_jumper.py 11 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+7 exec python3 $SCRIPTS/mouse_jumper.py 12 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+7 exec python3 $SCRIPTS/mouse_jumper.py 12 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+7 exec python3 $SCRIPTS/mouse_jumper.py 12 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+7 exec python3 $SCRIPTS/mouse_jumper.py 12 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+7 exec python3 $SCRIPTS/mouse_jumper.py 13 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+7 exec python3 $SCRIPTS/mouse_jumper.py 13 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+7 exec python3 $SCRIPTS/mouse_jumper.py 13 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+7 exec python3 $SCRIPTS/mouse_jumper.py 13 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+8 exec python3 $SCRIPTS/mouse_jumper.py 14 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+8 exec python3 $SCRIPTS/mouse_jumper.py 14 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+8 exec python3 $SCRIPTS/mouse_jumper.py 14 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+8 exec python3 $SCRIPTS/mouse_jumper.py 14 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+8 exec python3 $SCRIPTS/mouse_jumper.py 15 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+8 exec python3 $SCRIPTS/mouse_jumper.py 15 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+8 exec python3 $SCRIPTS/mouse_jumper.py 15 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+8 exec python3 $SCRIPTS/mouse_jumper.py 15 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+9 exec python3 $SCRIPTS/mouse_jumper.py 16 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+9 exec python3 $SCRIPTS/mouse_jumper.py 16 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+9 exec python3 $SCRIPTS/mouse_jumper.py 16 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+9 exec python3 $SCRIPTS/mouse_jumper.py 16 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+9 exec python3 $SCRIPTS/mouse_jumper.py 17 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+9 exec python3 $SCRIPTS/mouse_jumper.py 17 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+9 exec python3 $SCRIPTS/mouse_jumper.py 17 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+9 exec python3 $SCRIPTS/mouse_jumper.py 17 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+0 exec python3 $SCRIPTS/mouse_jumper.py 18 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+0 exec python3 $SCRIPTS/mouse_jumper.py 18 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+0 exec python3 $SCRIPTS/mouse_jumper.py 18 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+0 exec python3 $SCRIPTS/mouse_jumper.py 18 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+0 exec python3 $SCRIPTS/mouse_jumper.py 19 0 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+0 exec python3 $SCRIPTS/mouse_jumper.py 19 1 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+0 exec python3 $SCRIPTS/mouse_jumper.py 19 2 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+0 exec python3 $SCRIPTS/mouse_jumper.py 19 3 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+q exec python3 $SCRIPTS/mouse_jumper.py 0 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+q exec python3 $SCRIPTS/mouse_jumper.py 0 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+q exec python3 $SCRIPTS/mouse_jumper.py 0 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+q exec python3 $SCRIPTS/mouse_jumper.py 0 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+q exec python3 $SCRIPTS/mouse_jumper.py 1 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+q exec python3 $SCRIPTS/mouse_jumper.py 1 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+q exec python3 $SCRIPTS/mouse_jumper.py 1 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+q exec python3 $SCRIPTS/mouse_jumper.py 1 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+w exec python3 $SCRIPTS/mouse_jumper.py 2 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+w exec python3 $SCRIPTS/mouse_jumper.py 2 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+w exec python3 $SCRIPTS/mouse_jumper.py 2 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+w exec python3 $SCRIPTS/mouse_jumper.py 2 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+w exec python3 $SCRIPTS/mouse_jumper.py 3 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+w exec python3 $SCRIPTS/mouse_jumper.py 3 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+w exec python3 $SCRIPTS/mouse_jumper.py 3 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+w exec python3 $SCRIPTS/mouse_jumper.py 3 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+e exec python3 $SCRIPTS/mouse_jumper.py 4 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+e exec python3 $SCRIPTS/mouse_jumper.py 4 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+e exec python3 $SCRIPTS/mouse_jumper.py 4 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+e exec python3 $SCRIPTS/mouse_jumper.py 4 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+e exec python3 $SCRIPTS/mouse_jumper.py 5 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+e exec python3 $SCRIPTS/mouse_jumper.py 5 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+e exec python3 $SCRIPTS/mouse_jumper.py 5 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+e exec python3 $SCRIPTS/mouse_jumper.py 5 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+r exec python3 $SCRIPTS/mouse_jumper.py 6 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+r exec python3 $SCRIPTS/mouse_jumper.py 6 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+r exec python3 $SCRIPTS/mouse_jumper.py 6 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+r exec python3 $SCRIPTS/mouse_jumper.py 6 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+r exec python3 $SCRIPTS/mouse_jumper.py 7 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+r exec python3 $SCRIPTS/mouse_jumper.py 7 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+r exec python3 $SCRIPTS/mouse_jumper.py 7 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+r exec python3 $SCRIPTS/mouse_jumper.py 7 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+t exec python3 $SCRIPTS/mouse_jumper.py 8 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+t exec python3 $SCRIPTS/mouse_jumper.py 8 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+t exec python3 $SCRIPTS/mouse_jumper.py 8 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+t exec python3 $SCRIPTS/mouse_jumper.py 8 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+t exec python3 $SCRIPTS/mouse_jumper.py 9 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+t exec python3 $SCRIPTS/mouse_jumper.py 9 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+t exec python3 $SCRIPTS/mouse_jumper.py 9 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+t exec python3 $SCRIPTS/mouse_jumper.py 9 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+y exec python3 $SCRIPTS/mouse_jumper.py 10 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+y exec python3 $SCRIPTS/mouse_jumper.py 10 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+y exec python3 $SCRIPTS/mouse_jumper.py 10 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+y exec python3 $SCRIPTS/mouse_jumper.py 10 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+y exec python3 $SCRIPTS/mouse_jumper.py 11 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+y exec python3 $SCRIPTS/mouse_jumper.py 11 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+y exec python3 $SCRIPTS/mouse_jumper.py 11 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+y exec python3 $SCRIPTS/mouse_jumper.py 11 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+u exec python3 $SCRIPTS/mouse_jumper.py 12 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+u exec python3 $SCRIPTS/mouse_jumper.py 12 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+u exec python3 $SCRIPTS/mouse_jumper.py 12 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+u exec python3 $SCRIPTS/mouse_jumper.py 12 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+u exec python3 $SCRIPTS/mouse_jumper.py 13 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+u exec python3 $SCRIPTS/mouse_jumper.py 13 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+u exec python3 $SCRIPTS/mouse_jumper.py 13 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+u exec python3 $SCRIPTS/mouse_jumper.py 13 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+i exec python3 $SCRIPTS/mouse_jumper.py 14 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+i exec python3 $SCRIPTS/mouse_jumper.py 14 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+i exec python3 $SCRIPTS/mouse_jumper.py 14 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+i exec python3 $SCRIPTS/mouse_jumper.py 14 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+i exec python3 $SCRIPTS/mouse_jumper.py 15 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+i exec python3 $SCRIPTS/mouse_jumper.py 15 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+i exec python3 $SCRIPTS/mouse_jumper.py 15 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+i exec python3 $SCRIPTS/mouse_jumper.py 15 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+o exec python3 $SCRIPTS/mouse_jumper.py 16 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+o exec python3 $SCRIPTS/mouse_jumper.py 16 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+o exec python3 $SCRIPTS/mouse_jumper.py 16 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+o exec python3 $SCRIPTS/mouse_jumper.py 16 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+o exec python3 $SCRIPTS/mouse_jumper.py 17 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+o exec python3 $SCRIPTS/mouse_jumper.py 17 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+o exec python3 $SCRIPTS/mouse_jumper.py 17 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+o exec python3 $SCRIPTS/mouse_jumper.py 17 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+p exec python3 $SCRIPTS/mouse_jumper.py 18 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+p exec python3 $SCRIPTS/mouse_jumper.py 18 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+p exec python3 $SCRIPTS/mouse_jumper.py 18 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+p exec python3 $SCRIPTS/mouse_jumper.py 18 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+p exec python3 $SCRIPTS/mouse_jumper.py 19 4 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+p exec python3 $SCRIPTS/mouse_jumper.py 19 5 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+p exec python3 $SCRIPTS/mouse_jumper.py 19 6 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+p exec python3 $SCRIPTS/mouse_jumper.py 19 7 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+a exec python3 $SCRIPTS/mouse_jumper.py 0 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+a exec python3 $SCRIPTS/mouse_jumper.py 0 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+a exec python3 $SCRIPTS/mouse_jumper.py 0 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+a exec python3 $SCRIPTS/mouse_jumper.py 0 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+a exec python3 $SCRIPTS/mouse_jumper.py 1 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+a exec python3 $SCRIPTS/mouse_jumper.py 1 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+a exec python3 $SCRIPTS/mouse_jumper.py 1 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+a exec python3 $SCRIPTS/mouse_jumper.py 1 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+s exec python3 $SCRIPTS/mouse_jumper.py 2 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+s exec python3 $SCRIPTS/mouse_jumper.py 2 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+s exec python3 $SCRIPTS/mouse_jumper.py 2 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+s exec python3 $SCRIPTS/mouse_jumper.py 2 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+s exec python3 $SCRIPTS/mouse_jumper.py 3 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+s exec python3 $SCRIPTS/mouse_jumper.py 3 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+s exec python3 $SCRIPTS/mouse_jumper.py 3 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+s exec python3 $SCRIPTS/mouse_jumper.py 3 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+d exec python3 $SCRIPTS/mouse_jumper.py 4 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+d exec python3 $SCRIPTS/mouse_jumper.py 4 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+d exec python3 $SCRIPTS/mouse_jumper.py 4 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+d exec python3 $SCRIPTS/mouse_jumper.py 4 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+d exec python3 $SCRIPTS/mouse_jumper.py 5 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+d exec python3 $SCRIPTS/mouse_jumper.py 5 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+d exec python3 $SCRIPTS/mouse_jumper.py 5 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+d exec python3 $SCRIPTS/mouse_jumper.py 5 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+f exec python3 $SCRIPTS/mouse_jumper.py 6 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+f exec python3 $SCRIPTS/mouse_jumper.py 6 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+f exec python3 $SCRIPTS/mouse_jumper.py 6 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+f exec python3 $SCRIPTS/mouse_jumper.py 6 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+f exec python3 $SCRIPTS/mouse_jumper.py 7 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+f exec python3 $SCRIPTS/mouse_jumper.py 7 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+f exec python3 $SCRIPTS/mouse_jumper.py 7 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+f exec python3 $SCRIPTS/mouse_jumper.py 7 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+g exec python3 $SCRIPTS/mouse_jumper.py 8 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+g exec python3 $SCRIPTS/mouse_jumper.py 8 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+g exec python3 $SCRIPTS/mouse_jumper.py 8 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+g exec python3 $SCRIPTS/mouse_jumper.py 8 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+g exec python3 $SCRIPTS/mouse_jumper.py 9 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+g exec python3 $SCRIPTS/mouse_jumper.py 9 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+g exec python3 $SCRIPTS/mouse_jumper.py 9 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+g exec python3 $SCRIPTS/mouse_jumper.py 9 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+h exec python3 $SCRIPTS/mouse_jumper.py 10 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+h exec python3 $SCRIPTS/mouse_jumper.py 10 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+h exec python3 $SCRIPTS/mouse_jumper.py 10 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+h exec python3 $SCRIPTS/mouse_jumper.py 10 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+h exec python3 $SCRIPTS/mouse_jumper.py 11 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+h exec python3 $SCRIPTS/mouse_jumper.py 11 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+h exec python3 $SCRIPTS/mouse_jumper.py 11 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+h exec python3 $SCRIPTS/mouse_jumper.py 11 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+j exec python3 $SCRIPTS/mouse_jumper.py 12 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+j exec python3 $SCRIPTS/mouse_jumper.py 12 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+j exec python3 $SCRIPTS/mouse_jumper.py 12 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+j exec python3 $SCRIPTS/mouse_jumper.py 12 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+j exec python3 $SCRIPTS/mouse_jumper.py 13 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+j exec python3 $SCRIPTS/mouse_jumper.py 13 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+j exec python3 $SCRIPTS/mouse_jumper.py 13 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+j exec python3 $SCRIPTS/mouse_jumper.py 13 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+k exec python3 $SCRIPTS/mouse_jumper.py 14 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+k exec python3 $SCRIPTS/mouse_jumper.py 14 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+k exec python3 $SCRIPTS/mouse_jumper.py 14 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+k exec python3 $SCRIPTS/mouse_jumper.py 14 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+k exec python3 $SCRIPTS/mouse_jumper.py 15 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+k exec python3 $SCRIPTS/mouse_jumper.py 15 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+k exec python3 $SCRIPTS/mouse_jumper.py 15 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+k exec python3 $SCRIPTS/mouse_jumper.py 15 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+l exec python3 $SCRIPTS/mouse_jumper.py 16 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+l exec python3 $SCRIPTS/mouse_jumper.py 16 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+l exec python3 $SCRIPTS/mouse_jumper.py 16 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+l exec python3 $SCRIPTS/mouse_jumper.py 16 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+l exec python3 $SCRIPTS/mouse_jumper.py 17 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+l exec python3 $SCRIPTS/mouse_jumper.py 17 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+l exec python3 $SCRIPTS/mouse_jumper.py 17 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+l exec python3 $SCRIPTS/mouse_jumper.py 17 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+semicolon exec python3 $SCRIPTS/mouse_jumper.py 18 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+semicolon exec python3 $SCRIPTS/mouse_jumper.py 18 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+semicolon exec python3 $SCRIPTS/mouse_jumper.py 18 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+semicolon exec python3 $SCRIPTS/mouse_jumper.py 18 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+semicolon exec python3 $SCRIPTS/mouse_jumper.py 19 8 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+semicolon exec python3 $SCRIPTS/mouse_jumper.py 19 9 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+semicolon exec python3 $SCRIPTS/mouse_jumper.py 19 10 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+semicolon exec python3 $SCRIPTS/mouse_jumper.py 19 11 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+z exec python3 $SCRIPTS/mouse_jumper.py 0 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+z exec python3 $SCRIPTS/mouse_jumper.py 0 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+z exec python3 $SCRIPTS/mouse_jumper.py 0 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+z exec python3 $SCRIPTS/mouse_jumper.py 0 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+z exec python3 $SCRIPTS/mouse_jumper.py 1 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+z exec python3 $SCRIPTS/mouse_jumper.py 1 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+z exec python3 $SCRIPTS/mouse_jumper.py 1 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+z exec python3 $SCRIPTS/mouse_jumper.py 1 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+x exec python3 $SCRIPTS/mouse_jumper.py 2 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+x exec python3 $SCRIPTS/mouse_jumper.py 2 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+x exec python3 $SCRIPTS/mouse_jumper.py 2 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+x exec python3 $SCRIPTS/mouse_jumper.py 2 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+x exec python3 $SCRIPTS/mouse_jumper.py 3 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+x exec python3 $SCRIPTS/mouse_jumper.py 3 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+x exec python3 $SCRIPTS/mouse_jumper.py 3 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+x exec python3 $SCRIPTS/mouse_jumper.py 3 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+c exec python3 $SCRIPTS/mouse_jumper.py 4 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+c exec python3 $SCRIPTS/mouse_jumper.py 4 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+c exec python3 $SCRIPTS/mouse_jumper.py 4 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+c exec python3 $SCRIPTS/mouse_jumper.py 4 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+c exec python3 $SCRIPTS/mouse_jumper.py 5 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+c exec python3 $SCRIPTS/mouse_jumper.py 5 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+c exec python3 $SCRIPTS/mouse_jumper.py 5 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+c exec python3 $SCRIPTS/mouse_jumper.py 5 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+v exec python3 $SCRIPTS/mouse_jumper.py 6 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+v exec python3 $SCRIPTS/mouse_jumper.py 6 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+v exec python3 $SCRIPTS/mouse_jumper.py 6 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+v exec python3 $SCRIPTS/mouse_jumper.py 6 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+v exec python3 $SCRIPTS/mouse_jumper.py 7 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+v exec python3 $SCRIPTS/mouse_jumper.py 7 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+v exec python3 $SCRIPTS/mouse_jumper.py 7 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+v exec python3 $SCRIPTS/mouse_jumper.py 7 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+b exec python3 $SCRIPTS/mouse_jumper.py 8 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+b exec python3 $SCRIPTS/mouse_jumper.py 8 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+b exec python3 $SCRIPTS/mouse_jumper.py 8 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+b exec python3 $SCRIPTS/mouse_jumper.py 8 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+b exec python3 $SCRIPTS/mouse_jumper.py 9 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+b exec python3 $SCRIPTS/mouse_jumper.py 9 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+b exec python3 $SCRIPTS/mouse_jumper.py 9 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+b exec python3 $SCRIPTS/mouse_jumper.py 9 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+n exec python3 $SCRIPTS/mouse_jumper.py 10 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+n exec python3 $SCRIPTS/mouse_jumper.py 10 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+n exec python3 $SCRIPTS/mouse_jumper.py 10 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+n exec python3 $SCRIPTS/mouse_jumper.py 10 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+n exec python3 $SCRIPTS/mouse_jumper.py 11 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+n exec python3 $SCRIPTS/mouse_jumper.py 11 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+n exec python3 $SCRIPTS/mouse_jumper.py 11 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+n exec python3 $SCRIPTS/mouse_jumper.py 11 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+m exec python3 $SCRIPTS/mouse_jumper.py 12 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+m exec python3 $SCRIPTS/mouse_jumper.py 12 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+m exec python3 $SCRIPTS/mouse_jumper.py 12 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+m exec python3 $SCRIPTS/mouse_jumper.py 12 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+m exec python3 $SCRIPTS/mouse_jumper.py 13 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+m exec python3 $SCRIPTS/mouse_jumper.py 13 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+m exec python3 $SCRIPTS/mouse_jumper.py 13 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+m exec python3 $SCRIPTS/mouse_jumper.py 13 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+comma exec python3 $SCRIPTS/mouse_jumper.py 14 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+comma exec python3 $SCRIPTS/mouse_jumper.py 14 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+comma exec python3 $SCRIPTS/mouse_jumper.py 14 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+comma exec python3 $SCRIPTS/mouse_jumper.py 14 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+comma exec python3 $SCRIPTS/mouse_jumper.py 15 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+comma exec python3 $SCRIPTS/mouse_jumper.py 15 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+comma exec python3 $SCRIPTS/mouse_jumper.py 15 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+comma exec python3 $SCRIPTS/mouse_jumper.py 15 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+period exec python3 $SCRIPTS/mouse_jumper.py 16 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+period exec python3 $SCRIPTS/mouse_jumper.py 16 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+period exec python3 $SCRIPTS/mouse_jumper.py 16 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+period exec python3 $SCRIPTS/mouse_jumper.py 16 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+period exec python3 $SCRIPTS/mouse_jumper.py 17 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+period exec python3 $SCRIPTS/mouse_jumper.py 17 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+period exec python3 $SCRIPTS/mouse_jumper.py 17 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+period exec python3 $SCRIPTS/mouse_jumper.py 17 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+    bindsym $sup+slash exec python3 $SCRIPTS/mouse_jumper.py 18 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+slash exec python3 $SCRIPTS/mouse_jumper.py 18 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+$mod+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 18 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 18 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+slash exec python3 $SCRIPTS/mouse_jumper.py 19 12 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+slash exec python3 $SCRIPTS/mouse_jumper.py 19 13 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+$mod+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 19 14 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+    bindsym $sup+Mod1+shift+slash exec python3 $SCRIPTS/mouse_jumper.py 19 15 && $SCRIPTS/i3_mouse_move_additional_action.sh click
+
+
     # prev mode
     # bindsym Shift+space mode "default"; exec xdotool mouseup 1
 
@@ -1050,7 +1414,7 @@ bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-ms
 set $mode_fullscreen
 mode "mode_fullscreen" {
     # bindsym $mod+a mode "mode_mouse_move"
-    bindsym Mode_switch+f mode "mode_mouse_move"
+    bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v
 
     # bar mode toggle
     bindsym $mod+l mode "default"; fullscreen toggle; focus right
@@ -1102,14 +1466,43 @@ mode "mode_fullscreen" {
     bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
     # decrease screen brightness with notification
     bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+    bindsym $mod+z exec light -U 10
+    bindsym $mod+x exec light -A 5 
 
     # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
     bindsym $mod+shift+r restart
 
-    # Switch between floating and tiled windows
+    # Tab movement
+    bindsym Mod1+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh next; mode "default"
+    bindsym Mod1+Shift+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh prev; mode "default"
+    bindsym Mode_switch+a fullscreen disable; exec $SCRIPTS/alt_tab.sh next; mode "default"
+    bindsym Mode_switch+Shift+a fullscreen disable; exec $SCRIPTS/alt_tab.sh prev; mode "default"
+
+    bindsym $sup+Tab fullscreen disable; workspace back_and_forth; mode "default"
+# [A] Alternate between the two most recently used containers/windows
+    bindsym Mode_switch+s fullscreen disable; workspace back_and_forth; mode "default"
+
+    bindsym $sup+Shift+Tab fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; mode "default"
+    bindsym Mode_switch+Shift+s fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; mode "default"
+    bindsym $sup+grave fullscreen disable; workspace next; mode "default"
+    bindsym $sup+Shift+grave fullscreen disable; workspace prev; mode "default"
+
+    bindsym Mod1+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; mode "default"
+    bindsym Mod1+Shift+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; mode "default"
+# [S]witch focus fullscreen disable; between windows by class; mode "default"
+    bindsym Mod1+Mode_switch+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; mode "default"
+    bindsym Mod1+Mode_switch+Shift+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; mode "default"
+
+    bindsym Mode_switch+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh next; mode "default"
+    bindsym Mode_switch+Shift+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh prev; mode "default"
+
+# [D]o often (switches between two most often used windows: chromium and terminal)
+    bindsym Mode_switch+Shift+g fullscreen disable; exec $SCRIPTS/switch_between_chromium_terminal.sh 1; mode "default"
+    bindsym Mode_switch+g fullscreen disable; exec $SCRIPTS/switch_between_chromium_terminal.sh 0; mode "default"
 }
 # xdotool used to remove the obstructive status bar up top until super is pressed again
 bindsym $mod+f mode "mode_fullscreen"; fullscreen enable; exec xdotool keydown super keyup super
+# bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -1588,8 +1981,8 @@ mouse_warping output
 # STARTUP PROGRAMS
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id mpd
-exec --no-startup-id gromit-mpx
 exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
+exec $HOME/Desktop/projects/jumping-mouse/build/gromit-mpx
 exec xcompmgr -c
 # exec xbindkeys -p 
 exec $SCRIPTS/automark.sh

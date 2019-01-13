@@ -220,9 +220,11 @@ zle -N expand-aliases
 bindkey "a" expand-aliases
 
 # Japanese Daemon (Keyboard)
-alias "jpd=ibus-daemon -drx && xmodmap -e \"keycode 105 = F13 NoSymbol F13\""
+# alias "jpdt=sudo pkill ibus-daemon && xmodmap -e \"keycode 105 = Control_R NoSymbol Control_R\""
+# alias "jpd=ibus-daemon -drx && xmodmap -e \"keycode 105 = F13 NoSymbol F13\""
+alias "jpd=ibus-daemon -drx"
 # Terminates Japanese Daemon (Keyboard)
-alias "jpdt=sudo pkill ibus-daemon && xmodmap -e \"keycode 105 = Control_R NoSymbol Control_R\""
+alias "jpdt=sudo pkill ibus-daemon"
 
 alias "k=kill"
 alias "sk=sudo kill"

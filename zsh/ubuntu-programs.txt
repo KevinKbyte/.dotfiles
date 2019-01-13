@@ -197,3 +197,10 @@ glib-2.0
 python3-gi
 libappindicator3-dev
 libpcl-dev
+kazam
+libhangul1
+libhangul-data
+ibus-hangul
+fcitx-hangul
+ibus-libpinyin
+libhangul*

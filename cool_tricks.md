@@ -19,7 +19,7 @@ ps -efl
   #### chi
     sai ibus-cangjie
   #### kr
-    sai hangul
+    sai ibus-hangul
   - follow the https://wiki.archlinux.org/index.php/IBus
   - ibus-setup
 

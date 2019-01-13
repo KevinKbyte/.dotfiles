@@ -498,8 +498,8 @@ endif
 " nmap <leader>gf <Plug>(easymotion-overwin-f)
 
 "  " 1 line s{char}{char} to move to {char}{char}
-map <leader>f <Plug>(easymotion-fl2)
-map <leader>F <Plug>(easymotion-Fl2)
+" map <leader>f <Plug>(easymotion-fl2)
+" map <leader>F <Plug>(easymotion-Fl2)
 map <leader>f <Plug>(easymotion-overwin-f2)
 map <leader>f <Plug>(easymotion-bd-f2)
 " map <leader>ft <Plug>(easymotion-overwin-f2)
@@ -898,6 +898,7 @@ inoremap ge <c-o>g<c-o>e
 inoremap i <esc>
 inoremap . <c-o>.
 inoremap b <c-o>b
+inoremap f <c-o>e
 inoremap <s-b> <c-o><s-b>
 inoremap o <c-o>:so %<CR>
 
