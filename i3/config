@@ -30,9 +30,9 @@ bindsym Shift+F8 exec xrandr --output VGA1 --mode $screenSize --right-of LVDS1
 bindsym $mod+F8 exec xrandr --output VGA1 --mode $screenSize --same-as LVDS1
 
 # printscreen
-bindsym --release Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
-bindsym --release Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
-bindsym --release Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
+bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
+bindsym Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
+bindsym Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
  
 # increase/decrease keyboard brightness
 bindsym XF86KbdBrightnessUp exec $SCRIPTS/kbd_backlight.sh up
@@ -128,8 +128,8 @@ mode "mode_common_clicks" {
 
 #     bindsym $mod+j exec xdotool mousedown 1 && i3-msg mode "mode_mouse_move" && xdotool mousemove_relative --sync 5 5
 #     bindsym $mod+k exec xdotool mouseup 1
-bindsym Mod1+j --release exec xdotool click 5 click 5 click 5
-bindsym Mod1+k --release exec xdotool click 4 click 4 click 4
+bindsym Mod1+j exec xdotool click 5 click 5 click 5
+bindsym Mod1+k exec xdotool click 4 click 4 click 4
 #     # Left click and exit
 #     bindsym $sup+j mode "default"; exec xdotool click 1 && xdotool mouseup 1
     
@@ -145,7 +145,8 @@ bindsym Mod1+k --release exec xdotool click 4 click 4 click 4
 # }
 
 bindsym $sup+j exec xdotool click 1
-bindsym $sup+Shift+j exec xdotool click 3
+bindsym $sup+Shift+j exec xdotool click 2
+bindsym $sup+k exec xdotool click 3
 
 set $mode_small_mouse_move
 mode "mode_small_mouse_move" {
@@ -1414,7 +1415,7 @@ bindsym $sup+f exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-ms
 set $mode_fullscreen
 mode "mode_fullscreen" {
     # bindsym $mod+a mode "mode_mouse_move"
-    bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v
+    bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v && $SCRIPTS/auto_fullscreen_mode.sh
 
     # bar mode toggle
     bindsym $mod+l mode "default"; fullscreen toggle; focus right
@@ -1422,6 +1423,11 @@ mode "mode_fullscreen" {
     bindsym $mod+k mode "default"; fullscreen disable; focus up
     bindsym $mod+j mode "default"; fullscreen disable; focus down
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
+
+    bindsym $mod+Shift+l fullscreen disable; focus right; fullscreen enable
+    bindsym $mod+Shift+h fullscreen disable; focus left; fullscreen enable
+    bindsym $mod+Shift+k fullscreen disable; focus up; fullscreen enable
+    bindsym $mod+Shift+j fullscreen disable; focus down; fullscreen enable
 
     # reload the configuration file
     bindsym $mod+shift+c reload; bar mode invisible
@@ -1442,9 +1448,9 @@ mode "mode_fullscreen" {
     bindsym $mod+shift+q kill
 
     # printscreen
-    bindsym --release Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
-    bindsym --release Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
-    bindsym --release Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
+    bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
+    bindsym Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
+    bindsym Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
 
     # increase/decrease keyboard brightness
     bindsym XF86KbdBrightnessUp exec $SCRIPTS/kbd_backlight.sh up
@@ -1495,6 +1501,15 @@ mode "mode_fullscreen" {
 
     bindsym Mode_switch+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh next; mode "default"
     bindsym Mode_switch+Shift+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh prev; mode "default"
+
+# Scrolling
+    bindsym Mod1+j exec xdotool click 5 click 5 click 5
+    bindsym Mod1+k exec xdotool click 4 click 4 click 4
+
+# Clicking
+    bindsym $sup+j exec xdotool click 1
+    bindsym $sup+Shift+j exec xdotool click 2
+    bindsym $sup+k exec xdotool click 3
 
 # [D]o often (switches between two most often used windows: chromium and terminal)
     bindsym Mode_switch+Shift+g fullscreen disable; exec $SCRIPTS/switch_between_chromium_terminal.sh 1; mode "default"

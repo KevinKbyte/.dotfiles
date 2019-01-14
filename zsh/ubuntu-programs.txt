@@ -204,3 +204,4 @@ ibus-hangul
 fcitx-hangul
 ibus-libpinyin
 libhangul*
+timewarrior

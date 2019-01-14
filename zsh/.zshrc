@@ -246,6 +246,13 @@ alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 alias "pips=pip search"
 alias "pipi=pip install"
 
+if hash timew 2>/dev/null ; then
+    alias "tw=timew"
+    alias "tws=timew start"
+    alias "twx=timew stop"
+    alias "twxs=timew stop && timew start"
+fi
+
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
