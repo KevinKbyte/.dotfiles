@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # https://i3ipc-python.readthedocs.io/en/latest/
 import i3ipc
-import system
+from os import system
 
 def fullscreen_mode_after_mousemove(self, event):
     i3.command('mode "mode_fullscreen"')
