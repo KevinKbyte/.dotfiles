@@ -1782,16 +1782,17 @@ mode "mode_fullscreen" {
     bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v && $SCRIPTS/auto_fullscreen_mode.sh
 
     # bar mode toggle
-    bindsym $mod+l mode "default"; fullscreen toggle; focus right
-    bindsym $mod+h mode "default"; fullscreen disable; focus left
-    bindsym $mod+k mode "default"; fullscreen disable; focus up
-    bindsym $mod+j mode "default"; fullscreen disable; focus down
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
 
-    bindsym $mod+Shift+l fullscreen disable; focus right; fullscreen enable
-    bindsym $mod+Shift+h fullscreen disable; focus left; fullscreen enable
-    bindsym $mod+Shift+k fullscreen disable; focus up; fullscreen enable
-    bindsym $mod+Shift+j fullscreen disable; focus down; fullscreen enable
+    bindsym $mod+l fullscreen disable; focus right; fullscreen enable
+    bindsym $mod+h fullscreen disable; focus left; fullscreen enable
+    bindsym $mod+k fullscreen disable; focus up; fullscreen enable
+    bindsym $mod+j fullscreen disable; focus down; fullscreen enable
+
+    bindsym $mod+Shift+l mode "default"; fullscreen toggle; focus right
+    bindsym $mod+Shift+h mode "default"; fullscreen disable; focus left
+    bindsym $mod+Shift+k mode "default"; fullscreen disable; focus up
+    bindsym $mod+Shift+j mode "default"; fullscreen disable; focus down
 
     # reload the configuration file
     bindsym $mod+shift+c reload; bar mode invisible
@@ -1849,30 +1850,30 @@ mode "mode_fullscreen" {
     bindsym $mod+shift+d exec rofi -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi -show 
 
     # Tab movement
-    bindsym Mod1+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh next; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mod1+Shift+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh prev; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mode_switch+a fullscreen disable; exec $SCRIPTS/alt_tab.sh next; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mode_switch+Shift+a fullscreen disable; exec $SCRIPTS/alt_tab.sh prev; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym Mod1+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh next && i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mod1+Shift+Tab fullscreen disable; exec $SCRIPTS/alt_tab.sh prev && i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+a fullscreen disable; exec $SCRIPTS/alt_tab.sh next && i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+Shift+a fullscreen disable; exec $SCRIPTS/alt_tab.sh prev && i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
-    bindsym $sup+Tab fullscreen disable; workspace back_and_forth; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym $sup+Tab fullscreen disable; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
     # [A] Alternate between the two most recently used containers/windows
-    bindsym Mode_switch+s fullscreen disable; workspace back_and_forth; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym Mode_switch+s fullscreen disable; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
-    bindsym $sup+Shift+Tab fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mode_switch+Shift+s fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym $sup+grave fullscreen disable; workspace next; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym $sup+Shift+grave fullscreen disable; workspace prev; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym $sup+Shift+Tab fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+Shift+s fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym $sup+grave fullscreen disable; workspace next; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym $sup+Shift+grave fullscreen disable; workspace prev; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
-    bindsym Mod1+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mod1+Shift+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym Mod1+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mod1+Shift+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
     # [S]witch focus fullscreen disable; between windows by class; mode "default"
-    bindsym Mod1+Mode_switch+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mod1+Mode_switch+Shift+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym Mod1+Mode_switch+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0 && i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mod1+Mode_switch+Shift+s fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1 && exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
-    bindsym Mode_switch+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh next; fullscreen enable; exec xdotool keydown super keyup super
-    bindsym Mode_switch+Shift+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh prev; fullscreen enable; exec xdotool keydown super keyup super
+    bindsym Mode_switch+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh next; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+Shift+grave fullscreen disable; exec $SCRIPTS/move_to_next_workspace.sh prev; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
     # Scrolling
     bindsym Mod1+j exec xdotool click 5 click 5 click 5
