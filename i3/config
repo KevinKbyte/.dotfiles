@@ -1780,6 +1780,7 @@ set $mode_fullscreen
 mode "mode_fullscreen" {
     # bindsym $mod+a mode "mode_mouse_move"
     bindsym Mode_switch+f mode "mode_mouse_move"; exec gromit-mpx -v && $SCRIPTS/auto_fullscreen_mode.sh
+    bindsym Mode_switch+Shift+f mode "mode_common_clicks"; exec $SCRIPTS/auto_fullscreen_mode.sh
 
     # bar mode toggle
     bindsym $mod+f fullscreen disable; mode "default"; bar mode hide
@@ -1862,8 +1863,11 @@ mode "mode_fullscreen" {
 
     bindsym $sup+Shift+Tab fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
     bindsym Mode_switch+Shift+s fullscreen disable; move container to workspace back_and_forth; workspace back_and_forth; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+
     bindsym $sup+grave fullscreen disable; workspace next; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
     bindsym $sup+Shift+grave fullscreen disable; workspace prev; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+w fullscreen disable; workspace next; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
+    bindsym Mode_switch+Shift+w fullscreen disable; workspace prev; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
 
     bindsym Mod1+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 0; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
     bindsym Mod1+Shift+grave fullscreen disable; exec python3 $SCRIPTS/switch_windows_by_class.py 1; exec i3-msg "fullscreen enable" && xdotool keydown super keyup super
@@ -2313,8 +2317,11 @@ bindsym Mode_switch+s workspace back_and_forth
 
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 bindsym Mode_switch+Shift+s move container to workspace back_and_forth; workspace back_and_forth
+
 bindsym $sup+grave workspace next
 bindsym $sup+Shift+grave workspace prev
+bindsym Mode_switch+w workspace next
+bindsym Mode_switch+Shift+w workspace prev
 
 bindsym Mod1+grave exec python3 $SCRIPTS/switch_windows_by_class.py 0
 bindsym Mod1+Shift+grave exec python3 $SCRIPTS/switch_windows_by_class.py 1
@@ -2405,8 +2412,8 @@ bindsym $sup+Shift+h scratchpad show
 
 # Workspace Default
 # Send containers back to default workspaces
-bindsym Mode_switch+w exec $SCRIPTS/default_workspace.sh Chromium-browser
-bindsym Mode_switch+Shift+w exec $SCRIPTS/default_workspace.sh Gnome-terminal
+bindsym Mode_switch+Mod1+f exec $SCRIPTS/default_workspace.sh Chromium-browser
+bindsym Mode_switch+Mod1+Shift+f exec $SCRIPTS/default_workspace.sh Gnome-terminal
 
 # bindsym Mode_switch+g exec textsuggest
 

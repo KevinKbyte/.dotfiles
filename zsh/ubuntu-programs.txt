@@ -205,3 +205,6 @@ fcitx-hangul
 ibus-libpinyin
 libhangul*
 timewarrior
+stopwatch
+kronometer
+gnome-clocks

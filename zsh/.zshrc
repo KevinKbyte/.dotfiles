@@ -245,6 +245,8 @@ alias "pkal=kill $(p xautolock | awk '{print $2}' | tail -2)"
 alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 alias "pips=pip search"
 alias "pipi=pip install"
+alias "pipu=pip uninstall"
+alias "sw=$HOME/.dotfiles/zsh/scripts/stopwatch.sh"
 
 if hash timew 2>/dev/null ; then
     alias "tw=timew"
@@ -389,15 +391,6 @@ function chext(){
     for f in *.$1; do 
         mv -- "$f" "${f%.$1}.$2"
     done
-}
-
-# function stopwatch(){
-function stopw(){
-  date1=`date +%s`; 
-   while true; do 
-    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
-    sleep 0.1
-   done
 }
 
 function grp(){
