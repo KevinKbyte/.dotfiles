@@ -241,7 +241,6 @@ alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
 alias "zh=vim ~/.zsh_history"
-alias "pkal=kill $(p xautolock | awk '{print $2}' | tail -2)"
 alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 alias "pips=pip search"
 alias "pipi=pip install"
@@ -254,6 +253,29 @@ if hash timew 2>/dev/null ; then
     alias "twx=timew stop"
     alias "twxs=timew stop && timew start"
 fi
+
+# Git
+alias "grsu=git remote -v && git remote set-url"
+
+# Cabal 
+alias "cab=cabal"
+alias "cabi=cabal install"
+alias "cabu=cabal update"
+alias "cabnr=cabal new-repl"
+alias "cabt=cabal test"
+alias "cabs=cabal sandbox"
+
+function cabrm() {
+    # cabal unregister package
+    # does not fully remove pkg
+    # if in sandbox: cabal sandbox hc-pkg -- unregister attoparsec --force
+    ghc-pkg unregister --force $1
+    rm ~/.cabal/lib/x86_64-linux-ghc-8.6.3/$1-[0-9]* -r
+}
+
+function cabh() {
+    cabal $1 --help
+}
 
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
@@ -395,6 +417,12 @@ function chext(){
 
 function grp(){
     grep -irn "$@" .
+}
+
+function pkal() {
+    for i in $(p xautolock | awk '{print $2}' | tail -n +2); do 
+        kill $i
+    done
 }
 
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below

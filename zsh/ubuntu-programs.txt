@@ -208,3 +208,13 @@ timewarrior
 stopwatch
 kronometer
 gnome-clocks
+discord
+tesseract-ocr
+tesseract-ocr-jpn
+csvkit
+ghc
+haskell-platform
+haskell-platform
+cabal-install
+haskell-platform-prof
+hscolour
