@@ -184,7 +184,7 @@ mode "mode_small_mouse_move" {
 
     # exit mode
     # Mode_switch e
-    bindcode Mode_switch+26 mode "default"
+    bindcode Mode_switch+26 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym $sup+space mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
@@ -1628,7 +1628,7 @@ mode "mode_mouse_move" {
     bindsym Escape mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindsym Menu mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     # Mode_switch + e
-    bindcode Mode_switch+26 mode "default"
+    bindcode Mode_switch+26 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
     bindcode Mode_switch+65 mode "default"; exec xdotool keydown super keyup super && xdotool mouseup 1 && gromit-mpx -v
 
     # Left click and exit

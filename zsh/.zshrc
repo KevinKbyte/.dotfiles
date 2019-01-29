@@ -425,6 +425,20 @@ function pkal() {
     done
 }
 
+# Internet Toggle
+function itog() {
+    # https://stackoverflow.com/questions/929368/how-to-test-an-internet-connection-with-bash
+    wget -q --spider https://google.com
+
+    if [ $? -eq 0 ]; then
+        # echo "Online"
+        nmcli c down "$1"
+    else
+        # echo "Offline"
+        nmcli c up "$1"
+    fi
+}
+
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below
 unalias d; source ~/.dotfiles/zsh/scripts/MRUd.sh
 
