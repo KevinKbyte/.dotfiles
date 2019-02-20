@@ -259,11 +259,12 @@ alias "grsu=git remote -v && git remote set-url"
 
 # Cabal 
 alias "cab=cabal"
-alias "cabi=cabal install"
-alias "cabu=cabal update"
+alias "cabi=cabal new-install"
+alias "cabu=cabal new-update"
 alias "cabnr=cabal new-repl"
-alias "cabt=cabal test"
-alias "cabs=cabal sandbox"
+alias "cabt=cabal new-test"
+alias "cabs=cabal new-sandbox"
+alias "py=python"
 
 function cabrm() {
     # cabal unregister package
@@ -397,6 +398,7 @@ function timer(){
      echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
      sleep 0.1
    done
+
 }
 
 # Vocab timer
@@ -417,6 +419,10 @@ function chext(){
 
 function grp(){
     grep -irn "$@" .
+}
+
+function pdfg(){
+    pdfgrep -irn "$@" .
 }
 
 function pkal() {
@@ -530,7 +536,7 @@ SAVEHIST=$HISTSIZE
 # TODO: Make a terminal mark
 # to start tmux immediately after starting zsh
 if command -v tmux>/dev/null; then
-    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | rg 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
+    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | grep 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 fi
 
 # cd $HOME/Desktop/bu_notes/cs

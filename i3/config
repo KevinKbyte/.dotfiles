@@ -61,6 +61,9 @@ bindsym $mod+z exec light -U 10
 bindsym $mod+Shift+z exec light -S 0.1
 bindsym $mod+x exec light -A 5 
 
+# When taking notes, can do this
+bindsym $mod+a exec light -A 5 && sleep 3 && light -S 0
+
 bindsym Mode_switch+r exec $xterm ranger 
 
 # Common clicks
@@ -1844,6 +1847,9 @@ mode "mode_fullscreen" {
     bindsym $mod+z exec light -U 10
     bindsym $mod+Shift+z exec light -S 0.1
     bindsym $mod+x exec light -A 5 
+
+    # When taking notes, can do this
+    bindsym $mod+a exec light -A 5 && sleep 3 && light -S 0
 
     # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
     bindsym $mod+shift+r restart

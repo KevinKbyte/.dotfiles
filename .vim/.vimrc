@@ -39,6 +39,9 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
 " Initialize plugin system
 
+" Fuzzy Finder
+Plug 'ctrlpvim/ctrlp.vim'
+
 " For surrounding with quotes 
 Plug 'tpope/vim-surround'
 
@@ -120,6 +123,12 @@ else
 
     " Undo tree
     Plug 'mbbill/undotree/'
+
+    " Haskell
+    Plug 'eagletmt/ghcmod-vim'
+
+    " Dependency of ghcmod-vim
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
     " Python mode
     Plug 'python-mode/python-mode'
@@ -229,6 +238,21 @@ let g:ycm_semantic_triggers = { 'c': [ 're!\w{2}' ] }
 
 " allows for backspaces to work properly
 set backspace=indent,eol,start
+
+"============
+"<> CTRLP
+"============
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.wav,*.tar,*.bin,*.jar,*.pyc,*.swo,*.png,*.jpeg,*.jpg,*.jpg_large,*.gif,*.git/,*.pdf,*.aup,*.au,/etc/*,/bin/*,/run/*,/cdrom/*,/boot/*,/dev/*,/lib*,/lost*,/media/*,/root/*,/run/*,/mnt/*,/snap/*,/srv/*,/sys/*,/System/*,/usr/*,/var/*,/sbin/*,/proc/*,*/opt/*
+let g:ctrlp_root_markers = ['$HOME/Desktop']
+let g:ctrlp_max_depth=40
+let g:ctrlp_max_files=200000
+
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+
 
 "============
 "<> TMUX
@@ -533,6 +557,9 @@ let g:EasyMotion_smartcase = 1
 "============
 "<> MISC
 "============
+
+" to auto move to right window when vertical splitting
+nnoremap v vl
 
 nnoremap <leader>vrc :tabe ~/.vimrc<CR>:set filetype=vim<CR>
 
@@ -923,11 +950,11 @@ if has('nvim')
     noremap <Down> <C-w>j
     noremap <Left> <C-w>h
     noremap <Right> <C-w>l
-else
-    noremap <Up> <Nop>
-    noremap <Down> <Nop>
-    noremap <Left> <Nop>
-    noremap <Right> <Nop>
+" else
+    " noremap <Up> <Nop>
+    " noremap <Down> <Nop>
+    " noremap <Left> <Nop>
+    " noremap <Right> <Nop>
 endif
 
 " to delete without backspace :)
