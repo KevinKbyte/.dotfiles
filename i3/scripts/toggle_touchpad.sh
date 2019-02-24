@@ -4,8 +4,10 @@
 # else
 #     synclient TouchpadOff=0 ;
 # fi
-if [[ $(xinput --list-props 14 | grep 144 | awk '{print $NF}') == '0' ]]; then
-   xinput set-prop 14 144 1 
+touchpad=$( xinput --list-props 14 | grep "Device Enabled" )
+touchpad_num=$( echo $touchpad | awk '{print $3}' | awk -F'[^0-9]*' '$0=$2')
+if [[ $(echo "$touchpad" | awk '{print $NF}') == '0' ]]; then
+   xinput set-prop 14 $touchpad_num 1 
 else
-   xinput set-prop 14 144 0
+   xinput set-prop 14 $touchpad_num 0
 fi

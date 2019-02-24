@@ -197,7 +197,7 @@ alias "decr=$HOME/.dotfiles/zsh/decrypt.sh"
 alias "rclmnte=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn_enc: ~/mnt/gdrive"
 alias "rclmnt=sudo fusermount -uz ~/mnt/gdrive; sudo rclone mount --allow-other --allow-non-empty wn: ~/mnt/gdrive"
 
-alias "slack-term" -config /home/kev/snap/slack-term/current/slack-term.json
+alias "slack-term" -config ~/snap/slack-term/current/slack-term.json
 
 alias "p=ps aux | rg -i"
 alias "a={ alias & cat ~/.zshrc | rg function; } | rg -i"
@@ -497,7 +497,7 @@ ZSH_PLUGIN_FOLDER="$HOME/.github"
 
 # for zsh autosuggestions and zsh history substring search
 
-source /home/kev/.oh-my-zsh/plugins/history-substring-search/history-substring-search.plugin.zsh
+source ~/.oh-my-zsh/plugins/history-substring-search/history-substring-search.plugin.zsh
 source $ZSH_PLUGIN_FOLDER/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $ZSH_PLUGIN_FOLDER/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 

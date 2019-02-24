@@ -30,8 +30,9 @@ bindsym Shift+F8 exec xrandr --output VGA1 --mode $screenSize --right-of LVDS1
 bindsym $mod+F8 exec xrandr --output VGA1 --mode $screenSize --same-as LVDS1
 
 # printscreen
-bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
-bindsym Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
+# https://www.reddit.com/r/i3wm/comments/9hh4jl/i3_wont_execute_the_imagemagick_import_command/
+bindsym Print --release exec $SCRIPTS/screenshots.sh 0
+bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
 bindsym Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
  
 # increase/decrease keyboard brightness
@@ -1820,8 +1821,8 @@ mode "mode_fullscreen" {
     bindsym $mod+shift+q kill
 
     # printscreen
-    bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 0
-    bindsym Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
+    bindsym Print --release exec --no-startup-id $SCRIPTS/screenshots.sh 0
+    bindsym Shift+Print exec --no-startup-id $SCRIPTS/screenshots.sh 1
     bindsym Shift+control+Print exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
 
     # increase/decrease keyboard brightness

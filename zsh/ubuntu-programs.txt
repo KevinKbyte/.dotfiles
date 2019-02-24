@@ -233,3 +233,4 @@ libasound2
 libasound2-dev
 redis-server
 silversearcher-ag
+mongodb

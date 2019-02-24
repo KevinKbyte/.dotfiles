@@ -242,7 +242,11 @@ set backspace=indent,eol,start
 "============
 "<> CTRLP
 "============
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.mp3,*.mp4,*.wav,*.tar,*.bin,*.jar,*.pyc,*.swo,*.png,*.jpeg,*.jpg,*.jpg_large,*.gif,*.git/,*.pdf,*.aup,*.au,/etc/*,/bin/*,/run/*,/cdrom/*,/boot/*,/dev/*,/lib*,/lost*,/media/*,/root/*,/run/*,/mnt/*,/snap/*,/srv/*,/sys/*,/System/*,/usr/*,/var/*,/sbin/*,/proc/*,*/opt/*
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
+    \ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',
+    \ }
+
 let g:ctrlp_root_markers = ['$HOME/Desktop']
 let g:ctrlp_max_depth=40
 let g:ctrlp_max_files=200000
