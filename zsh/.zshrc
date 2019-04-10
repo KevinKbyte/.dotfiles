@@ -265,6 +265,11 @@ alias "cabnr=cabal new-repl"
 alias "cabt=cabal new-test"
 alias "cabs=cabal new-sandbox"
 alias "py=python"
+alias "npms=npm search"
+alias "npmi=npm install"
+alias "npmis=npm install --save"
+alias "npmst=npm start"
+alias "onex=mplayer ~/Documents/one_min_interval_timer.mp3 -loop 0"
 
 function cabrm() {
     # cabal unregister package
@@ -303,7 +308,7 @@ function wh { while true ; do "$@" && sleep 2; done; }
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
 function tm { mv "$@" "$HOME/Desktop/trash/"; }
-function emulator { cd "$HOME/programs/sdk/emulator" && ./emulator @Nexus_5X_API_27 && cd - }
+function emulator { cd "$HOME/programs/sdk/emulator" && ./emulator @Nexus_5X_API_Q && cd - }
 function lastdir { [ -s ~/.lastdirectory ] && cat ~/.lastdirectory | cd; }
 function chrome { /opt/google/chrome/chrome --headless --disable-gpu "$@"; }
 # function google-chrome { "$@" | if [ "$@" -eq 0]; then nohup /opt/google/chrome/chrome & else nohup /opt/google/chrome/chrome $(pwd)'/'"$@" & fi }
@@ -421,7 +426,7 @@ function grp(){
     grep -irn "$@" .
 }
 
-function pdfg(){
+function pgrp(){
     pdfgrep -irn "$@" .
 }
 
@@ -443,6 +448,14 @@ function itog() {
         # echo "Offline"
         nmcli c up "$1"
     fi
+}
+
+function mp4t3() {
+    ffmpeg -i "$1" -f mp3 -ab 192000 -vn "$2".mp3
+}
+
+function mpl() {
+    mplayer "$@" -loop 0
 }
 
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below

@@ -562,6 +562,11 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+nnoremap Q <nop>
+
+cnoremap b <S-Left>
+cnoremap f <S-Right>
+
 " to auto move to right window when vertical splitting
 nnoremap v vl
 

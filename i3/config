@@ -63,7 +63,7 @@ bindsym $mod+Shift+z exec light -S 0.1
 bindsym $mod+x exec light -A 5 
 
 # When taking notes, can do this
-bindsym $mod+a exec light -A 5 && sleep 3 && light -S 0
+bindsym $mod+a exec light -S 5 && sleep 3 && light -S 0
 
 bindsym Mode_switch+r exec $xterm ranger 
 
@@ -1735,10 +1735,15 @@ bindsym $mod+shift+j move down
 bindsym $mod+shift+k move up
 bindsym $mod+shift+l move right
 
-# locks
-bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
+# LOCKS
+bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec --no-startup-id ~/.config/i3/scripts/i3_locking.sh; systemctl suspend
+# bindsym ctrl+$mod+l exec --no-startup-id sleep 1 && xset dpms force suspend
+
 # exec xautolock -time 15 -locker 
 exec xautolock -time 5 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off' && xautolock -time 7 -locker "systemctl suspend" &
+
+# https://www.reddit.com/r/i3wm/comments/9ebemt/locking_i3_when_lid_of_laptop_is_closed/
+exec --no-startup-id xss-lock -- ~/.config/i3/scripts/i3_locking.sh
 
 # redshift (like f.lux)
 exec redshift -t 4000:4000

@@ -19,7 +19,6 @@ function! GetCountsForCurrLine ()
     execute l:cmd
 endfunction
 "
-
 nnoremap <leader>alf o# a<CR><CR># b<CR><CR># c<CR><CR># d<CR><CR># e<CR><CR># f<CR><CR># g<CR><CR># h<CR><CR># i<CR><CR># j<CR><CR># k<CR><CR># l<CR><CR># m<CR><CR># n<CR><CR># o<CR><CR># p<CR><CR># q<CR><CR># r<CR><CR># s<CR><CR># t<CR><CR># u<CR><CR># v<CR><CR># w<CR><CR># x<CR><CR># y<CR><CR># z<Esc>
 nnoremap <leader>Alf o# A<CR><CR># B<CR><CR># C<CR><CR># D<CR><CR># E<CR><CR># F<CR><CR># G<CR><CR># H<CR><CR># I<CR><CR># J<CR><CR># K<CR><CR># L<CR><CR># M<CR><CR># N<CR><CR># O<CR><CR># P<CR><CR># Q<CR><CR># R<CR><CR># S<CR><CR># T<CR><CR># U<CR><CR># V<CR><CR># W<CR><CR># X<CR><CR># Y<CR><CR># Z<Esc>
 

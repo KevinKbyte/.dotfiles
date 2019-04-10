@@ -310,6 +310,7 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
 
 # Record Loopback audio
  pavucontrol
+ - if chrome doesn't recognize microphone: pavucontrol > configuration > Builtin Audio > Analog Stereo Duplex
 
 # Remove user from group
  s gpasswd -d $USER cgusers
@@ -374,3 +375,42 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
       - to check the device id
   - xinput create-master <new_master_name>
   - xinput reattach <slave id, which is id of new I/O mouse device> <master id of new master you just created>
+
+# JS api key import example
+  - https://www.quora.com/How-can-I-use-a-static-variable-in-JavaScript-and-call-it-on-another-JavaScript-file
+   // module.js
+   var counter = 0
+   module.exports = {
+     counter
+   }
+    
+   // test2.js
+   function getCounter () {
+     return require('./module').counter
+   }
+    
+   module.exports = {
+      getCounter: getCounter
+   }
+    
+  // test1.js
+  var getCounter = require('./test2').getCounter
+  console.log(require('./module').counter)
+  require('./module').counter++
+  console.log(require('./module').counter)
+  console.log('getCounter()', getCounter())
+
+# Run command after already existing running process
+https://superuser.com/questions/334272/how-to-run-a-command-after-an-already-running-existing-one-finishes
+  - fg && cmd2
+
+# Vim reload all buffers at once
+  - https://stackoverflow.com/questions/3770715/how-do-you-reload-all-vim-windows-at-once
+  - :bufdo e
+  # all windows of curr tab at once
+    - :windo e
+  # all windows and tabs at once
+    - :tabdo exec 'windo e'
+      * all first windows of each tab
+        - :tabdo e
+

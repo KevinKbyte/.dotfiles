@@ -234,3 +234,19 @@ libasound2-dev
 redis-server
 silversearcher-ag
 mongodb
+cup libcups*
+--fix-missing
+libdb5.3*
+libdb-java*
+libdb-je-java
+libdb-java-dev
+libdb5.3-java-dev
+libdb5.3-java-jni
+libdb5.3-java
+libdb-java
+nodejs
+nodejs-
+nodejs-doc
+hlint
+yarn
+xss-lock

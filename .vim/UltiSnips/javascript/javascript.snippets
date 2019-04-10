@@ -12,6 +12,18 @@ snippet rq "require" b
 const ${1:express} = require('$1');$0 
 endsnippet
 
+snippet fnrrn "req, res, next" 
+function(req, res, next) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fnerb "err, res, body"
+function(err, res, body){
+	${0:${VISUAL}}
+}
+endsnippet
+
 snippet modx "module.exports" 
 module.exports = function(app) {
 	${2}
