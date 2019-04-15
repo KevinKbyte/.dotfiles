@@ -1,2 +1,40 @@
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/javascript/javascript.node.snippets
 
+# Mongodb
+snippet dbconf "db config" b
+// DB Config
+const db = require('./config/keys').mongoURI;
+endsnippet
+
+snippet mongc "mongoose.connect(db)" b
+// Connect to Mongo
+mongoose
+	.connect(db)
+	.then(() => console.log('MongoDB Connected...'))
+	.catch(err => console.log(err));
+
+const port = process.env.PORT || ${1:5000};
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
+endsnippet
+
+snippet schema "sample schema" b
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Create Schema
+const ${1:ItemSchema} = new Schema({
+	name: { 
+		type: String,
+		required: true
+	}, 
+	date: {
+		type: Date,
+		default: Date.now
+	}
+});
+
+// To access in other files
+module.exports = ${2:Item} = mongoose.model(${3:'items'}, ${4:$1});
+endsnippet
+	

@@ -8,8 +8,42 @@
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/javascript.snippets
 priority 50
 
+# extends /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/javascript/javascript.node.snippets
+# extends /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.node.snippets
+
+snippet cfn "custom fn" b
+${1:fn} = () => {
+	$0
+}
+endsnippet
+snippet < "<Single Tag/>" b
+<${1:AppNavbar} />$0
+endsnippet
+
+snippet tag "makes an opening closing tag" b
+<${1:div}$2>
+	$3
+</$1>$4
+endsnippet
+
+
+snippet @r "// @route" b
+// @route  ${1:GET} ${2:api/items}
+// @desc   ${3:Get all items}
+// @access ${4:Public}
+$0
+endsnippet
+
 snippet rq "require" b
-const ${1:express} = require('$1');$0 
+const ${1:express} = require('${2:$1}');$0 
+endsnippet
+
+snippet const "const" b
+const ${1:app} = ${2:express()};$0
+endsnippet
+
+snippet au "app use" b
+app.use(${1:bodyParser.json()});$0
 endsnippet
 
 snippet fnrrn "req, res, next" 
@@ -24,12 +58,17 @@ function(err, res, body){
 }
 endsnippet
 
-snippet modx "module.exports" 
-module.exports = function(app) {
+snippet modx "module.exports" b
+module.exports = {
 	${2}
 };$0
 endsnippet
 
+snippet modxa "module.exports = function(app)" b
+module.exports = function(app) {
+	${2}
+};$0
+endsnippet
 snippet apl "app.listen" 
 app.listen(${1:3000}, function(){
 	${2:console.log("App has started on port " + $1;}
@@ -40,6 +79,47 @@ snippet apg "app.get for routes"
 app.get('/${1:}', function ${2}(req, res){
 	${3}
 });$0
+endsnippet
+
+snippet rr "(req, res)" 
+(req, res) => {
+	$0
+}
+endsnippet
+
+snippet routerd "router.delete" b
+// @route  ${1:DELETE} ${2:api/items}
+// @desc   ${3:Delete An Item}
+// @access ${4:Public}
+router.delete('${5:/:id}', (req, res) => {
+	Item.findById(req.params.id)
+		.then(item => item.remove().then(() => res.json({success:true})))
+		.catch(err => res.status(404).json({success: false}));
+});
+endsnippet
+
+snippet routerp "router.post" b
+// @route  ${1:POST} ${2:api/items}
+// @desc   ${3:Create An Item}
+// @access ${4:Public}
+router.post('${5:/}', (req, res) => {
+	const ${6:newItem} = new ${7:Model}({
+	   ${8:name}: ${9:req.body.name}$10
+	});
+
+	$6.save().then(${11:item} => res.json(${12:$11}));
+});
+endsnippet
+
+snippet routerg "router.get" b
+// @route  ${1:GET} ${2:api/items}
+// @desc   ${3:Get all items}
+// @access ${4:Public}
+router.get('${1:/}', (req, res) => {
+	${2:Model}.find()
+			  .${2:sort}($3)
+			  .${3:then}(${4:items => res.json(items)});
+});
 endsnippet
 
 snippet cl "console log" 

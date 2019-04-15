@@ -270,6 +270,12 @@ alias "npmi=npm install"
 alias "npmis=npm install --save"
 alias "npmst=npm start"
 alias "onex=mplayer ~/Documents/one_min_interval_timer.mp3 -loop 0"
+alias "grs=git reset --soft"
+
+function gundo() {
+    git push -f origin $1:"$(git_current_branch)"
+    git reset --soft $1
+}
 
 function cabrm() {
     # cabal unregister package

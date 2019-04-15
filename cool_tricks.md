@@ -364,6 +364,10 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
         - undo commits already committed, without undoing work you have done
     - git reset --hard HEAD~<number-of-commits-to-go-back>
         - undo commits already committed, and undoing all the work you have done up before pushing
+  # Deletes 
+    - https://stackoverflow.com/questions/12132272/how-can-you-undo-the-last-git-add
+    - git reset -- <file 1> <file 2> <file n>
+        - undo commit add
 
 # Gitignore file from all directories
   https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
