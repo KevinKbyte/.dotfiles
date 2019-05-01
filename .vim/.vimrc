@@ -252,11 +252,17 @@ let g:ctrlp_max_depth=40
 let g:ctrlp_max_files=200000
 
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('ag')
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+if executable('fd')
+    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+else 
+    if executable('ag')
       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    endif
 endif
 
-
+nnoremap <leader>mr :CtrlPMRU<CR>
 
 "============
 "<> TMUX
@@ -878,14 +884,18 @@ nnoremap <Leader>tj :tabfirst<CR>
 nnoremap <Leader>tk :tablast<CR>
 nnoremap <Leader>tc :tabclose<CR>
 
-let g:lasttab = 1
+" Tab movement
+if !exists('g:lasttab')
+      let g:lasttab = 1
+  endif
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" Tab movement
 nnoremap <leader>mt :tabm 
-nnoremap <leader>t> :tabm +<CR>
-nnoremap <leader>t< :tabm -<CR>
+nnoremap <leader>> :tabm +<CR>
+nnoremap <leader>< :tabm -<CR>
+nnoremap <leader>F <C-w>\|<C-w>_
+
 
 " Map for vertical split gf
 " https://vi.stackexchange.com/questions/3364/open-filename-under-cursor-like-gf-but-in-a-new-tab-or-split

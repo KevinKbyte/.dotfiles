@@ -250,3 +250,4 @@ nodejs-doc
 hlint
 yarn
 xss-lock
+feh

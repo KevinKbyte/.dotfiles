@@ -11,6 +11,11 @@ priority 50
 # extends /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/javascript/javascript.node.snippets
 # extends /home/kev/.dotfiles/.vim/UltiSnips/javascript/javascript.node.snippets
 
+snippet tbind "this.bind" b
+this.${1:text} = this.$1.bind(this);$0
+endsnippet
+	
+
 snippet cfn "custom fn" b
 ${1:fn} = () => {
 	$0
@@ -111,6 +116,19 @@ router.post('${5:/}', (req, res) => {
 });
 endsnippet
 
+snippet routeru "router.put" b
+// @route  PUT ${2:api/items}
+// @desc   ${3:Update items}
+// @access ${4:Private}
+router.put('${5:/}', (req, res) => {
+	const ${6:newItem} = new ${7:Model}({
+	   ${8:name}: ${9:req.body.name}$10
+	});
+
+	$6.save().then(${11:item} => res.json(${12:$11}));
+});
+endsnippet
+
 snippet routerg "router.get" b
 // @route  ${1:GET} ${2:api/items}
 // @desc   ${3:Get all items}
@@ -122,8 +140,18 @@ router.get('${1:/}', (req, res) => {
 });
 endsnippet
 
-snippet cl "console log" 
+snippet c "console log"
 console.log(${1:});$0
+endsnippet
+
+snippet .c "catch" b
+.catch(err => console.log(err));
+endsnippet
+
+snippet as "async fn" b
+${1:foo} = async () => {
+	$2
+};
 endsnippet
 
 snippet fn "function"

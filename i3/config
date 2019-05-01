@@ -19,20 +19,20 @@ set $sup Mod4
 # Mod3 is caps lock is Hyper_L (caps lock for me)
 set $mod Mod3
 set $screenSize 1024x768
-set $connectWithHDMI exec --no-startup-id $SCRIPTS/hdmi.sh
+set $connectWithHDMI exec --no-startup-id ~/.dotfiles/i3/scripts/hdmi.sh
 set $connectWithHDMISpecificScreen exec xrandr --output VGA1 --mode $screenSize --right-of LVDS1
 set $connectWithHDMISharedScreens  exec xrandr --output VGA1 --mode $screenSize --same-as LVDS1
 
-set $printscreen exec --no-startup-id $SCRIPTS/screenshots.sh 1
-set $printscreenWithSelect --release exec $SCRIPTS/screenshots.sh 0
+set $printscreen exec --no-startup-id ~/.dotfiles/i3/scripts/screenshots.sh 1
+set $printscreenWithSelect --release exec ~/.dotfiles/i3/scripts/screenshots.sh 0
 set $printscreenSelectAndCopy exec --no-startup-id scrot -s /tmp/clipped.png && xclip -selection c -t image/png /tmp/clipped.png
 
-set $keyboardLightUp exec $SCRIPTS/kbd_backlight.sh up
-set $keyboardLightDown exec $SCRIPTS/kbd_backlight.sh down 
+set $keyboardLightUp exec ~/.dotfiles/i3/scripts/kbd_backlight.sh up
+set $keyboardLightDown exec ~/.dotfiles/i3/scripts/kbd_backlight.sh down 
 
 set $toggleTouchpad exec /home/$USER/.dotfiles/i3/scripts/toggle_touchpad.sh 
-set $volumeLower exec "amixer -D pulse sset Master 5%+ && notify-send 'volume up' && pkill -RTMIN+10 i3blocks"
-set $volumeRaise exec "amixer -D pulse sset Master 5%- && notify-send 'volume down' && pkill -RTMIN+10 i3blocks"
+set $volumeLower exec "amixer -D pulse sset Master 5%- && notify-send 'volume down' && pkill -RTMIN+10 i3blocks"
+set $volumeRaise exec "amixer -D pulse sset Master 5%+ && notify-send 'volume up' && pkill -RTMIN+10 i3blocks"
 set $volumeMute exec "amixer -D pulse sset Master toggle && notify-send 'volume toggled' && pkill -RTMIN+10 i3blocks"
 
 set $brightnessUp exec "light -A 5"
@@ -54,14 +54,14 @@ set $right_mouse_click exec xdotool click 3
 
 set $rofi exec rofi -show run -lines 7 -eh 2 -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi
 set $rofiWindow exec rofi -theme $HOME/.dotfiles/i3/rofi-themes/Arc-Dark.rasi -show 
-set $appWeather exec $term '$SCRIPTS/i3weatherterminal.sh' 
-set $appTimeBattery exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '$SCRIPTS/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
+set $appWeather exec --no-startup-id gnome-terminal -- /bin/bash -c '~/.dotfiles/i3/scripts/i3weatherterminal.sh' 
+set $appTimeBattery exec gnome-terminal --window-with-profile=Increase -- /bin/bash -c '~/.dotfiles/i3/scripts/terminal_time.sh' && i3-msg floating toggle && i3-msg resize set $timeX $timeY && i3-msg move absolute position center
 set $fullscreenYoutube exec sleep 0.2 && xdotool keydown f keyup f && sleep 0.2 && i3-msg fullscreen enable && i3-msg fullscreen disable && i3-msg && sleep 2.5 && i3-msg focus floating && i3-msg focus tiling
 
-set $altTabNext exec $SCRIPTS/alt_tab.sh next 
-set $altTabPrev exec $SCRIPTS/alt_tab.sh prev
-set $switchWindowsByClassNext exec python3 $SCRIPTS/switch_windows_by_class.py 0
-set $switchWindowsByClassPrev exec python3 $SCRIPTS/switch_windows_by_class.py 1
+set $altTabNext exec ~/.dotfiles/i3/scripts/alt_tab.sh next 
+set $altTabPrev exec ~/.dotfiles/i3/scripts/alt_tab.sh prev
+set $switchWindowsByClassNext exec python3 ~/.dotfiles/i3/scripts/switch_windows_by_class.py 0
+set $switchWindowsByClassPrev exec python3 ~/.dotfiles/i3/scripts/switch_windows_by_class.py 1
 
 
 # to connect w/ HDMI cable
