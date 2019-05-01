@@ -39,6 +39,10 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
 " Initialize plugin system
 
+" https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
+" Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+" Plug 'tacahiroy/ctrlp-funky'
+
 " Fuzzy Finder
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -242,6 +246,54 @@ set backspace=indent,eol,start
 "============
 "<> CTRLP
 "============
+" https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
+" let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+
+" let g:ctrlp_funky_syntax_highlight = 1
+" nnoremap <leader>F :CtrlPFunky<CR>
+
+let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 0
+nmap <leader>p 
+
+let g:ctrlp_prompt_mappings = {
+\ 'PrtBS()':              ['<bs>', '<c-]>'],
+\ 'PrtDelete()':          ['<del>'],
+\ 'PrtDeleteWord()':      ['<c-w>'],
+\ 'PrtClear()':           ['<c-u>'],
+\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+\ 'PrtSelectMove("u")':   ['u', '<kPageUp>'],
+\ 'PrtSelectMove("d")':   ['d', '<kPageDown>'],
+\ 'PrtHistory(-1)':       ['n'],
+\ 'PrtHistory(1)':        ['p'],
+\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+\ 'AcceptSelection("h")': ['h', '<c-cr>', '<c-s>'],
+\ 'AcceptSelection("t")': ['t'],
+\ 'AcceptSelection("v")': ['v', '<RightMouse>'],
+\ 'ToggleFocus()':        ['<s-tab>'],
+\ 'ToggleRegex()':        ['r'],
+\ 'ToggleByFname()':      ['<c-d>'],
+\ 'ToggleType(1)':        ['f', '<c-up>'],
+\ 'ToggleType(-1)':       ['F', '<c-down>'],
+\ 'PrtExpandDir()':       ['<tab>'],
+\ 'PrtInsert("c")':       ['c', '<insert>'],
+\ 'PrtInsert()':          ['\'],
+\ 'PrtCurStart()':        ['a'],
+\ 'PrtCurEnd()':          ['e'],
+\ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+\ 'PrtCurRight()':        ['<c-l>', '<right>'],
+\ 'PrtClearCache()':      [' '],
+\ 'PrtDeleteEnt()':       ['<F7>'],
+\ 'CreateNewFile()':      ['y'],
+\ 'MarkToOpen()':         ['z'],
+\ 'OpenMulti()':          ['o'],
+\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+\ }
+
+
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
     \ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',

@@ -33,8 +33,7 @@ install() {
         # discord
         cd ~/Downloads
         rm discord*.deb
-        wget https://discordapp.com/api/download?platform=linux&format=deb -O discord.deb
-        sudo dpkg -i discord*.deb
+        wget https://discordapp.com/api/download?platform=linux&format=deb -O discord.deb sudo dpkg -i discord*.deb
 
         # komorebi
         # libgtop2-dev, libgtk-3-dev, gtk+-3.0 libgtop-2.0 glib-2.0>=2.38 gee-0.8 libwnck-3.0 clutter-gtk-1.0 clutter-1.0 clutter-gst-3.0 cmake valac
