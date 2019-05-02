@@ -26,8 +26,14 @@ bindkey -s 'e' ' ranger\n clear\n'
 bindkey -M viins -s 'e' ' ranger\n clear\n'
 
 # alt+r 
-bindkey -s 'r' ' | rg -i '
-bindkey -M viins -s 'r' ' | rg -i '
+# bindkey -s 'r' ' | rg -i '
+# bindkey -M viins -s 'r' ' | rg -i '
+bindkey 'r' fzf-history-widget
+bindkey -M viins 'r' fzf-history-widget
+
+# alt+t
+bindkey 't' fzf-history-widget
+bindkey -M viins 't' fzf-file-widget
 
 # alt+g to call g, aliased to go to bookmark
 bindkey -s 'g' ' g '

@@ -252,9 +252,13 @@ set backspace=indent,eol,start
 " let g:ctrlp_funky_syntax_highlight = 1
 " nnoremap <leader>F :CtrlPFunky<CR>
 
-let g:ctrlp_use_caching = 0
+" let g:ctrlp_use_caching = 0
+
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:50,results:50'
 let g:ctrlp_working_path_mode = 0
-nmap <leader>p 
+nmap p :CtrlP .<CR>
+nnoremap P :CtrlPMRUFiles<CR>
+nnoremap l :CtrlMRUBuffer<CR>
 
 let g:ctrlp_prompt_mappings = {
 \ 'PrtBS()':              ['<bs>', '<c-]>'],
@@ -281,8 +285,8 @@ let g:ctrlp_prompt_mappings = {
 \ 'PrtExpandDir()':       ['<tab>'],
 \ 'PrtInsert("c")':       ['c', '<insert>'],
 \ 'PrtInsert()':          ['\'],
-\ 'PrtCurStart()':        ['a'],
-\ 'PrtCurEnd()':          ['e'],
+\ 'PrtCurStart()':        ['<c-a>'],
+\ 'PrtCurEnd()':          ['<c-e>'],
 \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
 \ 'PrtCurRight()':        ['<c-l>', '<right>'],
 \ 'PrtClearCache()':      [' '],
@@ -290,9 +294,8 @@ let g:ctrlp_prompt_mappings = {
 \ 'CreateNewFile()':      ['y'],
 \ 'MarkToOpen()':         ['z'],
 \ 'OpenMulti()':          ['o'],
-\ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+\ 'PrtExit()':            ['e', '<c-c>', '<c-g>'],
 \ }
-
 
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
@@ -301,10 +304,16 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_root_markers = ['$HOME/Desktop']
 let g:ctrlp_max_depth=40
-let g:ctrlp_max_files=200000
+" let g:ctrlp_max_files=200000
 
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" The last command can be used to add all recently used work dirs to the CtrlPBookmarkDir list by an autocommand like
+" augroup CtrlPDirMRU
+"   autocmd!
+"   autocmd FileType * if &modifiable | execute 'silent CtrlPBookmarkDirAdd! %:p:h' | endif
+" augroup END
 
 if executable('fd')
     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
@@ -1010,12 +1019,12 @@ if has('nvim')
     nnoremap <A-s> :w<CR>
     inoremap <A-o> <c-o>:so %<CR>
     nnoremap <A-o> :so %<CR>
-    nnoremap <A-l> :ls<CR>:b 
+    " nnoremap <A-l> :ls<CR>:b 
 else
     inoremap s <c-o>:w<CR>
     nnoremap s :w<CR>
     nnoremap o :so %<CR>
-    nnoremap l :ls<CR>:b 
+    " nnoremap l :ls<CR>:b 
 endif
 
 if has('nvim')
@@ -1118,13 +1127,20 @@ endfunction
 " https://stackoverflow.com/questions/17838700/vimscript-get-visual-mode-selection-text-in-mapping
 " https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
 fun! s:get_visual_selection()
-       let l=getline("'<")
-       let [line1,col1] = getpos("'<")[1:2]
-       let [line2,col2] = getpos("'>")[1:2]
-       return l[col1 - 1: col2 - 1]
+   " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
  endfun
 
 function! SelectedTTS ()
+    " echo s:get_visual_selection()
     call TexttoSpeech(s:get_visual_selection())
 endfunction
 

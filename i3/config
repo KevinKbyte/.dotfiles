@@ -2184,6 +2184,7 @@ mode "resize" {
         # back to normal: enter or escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym Mode_switch+e mode "default"
         bindsym m mode "mode_movement"
         bindsym shift+m mode "mode_ws_mv_switch"
 }   
