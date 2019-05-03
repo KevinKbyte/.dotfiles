@@ -45,6 +45,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 
 " Fuzzy Finder
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 
 " For surrounding with quotes 
 Plug 'tpope/vim-surround'
@@ -256,7 +257,22 @@ set backspace=indent,eol,start
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:50,results:50'
 let g:ctrlp_working_path_mode = 0
+" nmap p :CtrlP .<CR>
 nmap p :CtrlP .<CR>
+let g:Lf_ShortcutF = '<c-p>'
+
+" search word under cursor, the pattern is treated as regex, and enter normal mode directly
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search word under cursor, the pattern is treated as regex,
+" append the result to previous search results.
+noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+" search word under cursor literally only in current buffer
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally, don't quit LeaderF after accepting an entry
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+" recall last search. If the result window is closed, reopen it.
+noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
+
 nnoremap P :CtrlPMRUFiles<CR>
 nnoremap l :CtrlMRUBuffer<CR>
 

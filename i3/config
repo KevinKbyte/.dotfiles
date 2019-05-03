@@ -2387,7 +2387,8 @@ bindsym Mode_switch+$mark_pdf_viewer exec $SCRIPTS/jumpmarks_or_scratchpad.sh $m
 
 bindsym $sup+Tab workspace back_and_forth
 # [A] Alternate between the two most recently used containers/windows
-bindsym Mode_switch+s workspace back_and_forth
+# bindsym Mode_switch+s workspace back_and_forth
+bindsym Mode_switch+s exec $SCRIPTS/focus-last.py --switch
 
 bindsym $sup+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 bindsym Mode_switch+Shift+s move container to workspace back_and_forth; workspace back_and_forth
@@ -2478,6 +2479,8 @@ exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; e
 exec $HOME/Desktop/projects/jumping-mouse/build/gromit-mpx
 exec xcompmgr -c
 # exec xbindkeys -p 
+exec $SCRIPTS/focus-last.py
+
 exec $SCRIPTS/automark.sh
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
