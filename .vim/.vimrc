@@ -44,7 +44,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --all'}
 " Plug 'tacahiroy/ctrlp-funky'
 
 " Fuzzy Finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 
 " For surrounding with quotes 
@@ -92,7 +92,11 @@ Plug 'skywind3000/asyncrun.vim'
 " For i3 syntax color
 Plug 'PotatoesMaster/i3-vim-syntax'
 
+" to navigate w/ tmux + vim
+Plug 'christoomey/vim-tmux-navigator'
+
 if has("nvim")
+    Plug 'Shougo/denite.nvim'
 else
     " Colors
     Plug 'flazz/vim-colorschemes'
@@ -158,9 +162,6 @@ else
 
     " \g will go to definition with this plugin
     Plug 'davidhalter/jedi-vim'
-
-    " to navigate w/ tmux + vim
-    Plug 'christoomey/vim-tmux-navigator'
 
     " C/C++ development
     Plug 'JBakamovic/yavide'
@@ -276,70 +277,70 @@ noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 nnoremap P :CtrlPMRUFiles<CR>
 nnoremap l :CtrlMRUBuffer<CR>
 
-let g:ctrlp_prompt_mappings = {
-\ 'PrtBS()':              ['<bs>', '<c-]>'],
-\ 'PrtDelete()':          ['<del>'],
-\ 'PrtDeleteWord()':      ['<c-w>'],
-\ 'PrtClear()':           ['<c-u>'],
-\ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-\ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-\ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-\ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-\ 'PrtSelectMove("u")':   ['u', '<kPageUp>'],
-\ 'PrtSelectMove("d")':   ['d', '<kPageDown>'],
-\ 'PrtHistory(-1)':       ['n'],
-\ 'PrtHistory(1)':        ['p'],
-\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-\ 'AcceptSelection("h")': ['h', '<c-cr>', '<c-s>'],
-\ 'AcceptSelection("t")': ['t'],
-\ 'AcceptSelection("v")': ['v', '<RightMouse>'],
-\ 'ToggleFocus()':        ['<s-tab>'],
-\ 'ToggleRegex()':        ['r'],
-\ 'ToggleByFname()':      ['<c-d>'],
-\ 'ToggleType(1)':        ['f', '<c-up>'],
-\ 'ToggleType(-1)':       ['F', '<c-down>'],
-\ 'PrtExpandDir()':       ['<tab>'],
-\ 'PrtInsert("c")':       ['c', '<insert>'],
-\ 'PrtInsert()':          ['\'],
-\ 'PrtCurStart()':        ['<c-a>'],
-\ 'PrtCurEnd()':          ['<c-e>'],
-\ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-\ 'PrtCurRight()':        ['<c-l>', '<right>'],
-\ 'PrtClearCache()':      [' '],
-\ 'PrtDeleteEnt()':       ['<F7>'],
-\ 'CreateNewFile()':      ['y'],
-\ 'MarkToOpen()':         ['z'],
-\ 'OpenMulti()':          ['o'],
-\ 'PrtExit()':            ['e', '<c-c>', '<c-g>'],
-\ }
+" let g:ctrlp_prompt_mappings = {
+" \ 'PrtBS()':              ['<bs>', '<c-]>'],
+" \ 'PrtDelete()':          ['<del>'],
+" \ 'PrtDeleteWord()':      ['<c-w>'],
+" \ 'PrtClear()':           ['<c-u>'],
+" \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+" \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+" \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+" \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+" \ 'PrtSelectMove("u")':   ['u', '<kPageUp>'],
+" \ 'PrtSelectMove("d")':   ['d', '<kPageDown>'],
+" \ 'PrtHistory(-1)':       ['n'],
+" \ 'PrtHistory(1)':        ['p'],
+" \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+" \ 'AcceptSelection("h")': ['h', '<c-cr>', '<c-s>'],
+" \ 'AcceptSelection("t")': ['t'],
+" \ 'AcceptSelection("v")': ['v', '<RightMouse>'],
+" \ 'ToggleFocus()':        ['<s-tab>'],
+" \ 'ToggleRegex()':        ['r'],
+" \ 'ToggleByFname()':      ['<c-d>'],
+" \ 'ToggleType(1)':        ['f', '<c-up>'],
+" \ 'ToggleType(-1)':       ['F', '<c-down>'],
+" \ 'PrtExpandDir()':       ['<tab>'],
+" \ 'PrtInsert("c")':       ['c', '<insert>'],
+" \ 'PrtInsert()':          ['\'],
+" \ 'PrtCurStart()':        ['<c-a>'],
+" \ 'PrtCurEnd()':          ['<c-e>'],
+" \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+" \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+" \ 'PrtClearCache()':      [' '],
+" \ 'PrtDeleteEnt()':       ['<F7>'],
+" \ 'CreateNewFile()':      ['y'],
+" \ 'MarkToOpen()':         ['z'],
+" \ 'OpenMulti()':          ['o'],
+" \ 'PrtExit()':            ['e', '<c-c>', '<c-g>'],
+" \ }
 
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
-    \ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',
-    \ }
+" let g:ctrlp_custom_ignore = {
+"     \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
+"     \ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',
+"     \ }
 
-let g:ctrlp_root_markers = ['$HOME/Desktop']
-let g:ctrlp_max_depth=40
-" let g:ctrlp_max_files=200000
+" let g:ctrlp_root_markers = ['$HOME/Desktop']
+" let g:ctrlp_max_depth=40
+" " let g:ctrlp_max_files=200000
 
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" The last command can be used to add all recently used work dirs to the CtrlPBookmarkDir list by an autocommand like
-" augroup CtrlPDirMRU
-"   autocmd!
-"   autocmd FileType * if &modifiable | execute 'silent CtrlPBookmarkDirAdd! %:p:h' | endif
-" augroup END
+" " The last command can be used to add all recently used work dirs to the CtrlPBookmarkDir list by an autocommand like
+" " augroup CtrlPDirMRU
+" "   autocmd!
+" "   autocmd FileType * if &modifiable | execute 'silent CtrlPBookmarkDirAdd! %:p:h' | endif
+" " augroup END
 
-if executable('fd')
-    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
-else 
-    if executable('ag')
-      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    endif
-endif
+" if executable('fd')
+"     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+" else 
+"     if executable('ag')
+"       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"     endif
+" endif
 
-nnoremap <leader>mr :CtrlPMRU<CR>
+" nnoremap <leader>mr :CtrlPMRU<CR>
 
 "============
 "<> TMUX
