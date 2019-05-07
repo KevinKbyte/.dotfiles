@@ -25,27 +25,31 @@
 bindkey -s 'e' ' ranger\n clear\n'
 bindkey -M viins -s 'e' ' ranger\n clear\n'
 
-# alt+r 
 # bindkey -s 'r' ' | rg -i '
 # bindkey -M viins -s 'r' ' | rg -i '
-bindkey 'r' fzf-history-widget
-bindkey -M viins 'r' fzf-history-widget
+# bindkey '\er' fzf-history-widget
+# bindkey -M viins '\er' fzf-history-widget
 
 # alt+t
-bindkey 't' fzf-history-widget
-bindkey -M viins 't' fzf-file-widget
+bindkey '\et' fzf-file-widget
+bindkey -M viins '\et' fzf-file-widget
+
+# alt+c 
+bindkey '\ec' fzf-cd-widget
+bindkey -M viins '\ec' fzf-cd-widget
+
 
 # alt+g to call g, aliased to go to bookmark
 bindkey -s 'g' ' g '
 bindkey -M viins -s 'g' ' g '
 
 # ctrl+space to complete
-bindkey '^ ' autosuggest-execute
+bindkey ' ' autosuggest-execute
 bindkey -M viins '^ ' autosuggest-execute
 
 # alt+l
 bindkey -s '\el' ' ls -a\n'                               # [Esc-l] - run command: ls -a
-bindkey -M viins -s '\el' ' ls -a\n'                               # [Esc-l] - run command: ls -a
+bindkey -M viins -s 'l' ' ls -a\n'                               # [Esc-l] - run command: ls -a
 
 # alt+shift+l
 bindkey -s '' ' clear\n ls -a\n'
@@ -107,7 +111,7 @@ bindkey -M viins "^P" history-substring-search-up
 bindkey -M viins "^Q" push-line
 bindkey -M viins "^R" fzf-history-widget
 bindkey -M viins "^S" history-incremental-search-forward
-bindkey -M viins "^T" fzf-file-widget
+# bindkey -M viins "^T" fzf-file-widget
 bindkey -M viins "^U" kill-whole-line
 bindkey -M viins "^V" quoted-insert
 bindkey -M viins "^W" backward-kill-word
@@ -202,7 +206,7 @@ bindkey -M viins "^[[Z" reverse-menu-complete
 bindkey -M viins "^[_" insert-last-word
 bindkey -M viins "^[a" accept-and-hold
 bindkey -M viins "^[b" backward-word
-bindkey -M viins "^[c" fzf-cd-widget
+bindkey -M viins "\ec" fzf-cd-widget
 bindkey -M viins "^[d" kill-word
 bindkey -M viins "^[f" forward-word
 bindkey -M viins "^[h" run-help

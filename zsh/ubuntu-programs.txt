@@ -251,3 +251,5 @@ hlint
 yarn
 xss-lock
 feh
+handbrake
+whois

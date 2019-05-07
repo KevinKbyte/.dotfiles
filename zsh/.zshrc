@@ -481,7 +481,6 @@ export EDITOR=vim
 
 # zsh vi mode
 set -o vi
-source ~/.dotfiles/zsh/key-bindings.zsh
 
 export KEYTIMEOUT=10
 bindkey -M viins 'kj' vi-cmd-mode  
@@ -506,6 +505,7 @@ zle-line-init() {
 zle -N zle-keymap-select
 zle -N zle-line-init
 
+source ~/.dotfiles/zsh/key-bindings.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # for tmuxinator
