@@ -144,7 +144,8 @@ alias "c=xclip -selection clipboard"
 alias "pc=pwd|xclip -selection clipboard"
 # in order to not override files unintentionally 
 alias "cp=cp -i"
-alias "v=vim"
+# alias "v=vim"
+alias "v=nvim"
 alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
 alias dr="dirs | head -10"
@@ -175,7 +176,7 @@ alias "zrc=vim ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
 alias "i3c=vim ~/.dotfiles/i3/config"
 alias "soi3c=source ~/.dotfiles/i3/config"
 alias "szrc=source ~/.dotfiles/zsh/.zshrc"
-alias "vrc=vim ~/.dotfiles/.vim/.vimrc"
+alias "vrc=nvim ~/.dotfiles/.vim/.vimrc"
 alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
@@ -348,7 +349,7 @@ function evince { command evince $1 &; }
 # TMuxinator session fn's
 function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
-function man { vim <(command man $@); }
+function man { nvim <(command man $@); }
 # function man { man $@ | vim -; }
 
 # function quteb {
@@ -413,14 +414,13 @@ function timer(){
      echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
      sleep 0.1
    done
-   mplayer ~/Music/*
-
+   # mplayer ~/Music/*
 }
 
 # Vocab timer
 # https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line
 function voc(){
-    for (( i = 1; i < $1; i++ )); do
+    for (( i = 0; i < $1; i++ )); do
         echo "$i"
         timer $2
         echo
@@ -469,10 +469,20 @@ function mpl() {
     mplayer "$@" -loop 0
 }
 
+function pdfx() {
+    # https://askubuntu.com/questions/221962/how-can-i-extract-a-page-range-a-part-of-a-pdf
+    # example: pdfx myfile.pdf 1 2
+    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+       -dFirstPage=${2} \
+       -dLastPage=${3} \
+       -sOutputFile=${1%.pdf}_p${2}-p${3}.pdf \
+       ${1}
+}
+
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below
 unalias d; source ~/.dotfiles/zsh/scripts/MRUd.sh
 
-export EDITOR=vim
+export EDITOR=nvim
 #export VISUAL=vim
 #export PATH="$HOME/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"
@@ -559,15 +569,14 @@ SAVEHIST=$HISTSIZE
 
 # TODO: Make a terminal mark
 # to start tmux immediately after starting zsh
-if command -v tmux>/dev/null; then
-    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | grep 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
-fi
+# if command -v tmux>/dev/null; then
+#     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | grep 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
+# fi
 
 # cd $HOME/Desktop/bu_notes/cs
 clear
 
 export NODE_PATH=/usr/local/lib/node_modules:$HOME/.npm:/usr/lib/nodejs
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -587,3 +596,12 @@ stty -ixon
 # https://alysivji.github.io/category/quick-hits.html
 
 unalias g && source ~/.dotfiles/zsh/scripts/bashmarks/bashmarks.sh
+
+### Added by Zplugin's installer
+# source '/home/kev/.zplugin/bin/zplugin.zsh'
+# autoload -Uz _zplugin
+# (( ${+_comps} )) && _comps[zplugin]=_zplugin
+# ### End of Zplugin's installer chunk
+
+# zplugin ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh"
+# zplugin load trapd00r/LS_COLORS

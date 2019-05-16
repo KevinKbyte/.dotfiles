@@ -253,3 +253,7 @@ xss-lock
 feh
 handbrake
 whois
+csvkit
+pdfshuffler
+imagemagick
+pslib1*

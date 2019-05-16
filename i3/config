@@ -39,7 +39,7 @@ set $brightnessUp exec "light -A 5"
 set $brightnessDown exec "light -U 10"
 set $brightnessMinimal exec light -S 0.1
 set $brightnessFlashingNoteMode exec light -S 5 && sleep 3 && light -S 0
-set $rangerFileExplorer exec $xterm ranger 
+set $rangerFileExplorer exec --no-startup-id xterm -fa monaco -fs 13 ranger 
 
 set $modeCommonClicks mode "mode_common_clicks"
 set $modeMouseMove mode "mode_mouse_move"
@@ -1795,7 +1795,7 @@ bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal
 # bindsym ctrl+$mod+l exec --no-startup-id sleep 1 && xset dpms force suspend
 
 # exec xautolock -time 15 -locker 
-exec xautolock -time 15 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off'
+exec xautolock -time 120 -locker "~/.config/i3/scripts/i3_locking.sh" -notify 20 -notifier 'xset dpms force off'
 # xautolock -time 7 -locker "systemctl suspend" &
 
 # https://www.reddit.com/r/i3wm/comments/9ebemt/locking_i3_when_lid_of_laptop_is_closed/
