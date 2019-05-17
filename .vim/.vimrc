@@ -407,7 +407,7 @@ if has("nvim")
     tnoremap <F5>l <C-\><C-n><C-W>v<C-W>l:enew<CR>:Tnew<CR>
     tnoremap <F5>k <C-\><C-n><C-W>n:Tnew<CR>
     tnoremap <F5>j <C-\><C-n>:belowright split<CR><C-W>j:enew<CR>:Tnew<CR>
-    tnoremap <F5>h <C-\><C-n><C-W>v<C-W>
+    tnoremap <F5>h <C-\><C-n><C-W>v<C-W>:Tnew<CR>
     " h:enew<CR>
     " :Tnew<CR>
 else
@@ -951,12 +951,15 @@ command! MakeTags !ctags -R .
 " THINGS TO CONSIDER: 
 " - This doesn't help if you want a visual list of tags
 
-let g:netrw_banner=0 "disable annoying banner 
-let g:netrw_browse_split=4 "open in prior window 
-let g:netrw_altv=1 "open splits to the right 
-let g:netrw_liststyle=3 "tree view 
-let g:netrw_list_hide=netrw_gitignore#Hide() 
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+if has('nvim')
+else
+    let g:netrw_banner=0 "disable annoying banner 
+    let g:netrw_browse_split=4 "open in prior window 
+    let g:netrw_altv=1 "open splits to the right 
+    let g:netrw_liststyle=3 "tree view 
+    let g:netrw_list_hide=netrw_gitignore#Hide() 
+    let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+endif
 
 " NOW WE CAN: 
 " - :edit a folder to open a file browser 
@@ -1120,7 +1123,7 @@ if has('nvim')
     noremap <Down> <C-w>j
     noremap <Left> <C-w>h
     noremap <Right> <C-w>l
-" else
+else
     " noremap <Up> <Nop>
     " noremap <Down> <Nop>
     " noremap <Left> <Nop>

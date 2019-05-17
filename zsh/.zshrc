@@ -534,6 +534,7 @@ ZSH_PLUGIN_FOLDER="$HOME/.github"
 source ~/.oh-my-zsh/plugins/history-substring-search/history-substring-search.plugin.zsh
 source $ZSH_PLUGIN_FOLDER/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $ZSH_PLUGIN_FOLDER/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=256'
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
@@ -572,6 +573,10 @@ SAVEHIST=$HISTSIZE
 # if command -v tmux>/dev/null; then
 #     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | grep 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 # fi
+if command -v tmux>/dev/null; then
+    [ -z $TMUX ] && (tmux) > /dev/null 
+    [ $TMUX ] && (tmuxinator s startmux) > /dev/null 
+fi
 
 # cd $HOME/Desktop/bu_notes/cs
 clear
@@ -596,6 +601,9 @@ stty -ixon
 # https://alysivji.github.io/category/quick-hits.html
 
 unalias g && source ~/.dotfiles/zsh/scripts/bashmarks/bashmarks.sh
+
+# change directory colors
+source ~/.dotfiles/setup_scripts/ls_colors.sh
 
 ### Added by Zplugin's installer
 # source '/home/kev/.zplugin/bin/zplugin.zsh'
