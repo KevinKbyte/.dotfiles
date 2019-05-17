@@ -274,11 +274,11 @@ let g:php_folding = 1
 "============
 
 if has("nvim")
-    nnoremap <A-p> :Denite file/rec<CR>
-    nnoremap <A-P> :Denite file/rec buffer<CR>
-    nnoremap <A-l> :Denite buffer<CR>
-    nnoremap <M->> :cd ..<CR>:Denite file/rec<CR>
-    nnoremap <M-lt> :DeniteProjectDir -path= file/rec <S-Left><Left>
+    nnoremap <A-P> :Denite file/rec<CR>
+    nnoremap <A-L> :Denite file/rec buffer<CR>
+    nnoremap <A-l> :Buffers<CR>
+    nnoremap <M->> :Files ..<CR>
+    nnoremap <M-lt> :Files 
     " nnoremap l :CtrlMRUBuffer<CR>
 else
     " https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
@@ -711,7 +711,7 @@ if has("nvim")
 else
 endif
 
-nnoremap Q <nop>
+nnoremap Q ZZ
 
 if has("nvim")
     cnoremap <M-b> <S-Left>
@@ -798,6 +798,18 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+if has('nvim')
+    imap <M-w> <plug>(fzf-complete-word)
+    imap <M-P> <plug>(fzf-complete-path)
+    imap <M-f> <plug>(fzf-complete-file-ag)
+    imap <M-l> <plug>(fzf-complete-line)
+    imap <M-L> <plug>(fzf-complete-buffer-line)
+else
+endif
 
 " Make calcurse notes markdown compatible
 " https://www.youtube.com/watch?v=hvc-pHjbhdE
