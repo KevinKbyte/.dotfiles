@@ -145,7 +145,11 @@ alias "pc=pwd|xclip -selection clipboard"
 # in order to not override files unintentionally 
 alias "cp=cp -i"
 # alias "v=vim"
-alias "v=nvim"
+if [[ -z $NVIM_LISTEN_ADDRESS ]]; then
+    alias "v=nvr -l"
+else
+    alias "v=nvim"
+fi
 alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
 alias dr="dirs | head -10"

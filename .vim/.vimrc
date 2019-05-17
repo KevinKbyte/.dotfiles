@@ -106,6 +106,9 @@ Plug 'jiangmiao/auto-pairs'
 if has("nvim")
     Plug 'Shougo/denite.nvim'
     Plug 'kassio/neoterm'
+
+    Plug 'mhinz/vim-startify'
+    Plug 'mhinz/neovim-remote'
 else
     " Fuzzy Finder
     Plug 'ctrlpvim/ctrlp.vim'
@@ -398,9 +401,13 @@ if has("nvim")
     nnoremap <silent> <A-K> :TmuxNavigateUp<CR>
     nnoremap <silent> <A-L> :TmuxNavigateRight<CR>
     nnoremap <silent> <A-N> :TmuxNavigatePrevious<CR>
-    " tnoremap <silent> <Esc> <C-\><C-n>
+    tnoremap <silent> <Esc> <C-\><C-n>
+    " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
+    autocmd BufWinEnter,WinEnter term://* startinsert
+
     " https://github.com/junegunn/fzf.vim/issues/544
-    au TermOpen * tnoremap <Esc> <c-\><c-n>
+    " au TermOpen * tnoremap <Esc> <c-\><c-n>
+    au BufLeave fzf tnoremap <Esc> <c-\><c-n>
     au FileType fzf tunmap <Esc>
 
     tnoremap <C-H> <C-\><C-n><C-w>h
@@ -710,17 +717,17 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
-" Terminal Remap
 if has("nvim")
+    " https://www.reddit.com/r/neovim/comments/632wh4/neovim_does_not_save_last_cursor_position/
+    autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
+
+    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+            \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+            \,sm:block-blinkwait175-blinkoff150-blinkon175
+
     tnoremap <F5>F <C-\><C-n><C-w>\|<C-w>_
     " nnoremap <leader>> :tabm +<CR>
     " nnoremap <leader>< :tabm -<CR>
-else
-endif
-
-nnoremap Q ZZ
-
-if has("nvim")
     cnoremap <M-b> <S-Left>
     cnoremap <M-f> <S-Right>
     cnoremap <M-a> <Home>
@@ -730,6 +737,7 @@ else
     cnoremap f <S-Right>
 endif
 
+nnoremap Q ZZ
 
 " to auto move to right window when vertical splitting
 nnoremap v vl
@@ -879,6 +887,11 @@ setlocal keywordprg=:help
 
 " Sets Incremental Search (Search while typing)
 set incsearch
+if has("nvim")
+    " Shows global replacement in a split
+    set inccommand=split 
+endif
+
 " Uses case if any caps are used
 set smartcase
 
