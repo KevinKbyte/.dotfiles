@@ -574,7 +574,7 @@ SAVEHIST=$HISTSIZE
 #     [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && (tmux ls | grep 'windows'; [[ $? -eq 1 ]] && tmuxinator s startmux) > /dev/null || (tmux ls | rg 'attached'; [[ $? -eq 1 ]] && tmux a) > /dev/null
 # fi
 if command -v tmux>/dev/null; then
-    [ -z $TMUX ] && (tmux) > /dev/null 
+    [ -z $TMUX ] && (tmux ls | grep 'attached' ; [[ $? -ne 0 ]] && tmux) > /dev/null 
     [ $TMUX ] && (tmuxinator s startmux) > /dev/null 
 fi
 

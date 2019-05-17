@@ -32,8 +32,11 @@ windows:
       # https://stackoverflow.com/questions/9812000/specify-pane-percentage-in-tmuxinator-project?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
       layout: d791,191x55,0,0{95x55,0,0,6,95x55,96,0,7}
       panes:
-        - sleep 0.3 && nvim "+vert Tnew" +Tnew && clear
+        # to stop neovim from crashing in tmux when resizing tmux window
+        # also creates line numbers in vim
+        - sleep 0.3 && nvim "+vert Tnew" +Tnew +"execute \"normal! '1\"" && clear
+
   - work:
       layout: d791,191x55,0,0{95x55,0,0,6,95x55,96,0,7}
       panes:
-        - sleep 0.2 && nvim "+vert Tnew" +Tnew && clear
+        - sleep 0.3 && nvim "+vert Tnew" +Tnew +"execute \"normal! '1\"" && clear

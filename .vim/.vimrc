@@ -242,10 +242,10 @@ let mapleader = ' '
 " path to directory where library can be found
 let g:clang_library_path='/usr/lib/llvm-5.0/lib'
 
-autocmd FileType cpp set keywordprg=cppman
+" autocmd FileType cpp set keywordprg=cppman
 let g:ycm_semantic_triggers = { 'c': [ 're!\w{2}' ] }
 
-" allows for backspaces to work properly
+" " allows for backspaces to work properly
 set backspace=indent,eol,start
 
 "============
@@ -269,9 +269,9 @@ let g:r_syntax_folding = 1
 let g:rust_fold = 1
 let g:php_folding = 1
 
-"============
-"<> CTRLP
-"============
+""============
+""<> CTRLP
+""============
 
 if has("nvim")
     nnoremap <A-P> :Denite file/rec<CR>
@@ -398,7 +398,11 @@ if has("nvim")
     nnoremap <silent> <A-K> :TmuxNavigateUp<CR>
     nnoremap <silent> <A-L> :TmuxNavigateRight<CR>
     nnoremap <silent> <A-N> :TmuxNavigatePrevious<CR>
-    tnoremap <silent> <Esc> <C-\><C-n>
+    " tnoremap <silent> <Esc> <C-\><C-n>
+    " https://github.com/junegunn/fzf.vim/issues/544
+    au TermOpen * tnoremap <Esc> <c-\><c-n>
+    au FileType fzf tunmap <Esc>
+
     tnoremap <C-H> <C-\><C-n><C-w>h
     tnoremap <A-J> <C-\><C-n><C-w>j
     tnoremap <A-K> <C-\><C-n><C-w>k
@@ -509,16 +513,19 @@ let g:formatterpath = [ '/home/kevin/.vim/plugged/vim-flake8' ]
 "============
 
 " folds almost all indented lines 
-set foldmethod=indent
-nnoremap <leader>fmm :set foldmethod=manual<CR>
-nnoremap <leader>fmi :set foldmethod=indent<CR>
-nnoremap <leader>fms :set foldmethod=syntax<CR>
+if has("nvim") 
+else
+    set foldmethod=indent
+    nnoremap <leader>fmm :set foldmethod=manual<CR>
+    nnoremap <leader>fmi :set foldmethod=indent<CR>
+    nnoremap <leader>fms :set foldmethod=syntax<CR>
 
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave ?* mkview
-  autocmd BufWinEnter ?* silent loadview
-augroup END
+    augroup AutoSaveFolds
+      autocmd!
+      autocmd BufWinLeave ?* mkview
+      autocmd BufWinEnter ?* silent loadview
+    augroup END
+endif
 
 "============
 "<> SAVE STATES

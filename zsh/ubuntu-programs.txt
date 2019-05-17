@@ -257,3 +257,4 @@ csvkit
 pdfshuffler
 imagemagick
 pslib1*
+pstack
