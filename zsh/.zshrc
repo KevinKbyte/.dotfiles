@@ -81,6 +81,11 @@ source ~/.dotfiles/zsh/kev-easy-cmd-yank.zsh-theme
 # else
 #   export EDITOR='mvim'
 # fi
+if command -v nvim>/dev/null; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -145,10 +150,10 @@ alias "pc=pwd|xclip -selection clipboard"
 # in order to not override files unintentionally 
 alias "cp=cp -i"
 # alias "v=vim"
-if [[ -z $NVIM_LISTEN_ADDRESS ]]; then
-    alias "v=nvr -l"
+if [ -z $NVIM_LISTEN_ADDRESS ]; then
+    alias "v=$EDITOR"
 else
-    alias "v=nvim"
+    alias "v=nvr -l"
 fi
 alias "nv=nvim"
 alias dirs="dirs | sed 's/ /\n/g' | awk 'BEGIN{print \"-----\"}; {print NR-1 \": \" \$0}' | xargs -I{} echo \$fg[red]{}\$fg[default]"
@@ -174,13 +179,13 @@ alias "sadug=sudo apt update -y && sudo apt dist-upgrade -y"
 # VIMRC="~/.dotfiles/.vim/.vimrc"
 # ZSHRC="~/.dotfiles/zsh/.zshrc"
 # I3="~/.dotfiles/i3/config"
-alias "trc=nvim ~/.dotfiles/.tmux/.tmux.conf"
+alias "trc=$EDITOR ~/.dotfiles/.tmux/.tmux.conf"
 alias "saa=sudo apt autoremove -y"
-alias "zrc=nvim ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
-alias "i3c=nvim ~/.dotfiles/i3/config"
+alias "zrc=$EDITOR ~/.dotfiles/zsh/.zshrc && source ~/.dotfiles/zsh/.zshrc"
+alias "i3c=$EDITOR ~/.dotfiles/i3/config"
 alias "soi3c=source ~/.dotfiles/i3/config"
 alias "szrc=source ~/.dotfiles/zsh/.zshrc"
-alias "vrc=nvim ~/.dotfiles/.vim/.vimrc"
+alias "vrc=$EDITOR ~/.dotfiles/.vim/.vimrc"
 alias "mux=tmuxinator"
 alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
@@ -249,7 +254,7 @@ alias "rgr=ranger"
 alias "calc=calcurse"
 alias "bd=ssh bandit"
 alias "doc2pdf=soffice --headless --convert-to pdf"
-alias "zh=vim ~/.zsh_history"
+alias "zh=$EDITOR ~/.zsh_history"
 alias "click=python $HOME/.dotfiles/i3/scripts/clicker_gen_txt_file.py && clear"
 alias "pips=pip search"
 alias "pipi=pip install"
@@ -353,7 +358,7 @@ function evince { command evince $1 &; }
 # TMuxinator session fn's
 function mshw { tmuxinator start hw; }
 function mslecture { tmuxinator start bu_lecture; }
-function man { nvim <(command man $@); }
+function man { $EDITOR <(command man $@); }
 # function man { man $@ | vim -; }
 
 # function quteb {
@@ -484,9 +489,8 @@ function pdfx() {
 }
 
 # Unalias d which is aliased as dirs in oh-my-zsh. We want to use d for our function below
-unalias d; source ~/.dotfiles/zsh/scripts/MRUd.sh
+source ~/.dotfiles/zsh/scripts/MRUd.sh
 
-export EDITOR=nvim
 #export VISUAL=vim
 #export PATH="$HOME/node/node-v8.9.0-linux-x64/bin:$PATH"
 #export TERM="xterm-256color"

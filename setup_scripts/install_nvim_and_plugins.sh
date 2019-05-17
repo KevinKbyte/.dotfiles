@@ -37,6 +37,8 @@ sudoCommands() {
 installNeovimPlugins() {
     # Denite - unite interfaces, kinda like Emacs Helm
     pip3 install --user pynvim
+    # to install nvr and not have nested nvim in nvim terminal
+    pip3 install --user neovim-remote
 }
 
 installAll() {

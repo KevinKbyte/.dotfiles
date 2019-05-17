@@ -78,6 +78,14 @@ bindkey -M viins -s 'D' ' dirs | head -10\n'
 bindkey -s ' ' 'cd '
 bindkey -M viins -s ' ' 'cd '
 
+# End
+bindkey '^[[F' end-of-line
+bindkey -M viins '^[[F' end-of-line
+
+# Home
+bindkey '^[[H' beginning-of-line
+bindkey -M viins '^[[H' beginning-of-line
+
 # https://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell
 vi-append-x-selection () { RBUFFER=$(xclip -o -selection clipboard </dev/null)$RBUFFER; }
 zle -N vi-append-x-selection

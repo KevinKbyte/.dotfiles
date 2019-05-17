@@ -108,7 +108,6 @@ if has("nvim")
     Plug 'kassio/neoterm'
 
     Plug 'mhinz/vim-startify'
-    Plug 'mhinz/neovim-remote'
 else
     " Fuzzy Finder
     Plug 'ctrlpvim/ctrlp.vim'
@@ -398,7 +397,7 @@ if has("nvim")
     nnoremap <silent> <A-N> :TmuxNavigatePrevious<CR>
     tnoremap <silent> <Esc> <C-\><C-n>
     " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
-    autocmd BufWinEnter,WinEnter term://*zsh* startinsert
+    autocmd BufWinEnter,WinEnter term://* startinsert
 
     " https://github.com/junegunn/fzf.vim/issues/544
     " au TermOpen * tnoremap <Esc> <c-\><c-n>
@@ -717,6 +716,11 @@ let g:EasyMotion_smartcase = 1
 "============
 
 if has("nvim")
+    " https://stackoverflow.com/questions/34009064/how-do-i-set-the-terminal-buffer-scrollback-size
+    autocmd TermOpen * setlocal scrollback=100000
+    " or put this line in ~/.config/nvim/init.vim
+    " set scrollback=100000
+    
     " https://www.reddit.com/r/neovim/comments/632wh4/neovim_does_not_save_last_cursor_position/
     autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
 
@@ -817,9 +821,12 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:fzf_buffers_jump = 1
 
 if has('nvim')
+    inoremap <M-f> <C-o>w
+    inoremap <M-b> <C-o>b
+
     imap <M-w> <plug>(fzf-complete-word)
     imap <M-P> <plug>(fzf-complete-path)
-    imap <M-f> <plug>(fzf-complete-file-ag)
+    imap <M-n> <plug>(fzf-complete-file-ag)
     imap <M-l> <plug>(fzf-complete-line)
     imap <M-L> <plug>(fzf-complete-buffer-line)
 else
