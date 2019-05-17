@@ -712,7 +712,7 @@ let g:EasyMotion_smartcase = 1
 
 " Terminal Remap
 if has("nvim")
-    tnoremap <leader>F <C-\><C-n><C-w>\|<C-w>_
+    tnoremap <F5>F <C-\><C-n><C-w>\|<C-w>_
     " nnoremap <leader>> :tabm +<CR>
     " nnoremap <leader>< :tabm -<CR>
 else

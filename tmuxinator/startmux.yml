@@ -34,9 +34,9 @@ windows:
       panes:
         # to stop neovim from crashing in tmux when resizing tmux window
         # also creates line numbers in vim
-        - sleep 0.3 && nvim "+vert Tnew" +Tnew +"execute \"normal! '1\"" && clear
+        - sleep 0.3 &&  nvim +vsplit "+execute \"normal! ^Wl\"" +enew +Tnew "+execute \"normal! '1\"" && clear
 
   - work:
       layout: d791,191x55,0,0{95x55,0,0,6,95x55,96,0,7}
       panes:
-        - sleep 0.3 && nvim "+vert Tnew" +Tnew +"execute \"normal! '1\"" && clear
+        - sleep 0.3 &&  nvim +vsplit "+execute \"normal! ^Wl\"" +enew +Tnew "+execute \"normal! '1\"" && clear
