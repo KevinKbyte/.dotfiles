@@ -422,15 +422,26 @@ if has("nvim")
     tnoremap <A-L> <C-\><C-n><C-w>l
 
     " nnoremap <F5>" <C-W><C-V>:enew<CR>:Tnew<CR>
-    nnoremap <F5>l <C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
-    nnoremap <F5>k <C-W>n<C-\><C-n>:Tnew<CR>i
-    nnoremap <F5>j :belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
-    nnoremap <F5>h <C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+    nnoremap <F5>L <C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+    nnoremap <F5>K <C-W>n<C-\><C-n>:Tnew<CR>i
+    nnoremap <F5>J :belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+    nnoremap <F5>H <C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
 
-    tnoremap <F5>l <C-\><C-n><C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
-    tnoremap <F5>k <C-\><C-n><C-W>n<C-\><C-n>:Tnew<CR>i
-    tnoremap <F5>j <C-\><C-n>:belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
-    tnoremap <F5>h <C-\><C-n><C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+    tnoremap <F5>L <C-\><C-n><C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+    tnoremap <F5>K <C-\><C-n><C-W>n<C-\><C-n>:Tnew<CR>i
+    tnoremap <F5>J <C-\><C-n>:belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+    tnoremap <F5>H <C-\><C-n><C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+
+    " For opening up new empty vim panes
+    nnoremap <F5>l <C-W>n<C-W>L
+    nnoremap <F5>k <C-W>n
+    nnoremap <F5>j <C-W>n<C-W>J
+    nnoremap <F5>h <C-W>n<C-W>H
+
+    tnoremap <F5>l <C-\><C-n><C-W>n<C-W>L
+    tnoremap <F5>k <C-\><C-n><C-W>n<C-W>K
+    tnoremap <F5>j <C-\><C-n><C-W>n<C-W>J
+    tnoremap <F5>h <C-\><C-n><C-W>n<C-W>H
 else
     nnoremap <silent>  :TmuxNavigateLeft<CR>
     nnoremap <silent> J :TmuxNavigateDown<CR> 
