@@ -389,6 +389,17 @@ let g:BASH_Ctrl_j = 'off'
 
 
 if has("nvim")
+    autocmd WinEnter term://* nohlsearch
+        " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
+    autocmd BufEnter term://* startinsert
+    autocmd FileType fzf startinsert
+
+    " using https://github.com/junegunn/fzf.vim & fzf installed.
+    " Backspaces are used so the :tnoremap's special characters aren't
+    " evaluated immediately. 
+    " Purpose: when leaving fzf with esc, remaps esc back to "change to normal mode" keybinding
+    autocmd FileType fzf tnoremap <Esc> <C-\><C-n>:tnoremap < <BS>Esc> < <BS>C-\>< <BS>C-n>< <BS>CR><CR>ZQ
+
     nnoremap <silent> <A-H> :TmuxNavigateLeft<CR> 
     nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
     nnoremap <silent> <A-J> :TmuxNavigateDown<CR> 
@@ -396,13 +407,14 @@ if has("nvim")
     nnoremap <silent> <A-L> :TmuxNavigateRight<CR>
     nnoremap <silent> <A-N> :TmuxNavigatePrevious<CR>
     tnoremap <silent> <Esc> <C-\><C-n>
-    " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
-    autocmd BufWinEnter,WinEnter term://* startinsert
+
+    " au FileType term://* startinsert
 
     " https://github.com/junegunn/fzf.vim/issues/544
     " au TermOpen * tnoremap <Esc> <c-\><c-n>
-    au BufLeave fzf tnoremap <Esc> <c-\><c-n>
-    au FileType fzf :silent! tunmap <Esc>
+    " autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
+    " tnoremap <Esc> <c-\><c-n>
+    " autocmd FileType fzf tunmap <buffer> <Esc>
 
     tnoremap <C-H> <C-\><C-n><C-w>h
     tnoremap <A-J> <C-\><C-n><C-w>j
