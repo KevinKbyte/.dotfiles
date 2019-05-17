@@ -388,11 +388,6 @@ endif
 " inoremap <silent>  <C-o>:TmuxNavigateRight<CR>
 let g:BASH_Ctrl_j = 'off'
 
-" nnoremap <F5>" <C-W><C-V>:enew<CR>:Tnew<CR>
-nnoremap <F5>l <C-W>v<C-W>l:enew<CR>:Tnew<CR>
-nnoremap <F5>k <C-W>n:Tnew<CR>
-nnoremap <F5>j :belowright split<CR>j:enew<CR>:Tnew<CR>
-nnoremap <F5>h <C-W>v:enew<CR>:Tnew<CR>
 
 if has("nvim")
     nnoremap <silent> <A-H> :TmuxNavigateLeft<CR> 
@@ -403,24 +398,28 @@ if has("nvim")
     nnoremap <silent> <A-N> :TmuxNavigatePrevious<CR>
     tnoremap <silent> <Esc> <C-\><C-n>
     " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
-    autocmd BufWinEnter,WinEnter term://* startinsert
+    autocmd BufWinEnter,WinEnter term://*zsh* startinsert
 
     " https://github.com/junegunn/fzf.vim/issues/544
     " au TermOpen * tnoremap <Esc> <c-\><c-n>
     au BufLeave fzf tnoremap <Esc> <c-\><c-n>
-    au FileType fzf tunmap <Esc>
+    au FileType fzf :silent! tunmap <Esc>
 
     tnoremap <C-H> <C-\><C-n><C-w>h
     tnoremap <A-J> <C-\><C-n><C-w>j
     tnoremap <A-K> <C-\><C-n><C-w>k
     tnoremap <A-L> <C-\><C-n><C-w>l
 
-    tnoremap <F5>l <C-\><C-n><C-W>v<C-W>l:enew<CR>:Tnew<CR>
-    tnoremap <F5>k <C-\><C-n><C-W>n:Tnew<CR>
-    tnoremap <F5>j <C-\><C-n>:belowright split<CR><C-W>j:enew<CR>:Tnew<CR>
-    tnoremap <F5>h <C-\><C-n><C-W>v<C-W>:Tnew<CR>
-    " h:enew<CR>
-    " :Tnew<CR>
+    " nnoremap <F5>" <C-W><C-V>:enew<CR>:Tnew<CR>
+    nnoremap <F5>l <C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+    nnoremap <F5>k <C-W>n<C-\><C-n>:Tnew<CR>i
+    nnoremap <F5>j :belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+    nnoremap <F5>h <C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+
+    tnoremap <F5>l <C-\><C-n><C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+    tnoremap <F5>k <C-\><C-n><C-W>n<C-\><C-n>:Tnew<CR>i
+    tnoremap <F5>j <C-\><C-n>:belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+    tnoremap <F5>h <C-\><C-n><C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
 else
     nnoremap <silent>  :TmuxNavigateLeft<CR>
     nnoremap <silent> J :TmuxNavigateDown<CR> 
