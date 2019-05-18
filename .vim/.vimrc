@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 " https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme/32385352
 
 " Multiple Plug commands can be written in a single line using | separators 
+
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'ervandew/supertab'
@@ -106,11 +107,15 @@ Plug 'jiangmiao/auto-pairs'
 " Fuzzy Finder
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Fullscreen pane temporarily
+" Plug 'vim-scripts/ZoomWin'
+
 if has("nvim")
     Plug 'Shougo/denite.nvim'
     Plug 'kassio/neoterm'
 
     Plug 'mhinz/vim-startify'
+    Plug 'mhinz/neovim-remote'
 else
 
     " For tab guidelines
@@ -436,7 +441,25 @@ let g:BASH_Ctrl_j = 'off'
 if has("nvim")
     autocmd WinEnter term://* nohlsearch
         " https://vi.stackexchange.com/questions/3670/how-to-enter-insert-mode-when-entering-neovim-terminal-pane
-    autocmd BufEnter term://* startinsert
+
+    " to not switch to insert mode when coming back from vim pane fullscreen mode
+    " Cuz it would insert mode even on non-terminal panes
+    let g:fullscreening = 0
+    fun! TermInsertMode()
+        " " https://github.com/junegunn/fzf/issues/426
+        if g:fullscreening == 0
+            startinsert
+        else
+            call feedkeys('')
+            let g:fullscreening = 0
+        endif
+        " let l:filename = expand("%")[0:4]
+        " if l:filename == "term:"
+            " startinsert
+        " endif
+    endfun
+
+    autocmd BufEnter term://* call TermInsertMode()
     autocmd FileType fzf startinsert
 
     " using https://github.com/junegunn/fzf.vim & fzf installed.
@@ -785,6 +808,8 @@ let g:EasyMotion_smartcase = 1
 
 nnoremap <leader>cu :w \| %bd \| e#<CR>
 
+
+
 if has("nvim")
     " https://stackoverflow.com/questions/34009064/how-do-i-set-the-terminal-buffer-scrollback-size
     autocmd TermOpen * setlocal scrollback=100000
@@ -805,6 +830,8 @@ if has("nvim")
     cnoremap <M-f> <S-Right>
     cnoremap <M-a> <Home>
     cnoremap <M-e> <End>
+    cnoremap <C-a> <Home>
+    cnoremap <C-e> <End>
 else
     cnoremap b <S-Left>
     cnoremap f <S-Right>
@@ -1123,11 +1150,12 @@ endif
 nnoremap <Leader>j :bprevious<CR>
 nnoremap <Leader>k :bnext<CR>
 
+" nnoremap <C-W>o :silent! ZoomWin<CR>
 
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
-inoremap kj <esc>
+inoremap kj <Esc>
 " nnoremap <CR> i<CR><Esc>
 " For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
 
@@ -1155,7 +1183,27 @@ au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <leader>mt :tabm 
 nnoremap <leader>> :tabm +<CR>
 nnoremap <leader>< :tabm -<CR>
-nnoremap <leader>F <C-w>\|<C-w>_
+
+" nnoremap <leader>F <C-w>\|<C-w>_
+" https://vi.stackexchange.com/questions/241/undo-only-window
+nnoremap <C-w>o :call TempFullscreen()<CR>
+nnoremap <leader>F :call TempFullscreen()<CR>
+
+let g:isFullScreened = 0
+
+" autocmd FileType \(term://*\)\@! call feedkeys('')
+function! TempFullscreen()
+    if g:isFullScreened == 1
+      let g:isFullScreened = 0
+      let g:fullscreening = 1
+      source ~/session.vim
+    else
+      let g:isFullScreened = 1
+      mksession! ~/session.vim
+      wincmd o
+    endif
+endfunction
+
 
 
 " Map for vertical split gf
@@ -1347,3 +1395,4 @@ endfunction
 vnoremap <Leader>s :call SelectedTTS()<CR>
 nnoremap <Leader>s :call WordTextToSpeech()<CR>
 nnoremap <Leader>l :call LineTextToSpeech()<CR>
+

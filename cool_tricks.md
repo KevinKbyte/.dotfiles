@@ -422,3 +422,25 @@ https://superuser.com/questions/334272/how-to-run-a-command-after-an-already-run
   :%bd|e# 
     - https://stackoverflow.com/questions/4545275/vim-close-all-buffers-but-this-one
     - %bd = delete all buffers. e# = open the last buffer for editing. The pipe in between just does one command after another.
+# Getting a core file in Ubuntu and grabbing backtrace
+  1. https://jvns.ca/blog/2018/04/28/debugging-a-segfault-on-linux/
+    1. ulimit -c 100000
+      - or ulimit -c unlimited for unlimited file size for core files
+  2. sysctl -w kernel.core_pattern=/tmp/core-%e.%p.%h.%t
+      - if run the following command prior to step (2.), original core pattern is as follows:
+        $ sysctl kernel.core_pattern
+        -   kernel.core_pattern = |/usr/share/apport/apport %p %s %c %d %P
+      - now core file is in /tmp
+
+  3. https://github.com/neovim/neovim/issues/7572
+      1. gdb path/to/nvim path/to/core 2>&1 | tee backtrace.txt
+      2. In GDB:
+          - optional:
+              symbol-file /path/to/my/binary
+              sharedlibrary
+          - show the stack for every thread:
+              thread apply all bt full
+          - bt
+            - if you want print out just stack trace
+  * or use: valgrind -v program
+    - to get stack trace, if program is segfaulting

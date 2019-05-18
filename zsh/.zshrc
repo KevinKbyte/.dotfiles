@@ -613,6 +613,9 @@ unalias g && source ~/.dotfiles/zsh/scripts/bashmarks/bashmarks.sh
 # change directory colors
 source ~/.dotfiles/setup_scripts/ls_colors.sh
 
+# https://unix.stackexchange.com/questions/498482/bash-tab-completion-colors-differ-from-ls-colors
+set colored-stats on
+
 ### Added by Zplugin's installer
 # source '/home/kev/.zplugin/bin/zplugin.zsh'
 # autoload -Uz _zplugin
