@@ -103,14 +103,15 @@ Plug 'vimwiki/vimwiki'
 " Auto pairs
 Plug 'jiangmiao/auto-pairs'
 
+" Fuzzy Finder
+Plug 'ctrlpvim/ctrlp.vim'
+
 if has("nvim")
     Plug 'Shougo/denite.nvim'
     Plug 'kassio/neoterm'
 
     Plug 'mhinz/vim-startify'
 else
-    " Fuzzy Finder
-    Plug 'ctrlpvim/ctrlp.vim'
 
     " For tab guidelines
     Plug 'Yggdroot/indentLine'
@@ -275,104 +276,148 @@ let g:php_folding = 1
 ""<> CTRLP
 ""============
 
+let g:AutoPairsShortcutToggle = '<M-a>'
+
+" https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
+" let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+
+" let g:ctrlp_funky_syntax_highlight = 1
+" nnoremap <leader>F :CtrlPFunky<CR>
+
+" let g:ctrlp_use_caching = 0
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:50,results:30'
+" let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
+
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<bs>', '<c-]>'],
+    \ 'PrtDelete()':          ['<del>'],
+    \ 'PrtDeleteWord()':      ['<c-w>'],
+    \ 'PrtClear()':           ['<c-u>'],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'PrtSelectMove("u")':   ['<M-u>', '<kPageUp>'],
+    \ 'PrtSelectMove("d")':   ['<M-d>', '<kPageDown>'],
+    \ 'PrtHistory(-1)':       ['<M-n>'],
+    \ 'PrtHistory(1)':        ['<M-p>'],
+    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("h")': ['<M-h>', '<c-cr>', '<c-s>'],
+    \ 'AcceptSelection("t")': ['<M-t>'],
+    \ 'AcceptSelection("v")': ['<M-v>', '<RightMouse>'],
+    \ 'ToggleFocus()':        ['<s-tab>'],
+    \ 'ToggleRegex()':        ['<M-r>'],
+    \ 'ToggleByFname()':      ['<c-d>'],
+    \ 'ToggleType(1)':        ['<M-f>', '<c-up>'],
+    \ 'ToggleType(-1)':       ['<M-F>', '<c-down>'],
+    \ 'PrtExpandDir()':       ['<tab>'],
+    \ 'PrtInsert("c")':       ['<M-c>', '<insert>'],
+    \ 'PrtInsert()':          ['<M-\>'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ 'PrtClearCache()':      ['<M-Space>'],
+    \ 'PrtDeleteEnt()':       ['<F7>'],
+    \ 'CreateNewFile()':      ['<M-y>'],
+    \ 'MarkToOpen()':         ['<M-z>'],
+    \ 'OpenMulti()':          ['<M-o>'],
+    \ 'PrtExit()':            ['<M-e>', '<c-c>', '<c-g>'],
+    \}
+
+let g:ctrlp_custom_ignore = {
+\ 'dir': '\v[\/]\.(git)|tmp|view|plugged|undo|swap|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt$',
+\ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',
+\ }
+
+let g:ctrlp_root_markers = ['$HOME/Desktop']
+let g:ctrlp_max_depth=40
+let g:ctrlp_max_files=750
+
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" The last command can be used to add all recently used work dirs to the CtrlPBookmarkDir list by an autocommand like
+" augroup CtrlPDirMRU
+"   autocmd!
+"   autocmd FileType * if &modifiable | execute 'silent CtrlPBookmarkDirAdd! %:p:h' | endif
+" augroup END
+
+
 if has("nvim")
-    nnoremap <A-P> :Denite file/rec<CR>
-    nnoremap <A-L> :Denite file/rec buffer<CR>
+    " nnoremap <A-p> :Denite file/rec<CR>
+    " nnoremap <A-L> :Denite file/rec buffer<CR>
+    " FZF
+    nnoremap <M-P> :CtrlPMRUFiles<CR>
+    nmap <A-p> :CtrlP .<CR>
     nnoremap <A-l> :Buffers<CR>
     nnoremap <M->> :Files ..<CR>
     nnoremap <M-lt> :Files 
     " nnoremap l :CtrlMRUBuffer<CR>
 else
-    " https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
-    " let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
-
-    " let g:ctrlp_funky_syntax_highlight = 1
-    " nnoremap <leader>F :CtrlPFunky<CR>
-
-    " let g:ctrlp_use_caching = 0
-    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:50,results:50'
-    let g:ctrlp_working_path_mode = 0
-    " nmap p :CtrlP .<CR>
     nmap p :CtrlP .<CR>
-    let g:Lf_ShortcutF = '<c-p>'
+    " let g:Lf_ShortcutF = '<c-p>'
+    let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<bs>', '<c-]>'],
+    \ 'PrtDelete()':          ['<del>'],
+    \ 'PrtDeleteWord()':      ['<c-w>'],
+    \ 'PrtClear()':           ['<c-u>'],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'PrtSelectMove("u")':   ['u', '<kPageUp>'],
+    \ 'PrtSelectMove("d")':   ['d', '<kPageDown>'],
+    \ 'PrtHistory(-1)':       ['n'],
+    \ 'PrtHistory(1)':        ['p'],
+    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("h")': ['h', '<c-cr>', '<c-s>'],
+    \ 'AcceptSelection("t")': ['t'],
+    \ 'AcceptSelection("v")': ['v', '<RightMouse>'],
+    \ 'ToggleFocus()':        ['<s-tab>'],
+    \ 'ToggleRegex()':        ['r'],
+    \ 'ToggleByFname()':      ['<c-d>'],
+    \ 'ToggleType(1)':        ['f', '<c-up>'],
+    \ 'ToggleType(-1)':       ['F', '<c-down>'],
+    \ 'PrtExpandDir()':       ['<tab>'],
+    \ 'PrtInsert("c")':       ['c', '<insert>'],
+    \ 'PrtInsert()':          ['\'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ 'PrtClearCache()':      [' '],
+    \ 'PrtDeleteEnt()':       ['<F7>'],
+    \ 'CreateNewFile()':      ['y'],
+    \ 'MarkToOpen()':         ['z'],
+    \ 'OpenMulti()':          ['o'],
+    \ 'PrtExit()':            ['e', '<c-c>', '<c-g>'],
+    \ }
 
-    " search word under cursor, the pattern is treated as regex, and enter normal mode directly
-    noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
-    " search word under cursor, the pattern is treated as regex,
-    " append the result to previous search results.
-    noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
-    " search word under cursor literally only in current buffer
-    noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
-    " search visually selected text literally, don't quit LeaderF after accepting an entry
-    xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
-    " recall last search. If the result window is closed, reopen it.
-    noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
+
+    " " search word under cursor, the pattern is treated as regex, and enter normal mode directly
+    " noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+    " " search word under cursor, the pattern is treated as regex,
+    " " append the result to previous search results.
+    " noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+    " " search word under cursor literally only in current buffer
+    " noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+    " " search visually selected text literally, don't quit LeaderF after accepting an entry
+    " xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR>
+    " " recall last search. If the result window is closed, reopen it.
+    " noremap go :<C-U>Leaderf! rg --stayOpen --recall<CR>
 
     nnoremap P :CtrlPMRUFiles<CR>
     nnoremap l :CtrlMRUBuffer<CR>
 
-    " let g:ctrlp_prompt_mappings = {
-    " \ 'PrtBS()':              ['<bs>', '<c-]>'],
-    " \ 'PrtDelete()':          ['<del>'],
-    " \ 'PrtDeleteWord()':      ['<c-w>'],
-    " \ 'PrtClear()':           ['<c-u>'],
-    " \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-    " \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-    " \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-    " \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-    " \ 'PrtSelectMove("u")':   ['u', '<kPageUp>'],
-    " \ 'PrtSelectMove("d")':   ['d', '<kPageDown>'],
-    " \ 'PrtHistory(-1)':       ['n'],
-    " \ 'PrtHistory(1)':        ['p'],
-    " \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-    " \ 'AcceptSelection("h")': ['h', '<c-cr>', '<c-s>'],
-    " \ 'AcceptSelection("t")': ['t'],
-    " \ 'AcceptSelection("v")': ['v', '<RightMouse>'],
-    " \ 'ToggleFocus()':        ['<s-tab>'],
-    " \ 'ToggleRegex()':        ['r'],
-    " \ 'ToggleByFname()':      ['<c-d>'],
-    " \ 'ToggleType(1)':        ['f', '<c-up>'],
-    " \ 'ToggleType(-1)':       ['F', '<c-down>'],
-    " \ 'PrtExpandDir()':       ['<tab>'],
-    " \ 'PrtInsert("c")':       ['c', '<insert>'],
-    " \ 'PrtInsert()':          ['\'],
-    " \ 'PrtCurStart()':        ['<c-a>'],
-    " \ 'PrtCurEnd()':          ['<c-e>'],
-    " \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-    " \ 'PrtCurRight()':        ['<c-l>', '<right>'],
-    " \ 'PrtClearCache()':      [' '],
-    " \ 'PrtDeleteEnt()':       ['<F7>'],
-    " \ 'CreateNewFile()':      ['y'],
-    " \ 'MarkToOpen()':         ['z'],
-    " \ 'OpenMulti()':          ['o'],
-    " \ 'PrtExit()':            ['e', '<c-c>', '<c-g>'],
-    " \ }
-
-    " let g:ctrlp_custom_ignore = {
-    "     \ 'dir': '\v[\/]\.(tmp|git|hg|svn|etc|bin|run|cdrom|boot|dev|lib|lost|media|root|run|mnt|snap|srv|sys|System|usr|var|sbin|proc|opt)$',
-    "     \ 'file': '\v\.(swp|zip|mp3|mp4|wav|tar|bin|jar|pyc|swo|png|jpeg|jpg|jpg_large|gif|pdf|aup|au|exe|so|dll)$',
-    "     \ }
-
-    " let g:ctrlp_root_markers = ['$HOME/Desktop']
-    " let g:ctrlp_max_depth=40
-    " " let g:ctrlp_max_files=200000
-
-    " let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-    " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-    " " The last command can be used to add all recently used work dirs to the CtrlPBookmarkDir list by an autocommand like
-    " " augroup CtrlPDirMRU
-    " "   autocmd!
-    " "   autocmd FileType * if &modifiable | execute 'silent CtrlPBookmarkDirAdd! %:p:h' | endif
-    " " augroup END
-
-    " if executable('fd')
-    "     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
-    " else 
-    "     if executable('ag')
-    "       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    "     endif
-    " endif
+    if executable('fd')
+        let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+    else 
+        if executable('ag')
+          let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        endif
+    endif
 
     " nnoremap <leader>mr :CtrlPMRU<CR>
 endif
@@ -738,6 +783,8 @@ let g:EasyMotion_smartcase = 1
 "<> MISC
 "============
 
+nnoremap <leader>cu :w \| %bd \| e#<CR>
+
 if has("nvim")
     " https://stackoverflow.com/questions/34009064/how-do-i-set-the-terminal-buffer-scrollback-size
     autocmd TermOpen * setlocal scrollback=100000
@@ -763,12 +810,13 @@ else
     cnoremap f <S-Right>
 endif
 
-nnoremap Q ZZ
+nnoremap Q :wa<CR>:silent! %bd<CR>
 
 " to auto move to right window when vertical splitting
 nnoremap v vl
 
-nnoremap <leader>vr :tabe ~/.vimrc<CR>:set filetype=vim<CR>
+nnoremap <leader>vr :tabe ~/.vimrc<CR>
+" nnoremap <leader>vr :tabe ~/.vimrc<CR>:set filetype=vim<CR>
 
 " http://vim.wikia.com/wiki/Search_for_visually_selected_text
 " Search for selected text.

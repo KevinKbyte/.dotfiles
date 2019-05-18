@@ -418,3 +418,7 @@ https://superuser.com/questions/334272/how-to-run-a-command-after-an-already-run
       * all first windows of each tab
         - :tabdo e
 
+# Vim Buffer Delete + Successive commands using |
+  :%bd|e# 
+    - https://stackoverflow.com/questions/4545275/vim-close-all-buffers-but-this-one
+    - %bd = delete all buffers. e# = open the last buffer for editing. The pipe in between just does one command after another.
