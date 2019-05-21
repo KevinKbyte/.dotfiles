@@ -110,6 +110,58 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Fullscreen pane temporarily
 " Plug 'vim-scripts/ZoomWin'
 
+" Dependency of ghcmod-vim
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" Python mode
+Plug 'python-mode/python-mode'
+
+" Python Autoimports
+Plug 'KevinKByte/vimpy'
+
+" Python import sorting
+Plug 'fisadev/vim-isort'
+
+" " Powerline
+" Plug 'powerline/powerline'
+
+" Tabline
+Plug 'mkitt/tabline.vim'
+
+" Jedi python
+Plug 'davidhalter/jedi'
+
+" \g will go to definition with this plugin
+Plug 'davidhalter/jedi-vim'
+
+"<> PLUG PROGRAMMING PLUGINS
+
+" LaTeX
+Plug 'lervag/vimtex'
+
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview'
+
+
+" Python style checker
+Plug 'nvie/vim-flake8'
+
+" C/C++ development
+Plug 'JBakamovic/yavide'
+
+" C/C++ autocomplete
+Plug 'Rip-Rip/clang_complete'
+
+" Status bar
+Plug 'vim-airline/vim-airline'
+
+" Switch b/n source and header files quickly
+" Plug '/vim-scripts/a.vim'
+
+" Autoformat code
+Plug 'Chiel92/vim-autoformat'
+
+
 if has("nvim")
     Plug 'Shougo/denite.nvim'
     Plug 'kassio/neoterm'
@@ -138,65 +190,17 @@ else
     " Live Browser Editing 
     " Plug 'jaxbot/browserlink.vim'
 
-    " LaTeX
-    Plug 'lervag/vimtex'
-
-    " A Vim Plugin for Lively Previewing LaTeX PDF Output
-    Plug 'xuhdev/vim-latex-live-preview'
-
     " Undo tree
     Plug 'mbbill/undotree/'
 
     " Haskell
     Plug 'eagletmt/ghcmod-vim'
 
-    " Dependency of ghcmod-vim
-    Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-    " Python mode
-    Plug 'python-mode/python-mode'
-
-    " Python Autoimports
-    Plug 'KevinKByte/vimpy'
-
-    " Python import sorting
-    Plug 'fisadev/vim-isort'
-
-    " " Powerline
-    " Plug 'powerline/powerline'
-
-    " Tabline
-    Plug 'mkitt/tabline.vim'
-
-    " Jedi python
-    Plug 'davidhalter/jedi'
-
-    " Python style checker
-    Plug 'nvie/vim-flake8'
-
-    " \g will go to definition with this plugin
-    Plug 'davidhalter/jedi-vim'
-
-    " C/C++ development
-    Plug 'JBakamovic/yavide'
-
-    " C/C++ autocomplete
-    Plug 'Rip-Rip/clang_complete'
-
     " Class Outline Viewer
     Plug 'majutsushi/tagbar'
 
     " Multiple cursors
-    Plug 'terryma/vim-multiple-cursors'
-
-    " Status bar
-    Plug 'vim-airline/vim-airline'
-
-    " Switch b/n source and header files quickly
-    " Plug '/vim-scripts/a.vim'
-
-    " Autoformat code
-    Plug 'Chiel92/vim-autoformat'
+    " Plug 'terryma/vim-multiple-cursors'
 
 endif
     
@@ -276,6 +280,44 @@ let g:perl_fold_blocks = 1
 let g:r_syntax_folding = 1
 let g:rust_fold = 1
 let g:php_folding = 1
+
+""============
+""<> FZF
+""============
+
+" function! s:build_quickfix_list(lines)
+"   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+"   copen
+"   cc
+" endfunction
+" \ 'ctrl-q': function('s:build_quickfix_list'),
+
+let g:fzf_action = {
+  \ 'Alt-t': 'tab split',
+  \ 'Alt-x': 'split',
+  \ 'Alt-v': 'vsplit' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 ""============
 ""<> CTRLP
@@ -489,27 +531,27 @@ if has("nvim")
     tnoremap <A-K> <C-\><C-n><C-w>k
     tnoremap <A-L> <C-\><C-n><C-w>l
 
-    " nnoremap <F5>" <C-W><C-V>:enew<CR>:Tnew<CR>
-    nnoremap <F5>L <C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
-    nnoremap <F5>K <C-W>n<C-\><C-n>:Tnew<CR>i
-    nnoremap <F5>J :belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
-    nnoremap <F5>H <C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     " nnoremap <F5>" <C-W><C-V>:enew<CR>:Tnew<CR>
+"     nnoremap <F5>L <C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     nnoremap <F5>K <C-W>n<C-\><C-n>:Tnew<CR>i
+"     nnoremap <F5>J :belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     nnoremap <F5>H <C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
 
-    tnoremap <F5>L <C-\><C-n><C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
-    tnoremap <F5>K <C-\><C-n><C-W>n<C-\><C-n>:Tnew<CR>i
-    tnoremap <F5>J <C-\><C-n>:belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
-    tnoremap <F5>H <C-\><C-n><C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     tnoremap <F5>L <C-\><C-n><C-W>v<C-W>l<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     tnoremap <F5>K <C-\><C-n><C-W>n<C-\><C-n>:Tnew<CR>i
+"     tnoremap <F5>J <C-\><C-n>:belowright split<CR>j<C-\><C-n>:enew<CR>:Tnew<CR>i
+"     tnoremap <F5>H <C-\><C-n><C-W>v<C-\><C-n>:enew<CR>:Tnew<CR>i
 
-    " For opening up new empty vim panes
-    nnoremap <F5>l <C-W>n<C-W>L
-    nnoremap <F5>k <C-W>n
-    nnoremap <F5>j <C-W>n<C-W>J
-    nnoremap <F5>h <C-W>n<C-W>H
+"     " For opening up new empty vim panes
+"     nnoremap <F5>l <C-W>n<C-W>L
+"     nnoremap <F5>k <C-W>n
+"     nnoremap <F5>j <C-W>n<C-W>J
+"     nnoremap <F5>h <C-W>n<C-W>H
 
-    tnoremap <F5>l <C-\><C-n><C-W>n<C-W>L
-    tnoremap <F5>k <C-\><C-n><C-W>n<C-W>K
-    tnoremap <F5>j <C-\><C-n><C-W>n<C-W>J
-    tnoremap <F5>h <C-\><C-n><C-W>n<C-W>H
+"     tnoremap <F5>l <C-\><C-n><C-W>n<C-W>L
+"     tnoremap <F5>k <C-\><C-n><C-W>n<C-W>K
+"     tnoremap <F5>j <C-\><C-n><C-W>n<C-W>J
+"     tnoremap <F5>h <C-\><C-n><C-W>n<C-W>H
 else
     nnoremap <silent>  :TmuxNavigateLeft<CR>
     nnoremap <silent> J :TmuxNavigateDown<CR> 
@@ -823,7 +865,7 @@ if has("nvim")
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-    tnoremap <F5>F <C-\><C-n><C-w>\|<C-w>_
+    " tnoremap <F5>F <C-\><C-n><C-w>\|<C-w>_
     " nnoremap <leader>> :tabm +<CR>
     " nnoremap <leader>< :tabm -<CR>
     cnoremap <M-b> <S-Left>

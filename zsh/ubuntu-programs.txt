@@ -258,3 +258,4 @@ pdfshuffler
 imagemagick
 pslib1*
 pstack
+python-flake8

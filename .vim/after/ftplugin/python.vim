@@ -11,6 +11,17 @@ setlocal shiftwidth=4
 "     \ set fileformat=unix
 set encoding=utf-8
 
+" https://stackoverflow.com/questions/1747091/how-do-you-use-vims-quickfix-feature
+" :copen " Open the quickfix window
+" :ccl   " Close it
+" :cw    " Open it if there are "errors", close it otherwise (some people prefer this)
+" :cn    " Go to the next error in the window
+" :cnf   " Go to the first error in the next file
+nnoremap <leader>cn :cn<CR>
+nnoremap <leader>cf :cnf<CR>
+nnoremap <leader>pl :call flake8#Flake8()<CR>
+
+
 " " folds almost all indented lines and allows manual
 " set foldmethod=indent
 

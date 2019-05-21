@@ -31,6 +31,9 @@ sudoCommands() {
     if [ $RUN_SUDO_CMDS == "true" ]; then
         # for Node.js
         sudo npm install -g neovim
+        # for auto formatting python
+        # Plug 'Chiel92/vim-autoformat'
+        sudo apt-get install python-autopep8
     fi
 }
 
