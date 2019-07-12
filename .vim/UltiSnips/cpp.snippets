@@ -1,9 +1,18 @@
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/snippets/cpp.snippets
 # /home/kev/.dotfiles/.vim/plugged/vim-snippets/UltiSnips/cpp.snippets
 
-snippet i "include" b
-#include <${1}>
+snippet fl "float" b
+float ${1:a};
 $0
+endsnippet
+
+snippet i< "include" b
+#include <${1:stdio.h}>
+$0
+endsnippet
+
+snippet i "include" b
+#include "${1:stdio}.h"
 endsnippet
 
 snippet int "integer" b
@@ -22,4 +31,14 @@ int main(${1:int argc, char *argv[]})
 	${VISUAL}$0
 	return 0;
 }
+endsnippet
+
+snippet std "using namespace std" b
+using namespace std;
+$0
+endsnippet
+
+snippet un "using namespace" b
+using namespace ${1:std};
+$0
 endsnippet

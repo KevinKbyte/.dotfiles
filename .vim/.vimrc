@@ -1197,7 +1197,8 @@ nnoremap <Leader>k :bnext<CR>
 nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
 nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
-inoremap kj <Esc>
+" inoremap kj <Esc>
+inoremap kj 
 " nnoremap <CR> i<CR><Esc>
 " For managing tabs nnoremap tc :tabclose<CR> nnoremap ti :tabnew<Space> nnoremap tn :tabnext<CR> nnoremap tp :tabprev<CR> nnoremap tf :tabfirst<CR> nnoremap tl :tablast<CR>
 
