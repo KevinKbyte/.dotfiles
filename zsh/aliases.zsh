@@ -1,3 +1,4 @@
+alias open=xdg-open
 alias libro="libreoffice"
 alias hls="history | tail -20"
 

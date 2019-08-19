@@ -265,7 +265,7 @@ function timer(){
      echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
      sleep 0.1
    done
-   # mplayer ~/Music/*
+   mplayer ~/Music/*
 }
 
 # Vocab timer

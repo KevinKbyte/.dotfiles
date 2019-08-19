@@ -258,3 +258,9 @@ imagemagick
 pslib1*
 pstack
 python-flake8
+mercurial-git
+libsdl2-2.0-0
+libsdl2-2*
+libsdl2*
+pinta
+findutils mlocate
