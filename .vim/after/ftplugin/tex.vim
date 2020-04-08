@@ -15,7 +15,11 @@ nmap <leader>iM F$ci$
 nnoremap a :AsyncRun pdflatex --shell-escape %<CR>:w<CR>
 inoremap a <C-o>:AsyncRun pdflatex --shell-escape %<CR><C-o>:w<CR>
 
-nnoremap S :LLPStartPreview<CR>
+if has("nvim")
+    nnoremap <M-S> :LLPStartPreview<CR>
+else
+    nnoremap S :LLPStartPreview<CR>
+endif
 
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete

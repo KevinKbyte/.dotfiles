@@ -1,5 +1,9 @@
+" Insert date time for entry
+imap ;insD d-<C-r>=strftime('%b-%d-%Y')<CR><Esc>"ayiW<CR><CR>"ap=o<CR>
+
 " Insert date and time
 inoremap ;insd <C-r>=strftime('%b-%d-%Y')<CR>
+
 " Creates a new file with name and date
 imap ;inst -<C-r>=strftime('%b-%d-%Y')<CR><Esc>"ayiW<CR><CR>"ap=o<CR>
 " imap ;inst <C-r>=strftime('%b-%d-%Y')<CR><Esc><CR><CR>

@@ -227,8 +227,6 @@ function lsr { ls -a $(find -maxdepth 1 -mindepth 1 -type d) }
 
 function bak { cp $1 .$(echo $1 | awk -F "." '{print $1}')_bak.$(echo $1 | awk -F "." '{print $2}') }
 
-function m { mv "$@" .; }
-
 function mkt { #mktouch
     # https://stackoverflow.com/questions/9452935/unix-create-path-of-folders-and-file
     if [ $# -lt 1 ]; then
@@ -265,7 +263,7 @@ function timer(){
      echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
      sleep 0.1
    done
-   mplayer ~/Music/*
+   # mplayer ~/Music/*
 }
 
 # Vocab timer
@@ -331,14 +329,15 @@ function pdfx() {
 }
 
 function mv() {
-    if [ $# -eq 1 ]; then
+    if [[ $# -eq 1 ]]; then
         command mv $@ .
     else
         echo $#
         command mv $@
     fi
-    
 }
+
+function m { mv "$@" .; }
 
 function a() { # adds alias for you to aliases.zsh
     # check if alias already has been binded to a command/alias/function
@@ -348,7 +347,6 @@ function a() { # adds alias for you to aliases.zsh
     else
         # if unbounded alias, then bind it and send it to aliases.zsh
         alias $1=$2
-        echo "\n" >> $ALIASES
         echo "alias \"$1=$2\"" >> $ALIASES
     fi
 }
@@ -482,7 +480,7 @@ source $ALIASES
 source ~/.dotfiles/setup_scripts/ls_colors.sh
 
 # https://unix.stackexchange.com/questions/498482/bash-tab-completion-colors-differ-from-ls-colors
-set colored-stats on
+# set colored-stats on
 
 ### Added by Zplugin's installer
 # source '/home/kev/.zplugin/bin/zplugin.zsh'

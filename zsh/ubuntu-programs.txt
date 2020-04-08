@@ -264,3 +264,21 @@ libsdl2-2*
 libsdl2*
 pinta
 findutils mlocate
+audacity pavucontrol
+pulseaudio-module-jack
+qjackctl
+ofono
+blender
+blender
+blender
+blender
+festival
+festlex-cmu
+swftools
+pyvnc2swf
+gnash-common
+libxcb-xtest0
+zoom
+lmms
+lmms-common
+gimp

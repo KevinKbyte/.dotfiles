@@ -5,7 +5,7 @@ $if Bash
     Space: magic-space
 $endif
 
-set colored-stats On
-set completion-ignore-case On
+set colored-stats on
+set completion-ignore-case on
 set show-all-if-ambiguous on 
 # set show-all-if-ambiguous - This alters the default behavior of the completion functions. If set to ‘on’, words which have more than one possible completion cause the matches to be listed immediately instead of ringing the bell. The default value is ‘off’.

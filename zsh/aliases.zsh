@@ -1,3 +1,4 @@
+alias blender=/home/kev/Downloads/blender-2.81a-linux-glibc217-x86_64/blender 
 alias open=xdg-open
 alias libro="libreoffice"
 alias hls="history | tail -20"
@@ -141,6 +142,7 @@ alias "onex=mplayer ~/Documents/one_min_interval_timer.mp3 -loop 0"
 alias "grs=git reset --soft"
 
 alias "una=unalias"
-
-
 alias "fn=find . -iname"
+
+# Emacs
+alias "enw=emacs -nw"

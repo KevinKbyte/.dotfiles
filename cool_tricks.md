@@ -355,7 +355,7 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
 
 # Delete Commits from Github
   https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github?fbclid=IwAR0UORmwsdp89DAIgu5N2W7O1Mh9ezfPe2ADz4A7i4PG1w2Yi7nyva73ySw
-  - Undo 1 commit: git push -f origin HEAD^:master
+  - Undo 1 commit: git push -f origin HEAD^:master && git reset --soft HEAD^
   - Undo to a certain commit: git push -f origin <commit-hash>:master
      - use git log to find the commit hash
   # Delete unpushed commits
