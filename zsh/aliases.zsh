@@ -1,3 +1,4 @@
+alias gimp="LD_LIBRARY_PATH=/home/kev/Desktop/projects/game_dev/maps/usr/local/lib ./gimp"
 alias blender=/home/kev/Downloads/blender-2.81a-linux-glibc217-x86_64/blender 
 alias open=xdg-open
 alias libro="libreoffice"

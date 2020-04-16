@@ -312,6 +312,12 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
  pavucontrol
  - if chrome doesn't recognize microphone: pavucontrol > configuration > Builtin Audio > Analog Stereo Duplex
 
+# Check for disk space usage
+  - du -h /var/ | sort -rh | head -5
+     - top 5 most heavily used
+  - du -sh Desktop
+     - how much disk space used in specified dir altogether
+
 # Remove user from group
  s gpasswd -d $USER cgusers
 
