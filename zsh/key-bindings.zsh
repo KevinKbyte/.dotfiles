@@ -75,8 +75,12 @@ bindkey -s 'D' ' dirs | head -10\n'
 bindkey -M viins -s 'D' ' dirs | head -10\n'
 
 # alt+<space>
-bindkey -s ' ' 'cd '
-bindkey -M viins -s ' ' 'cd '
+# bindkey -s ' ' 'cd '
+# bindkey -M viins -s ' ' 'cd '
+
+# alt+<space>
+bindkey -s '<M-Space>' ' cd '
+bindkey -M viins -s ' ' ' cd '
 
 # End
 bindkey '^[[F' end-of-line

@@ -1,4 +1,12 @@
-alias gimp="LD_LIBRARY_PATH=/home/kev/Desktop/projects/game_dev/maps/usr/local/lib ./gimp"
+# 20 minute timer
+alias 20m="mplayer -loop 0 /home/kev/Music/productivity/20-min-timer.mp3"
+
+alias mi="make && make install"
+alias sauy="sudo apt update -y && apt list --upgradable"
+alias va="$EDITOR $ALIASES && source $ALIASES"
+alias safbiy="sudo apt --fix-broken install -y"
+alias gimp="snap run gimp"
+
 alias blender=/home/kev/Downloads/blender-2.81a-linux-glibc217-x86_64/blender 
 alias open=xdg-open
 alias libro="libreoffice"

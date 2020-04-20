@@ -63,6 +63,8 @@ set $altTabPrev exec ~/.dotfiles/i3/scripts/alt_tab.sh prev
 set $switchWindowsByClassNext exec python3 ~/.dotfiles/i3/scripts/switch_windows_by_class.py 0
 set $switchWindowsByClassPrev exec python3 ~/.dotfiles/i3/scripts/switch_windows_by_class.py 1
 
+set $defaultBrowser google-chrome-stable
+
 
 # to connect w/ HDMI cable
 bindsym F8 $connectWithHDMI
@@ -1732,8 +1734,8 @@ floating_modifier $mod
 bindsym control+Mod1+t exec i3-sensible-terminal 
 
 # start a chrome window
-bindsym $sup+Return exec chromium-browser 
-bindsym $sup+shift+Return exec chromium-browser --incognito
+bindsym $sup+Return exec $defaultBrowser
+bindsym $sup+shift+Return exec $defaultBrowser --incognito
 bindsym $mod+Mod1+Return exec quteb
 
 bindsym $mod+Return exec i3-sensible-terminal
@@ -1791,7 +1793,8 @@ bindsym $mod+shift+k move up
 bindsym $mod+shift+l move right
 
 # LOCKS
-bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec --no-startup-id systemctl suspend && ~/.config/i3/scripts/i3_locking.sh
+# bindsym $sup+l [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec --no-startup-id systemctl suspend && ~/.config/i3/scripts/i3_locking.sh
+bindsym $sup+l [con_mark="^Google-chrome$"] focus; [con_mark="^Gnome-terminal$"] focus; exec --no-startup-id systemctl suspend && ~/.config/i3/scripts/i3_locking.sh
 # bindsym ctrl+$mod+l exec --no-startup-id sleep 1 && xset dpms force suspend
 
 # exec xautolock -time 15 -locker 
@@ -1844,7 +1847,8 @@ bindsym $sup+f $fullscreenYoutube
 
 set $mode_fullscreen
 mode "mode_fullscreen" {
-    bindsym $sup+l mode "default"; fullscreen disable; [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
+    # bindsym $sup+l mode "default"; fullscreen disable; [con_mark="^Chromium-browser$"] focus; [con_mark="^Gnome-terminal$"] focus; exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
+    bindsym $sup+l mode "default"; fullscreen disable; [con_mark="^Google-chrome$"] focus; [con_mark="^Gnome-terminal$"] focus; exec amixer -D pulse sset Master mute && ~/.config/i3/scripts/i3_locking.sh && pkill -RTMIN+10 i3blocks
 
     # bindsym $mod+a mode "mode_mouse_move"
     bindsym Mode_switch+f mode "mode_mouse_move"; $mouseHintsVisibilityToggle && $SCRIPTS/auto_fullscreen_mode.sh
@@ -2089,7 +2093,7 @@ mode "mode_movement" {
    bindsym j focus down
    bindsym k focus up
    bindsym l focus right
-   bindsym c exec chromium-browser 
+   bindsym c exec $defaultBrowser
    bindsym t exec i3-sensible-terminal
    bindsym shift+1 move container to workspace $workspace1; workspace $workspace1  
    bindsym shift+2 move container to workspace $workspace2; workspace $workspace2  
@@ -2306,7 +2310,8 @@ set $mark_browser3 c
 set $mark_pdf_viewer v
 
 set $mark_term_name Gnome-terminal
-set $mark_browser_name1 Chromium-browser
+# set $mark_browser_name1 Chromium-browser
+set $mark_browser_name1 Google-chrome
 set $mark_browser_name2 chrom_p
 set $mark_browser_name3 qutebrowser
 set $mark_pdf_viewer_name Evince
@@ -2473,9 +2478,10 @@ bindsym Mode_switch+m exec $term 'ncmpcpp' && i3-msg floating toggle
 mouse_warping output
 
 # STARTUP PROGRAMS
+
 exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id mpd
-exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec chromium-browser; workspace workspace 1'
+exec --no-startup-id i3-msg '$workspace10; exec rhythmbox-client; $workspace2; exec $defaultBrowser; workspace workspace 1'
 exec $HOME/Desktop/projects/jumping-mouse/build/gromit-mpx
 exec xcompmgr -c
 # exec xbindkeys -p 
@@ -2489,7 +2495,7 @@ bindsym $sup+Shift+h scratchpad show
 
 # Workspace Default
 # Send containers back to default workspaces
-bindsym Mode_switch+Mod1+f exec $SCRIPTS/default_workspace.sh Chromium-browser
+bindsym Mode_switch+Mod1+f exec $SCRIPTS/default_workspace.sh $defaultBrowser
 bindsym Mode_switch+Mod1+Shift+f exec $SCRIPTS/default_workspace.sh Gnome-terminal
 
 # bindsym Mode_switch+g exec textsuggest

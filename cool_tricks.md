@@ -318,6 +318,18 @@ https://stackoverflow.com/questions/33423739/comment-formatting-specifying-and-i
   - du -sh Desktop
      - how much disk space used in specified dir altogether
 
+# Stop snapd updates
+  - https://askubuntu.com/questions/1045542/how-to-stop-snapd-from-auto-updating
+  - sctl stop snapd.service
+    - Warning: Stopping snapd.service, but it can still be activated by:
+    - snapd.socket
+  - sctl stop snapd.socket
+  - sudo systemctl disable snapd.service
+  - sudo systemctl mask snapd.service
+    If you will need update a snap program you can unmask and start the service, then use command snap refresh
+     - sctl stop snapd.service && sctl mask snapd.service 
+     - sctl unmask snapd.service && sctl start snapd.service
+
 # Remove user from group
  s gpasswd -d $USER cgusers
 

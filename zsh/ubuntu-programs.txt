@@ -298,3 +298,10 @@ libmypaint-dev
 gegl
 python-gtk2-dev
 python-cairo-dev
+libbabl-dev
+libc6
+libbabl-dev
+libbabl-0.1-0
+snapd
+google-chrome-stable
+chromium-browser --only-upgrade
