@@ -310,6 +310,23 @@ function itog() {
     fi
 }
 
+# bt toggle
+function btog() {
+    _device_id=$(cat ~/test_files/device_id.txt)
+    echo "info EB:06:EF:1A:91:90" | bluetoothctl | grep -i "Connected: yes" > /dev/null
+
+    if [ $? -eq 0 ]; then
+        # echo "Connected"
+        # echo -e "connect <device_id>" | bluetoothctl
+        echo -e "disconnect "$_device_id | bluetoothctl
+    else
+        # echo "Disconnected"
+        echo -e "connect "$_device_id | bluetoothctl
+    fi
+
+    unset _device_id
+} 
+
 function mp4t3() {
     ffmpeg -i "$1" -f mp3 -ab 192000 -vn "$2".mp3
 }

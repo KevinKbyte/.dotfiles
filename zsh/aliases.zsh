@@ -155,3 +155,4 @@ alias "fn=find . -iname"
 
 # Emacs
 alias "enw=emacs -nw"
+alias "soz=source ~/.zshrc"
