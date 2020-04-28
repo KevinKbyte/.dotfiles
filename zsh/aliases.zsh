@@ -155,4 +155,7 @@ alias "fn=find . -iname"
 
 # Emacs
 alias "enw=emacs -nw"
+
+# Etc 
 alias "soz=source ~/.zshrc"
+alias "u=/home/kev/Unity/Hub/Editor/2019.2.17f1/Editor/Unity"

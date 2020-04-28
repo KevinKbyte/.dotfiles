@@ -1,3 +1,8 @@
+# Change Unity Cursor pointing from right to left
+  - # close unity
+  - cd /usr/share/icons/breeze_cursors/cursors/
+  - sudo ln -s left_ptr arrow
+  - # run unity :)
 # Summons a terminal in vim
 :term zsh -f
 

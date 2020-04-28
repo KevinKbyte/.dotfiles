@@ -851,16 +851,16 @@ let g:EasyMotion_smartcase = 1
 nnoremap <leader>cu :w \| %bd \| e#<CR>
 
 " https://github.com/mhinz/vim-startify/issues/139
-if has('nvim')
-  autocmd TabNewEntered * Startify
-else
-  autocmd VimEnter * let t:startify_new_tab = 1
-  autocmd BufEnter *
-        \ if !exists('t:startify_new_tab') && empty(expand('%')) |
-        \   let t:startify_new_tab = 1 |
-        \   Startify |
-        \ endif
-endif
+" if has('nvim')
+"   autocmd TabNewEntered * Startify
+" else
+autocmd VimEnter * let t:startify_new_tab = 1
+autocmd BufEnter *
+    \ if !exists('t:startify_new_tab') && empty(expand('%')) |
+    \   let t:startify_new_tab = 1 |
+    \   Startify |
+    \ endif
+" endif
 
 if has("nvim")
     " https://stackoverflow.com/questions/34009064/how-do-i-set-the-terminal-buffer-scrollback-size

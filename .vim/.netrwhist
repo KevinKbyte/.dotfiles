@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/kev/.dotfiles/backup_scripts'
 let g:netrw_dirhist_2='/home/kev/.dotfiles'
 let g:netrw_dirhist_3='/home/kev/Desktop/leetcode'
 let g:netrw_dirhist_4='/home/kev/Desktop/bu_notes/cs/cs391/hw4'
 let g:netrw_dirhist_5='/usr/include/node'
 let g:netrw_dirhist_6='/home/kev/.dotfiles/i3/scripts'
+let g:netrw_dirhist_7='/home/kev/.dotfiles'

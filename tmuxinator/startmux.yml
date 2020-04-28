@@ -1,7 +1,8 @@
 # ~/.tmuxinator/startmux.yml
 
 name: startmux
-root: ~/Desktop/bu_notes/cs
+root: ~/Desktop/projects/game_dev
+# root: ~/Desktop/bu_notes/cs
 
 # Optional tmux socket
 # socket_name: foo

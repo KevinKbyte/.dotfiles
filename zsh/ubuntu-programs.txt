@@ -305,3 +305,9 @@ libbabl-0.1-0
 snapd
 google-chrome-stable
 chromium-browser --only-upgrade
+bleachbit
+libnotify-bin
+libnotify4
+notification-daemon
+libglib2.0-0
+dunst

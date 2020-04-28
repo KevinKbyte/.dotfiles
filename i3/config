@@ -2487,7 +2487,10 @@ exec xcompmgr -c
 # exec xbindkeys -p 
 exec $SCRIPTS/focus-last.py
 
-exec $SCRIPTS/automark.sh
+exec --no-startup-id $SCRIPTS/automark.sh
+# i3 Dunst collab with notify-send for notifications
+exec --no-startup-id dunst
+
 exec discord
 exec /home/kev/.dotfiles/i3/scripts/low_battery_alert.sh
 bindsym $sup+h [floating] move scratchpad
@@ -2505,3 +2508,4 @@ bindsym $mod+c exec $SCRIPTS/kill_cpu_hog.sh
 for_window [class="Pqiv"] floating enable
 for_window [class="Pqiv"] resize set 1920 1080
 for_window [class="Pqiv"] move position center
+
