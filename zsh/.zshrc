@@ -266,6 +266,16 @@ function timer(){
    # mplayer ~/Music/*
 }
 
+# timer with music
+function timerm(){
+   date1=$((`date +%s` + $1)); 
+   while [ "$date1" -ge `date +%s` ]; do 
+     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+     sleep 0.1
+   done
+   mplayer ~/Music/*
+}
+
 # Vocab timer
 # https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line
 function voc(){

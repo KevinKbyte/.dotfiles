@@ -14,6 +14,10 @@ alias hls="history | tail -20"
 
 alias "c=xclip -selection clipboard"
 alias "pc=pwd|xclip -selection clipboard"
+rc() {
+    readlink -f $1 | c
+}
+
 # in order to not override files unintentionally 
 alias "cp=cp -i"
 # alias "v=vim"

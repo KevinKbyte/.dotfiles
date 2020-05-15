@@ -161,6 +161,8 @@ Plug 'vim-airline/vim-airline'
 " Autoformat code
 Plug 'Chiel92/vim-autoformat'
 
+" CamelCase motion
+Plug 'bkad/CamelCaseMotion'
 
 if has("nvim")
     Plug 'Shougo/denite.nvim'
@@ -204,7 +206,6 @@ else
 
 endif
     
-
 call plug#end()
 
 "<>""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
@@ -280,6 +281,30 @@ let g:perl_fold_blocks = 1
 let g:r_syntax_folding = 1
 let g:rust_fold = 1
 let g:php_folding = 1
+
+""============
+""<> CamelCase motion
+""============
+" Map to w, b and e mappings:
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap w
+" sunmap b
+" sunmap e
+" sunmap ge
+
+" Map insert mode motions:
+" imap <silent> <S-Left> <C-o><Plug>CamelCaseMotion_b
+" imap <silent> <S-Right> <C-o><Plug>CamelCaseMotion_w
+
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 ""============
 ""<> FZF
