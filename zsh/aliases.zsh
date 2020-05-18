@@ -163,3 +163,5 @@ alias "enw=emacs -nw"
 # Etc 
 alias "soz=source ~/.zshrc"
 alias "u=/home/kev/Unity/Hub/Editor/2019.2.17f1/Editor/Unity"
+alias "ssrb=sudo systemctl restart bluetooth.service && bt"
+alias "ssrn=sudo systemctl restart NetworkManager && it \"$(cat ~/tmp/network.txt)\""

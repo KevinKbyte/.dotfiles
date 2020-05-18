@@ -307,7 +307,7 @@ function pkal() {
 }
 
 # Internet Toggle
-function itog() {
+function it() {
     # https://stackoverflow.com/questions/929368/how-to-test-an-internet-connection-with-bash
     wget -q --spider https://google.com
 
@@ -321,7 +321,7 @@ function itog() {
 }
 
 # bt toggle
-function btog() {
+function bt() {
     _device_id=$(cat ~/test_files/device_id.txt)
     echo "info EB:06:EF:1A:91:90" | bluetoothctl | grep -i "Connected: yes" > /dev/null
 
