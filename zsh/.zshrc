@@ -337,6 +337,31 @@ function bt() {
     unset _device_id
 } 
 
+# Finds an input 
+function f() {
+    if [ "$#" -le 1 ]; then
+        echo "find . -iname "$@
+        find . -iname "$@"
+    else
+        _f_inp="\"$1\""
+        shift
+        for filename in "$@"; do
+            _f_inp+=" -o -iname \""$filename"\""
+        done
+            
+        f_cmd="find . -type f -iname "$_f_inp
+        _f_files=$(eval $f_cmd)
+
+        _f_files="${_f_files//[~]/\\~}"
+        _f_files="${_f_files//[ ]/\\ }"
+        echo "$_f_files"
+
+        unset _f_files
+        unset _f_cmd
+        unset _f_inp
+    fi
+}
+
 function mp4t3() {
     ffmpeg -i "$1" -f mp3 -ab 192000 -vn "$2".mp3
 }

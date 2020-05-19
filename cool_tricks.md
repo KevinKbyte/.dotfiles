@@ -392,6 +392,12 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
     - git reset -- <file 1> <file 2> <file n>
         - undo commit add
 
+  # Revert to previous commit and overwrite
+    git reset --soft HEAD^
+    git add .
+    git commit --amend
+    git push origin "$(git_current_branch)" --force
+
 # Gitignore file from all directories
   https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
   - put into .gitignore:**/<file>
