@@ -311,3 +311,7 @@ libnotify4
 notification-daemon
 libglib2.0-0
 dunst
+language-pack-gnome-ja language-pack-gnome-ja-base
+fonts-takao-mincho
+fonts-takao
+winetricks

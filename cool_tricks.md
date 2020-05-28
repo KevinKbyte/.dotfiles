@@ -376,6 +376,16 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
   - Example: grep -- -v file
       - -v in this case is not an option
 
+# Git LFS
+  - Convert all files in every branch of existing project into LFS
+      (https://github.com/git-lfs/git-lfs/blob/master/docs/man/git-lfs-migrate.1.ronn?utm_source=gitlfs_site&utm_medium=doc_man_migrate_link&utm_campaign=gitlfs)
+    - git lfs migrate --everything
+  # Untrack files from lfs (such as .gitignore) (https://stackoverflow.com/questions/35011366/move-git-lfs-tracked-files-under-regular-git)
+    - git lfs untrack '<file-type>'
+    - git rm --cached '<file-type>'
+    - git add '<file-type>'
+    - git commit -m "restore '<file-type>' to git from lfs"
+
 # Delete Commits from Github
   https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github?fbclid=IwAR0UORmwsdp89DAIgu5N2W7O1Mh9ezfPe2ADz4A7i4PG1w2Yi7nyva73ySw
   - Undo 1 commit: git push -f origin HEAD^:master && git reset --soft HEAD^
@@ -397,6 +407,9 @@ https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean-also-k
     git add .
     git commit --amend
     git push origin "$(git_current_branch)" --force
+
+  # Git rebase
+   - https://medium.com/@filissen/git-interactive-rebase-e265bb55952a
 
 # Gitignore file from all directories
   https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
@@ -473,3 +486,27 @@ https://superuser.com/questions/334272/how-to-run-a-command-after-an-already-run
             - if you want print out just stack trace
   * or use: valgrind -v program
     - to get stack trace, if program is segfaulting
+
+# How to add more locales for language support
+https://askubuntu.com/questions/76013/how-do-i-add-locale-to-ubuntu-server
+
+# ImageMagick
+  # How to resize img and keep aspect ratio
+    - convert img.png -resize 2000x2000 resize_img.png
+  
+  # How to resize img, ignore aspect ratio
+    - convert img.png -resize 2000x2000\! resize_img.png
+  
+  # How to only shrink larger images
+    - convert img.png -resize 2000x2000\> resize_img.png
+  
+  # How to resize no more than given pixel size
+    - convert img.png -resize 2000@ resize_img.png
+  
+  # How to make thumbnails
+    - convert img.png -thumbnail 100x100 resize_img.png
+  
+  # Liquid rescale
+    - convert img.png -liquid-rescale 100x100\! resize_img.png
+        - squeezes image wihtout generating extra 'mixed colors' or bluring of img
+    

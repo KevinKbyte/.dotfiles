@@ -286,6 +286,31 @@ function voc(){
     done
 }
 
+# Alarm
+# https://www.reddit.com/r/linux/comments/9co9x2/simple_shell_script_alarm_clock/
+function larm() {
+    if [ $# -lt 1 ]; then
+        echo "Example use: larm \"10:00\""
+        echo "             larm \"10:00:01\""
+        echo "Calls default 10 min timer when run without arguments"
+
+        timerm $((10*60))
+        return 1;
+    fi
+
+    _alarm_time=$1
+    sleep $(( $(date -d "$alarm_time" +%s) - $(date +%s) ))
+
+    unset _alarm_time
+
+    mplayer ~/Music/*
+}
+
+fcp() {
+    # full filename copy
+    readlink -f "$@" | xclip -selection clipboard
+} 
+
 function chext(){
     for f in *.$1; do 
         mv -- "$f" "${f%.$1}.$2"
