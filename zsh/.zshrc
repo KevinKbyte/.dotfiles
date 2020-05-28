@@ -295,15 +295,22 @@ function larm() {
         echo "Calls default 10 min timer when run without arguments"
 
         timerm $((10*60))
-        return 1;
+        exit 0;
     fi
 
-    _alarm_time=$1
-    sleep $(( $(date -d "$alarm_time" +%s) - $(date +%s) ))
+    _alarm_time="$(( $(date -d $1 +%s) - $(date +%s) ))"
 
-    unset _alarm_time
+    # Continue only if alarm set later than current time
+    if [[ $_alarm_time > 0 ]]; then
+        sleep $_alarm_time
 
-    mplayer ~/Music/*
+        unset _alarm_time
+
+        mplayer ~/Music/*
+    else
+        unset _alarm_time
+        return 1;
+    fi
 }
 
 fcp() {
