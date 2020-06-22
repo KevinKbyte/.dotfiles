@@ -364,6 +364,12 @@ function bt() {
     else
         # echo "Disconnected"
         echo -e "connect "$_device_id | bluetoothctl
+
+        # if still doesn't connect after 5 seconds, restart bluetooth service
+        sleep 6 && echo "info EB:06:EF:1A:91:90" | bluetoothctl | grep -i "Connected: yes" > /dev/null
+        if [ $? -eq 1 ]; then
+            sudo systemctl restart bluetooth.service && echo -e "connect "$_device_id | bluetoothctl
+        fi
     fi
 
     unset _device_id

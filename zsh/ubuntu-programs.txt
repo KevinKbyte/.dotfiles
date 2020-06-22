@@ -315,3 +315,5 @@ language-pack-gnome-ja language-pack-gnome-ja-base
 fonts-takao-mincho
 fonts-takao
 winetricks
+--reinstall linux-image-4.15.0-106-generic
+uswsusp
