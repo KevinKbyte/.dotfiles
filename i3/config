@@ -488,6 +488,15 @@ mode "mode_small_mouse_move" {
     bindsym Mod1+$mod+shift+g $mouseJumpScript 9 10
     bindsym Mod1+shift+g $mouseJumpScript 9 11
 
+    bindsym semicolon $mouseJumpScript 18 8 
+    bindsym $mod+semicolon $mouseJumpScript 18 9 
+    bindsym $mod+shift+semicolon $mouseJumpScript 18 10 
+    bindsym shift+semicolon $mouseJumpScript 18 11 
+    bindsym Mod1+semicolon $mouseJumpScript 19 8 
+    bindsym Mod1+$mod+semicolon $mouseJumpScript 19 9 
+    bindsym Mod1+$mod+shift+semicolon $mouseJumpScript 19 10 
+    bindsym Mod1+shift+semicolon $mouseJumpScript 19 11 
+
     bindsym z $mouseJumpScript 0 12
     bindsym $mod+z $mouseJumpScript 0 13
     bindsym $mod+shift+z $mouseJumpScript 0 14
