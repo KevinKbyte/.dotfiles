@@ -313,10 +313,19 @@ function larm() {
     fi
 }
 
-fcp() {
-    # full filename copy
+function fcp() { # full filename copy
     readlink -f "$@" | xclip -selection clipboard
 } 
+
+function large () { # find largest files in folder, recursively
+    # du -a /dir/ | sort -n -r | head -n 20
+    du -a $1 | sort -n -r ${@:2} 
+}
+
+function largen () { # find largest files in folder, recursively
+    # du -a /dir/ | sort -n -r | head -n 20
+    du -a $1 | sort -n -r | head -n 20 ${@:2} 
+}
 
 function chext(){
     for f in *.$1; do 

@@ -317,3 +317,4 @@ fonts-takao
 winetricks
 --reinstall linux-image-4.15.0-106-generic
 uswsusp
+discord
