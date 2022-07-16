@@ -8,11 +8,11 @@ alias safbiy="sudo apt --fix-broken install -y"
 alias gimp="snap run gimp"
 
 alias blender=/home/kev/Downloads/blender-2.81a-linux-glibc217-x86_64/blender 
-alias open=xdg-open
+# alias open=xdg-open
 alias libro="libreoffice"
 alias hls="history | tail -20"
 
-alias "c=xclip -selection clipboard"
+alias "clip=xclip -selection clipboard"
 alias "pc=pwd|xclip -selection clipboard"
 rc() {
     readlink -f $1 | c
@@ -60,8 +60,10 @@ alias "tmks=tmux kill-server"
 alias "tmsf=tmux source-file ~/.tmux.conf"
 alias "chb=chromium-browser"
 alias "which-command=which"
+alias "wh=which-command"
 alias "killibus=kill $(ps -efl | grep 'drx' | awk '{print $4}' | head -1)"
 # git log rushi
+alias "c=git commit"
 alias glr='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 alias gdtr='git diff-tree --no-commit-id --name-only -r'
 alias gdt='git diff-tool'
@@ -117,7 +119,6 @@ alias "chx=chmod +x"
 alias "python=python3"
 alias "pip=pip3"
 alias "sudb=sudo updatedb"
-alias "s=sudo"
 alias "rgr=ranger"
 alias "calc=calcurse"
 alias "bd=ssh bandit"
@@ -137,7 +138,9 @@ if hash timew 2>/dev/null ; then
 fi
 
 # Git
-alias "grsu=git remote -v && git remote set-url"
+alias "grv=git remote -v"
+alias "grsu=git remote set-url"
+alias s="git status"
 
 # Cabal 
 alias "cab=cabal"

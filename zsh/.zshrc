@@ -145,6 +145,12 @@ function cabh() {
     cabal $1 --help
 }
 
+function wdad {
+    while :;
+    do afplay $@;
+    done
+}
+
 # rsync -cr <Source> <Destination>
     # Example: rsync -cr Desktop ~/mnt/gdrive
     # -c syncs if checksums differ
@@ -166,7 +172,7 @@ export HIL_ENDPOINT="http://127.0.0.1:5000"
 
 # source "/etc/bash_completion.d/virtualenvwrapper"
 
-function wh { while true ; do "$@" && sleep 2; done; }
+# function wh { while true ; do "$@" && sleep 2; done; }
 function h { history | grep -i "$@"; }
 function fpush { git add . && git commit -m "$@" && git push origin pa3; }
 function tm { mv "$@" "$HOME/Desktop/trash/"; }
@@ -550,7 +556,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # to use vim as the man page viewer (useful when you are using shift+k in vim)
 # https://www.reddit.com/r/vim/comments/74sgzs/til_vim_has_a_manpage_viewer_plugin/
-export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
+# export MANPAGER="env MAN_PN=1 vim -M +MANPAGER -"
 # export MANPAGER="/usr/bin/env bash -c \"col -b | \
         # vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
